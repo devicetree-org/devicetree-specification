@@ -308,7 +308,7 @@ AMP:: Asymmetric Multiprocessing. Computer architecture where two or
 more CPUs are executing different tasks. Typically, an AMP system
 executes different operating system images on separate CPUs.
 
-boot CPU:: The first CPU which a boot program directs to a client program’s entry point.
+boot CPU:: The first CPU which a boot program directs to a client program's entry point.
 
 Book III-E:: Embedded Environment. Section of the Power ISA defining
 supervisor instructions and related facilities used in embedded Power
@@ -355,7 +355,7 @@ executes a single operating system image.
 SoC:: System on a chip. A single computer chip integrating one or more
 CPU core as well as number of other peripherals.
 
-unit address:: The part of a node name specifying the node’s address in
+unit address:: The part of a node name specifying the node's address in
 the address space of the parent node.
 
 quiescent CPU:: A quiescent CPU is in a state where it cannot interfere
@@ -802,8 +802,8 @@ The #address-cells and #size-cells properties may be used in any device
 node that has children in the device tree hierarchy and describes how
 child device nodes should be addressed. The #address-cells property
 defines the number of <u32> cells used to encode the address field in a
-child node’s reg property. The #size-cells property defines the number
-of <u32> cells used to encode the size field in a child node’s reg
+child node's reg property. The #size-cells property defines the number
+of <u32> cells used to encode the size field in a child node's reg
 property.
 
 The #address-cells and #size-cells properties are not inherited from
@@ -901,15 +901,15 @@ address space).
 
 The format of the value of the ranges property is an arbitrary number of
 triplets of (child-busaddress, parent-bus-address, length)
-* The child-bus-address is a physical address within the child bus’
+* The child-bus-address is a physical address within the child bus'
   address space. The number of cells to represent the address is bus
   dependent and can be determined from the #address-cells of this node
   (the node in which the ranges property appears).
-* The parent-bus-address is a physical address within the parent bus’
+* The parent-bus-address is a physical address within the parent bus'
   address space. The number of cells to represent the parent address is
   bus dependent and can be determined from the #address-cells property
-  of the node that defines the parent’s address space.
-* The length specifies the size of the range in the child’s address
+  of the node that defines the parent's address space.
+* The length specifies the size of the range in the child's address
   space. The number of cells to represent the size can be determined
   from the #size-cells of this node (the node in which the ranges
   property appears).
@@ -975,17 +975,17 @@ The format of the value of the dma-ranges property is an arbitrary
 number of triplets of (child-bus-address, parent-bus-address, length).
 Each triplet specified describes a contiguous DMA address range.
 
-* The child-bus-address is a physical address within the child bus’
+* The child-bus-address is a physical address within the child bus'
   address space. The number of cells to represent the address depends on
   the bus and can be determined from the #address-cells of this node
   (the node in which the dma-ranges property appears).
 
-* The parent-bus-address is a physical address within the parent bus’
+* The parent-bus-address is a physical address within the parent bus'
   address space.  The number of cells to represent the parent address is
   bus dependent and can be determined from the #address-cells property
-  of the node that defines the parent’s address space.
+  of the node that defines the parent's address space.
 
-* The length specifies the size of the range in the child’s address
+* The length specifies the size of the range in the child's address
   space. The number of cells to represent the size can be determined
   from the #size-cells of this node (the node in which the dma-ranges
   property appears).
@@ -1002,7 +1002,7 @@ Each triplet specified describes a contiguous DMA address range.
 The name property is a string specifying the name of the node. This
 property is deprecated, and its use is not recommended. However, it
 might be used in older non-ePAPR-compliant device trees.  Operating
-system should determine a node’s name based on the name component of the
+system should determine a node's name based on the name component of the
 node name (see section 2.2.1).
 ****
 
@@ -1014,7 +1014,7 @@ node name (see section 2.2.1).
 |Value type |<string>
 |===
 .Description
-The device_type property was used in IEEE 1275 to describe the device’s
+The device_type property was used in IEEE 1275 to describe the device's
 FCode programming model. Because ePAPR does not have FCode, new use of
 the property is deprecated, and it should be included only on cpu and
 memory nodes for compatibility with IEEE 1275–derived device trees.
@@ -1891,7 +1891,7 @@ Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Defini
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
 ==== Internal (L1) Cache Properties
-The following properties of a cpu node describe the processor’s internal (L1) cache.
+The following properties of a cpu node describe the processor's internal (L1) cache.
 
 .Table 3-8 Cache properties
 [options="header", cols="15,^10,^10,65"]
@@ -1990,8 +1990,10 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
 [options="header", cols="15,^10,^10,65"]
 |===
 |Property Name |Usage |Value Type |Definition
-|compatible |R |<string> |A standard property. The value shall include the string “cache”
-|cache-level |R |<u32> |Specifies the level in the cache hierarchy. For example, a level 2 cache
+|compatible |R |<string> |A standard property. The value shall include the
+string “cache”
+|cache-level |R |<u32> |Specifies the level in the cache hierarchy. For
+example, a level 2 cache
 has a value of <2>.
 |===
 
@@ -2000,8 +2002,8 @@ Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Defini
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
 .Example
-See the following example of a device tree representation of two CPUs, each with their own on-chip
-L2 and a shared L3.
+See the following example of a device tree representation of two CPUs, each
+with their own on-chip L2 and a shared L3.
 
 ----
 cpus {
@@ -2060,18 +2062,6 @@ cpus {
 ----
 
 == Client Program Image Format
-
-
-=== Variable Address Image Format
-
-
-==== ELF Basics
-
-
-==== Boot Program Requirements
-
-
-===== Processing of PT_LOAD segments
 This section describes the image format in which an ePAPR client is
 encoded in order to boot it from an ePAPR-compliant boot program. Two
 variants on the image format are described: variable-address images and
@@ -2080,117 +2070,119 @@ images in the variable-address format, should support images in the
 fixed-address format, and may also support other formats not described
 in this document.
 
+=== Variable Address Image Format
 This ePAPR image format is a constrained form of ELF (Executable and
 Linking Format, see <<17>>) executable. That is, an ePAPR client image
 shall be a valid ELF file, but also has additional requirements
 described in the next sections.
 
+==== ELF Basics
 A variable-address client image is a 32-bit ELF client image with the
 following ELF header field values:
-e_ident[EI_CLASS]
-e_ident[EI_DATA]
-e_type
-e_machine
+[listing]
+e_ident[EI_CLASS] ELFCLASS32(0x1)
+e_ident[EI_DATA]  ELFDATA2MSB(0x2)
+e_type            ET_DYN(0x3)
+e_machine         EM_PPC(0x14)
 
-ELFCLASS32(0x1)
-ELFDATA2MSB(0x2)
-ET_DYN(0x3)
-EM_PPC(0x14)
+That is, it is a 32-bit Power shared-object image in 2's complement, big-endian
+format.
 
-That is, it is a 32-bit Power shared-object image in 2's complement, big-endian format.
-Every ePAPR image shall have at least one program header of type PT_LOAD. It may also have other
-valid ELF program headers. The client image shall be arranged so that all its ELF program headers lie
-within the first 1024 bytes of the image.
+Every ePAPR image shall have at least one program header of type PT_LOAD. It
+may also have other valid ELF program headers. The client image shall be
+arranged so that all its ELF program headers lie within the first 1024 bytes of
+the image.
 
-When loading a client image, the boot program need only consider ELF segments of type PT_LOAD.
-Other segments may be present, but should be ignored by the boot program. In particular, the boot
-program should not process any ELF relocations found in the client image.
+==== Boot Program Requirements
+When loading a client image, the boot program need only consider ELF segments
+of type PT_LOAD.  Other segments may be present, but should be ignored by the
+boot program. In particular, the boot program should not process any ELF
+relocations found in the client image.
 
-The boot program shall load the contents of any PT_LOAD segments into RAM, and then pass control
-to the entry point specified in the ELF header in the manner specified in section 5.4.
-Each PT_LOAD segments shall be loaded at an address decided by the boot program, subject to the
-following constraints.
-• The load address shall be congruent with the program header’s p_paddr value, modulo with
-the program header’s p_align value.
+===== Processing of PT_LOAD segments
+The boot program shall load the contents of any PT_LOAD segments into RAM, and
+then pass control to the entry point specified in the ELF header in the manner
+specified in section 5.4.
 
+Each PT_LOAD segments shall be loaded at an address decided by the boot
+program, subject to the following constraints.
 
+* The load address shall be congruent with the program header's p_paddr value,
+  modulo with the program header's p_align value.
 
+* If there is more than one PT_LOAD segment, then the difference between the
+  loaded address and the address specified in the p_paddr field shall be the
+  same for all segments. That is, the boot program shall preserve the relative
+  offsets between PT_LOAD segments by physical address.
 
-•
+The p_vaddr field is reserved to represent the effective address at which the
+segments will appear after the client program has performed MMU setup. The boot
+program should not use the program header's p_vaddr field for determining the
+load address of segments.
 
+===== Entry point
+The program entry point is the address of the first instruction that is to be
+executed in a program image.  The ELF header e_entry field gives the effective
+address of the program entry point. However, as described in section 5.4, CPU
+Entry Point Requirements, the client program shall be entered either in real
+mode or with an initial MMU mapping at effective address 0x0.
 
-If there is more than one PT_LOAD segment, then the difference between the loaded address
-and the address specified in the p_paddr field shall be the same for all segments. That is,
-the boot program shall preserve the relative offsets between PT_LOAD segments by physical
-address.
+Therefore, the boot program shall compute the physical address of the entry
+point before entering the client program. To perform this calculation, it shall
+locate the program segment containing the entry point, determine the difference
+between e_entry and the p_vaddr of that segment, and add this difference to the
+physical address where the segment was loaded.
 
-The p_vaddr field is reserved to represent the effective address at which the segments will appear
-after the client program has performed MMU setup. The boot program should not use the program
-header’s p_vaddr field for determining the load address of segments.
-
-
-===== Entr y point
-
+This adjusted address will be the physical address of the first client program
+instruction executed after the boot program jumps to the client program.
 
 ==== Client Program Requirements
-
-The program entry point is the address of the first instruction that is to be executed in a program image.
-The ELF header e_entry field gives the effective address of the program entry point. However, as
-described in section 5.4, CPU Entry Point Requirements, the client program shall be entered either in
-real mode or with an initial MMU mapping at effective address 0x0.
-Therefore, the boot program shall compute the physical address of the entry point before entering the
-client program. To perform this calculation, it shall locate the program segment containing the entry
-point, determine the difference between e_entry and the p_vaddr of that segment, and add this
-difference to the physical address where the segment was loaded.
-This adjusted address will be the physical address of the first client program instruction executed after
-the boot program jumps to the client program.
-
-The client program is entered with MMU state as described in section 5.4, CPU Entry Point
-Requirements. Therefore, the code at the client program’s entry point shall be prepared to execute in
-this environment, which may be different than the MMU environment in which most of the client
-program executes. The p_vaddr fields of the client’s ELF program headers will reflect this final
+The client program is entered with MMU state as described in section 5.4, CPU
+Entry Point Requirements. Therefore, the code at the client program's entry
+point shall be prepared to execute in this environment, which may be different
+than the MMU environment in which most of the client program executes. The
+p_vaddr fields of the client's ELF program headers will reflect this final
 environment, not the environment in which the entry point is executed.
-The code at the entry point shall be written so that it can be executed at any address. It shall establish a
-suitable environment in which the remainder of the client program executes. The ePAPR does not
-specify its method, but the task could involve:
-•
 
-•
-•
+The code at the entry point shall be written so that it can be executed at any
+address. It shall establish a suitable environment in which the remainder of
+the client program executes. The ePAPR does not specify its method, but the
+task could involve:
 
-•
+* Processing ELF relocations to relocate the client's own image to its loaded
+  address. Note that in this case the client image shall be specially linked so
+  that the ELF relocation information, plus any data required to find that
+  information is contained in both the loaded segments and the segments and
+  sections set aside for relocation information.
 
-Processing ELF relocations to relocate the client’s own image to its loaded address. Note that
-in this case the client image shall be specially linked so that the ELF relocation information,
-plus any data required to find that information is contained in both the loaded segments and
-the segments and sections set aside for relocation information.
-Processing other tables of relocation information in some format specific to the client
-program.
-Physically copying the client image to the address at which it prefers to execute.
-Configuring the MMU so that the client image can execute at its preferred effective address,
-regardless of the physical address at which it is loaded.
+* Processing other tables of relocation information in some format specific to
+  the client program.
 
+* Physically copying the client image to the address at which it prefers to
+  execute.
 
-
-
+* Configuring the MMU so that the client image can execute at its preferred
+  effective address, regardless of the physical address at which it is loaded.
 
 === Fixed Address Image Format
-Fixed-address client images are identical to variable-address client images except for the following
-changes:
-o The e_type ELF header field shall have the value ET_EXEC (0x2).
-o The boot program, instead of loading each PT_LOAD segment at an address of its choosing
-shall load each PT_LOAD segment at the physical address given in the program header's
-p_paddr field. If it cannot load the segment at this address (because memory does not exist
-at that address or is already in use by the boot program itself), then it shall refuse to load the
-image and report an error condition.
-The fixed-address image format is intended for use by very simple clients (such as diagnostic
-programs), avoiding the need for such clients to physically relocate themselves to a suitable address.
-Clients should in general avoid using the fixed-address format, because creating a usable fixedaddress image requires knowing which physical areas will be available for client use on the platform
-in question.
+Fixed-address client images are identical to variable-address client images
+except for the following changes:
 
+* The e_type ELF header field shall have the value ET_EXEC (0x2).
+* The boot program, instead of loading each PT_LOAD segment at an address of
+  its choosing shall load each PT_LOAD segment at the physical address given in
+  the program header's p_paddr field. If it cannot load the segment at this
+  address (because memory does not exist at that address or is already in use
+  by the boot program itself), then it shall refuse to load the image and
+  report an error condition.
 
+The fixed-address image format is intended for use by very simple clients (such
+as diagnostic programs), avoiding the need for such clients to physically
+relocate themselves to a suitable address.
 
-
+Clients should in general avoid using the fixed-address format, because
+creating a usable fixedaddress image requires knowing which physical areas will
+be available for client use on the platform in question.
 
 == Client Program Boot Requirements
 
@@ -2208,18 +2200,18 @@ flattened device tree header (see section 8.2, Header).
 
 === Initial Mapped Areas
 
-A boot program shall load a device tree image into the client program’s memory before transferring
+A boot program shall load a device tree image into the client program's memory before transferring
 control to the client on the boot cpu. The logical structure of the device tree shall comply with the
 requirements specified in section 3.1 (Base Device Node Types). The physical structure of the device
 tree image shall comply with the requirements specified in chapter 8 (Flat Device Tree Physical
 Structure).
-The loaded device tree image shall be aligned on an 8-byte boundary in the client’s memory.
+The loaded device tree image shall be aligned on an 8-byte boundary in the client's memory.
 
 CPUs that implement the Power ISA Book III-E embedded environment, which run with address
 translation always enabled, have some unique boot requirements related to initial memory mappings.
 This section introduces the concept of an Initial Mapped Area (or IMA), which is applicable to Book
 III-E CPUs.
-A client program’s IMA is a region of memory that contains the entry points for a client program.
+A client program's IMA is a region of memory that contains the entry points for a client program.
 Both boot CPUs and secondary CPUs begin client program execution in an IMA. The terms Boot IMA
 (BIMA) and Secondary IMA (SIMA) are used to distinguish the IMAs for boot CPUs and secondary
 CPUs where necessary.
@@ -2227,7 +2219,7 @@ All IMAs have the following requirements:
 1. An IMA shall be virtually and physically contiguous
 2. An IMA shall start at effective address zero (0) which shall be mapped to a physical address
 naturally aligned to the size of the IMA.
-3. The mapping shall not be invalidated except by a client program’s explicit action (i.e., not
+3. The mapping shall not be invalidated except by a client program's explicit action (i.e., not
 subject to broadcast invalidates from other CPUs)
 4. The Translation ID (TID) field in the TLB entry or entries shall be zero.
 5. The memory and cache access attributes (WIMGE) have the following requirements:
@@ -2331,20 +2323,20 @@ The boot program shall leave all devices with the following conditions true:
 A boot program might pass a client program a device tree containing
 device nodes with a virtual-reg property (see 2.3.7, virtual-reg). The
 virtual-reg property describes an Initial I/O (or IIO) mapping set up by
-firmware, and the value is the effective address of a device’s
+firmware, and the value is the effective address of a device's
 registers.  For Book III-E CPUs, effective to physical address mappings
-shall be present in the CPU’s MMU to map any IIO. An IIO has the
+shall be present in the CPU's MMU to map any IIO. An IIO has the
 following requirements on Book III-E CPUs:
 1. An IIO shall be virtually and physically contiguous.
 2. An IIO shall map the effective address in virtual-reg to the physical
    address at which the device appears at the point of entry.
-3. An IIO shall not be invalidated except by client’s explicit action
+3. An IIO shall not be invalidated except by client's explicit action
    (i.e., not subject to broadcast invalidates from other partitions).
 4. The Translation ID (TID) field in the TLB entry shall be zero.
 5. The memory and cache access attributes (WIMGE) have the following requirements:
 • WIMG shall be suitable for accessing the device in question. Typically I=1, G=1.
 • E=0 (i.e., big-endian)
-6. An IIO shall be large enough to cover all of device’s registers.
+6. An IIO shall be large enough to cover all of device's registers.
 7. Multiple devices may share an IIO.
 
 ==== Boot CPU Entry Requirements: Real Mode
@@ -2395,7 +2387,7 @@ state. A quiescent CPU is in a state where it cannot interfere with the
 normal operation of other CPUs, nor can its state be affected by the
 normal operation of other running CPUs, except by an explicit method for
 enabling or re-enabling the quiescent CPU. The status property of the
-quiescent CPU’s cpu node in the device tree shall have a value of
+quiescent CPU's cpu node in the device tree shall have a value of
 “disabled” (see 3.7.1, General Properties of CPU nodes).
 
 Secondary CPUs may be started using the spin table or implementation-specific mechanisms
@@ -2464,21 +2456,21 @@ The boot program shall place a spin loop and spin table into an area of
 memory that is appropriate for the platform. If the spin loop and table
 reside in a memory region belonging to a client program, the memory
 occupied by the loop and table shall be marked reserved in the device
-tree’s DTB memory reservation block (see section 8.3, Memory Reservation
+tree's DTB memory reservation block (see section 8.3, Memory Reservation
 Block).
 
 Before starting a client program on the boot cpu, the boot program shall
 set certain properties in the device tree passed to the client as
 follows:
-• Each secondary CPU’s cpu node shall have a status property with a value of “disabled”.
-• Each secondary CPU’s cpu node shall have an enable-method property.
+• Each secondary CPU's cpu node shall have a status property with a value of “disabled”.
+• Each secondary CPU's cpu node shall have an enable-method property.
 • For each secondary cpu node with an enable-method value of “spin-table”, the cpu node
 shall have a cpu-release-addr property that describes the address of the applicable spin table
 entry to release the CPU.
 
 For secondary CPUs with address translation always enabled (e.g., Book
 III-E), the boot program shall set up an address mapping in the
-secondary CPU’s MMU for the spin loop and table.
+secondary CPU's MMU for the spin loop and table.
 
 The boot program shall place a spinning CPU in a quiescent state where
 it cannot interfere with the normal operation of other CPUs, nor can its
@@ -2519,7 +2511,7 @@ Note: Spin table entries do not need to lie in either the BIMA or SIMA.
 Programming Notes
 • A client program should physically align its secondary entry points so that the 1MiB
 SIMA size requirement is sufficient to ensure that enough code is in the SIMA to
-transfer the secondary CPU to the client’s MMU domain (which will typically involve a
+transfer the secondary CPU to the client's MMU domain (which will typically involve a
 temporary mapping in AS1)
 • Boot programs will typically need to establish the SIMA mapping after leaving the spin
 loop and reading the entry_addr spin table field. However, this mapping might not
@@ -2532,7 +2524,7 @@ When a client program is started on its boot CPU, it is passed a device tree tha
 CPUs that belong to the client, the state of those CPUs, and the address of the spin table entry to
 release each CPU.
 For each secondary CPU, the physical address of the spin table entry for the CPU is specified in the
-device tree in the cpu node’s cpu-release-addr property. To activate a secondary CPU, the client
+device tree in the cpu node's cpu-release-addr property. To activate a secondary CPU, the client
 program (running on the boot cpu) may write the pir field value, may write the r3 value, may write
 the most significant 32 bits of the entry_addr value, and shall write the least significant 32 bits of
 the entry_addr value. After the client has written the least significant 32 bits of the entry_addr
@@ -2565,7 +2557,7 @@ are indicated by an implementation-specific value in the enable-method property 
 client program can release these types of CPUs using implementation-specific means not specified by
 the ePAPR.
 
-For configurations that use the spin table method of booting secondary cores (i.e.CPU’s enablemethod = “spin-table”), the boot program shall enable and synchronize the time base (TBU and TBL)
+For configurations that use the spin table method of booting secondary cores (i.e.CPU's enablemethod = “spin-table”), the boot program shall enable and synchronize the time base (TBU and TBL)
 across the boot and secondary CPUs.
 For configurations that use implementation specific methods (see section 5.5.3) to release secondary
 cores, the methods must provide some means of synchronizing the time base across CPUs. The
@@ -2679,7 +2671,7 @@ they have their own specific representation.
 Property: clock-frequency
 Value type: <u32>
 Description:
-Specifies the frequency in Hertz of the baud rate generator’s input clock.
+Specifies the frequency in Hertz of the baud rate generator's input clock.
 Example:
 clock-frequency = <100000000>;
 
@@ -2727,7 +2719,7 @@ Definition
 <prop-encodedarray>
 
 Value shall include “ns16550”.
-Specifies the frequency (in Hz) of the baud rate generator’s input clock
+Specifies the frequency (in Hz) of the baud rate generator's input clock
 Specifies current serial device speed in bits per second
 Specifies the physical address of the registers device within the address space
 of the parent bus
@@ -2735,7 +2727,7 @@ interrupts
 OR
 Specifies the interrupts generated by this device. The value of the interrupts
 property consists of one or more interrupt specifiers. The format of an
-interrupt specifier is defined by the binding document describing the node’s
+interrupt specifier is defined by the binding document describing the node's
 interrupt parent.
 reg-shift
 O
@@ -2750,7 +2742,7 @@ SD
 See section 2.3.7. Specifies an effective address that maps to the first physical
 <u64>
 address specified in the reg property. This property is required if this device
-node is the system’s console.
+node is the system's console.
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
@@ -4073,8 +4065,8 @@ tx count
 Status of the hypercall
 0 : the operation completed successfully
 EV_EINVAL : handle was invalid
-Count of bytes available in the byte-channel’s receive buffer.
-Count of space available in the byte-channel’s transmit buffer.
+Count of bytes available in the byte-channel's receive buffer.
+Count of space available in the byte-channel's transmit buffer.
 
 === Inter-partition Doorbells
 ==== Overview
@@ -4368,7 +4360,7 @@ shall always contain 16.
 •
 
 boot_cpuid_phys
-This field shall contain the physical ID of the system’s boot CPU. It shall be identical to the
+This field shall contain the physical ID of the system's boot CPU. It shall be identical to the
 physical ID given in the reg property of that CPU node within the device tree.
 
 •
@@ -4392,7 +4384,7 @@ which are reserved; that is, which shall not be used for general memory allocati
 protect vital data structures from being overwritten by the client program. For example, on some
 systems with an IOMMU, the TCE (translation control entry) tables initialized by an ePAPR boot
 program would need to be protected in this manner. Likewise, any boot program code or data used
-during the client program’s runtime would need to be reserved (e.g., RTAS on Open Firmware
+during the client program's runtime would need to be reserved (e.g., RTAS on Open Firmware
 platforms). The ePAPR does not require the boot program to provide any such runtime components,
 but it does not prohibit implementations from doing so as an extension.
 More specifically, a client program shall not access memory in a reserved region unless other
@@ -4462,13 +4454,13 @@ aligned offset from the beginning of the device tree blob (see 8.6).
 
 The structure block is composed of a sequence of pieces, each beginning with a token, that is, a bigendian 32-bit integer. Some tokens are followed by extra data, the format of which is determined
 by the token value. All tokens shall be aligned on a 32-bit boundary, which may require padding bytes
-(with a value of 0x0) to be inserted after the previous token’s data.
+(with a value of 0x0) to be inserted after the previous token's data.
 The five token types are as follows:
 o
 
 FDT_BEGIN_NODE (0x00000001)
-The FDT_BEGIN_NODE token marks the beginning of a node’s representation. It shall be
-followed by the node’s unit name as extra data. The name is stored as a null-terminated string,
+The FDT_BEGIN_NODE token marks the beginning of a node's representation. It shall be
+followed by the node's unit name as extra data. The name is stored as a null-terminated string,
 and shall include the unit address (see 2.2.1, Node Names), if any.
 The node name is followed by zeroed padding bytes, if necessary for alignment, and then the
 next token, which may be any token except FDT_END.
@@ -4476,7 +4468,7 @@ next token, which may be any token except FDT_END.
 o
 
 FDT_END_NODE (0x00000002)
-The FDT_END_NODE token marks the end of a node’s representation. This token has no
+The FDT_END_NODE token marks the end of a node's representation. This token has no
 extra data; so it is followed immediately by the next token, which may be any token except
 FDT_PROP.
 
@@ -4485,7 +4477,7 @@ o
 FDT_PROP (0x00000003)
 The FDT_PROP token marks the beginning of the representation of one property in the
 device tree. It shall be followed by extra data describing the property. This data consists first
-of the property’s length and name represented as the following C structure:
+of the property's length and name represented as the following C structure:
 struct {
 uint32_t len;
 uint32_t nameoff;
@@ -4496,11 +4488,11 @@ uint32_t nameoff;
 
 }
 Both the fields in this structure are 32-bit big-endian integers.
-• len gives the length of the property’s value in bytes (which may be zero, indicating
+• len gives the length of the property's value in bytes (which may be zero, indicating
 an empty property, see 2.2.4.2, Property Values).
-• nameoff gives an offset into the strings block (see 8.5) at which the property’s
+• nameoff gives an offset into the strings block (see 8.5) at which the property's
 name is stored as a null-terminated string.
-After this structure, the property’s value is given as a byte string of length len. This value is
+After this structure, the property's value is given as a byte string of length len. This value is
 followed by zeroed padding bytes (if necessary) to align to the next 32-bit boundary and then
 the next token, which may be any token except FDT_END.
 o
@@ -4509,7 +4501,7 @@ FDT_NOP (0x00000004)
 The FDT_NOP token will be ignored by any program parsing the device tree. This token has
 no extra data; so it is followed immediately by the next token, which can be any valid token.
 A property or node definition in the tree can be overwritten with FDT_NOP tokens to remove
-it from the tree without needing to move other sections of the tree’s representation in the
+it from the tree without needing to move other sections of the tree's representation in the
 device tree blob.
 
 o
@@ -4523,16 +4515,16 @@ block equal to the value of the size_dt_struct field in the device tree blob hea
 
 ==== Tree structure
 The device tree structure is represented as a linear tree: the representation of each node begins with an
-FDT_BEGIN_NODE token and ends with an FDT_END_NODE token. The node’s properties and
+FDT_BEGIN_NODE token and ends with an FDT_END_NODE token. The node's properties and
 subnodes (if any) are represented before the FDT_END_NODE, so that the FDT_BEGIN_NODE and
 FDT_END_NODE tokens for those subnodes are nested within those of the parent.
-The structure block as a whole consists of the root node’s representation (which contains the
+The structure block as a whole consists of the root node's representation (which contains the
 representations for all other nodes), followed by an FDT_END token to mark the end of the structure
 block as a whole.
-More precisely, each node’s representation consists of the following components:
+More precisely, each node's representation consists of the following components:
 • (optionally) any number of FDT_NOP tokens
 • FDT_BEGIN_NODE token
-o The node’s name as a null-terminated string
+o The node's name as a null-terminated string
 o [zeroed padding bytes to align to a 4-byte boundary]
 • For each property of the node:
 
@@ -4649,15 +4641,15 @@ example = <0xf00f0000 19>, "a strange property format";
 
 •
 
-In a cell array a reference to another node will be expanded to that node’s phandle.
-References may be & followed by a node’s label. Example:
+In a cell array a reference to another node will be expanded to that node's phandle.
+References may be & followed by a node's label. Example:
 interrupt-parent = < &mpic >;
-or they may be & followed by a node’s full path in braces. Example:
+or they may be & followed by a node's full path in braces. Example:
 interrupt-parent = < &{/soc/interrupt-controller@40000} >;
 
 •
 
-Outside a cell array, a reference to another node will be expanded to that node’s full path.
+Outside a cell array, a reference to another node will be expanded to that node's full path.
 Example:
 ethernet0 = &EMAC0;
 
