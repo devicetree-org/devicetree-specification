@@ -1,11 +1,15 @@
 = Standard for Embedded Power Architecture(TM) Platform Requirements (ePAPR)
 Power.org(TM)
 Version 1.1, 08 April 2011
-:toc:
+:toc: macro
+:toclevels: 3
 :sectnums:
 :doctype: book
 
+[float]
+== Copyright
 Copyright (C) 2008,2011 Power.org. All rights reserved.
+
 The Power Architecture and Power.org word marks and the Power and Power.org logos
 and related marks are trademarks and service marks licensed by Power.org.
 Implementation of certain elements of this document may require licenses under third
@@ -21,23 +25,34 @@ DIRECT, INDIRECT, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL DAMAGES,
 INCLUDING, WITHOUT LIMITATION, LOST PROFITS, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGES.
 
-Questions pertaining to this document, or the terms or conditions of its provision, should
-be addressed to:
+Questions pertaining to this document, or the terms or conditions of its
+provision, should be addressed to:
+
+[verse]
 IEEE-ISTO
 445 Hoes Lane
 Piscataway, NJ 08854
 Attn: Power.org Board Secretary
 
-LICENSE INFORMATION
-© Copyright 2008,2011 Power.org, Inc
-© Copyright Freescale Semiconductor, Inc., 2008,2011
-© Copyright International Business Machines Corporation, 2008,2011
+[float]
+== LICENSE INFORMATION
+
+(C) Copyright 2008,2011 Power.org, Inc
+
+(C) Copyright Freescale Semiconductor, Inc., 2008,2011
+
+(C) Copyright International Business Machines Corporation, 2008,2011
+
 All Rights Reserved.
 
-Acknowledgements
-The power.org Platform Architecture Technical Subcommittee would like thank the many individuals
-and companies that contributed to the development this specification through writing, technical
-discussions and reviews.
+toc::[]
+
+[float]
+== Acknowledgements
+The power.org Platform Architecture Technical Subcommittee would like
+thank the many individuals and companies that contributed to the
+development this specification through writing, technical discussions
+and reviews.
 
 .Individuals (in alphabetical order)
 [verse]
@@ -74,28 +89,29 @@ IBM
 Montavista
 Wind River
 
-Other Acknowledgements
-Significant aspects of the ePAPR device tree are based on work done by the Open Firmware Working
-Group which developed bindings for IEEE-1275. We would like to acknowledge their contributions.
+[float]
+== Other Acknowledgements
+Significant aspects of the ePAPR device tree are based on work done by
+the Open Firmware Working Group which developed bindings for IEEE-1275.
+We would like to acknowledge their contributions.
 
-We would also like to acknowledge the contribution of the PowerPC Linux community that initially
-developed and implemented the flattened device tree concept.
+We would also like to acknowledge the contribution of the PowerPC Linux
+community that initially developed and implemented the flattened device
+tree concept.
 
-Revision History
-Revision Date
-1.0
-7/23/2008
-1.1
-3/7/2011
-
-Description
-Initial Version
-Updates include: virtualization chapter, consolidated representation of cpu
-nodes, stdin/stdout properties on /chosen, label property, representation of
-hardware threads on cpu nodes, representation of Power ISA categories on
-cpu nodes, mmu type property, removal of some bindings, additional cpu
-entry requirements for threaded cpus, miscellaneous cleanup and
-clarifications.
+.Revision History
+[options="header", cols="10,15,75"]
+|===
+|Revision |Date |Description
+| 1.0 | 7/23/2008 |Initial Version
+| 1.1 | 3/7/2011 |
+Updates include: virtualization chapter, consolidated representation of
+cpu nodes, stdin/stdout properties on /chosen, label property,
+representation of hardware threads on cpu nodes, representation of Power
+ISA categories on cpu nodes, mmu type property, removal of some
+bindings, additional cpu entry requirements for threaded cpus,
+miscellaneous cleanup and clarifications.
+|===
 
 == Introduction
 === Purpose and Scope
@@ -119,7 +135,7 @@ Requirements (ePAPR), provides a complete boot program to client program
 interface definition, combined with minimum system requirements that
 facilitate the development of a wide variety of embedded systems based
 on CPUs that implement the Power architecture as defined in the Power
-ISA™ [1].
+ISA(TM)<<1>>.
 
 This specification is targeted towards the requirements of embedded
 systems. An embedded system typically consists of system hardware, an
@@ -129,7 +145,8 @@ computers, which are designed to be customized by a user with a variety
 of software and I/O devices. Other characteristics of embedded systems
 can include:
 
-* a fixed set of I/O devices, possibly highly customized for the application
+* a fixed set of I/O devices, possibly highly customized for the
+  application
 * a system board optimized for size and cost
 * limited user interface
 * resource constraints like limited memory and limited nonvolatile storage
@@ -137,192 +154,251 @@ can include:
 * use of a wide variety of operating systems, including Linux, real-time
   operating systems, and custom or proprietary operating systems
 
-
-
-
-
-Organization of this Document
+==== Organization of this Document
 Chapter 1 introduces the architecture being specified by the ePAPR.
-Chapter 2 introduces the device tree concept and describes its logical structure and standard
-properties.
-Chapter 3 specifies the definition of a base set of device nodes required by ePAPR-compliant
-device trees.
+
+Chapter 2 introduces the device tree concept and describes its logical
+structure and standard properties.
+
+Chapter 3 specifies the definition of a base set of device nodes
+required by ePAPR-compliant device trees.
+
 Chapter 4 specifies the ELF client program image format.
-Chapter 5 specifies the requirements for boot programs to start client programs on single and
-multiple CPU systems.
-Chapter 6 describes device bindings for certain classes of devices and specific device types.
-Chapter 7 describes ePAPR virtualization extensions-- hypercall ABI, hypercall APIs, and
-device tree conventions related to virtualization.
+
+Chapter 5 specifies the requirements for boot programs to start client
+programs on single and multiple CPU systems.
+
+Chapter 6 describes device bindings for certain classes of devices and
+specific device types.
+
+Chapter 7 describes ePAPR virtualization extensions-- hypercall ABI,
+hypercall APIs, and device tree conventions related to virtualization.
+
 Chapter 8 specifies the physical structure of device trees.
 
-Conventions Used in this Document
-The word shall is used to indicate mandatory requirements strictly to be followed in order to conform
-to the standard and from which no deviation is permitted (shall equals is required to).
+=== Conventions Used in this Document
+The word _shall_ is used to indicate mandatory requirements strictly to
+be followed in order to conform to the standard and from which no
+deviation is permitted (_shall_ equals _is required to_).
 
-The word should is used to indicate that among several possibilities one is recommended as
-particularly suitable, without mentioning or excluding others; or that a certain course of action is
-preferred but not necessarily required; or that (in the negative form) a certain course of action is
-deprecated but not prohibited (should equals is recommended that).
+The word _should_ is used to indicate that among several possibilities
+one is recommended as particularly suitable, without mentioning or
+excluding others; or that a certain course of action is preferred but
+not necessarily required; or that (in the negative form) a certain
+course of action is deprecated but not prohibited (_should_ equals _is
+recommended that_).
 
-The word may is used to indicate a course of action permissible within the limits of the standard (may
-equals is permitted).
+The word _may_ is used to indicate a course of action permissible within
+the limits of the standard (_may_ equals _is permitted_).
 
-Examples of device tree constructs are frequently shown in Device Tree Syntax form. See Appendix A
-Device Tree Source Format (version 1) for an overview of this syntax.
+Examples of device tree constructs are frequently shown in _Device Tree
+Syntax_ form. See _Appendix A Device Tree Source Format (version 1)_ for
+an overview of this syntax.
 
-=== Relationship to IEEE™ 1275
-The ePAPR is loosely related to the IEEE 1275 Open Firmware standard—IEEE Standard for Boot
-(Initialization Configuration) Firmware: Core Requirements and Practices [2].
-The original IEEE 1275 specification and its derivatives such as CHRP [10] and PAPR [16] address
-problems of general purpose computers, such as how a single version of an operating system can work
-on several different computers within the same family and the problem of loading an operating system
-from user-installed I/O devices.
+=== Relationship to IEEE(TM) 1275
+The ePAPR is loosely related to the IEEE 1275 Open Firmware
+standard—_IEEE Standard for Boot (Initialization Configuration)
+Firmware: Core Requirements and Practices_ <<1>>.
 
-Because of the nature of embedded systems, some of these problems faced by open, general purpose
-computers do not apply. Notable features of the IEEE 1275 specification that are omitted from the
-ePAPR include:
+The original IEEE 1275 specification and its derivatives such as CHRP
+<<10>> and PAPR <<16>> address problems of general purpose
+computers, such as how a single version of an operating system can work
+on several different computers within the same family and the problem of
+loading an operating system from user-installed I/O devices.
+
+Because of the nature of embedded systems, some of these problems faced
+by open, general purpose computers do not apply. Notable features of the
+IEEE 1275 specification that are omitted from the ePAPR include:
 * Plug-in device drivers
 * FCode
 * The programmable Open Firmware user interface based on Forth
 * FCode debugging
 * Operating system debugging
 
-What is retained from IEEE-1275 are concepts from the device tree architecture by which a boot
-program can describe and communicate system hardware information to client program, thus
-eliminating the need for the client program to have hard-coded descriptions of system hardware.
+What _is_ retained from IEEE-1275 are concepts from the device tree
+architecture by which a boot program can describe and communicate system
+hardware information to client program, thus eliminating the need for
+the client program to have hard-coded descriptions of system hardware.
 
-=== 32-bit and 64-bit Support
-The ePAPR supports CPUs with both 32-bit and 64-bit addressing capabilities. Where applicable,
-sections of the ePAPR describe any requirements or considerations for 32-bit and 64-bit addressing.
+==== 32-bit and 64-bit Support
+The ePAPR supports CPUs with both 32-bit and 64-bit addressing
+capabilities. Where applicable, sections of the ePAPR describe any
+requirements or considerations for 32-bit and 64-bit addressing.
 
 === References
-1. Power ISA™, Version 2.06 Revision B, July 23, 2010. It is available from power.org
-(http://power.org).
-2. Boot (Initialization Configuration) Firmware: Core Requirements and Practices, 1994. This is the
-core standard (also known as IEEE 1275) that defines the device tree concept adopted by the ePAPR.
-It is available from Global Engineering (http://global.ihs.com/).
-3. PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot (Initialization, Configuration)
-Firmware. Version 2.1 1996. Published by the Open Firmware Working Group.
-(http://playground.sun.com/1275/bindings/ppc/release/ppc-2_1.html). This document specifies the
-PowerPC processor specific binding to the base standard.
-4. booting-without-of.txt (Ben Herrenschmidt, Becky Bruce, et al.). From the Linux kernel source tree
-(http://www.kernel.org/). Describes the device tree as used by the Linux kernel.
-5. Device Trees Everywhere. By .David Gibson and Ben Herrenschmidt
-(http://ozlabs.org/~dgibson/home/papers/dtc-paper.pdf). An overview of the concept of the device tree
-and device tree compiler.
-6. PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot (Initialization Configuration)
-Firmware, Revision 2.1. 1998. Published by the Open Firmware Working Group.
-(http://playground.sun.com/1275/bindings/pci/pci2_1.pdf)
-7. Open Firmware Recommended Practice: Interrupt Mapping, Version 0.9. 1996. Published by the
-Open Firmware Working Group. (http://playground.sun.com/1275/practice/imap/imap0_9d.pdf)
-8. Open Firmware Recommended Practice: Device Support Extensions, Version 1.0, 1997. Published
-by the Open Firmware Working Group.
-(http://playground.sun.com/1275/practice/devicex/dse1_0a.html) This document describes the binding
-for various device types such as network, RTC, keyboard, sound, etc.
-9. Open Firmware Recommended Practice: Universal Serial Bus Binding to IEEE 1275, Version 1,
-1998. Published by the Open Firmware Working Group.
-(http://playground.sun.com/1275/bindings/usb/usb-1_0.ps)
-10. PowerPC Microprocessor Common Hardware Reference Platform (CHRP) Binding, Version 1.8,
-1998. Published by the Open Firmware Working Group.
-(http://playground.sun.com/1275/bindings/chrp/chrp1_8a.ps). This document specifies the properties
-for Open PIC-compatible interrupt controllers.
-11. CHRP ISA Interrupt Controller Device Binding, Unapproved Draft version 1.1, Aug 19, 1996,
-Published by the Open Firmware Working Group.
-(http://playground.sun.com/1275/bindings/devices/postscript/isa-pic-1_1d.ps)
-12. The Open Programmable Interrupt Controller (PIC) Register Interface Specification Revision 1.2,
-October 1995. Advanced Micro Devices and Cyrix Corporation.
-13. PCI Local Bus Specification, Revision 2.2. Published by the PCI Special Interest Group.
-14. PCI Express Base Specification, Revision 1.0a. Published by the PCI Special Interest Group.
-15. PCI-Express Binding to OF. P1275 Openboot Working Group Proposal dated 18 August 2004.
-16. Power.org Standard for Power Architecture Platform Requirements, Published by power.org.
-17. System V Application Binary Interface, Edition 4.1, 1997, Published by The Santa Cruz Operation,
-Inc.
-18. The Open Programmable Interrupt Controller (PIC) Register Interface Specification Revision 1.2,
-AMD and Cyrix. October 1995.
-19. RFC 2119, Key words for use in RFCs to Indicate Requirement Levels
-http://www.ietf.org/rfc/rfc2119.txt
-20. 64-bit PowerPC ELF Application Binary Interface Supplement 1.9. By Ian Lance Taylor. 2004.
+[bibliography]
+- [[[1]]] _Power ISA(TM)_, Version 2.06 Revision B, July 23, 2010. It is
+  available from power.org (http://power.org)
+
+- [[[2]]] _Boot (Initialization Configuration) Firmware: Core
+  Requirements and Practices_, 1994, This is the core standard (also
+  known as IEEE 1275) that defines the device tree concept adopted by
+  the ePAPR. It is available from Global Engineering (http://global.ihs.com/).
+
+- [[[3]]] _PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
+  (Initialization, Configuration) Firmware_, Version 2.1, Open Firmware
+  Working Group, (http://playground.sun.com/1275/bindings/ppc/release/ppc-2_1.html),
+  1996, This document specifies the PowerPC processor specific binding
+  to the base standard.
+
+- [[[4]]] _booting-without-of.txt_, Ben Herrenschmidt, Becky Bruce, et al.,
+  From the Linux kernel source tree
+  (http://www.kernel.org/), Describes the device tree as used by the Linux kernel.
+
+- [[[5]]] _Device Trees Everywhere_, David Gibson and Ben Herrenschmidt
+  (http://ozlabs.org/~dgibson/home/papers/dtc-paper.pdf),
+  An overview of the concept of the device tree and device tree compiler.
+
+- [[[6]]] _PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
+  (Initialization Configuration) Firmware_, Revision 2.1,
+  Open Firmware Working Group, 1998
+  (http://playground.sun.com/1275/bindings/pci/pci2_1.pdf)
+
+- [[[7]]] _Open Firmware Recommended Practice: Interrupt Mapping_, Version 0.9,
+  Open Firmware Working Group, 1996
+  (http://playground.sun.com/1275/practice/imap/imap0_9d.pdf)
+
+- [[[8]]] _Open Firmware Recommended Practice: Device Support Extensions_, Version 1.0,
+  Open Firmware Working Group, 1997,
+  (http://playground.sun.com/1275/practice/devicex/dse1_0a.html)
+  This document describes the binding for various device types such as
+  network, RTC, keyboard, sound, etc.
+
+- [[[9]]] _Open Firmware Recommended Practice: Universal Serial Bus
+  Binding to IEEE 1275_, Version 1,
+  Open Firmware Working Group, 1998
+  (http://playground.sun.com/1275/bindings/usb/usb-1_0.ps)
+
+- [[[10]]] _PowerPC Microprocessor Common Hardware Reference Platform (CHRP)
+  Binding_, Version 1.8,
+  Open Firmware Working Group, 1998
+  (http://playground.sun.com/1275/bindings/chrp/chrp1_8a.ps).
+  This document specifies the properties for Open PIC-compatible
+  interrupt controllers.
+
+- [[[11]]] _CHRP ISA Interrupt Controller Device Binding_,
+  Unapproved Draft version 1.1,
+  Open Firmware Working Group, Aug 19, 1996
+  (http://playground.sun.com/1275/bindings/devices/postscript/isa-pic-1_1d.ps)
+
+- [[[12]]] _The Open Programmable Interrupt Controller (PIC) Register
+  Interface Specification_, Revision 1.2,
+  Advanced Micro Devices and Cyrix Corporation, October 1995
+
+- [[[13]]] _PCI Local Bus Specification_, Revision 2.2, PCI Special Interest Group
+- [[[14]]] _PCI Express Base Specification_, Revision 1.0a, PCI Special Interest Group
+- [[[15]]] _PCI-Express Binding to OF_, P1275 Openboot Working Group Proposal, 18 August 2004
+- [[[16]]] _Power.org Standard for Power Architecture Platform Requirements_, power.org
+
+- [[[17]]] _System V Application Binary Interface, Edition 4.1_,
+  Published by The Santa Cruz Operation, Inc., 1997
+
+- [[[18]]] _The Open Programmable Interrupt Controller (PIC) Register
+  Interface Specification Revision 1.2_, AMD and Cyrix, October 1995
+
+- [[[19]]] _RFC 2119, Key words for use in RFCs to Indicate Requirement
+  Levels_, http://www.ietf.org/rfc/rfc2119.txt
+
+- [[[20]]] _64-bit PowerPC ELF Application Binary Interface Supplement
+  1.9_, Ian Lance Taylor, 2004
 
 === Definition of Terms
-AMP. Asymmetric Multiprocessing. Computer architecture where two or more CPUs are
-executing different tasks. Typically, an AMP system executes different operating system
-images on separate CPUs.
+[glossary]
+AMP:: Asymmetric Multiprocessing. Computer architecture where two or
+more CPUs are executing different tasks. Typically, an AMP system
+executes different operating system images on separate CPUs.
 
-boot CPU. The first CPU which a boot program directs to a client program’s entry point.
-Book III-E. Embedded Environment. Section of the Power ISA defining supervisor
-instructions and related facilities used in embedded Power processor implementations.
+boot CPU:: The first CPU which a boot program directs to a client program’s entry point.
 
-boot program. Used to generically refer to a software component that initializes the system
-state and executes another software component referred to as a client program. Examples of a
-boot programs include: firmware, bootloaders, and hypervisors. Examples of a client
-program include: bootloaders, hypervisors, operating systems, and special purpose programs.
+Book III-E:: Embedded Environment. Section of the Power ISA defining
+supervisor instructions and related facilities used in embedded Power
+processor implementations.
 
-client program. Program that typically contains application or operating system software.
+boot program:: Used to generically refer to a software component that
+initializes the system state and executes another software component
+referred to as a client program. Examples of a boot programs include:
+firmware, bootloaders, and hypervisors.
+
+client program:: Program that typically contains application or
+operating system software. Examples of a client program include:
+bootloaders, hypervisors, operating systems, and special purpose
+programs.
+
 cell. A unit of information consisting of 32 bits.
 
-DMA. Direct memory access
+DMA:: Direct memory access
+DTB:: Device tree blob. Compact binary representation of the device tree.
+DTC:: Device tree compiler. An open source tool used to create DTB files from DTS files.
+DTS:: Device tree syntax. A textual representation of a device tree consumed by the DTC.
+See Appendix A Device Tree Source Format (version 1).
 
-DTB. Device tree blob. Compact binary representation of the device tree.
+effective address:: Memory address as computed by processor storage
+access or branch instruction.
 
-DTC. Device tree compiler. An open source tool used to create DTB files from DTS files.
+physical address:: Address used by the processor to access external
+device, typically a memory controller. The Power ISA uses the _real
+address_ when referring to a physical address.
 
-DTS. Device tree syntax. A textual representation of a device tree consumed by the DTC. See
-Appendix A Device Tree Source Format (version 1).
+Power ISA:: Power Instruction Set Architecture.
 
-effective address. Memory address as computed by processor storage access or branch
-instruction.
+interrupt specifier:: A property value that describes an interrupt.
+Typically information that specifies an interrupt number and sensitivity
+and triggering mechanism is included.
 
-physical address. Address used by the processor to access external device, typically a
-memory controller. The Power ISA uses the real address when referring to a physical address.
-Power ISA. Power Instruction Set Architecture.
+secondary CPU:: CPUs other than the boot CPU that belong to the client
+program are considered _secondary CPUs_.
 
-interrupt specifier. A property value that describes an interrupt. Typically information that
-specifies an interrupt number and sensitivity and triggering mechanism is included.
+SMP:: Symmetric multiprocessing. A computer architecture where two or
+more identical CPUs can execute the same task. Typically an SMP system
+executes a single operating system image.
 
-secondary CPU. CPUs other than the boot CPU that belong to the client program are
-considered secondary CPUs.
+SoC:: System on a chip. A single computer chip integrating one or more
+CPU core as well as number of other peripherals.
 
-SMP. Symmetric multiprocessing. A computer architecture where two or more identical
-CPUs can execute the same task. Typically an SMP system executes a single operating
-system image.
+unit address:: The part of a node name specifying the node’s address in
+the address space of the parent node.
 
-SOC. System on a chip. A single computer chip integrating one or more CPU core as well as
-number of other peripherals.
-
-unit address. The part of a node name specifying the node’s address in the address space of
-the parent node.
-
-quiescent CPU. A quiescent CPU is in a state where it cannot interfere with the normal
-operation of other CPUs, nor can its state be affected by the normal operation of other
-running CPUs, except by an explicit method for enabling or re-enabling the quiescent CPU.
+quiescent CPU:: A quiescent CPU is in a state where it cannot interfere
+with the normal operation of other CPUs, nor can its state be affected
+by the normal operation of other running CPUs, except by an explicit
+method for enabling or re-enabling the quiescent CPU.
 
 == The Device Tree
 === Overview
-The ePAPR specifies a construct called a device tree to describe system hardware. A boot program
-loads a device tree into a client program's memory and passes a pointer to the device tree to the client.
+The ePAPR specifies a construct called a _device tree_ to describe
+system hardware. A boot program loads a device tree into a client
+program's memory and passes a pointer to the device tree to the client.
 
-This chapter describes the logical structure of the device tree and specifies a base set of properties for
-use in describing device nodes. Chapter 3 specifies certain device nodes required by an ePAPRcompliant device tree. Chapter 6 describes the ePAPR defined device bindings— the requirements for
-representing certain device types classes of devices. Chapter 8 describes the in-memory encoding of
-the device tree.
+This chapter describes the logical structure of the device tree and
+specifies a base set of properties for use in describing device nodes.
+Chapter 3 specifies certain device nodes required by an ePAPRcompliant
+device tree. Chapter 6 describes the ePAPR defined device bindings— the
+requirements for representing certain device types classes of devices.
+Chapter 8 describes the in-memory encoding of the device tree.
 
-A device tree is a tree data structure with nodes that describe the devices in a system. Each node has
-property/value pairs that describe the characteristics of the device being represented. Each node has
+A device tree is a tree data structure with nodes that describe the
+devices in a system. Each node has property/value pairs that describe
+the characteristics of the device being represented. Each node has
 exactly one parent except for the root node, which has no parent.
 
-An ePAPR-compliant device tree describes device information in a system that cannot necessarily be
-dynamically detected by a client program. For example, the architecture of PCI enables a client to
-probe and detect attached devices, and thus device tree nodes describing PCI devices might not be
-required. However, a device node is required to describe a PCI host bridge device in the system if it
-cannot be detected by probing.
+An ePAPR-compliant device tree describes device information in a system
+that cannot necessarily be dynamically detected by a client program. For
+example, the architecture of PCI enables a client to probe and detect
+attached devices, and thus device tree nodes describing PCI devices
+might not be required. However, a device node is required to describe a
+PCI host bridge device in the system if it cannot be detected by
+probing.
 
-Example
-Figure 2-1 shows an example representation of a simple device tree that is nearly complete enough to
-boot a simple operating system, with the platform type, CPU, and memory described. Device nodes
-are shown with properties and values shown beside the node.
-/
+.Example
+<<Figure 2-1>> shows an example representation of a simple device tree that
+is nearly complete enough to boot a simple operating system, with the
+platform type, CPU, and memory described. Device nodes are shown with
+properties and values shown beside the node.
 
-Figure 2-1
+.Figure 2-1
+----
+FIXME
+
 model = "fsl,mpc8572ds";
 compatible = "fsl,mpc8572ds";
 #address-cells = <1>;
@@ -349,118 +425,125 @@ reg = <0x00000000 0x20000000>;
 chosen
 
 bootargs = "root=/dev/sda2";
+----
 
 === Device Tree Structure and Conventions
 ==== Node Names
 ===== Node Name Requirements
 Each node in the device tree is named according to the following convention:
+
+[listing]
 node-name@unit-address
-The node-name component specifies the name of the node. It shall be 1 to 31 characters in length and
-consist solely of characters from the set of characters in Table 2-1.
 
-Table 2-1 Characters for node names
-Character
-0-9
-a-z
-A-Z
-,
-.
-_
-+
--
+The _node-name_ component specifies the name of the node. It shall be 1
+to 31 characters in length and consist solely of characters from the set
+of characters in Table 2-1.
 
+.Table 2-1 Characters for node names
+[option="header", cols="^10,30", width="50", align="center"]
+|===
+| Character | Description
+|0-9 |digit
+|a-z |lowercase letter
+|A-Z |uppercase letter
+|, |comma
+|. |period
+|_ |underscore
+|+ |plus sign
+|- |dash
+|===
 
-Description
-digit
-lowercase letter
-uppercase letter
-comma
-period
-underscore
-plus sign
-dash
+The _node-name_ shall start with a lower or uppercase character and should
+describe the general class of device.
 
-The node-name shall start with a lower or uppercase character and should describe the general class of
-device.
+The _unit-address_ component of the name is specific to the bus type on
+which the node sits. It consists of one or more ASCII characters from
+the set of characters in Table 2-1. The unit-address must match the
+first address specified in the _reg_ property of the node. If the node
+has no _reg_ property, the @ and _unit-address_ must be omitted and the
+_node-name_ alone differentiates the node from other nodes at the same
+level in the tree. The binding for a particular bus may specify
+additional, more specific requirements for the format of _reg_ and the
+_unit-address_.
 
-The unit-address component of the name is specific to the bus type on which the node sits. It consists
-of one or more ASCII characters from the set of characters in Table 2-1. The unit-address must
-match the first address specified in the reg property of the node. If the node has no reg property, the
-@ and unit-address must be omitted and the node-name alone differentiates the node from other nodes
-at the same level in the tree. The binding for a particular bus may specify additional, more specific
-requirements for the format of reg and the unit-address.
+The root node does not have a node-name or unit-address. It is
+identified by a forward slash (/).
 
-The root node does not have a node-name or unit-address. It is identified by a forward slash (/).
-
-Example
+.Example
 See the node names examples in Figure 2-2.
 
-Figure 2-2
+.Figure 2-2
+----
 /
 cpus
 cpu@0
 cpu@1
 ethernet@fe001000
 ethernet@fe002000
+----
 
 In the example:
-• The nodes with the name cpu are distinguished by their unit-address values of 0 and 1.
-• The nodes with the name ethernet are distinguished by their unit-address values of
-FE001000 and FE002000.
+* The nodes with the name cpu are distinguished by their unit-address
+  values of 0 and 1.
+* The nodes with the name ethernet are distinguished by their
+  unit-address values of FE001000 and FE002000.
 
 ==== Generic Names Recommendation
 The name of a node should be somewhat generic, reflecting the function of the device and not its
 precise programming model. If appropriate, the name should be one of the following choices:
 
-atm
-cache-controller
-compact-flash
-can
-cpu
-crypto
-disk
-display
-dma-controller
-ethernet
-ethernet-phy
-fdc
-flash
-gpio
-i2c
-ide
-interrupt-controller
-isa
-keyboard
-mdio
-memory
-memory-controller
-mouse
-nvram
-parallel
-pc-card
-pci
-pcie
-rtc
-sata
-scsi
-serial
-sound
-spi
-timer
-usb
-vme
-watchdog
+* atm
+* cache-controller
+* compact-flash
+* can
+* cpu
+* crypto
+* disk
+* display
+* dma-controller
+* ethernet
+* ethernet-phy
+* fdc
+* flash
+* gpio
+* i2c
+* ide
+* interrupt-controller
+* isa
+* keyboard
+* mdio
+* memory
+* memory-controller
+* mouse
+* nvram
+* parallel
+* pc-card
+* pci
+* pcie
+* rtc
+* sata
+* scsi
+* serial
+* sound
+* spi
+* timer
+* usb
+* vme
+* watchdog
 
 ==== Path Names
-A node in the device tree can be uniquely identified by specifying the full path from the root node,
-through all descendant nodes, to the desired node.
+A node in the device tree can be uniquely identified by specifying the
+full path from the root node, through all descendant nodes, to the
+desired node.
 
 The convention for specifying a device path is:
 
+[listing]
 /node-name-1/node-name-2/node-name-N
 
 For example, in Figure 2-2 the device path to cpu #1 would be:
 
+[listing]
 /cpus/cpu@1
 
 The path to the root node is /.
@@ -470,45 +553,36 @@ A unit address may be omitted if the full path to the node is unambiguous.
 If a client program encounters an ambiguous path, its behavior is undefined.
 
 ==== Properties
-
 Each node in the device tree has properties that describe the
 characteristics of the node. Properties consist of a name and a value.
 
 ===== Property Names
-Property names are strings of 1 to 31 characters from the following set of characters.
+Property names are strings of 1 to 31 characters from the following set
+of characters.
 
-Table 2-2 Characters for property names
-Character
-0-9
-a-z
-,
-.
-_
-+
-?
-#
+.Table 2-2 Characters for property names
+[option="header", cols="^10,30", width="50", align="center"]
+|===
+| Character | Description
+|0-9 |digit
+|a-z |lowercase letter
+|A-Z |uppercase letter
+|, |comma
+|. |period
+|_ |underscore
+|+ |plus sign
+|? |question mark
+|# |hash
+|===
 
-
-Description
-digit
-lowercase letter
-comma
-period
-underscore
-plus sign
-dash
-question mark
-hash
-
-Nonstandard property names should specify a unique string prefix, such as a stock ticker symbol,
-identifying the name of the company or organization that defined the property. Examples:
-fsl,channel-fifo-len
-ibm,ppc-interrupt-server#s
-linux,network-index
+Nonstandard property names should specify a unique string prefix, such
+as a stock ticker symbol, identifying the name of the company or
+organization that defined the property. Examples: fsl,channel-fifo-len
+ibm,ppc-interrupt-server#s linux,network-index
 
 ===== Property Values
-A property value is an array of zero or more bytes that contain information associated with the
-property.
+A property value is an array of zero or more bytes that contain
+information associated with the property.
 
 Properties might have an empty value if conveying true-false
 information. In this case, the presence or absence of the property is
@@ -516,234 +590,229 @@ sufficiently descriptive.
 
 Table 2-3 describes the set of basic value types defined by the ePAPR.
 
-Table 2-3 Property values
-Value
-<empty>
-<u32>
+.Table 2-3 Property values
+[option="header", cols="^10,90"]
+|===
+|Value |Description
+|<empty> |Value is empty—used for conveying true-false
+information, when the presence of absence of the property itself is
+sufficiently descriptive.
 
-Description
-Value is empty—used for conveying true-false information, when the
-presence of absence of the property itself is sufficiently descriptive.
-A 32-bit integer in big-endian format. Example: the 32-bit value
-0x11223344 would be represented in memory as:
-address
-address+1
-address+2
-address+3
+|<u32> a|A 32-bit integer in big-endian format. Example: the 32-bit
+value 0x11223344 would be represented in memory as:
+[listing]
+  address  11
+address+1  22
+address+2  33
+address+3  44
 
-<u64>
+|<u64> a|Represents a 64-bit integer in big-endian format. Consists of two <u32> values where the first value contains the most significant bits of the integer and the second value contains the least significant bits.
 
-11
-22
-33
-44
+Example: the 64-bit value 0x1122334455667788 would be represented as two
+cells as: <0x11223344 0x55667788>.
 
-Represents a 64-bit integer in big-endian format. Consists of two <u32>
-values where the first value contains the most significant bits of the integer
-and the second value contains the least significant bits.
-Example: the 64-bit value 0x1122334455667788 would be represented as
-two cells as: <0x11223344 0x55667788>.
 The value would be represented in memory as:
-address
-address+1
-address+2
-address+3
-address+4
-address+5
-address+6
-address+7
+[listing]
+  address  11
+address+1  22
+address+2  33
+address+3  44
+address+4  55
+address+5  66
+address+6  77
+address+7  88
 
-11
-22
-33
-44
-55
-66
-77
-88
+|<string> a|Strings are printable and null-terminated. Example: the
+string “hello” would be represented in memory as:
+[listing]
+  address  68  'h'
+address+1  65  'e'
+address+2  6C  'l'
+address+3  6C  'l'
+address+4  6F  'o'
+address+5  00  '\n'
 
-<string>
+|<prop-encoded-array> |Format is specific to the property. See the
+property definition.
 
-Strings are printable and null-terminated. Example: the string “hello” would
-be represented in memory as:
-address
-address+1
-address+2
-address+3
-address+4
-address+5
+|<phandle> |A <u32> value. A _phandle_ value is a way to reference
+another node in the device tree. Any node that can be referenced defines
+a phandle property with a unique <u32> value. That unique number is
+specified for the value of properties with a phandle value type.
 
-<prop-encoded-array>
-
-68
-65
-6C
-6C
-6F
-00
-
-Format is specific to the property. See the property definition.
-
-<phandle>
-
-A <u32> value. A phandle value is a way to reference another node in the
-device tree. Any node that can be referenced defines a phandle property
-with a unique <u32> value. That unique number is specified for the value of
-properties with a phandle value type.
-
-<stringlist>
-
-A list of <string> values concatenated together. Example: The string list
+|<stringlist> a|A list of <string> values concatenated together. Example: The string list
 “hello”,“world” would be represented in memory as:
-address
-address+1
-address+2
-address+3
-address+4
-address+5
-address+6
-address+7
-address+8
-address+9
-address+10
-address+11
-
-68
-65
-6C
-6C
-6F
-00
-77
-6F
-72
-6C
-64
-00
+[listing]
+   address  68  'h'
+ address+1  65  'e'
+ address+2  6C  'l'
+ address+3  6C  'l'
+ address+4  6F  'o'
+ address+5  00  '\n'
+ address+6  77  'w'
+ address+7  6f  'o'
+ address+8  72  'r'
+ address+9  6C  'l'
+address+10  64  'd'
+address+11  00  '\n'
+|===
 
 === Standard Properties
+The ePAPR specifies a set of standard properties for device nodes. These
+properties are described in detail in this section. Device nodes defined
+by the ePAPR (see Chapter 3, Device Node Requirements) may specify
+additional requirements or constraints regarding the use of the standard
+properties. Device bindings (Chapter 6) that describe the representation
+of specific devices may also specify additional requirements.
 
-The ePAPR specifies a set of standard properties for device nodes. These properties are described in
-detail in this section. Device nodes defined by the ePAPR (see Chapter 3, Device Node
-Requirements) may specify additional requirements or constraints regarding the use of the standard
-properties. Device bindings (Chapter 6) that describe the representation of specific devices may also
-specify additional requirements.
-
-Note: All examples of device tree nodes in this document use the Device Tree Source (DTS) format
-for specifying nodes and properties.
+Note: All examples of device tree nodes in this document use the Device
+Tree Source (DTS) format for specifying nodes and properties.
 
 ==== compatible
-
-Property: compatible
-Value type: <stringlist>
-Description:
+[cols="10,90"]
+|===
+|Property |compatible
+|Value type |<stringlist>
+|===
+.Description
 The compatible property value consists of one or more strings that define the specific
 programming model for the device. This list of strings should be used by a client program for
 device driver selection. The property value consists of a concatenated list of null terminated
 strings, from most specific to most general. They allow a device to express its compatibility
 with a family of similar devices, potentially allowing a single device driver to match against
 several devices.
+
 The recommended format is “manufacturer,model”, where manufacturer is a
 string describing the name of the manufacturer (such as a stock ticker symbol), and model
 specifies the model number.
-Example:
+
+.Example
+[listing]
 compatible = “fsl,mpc8641-uart”, “ns16550";
+
 In this example, an operating system would first try to locate a device driver that supported
 fsl,mpc8641-uart. If a driver was not found, it would then try to locate a driver that supported
 the more general ns16550 device type.
 
 ==== model
-Property: model
-Value type: <string>
-Description:
-The model property value is a <string> that specifies the manufacturer’s model number of the
-device.
-The recommended format is: “manufacturer,model”, where manufacturer is a
-string describing the name of the manufacturer (such as a stock ticker symbol), and model
-specifies the model number.
+[cols="10,90"]
+|===
+|Property |model
+|Value type |<stringlist>
+|===
+.Description
+The model property value is a <string> that specifies the manufacturer’s
+model number of the device.
 
-Example:
+The recommended format is: “manufacturer,model”, where manufacturer is a
+string describing the name of the manufacturer (such as a stock ticker
+symbol), and model specifies the model number.
+.Example
+[listing]
 model = “fsl,MPC8349EMITX”;
 
 ==== phandle
-Property: phandle
-Value type: <u32>
-Description:
-The phandle property specifies a numerical identifier for a node that is unique within the
-device tree. The phandle property value is used by other nodes that need to refer to the node
-associated with the property.
-Example:
+[cols="10,90"]
+|===
+|Property |_phandle_
+|Value type |<u32>
+|===
+.Description
+The phandle property specifies a numerical identifier for a node that is
+unique within the device tree. The phandle property value is used by
+other nodes that need to refer to the node associated with the
+property.
+.Example
 See the following device tree excerpt:
+
+[listing]
 pic@10000000 {
-phandle = <1>;
-interrupt-controller;
+	phandle = <1>;
+	interrupt-controller;
 };
-A phandle value of 1 is defined. Another device node could reference the pic node with a
-phandle value of 1:
+
+A phandle value of 1 is defined. Another device node could reference the
+pic node with a phandle value of 1:
+
+[listing]
 interrupt-parent = <1>;
 
-Compatibility Note
+.Compatibility Note
+****
 Older versions of device trees may be encountered that contain a deprecated form of this
 property called linux,phandle. For compatibility, a client program might want to
 support linux,phandle if a phandle property is not present. The meaning and use of
 the two properties is identical.
+****
 
-Programming Note
-Most device trees in Device Tree Syntax (DTS) (see Appendix A) will not contain explicit
-phandle properties. The DTC tool automatically inserts the phandle properties when the DTS
-is compiled into the binary DTB format.
+.Programming Note
+****
+Most device trees in Device Tree Syntax (DTS) (see Appendix A) will not
+contain explicit phandle properties. The DTC tool automatically inserts
+the phandle properties when the DTS is compiled into the binary DTB
+format.
+****
 
 ==== status
-Property: status
-Value type: <string>
-Description:
-The status property indicates the operational status of a device. Valid values are listed and
-defined in the following table.
+[cols="10,90"]
+|===
+|Property |_status_
+|Value type |<string>
+|===
+.Description
+The status property indicates the operational status of a device. Valid
+values are listed and defined in the following table.
 
-Table 2-4 Values for status property
-Value
-“okay”
-“disabled”
-“fail”
-“fail-sss”
-
-Description
-Indicates the device is operational
-Indicates that the device is not presently operational, but it might
-become operational in the future (for example, something is not
+.Table 2-4 Values for status property
+[options="header", cols="10,90"]
+|===
+|Value |Description
+|“okay” |Indicates the device is operational
+|“disabled” |Indicates that the device is not presently operational, but
+it might become operational in the future (for example, something is not
 plugged in, or switched off).
-Refer to the device binding for details on what disabled means for
-a given device.
-Indicates that the device is not operational. A serious error was
-detected in the device, and it is unlikely to become operational
+
+Refer to the device binding for details on what disabled means for a given device.
+
+|“fail” |Indicates that the device is not operational. A serious error
+was detected in the device, and it is unlikely to become operational
 without repair.
-Indicates that the device is not operational. A serious error was
-detected in the device and it is unlikely to become operational
-without repair. The sss portion of the value is specific to the
-device and indicates the error condition detected.
+|“fail-sss” |Indicates that the device is not operational. A serious
+error was detected in the device and it is unlikely to become
+operational without repair. The sss portion of the value is specific to
+the device and indicates the error condition detected.
+|===
 
 ==== #address-cells and #size-cells
-Property: #address-cells, #size-cells
-Value type: <u32>
-Description:
-The #address-cells and #size-cells properties may be used in any device node that has
-children in the device tree hierarchy and describes how child device nodes should be
-addressed. The #address-cells property defines the number of <u32> cells used to encode the
-address field in a child node’s reg property. The #size-cells property defines the number of
-<u32> cells used to encode the size field in a child node’s reg property.
+[cols="10,90"]
+|===
+|Property |_#address-cells_, _#size-cells_
+|Value type |<u32>
+|===
+.Description
+The #address-cells and #size-cells properties may be used in any device
+node that has children in the device tree hierarchy and describes how
+child device nodes should be addressed. The #address-cells property
+defines the number of <u32> cells used to encode the address field in a
+child node’s reg property. The #size-cells property defines the number
+of <u32> cells used to encode the size field in a child node’s reg
+property.
 
-The #address-cells and #size-cells properties are not inherited from ancestors in the device
-tree. They shall be explicitly defined.
+The #address-cells and #size-cells properties are not inherited from
+ancestors in the device tree. They shall be explicitly defined.
 
-An ePAPR-compliant boot program shall supply #address-cells and #size-cells on all nodes
-that have children.
+An ePAPR-compliant boot program shall supply #address-cells and
+#size-cells on all nodes that have children.
 
-If missing, a client program should assume a default value of 2 for #address-cells, and a value
-of 1 for #size-cells.
+If missing, a client program should assume a default value of 2 for
+#address-cells, and a value of 1 for #size-cells.
 
-Example
+.Example
 See the device tree fragment shown in Figure 2-3.
 
+.Figure 2-3
+----
+FIXME
 soc
 
 #address-cells = <1>;
@@ -757,75 +826,100 @@ reg = <0x4600 0x100>;
 clock-frequency = <0>;
 interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
+----
 
-Figure 2-3
-In Figure 2-3 , the #address-cells and #size-cells properties of the soc node are both set to 1.
-This setting specifies that one cell is required to represent an address and one cell is required
-to represent the size of nodes that are children of this node.
-The serial device reg property necessarily follows this specification set in the parent (soc)
-node—the address is represented by a single cell (0x4600), and the size is represented by a
-single cell (0x100).
+In Figure 2-3, the #address-cells and #size-cells properties of the soc
+node are both set to 1. This setting specifies that one cell is required
+to represent an address and one cell is required to represent the size
+of nodes that are children of this node.
+
+The serial device reg property necessarily follows this specification
+set in the parent (soc) node—the address is represented by a single cell
+(0x4600), and the size is represented by a single cell (0x100).
 
 ==== reg
-Property: reg
-Value type: <prop-encoded-array> encoded as arbitrary number of (address,length) pairs.
-Description:
+[cols="10,90"]
+|===
+|Property |_reg_
+|Value type |<prop-encoded-array> encoded as arbitrary number of (address,length) pairs.
+|===
+.Description
+The reg property describes the address of the device's resources within
+the address space defined by its parent bus. Most commonly this means
+the offsets and lengths of memory-mapped IO register blocks, but may
+have a different meaning on some bus types. Addresses in the address
+space defined by root node are cpu real addresses.
 
-The reg property describes the address of the device's resources within the address space defined by
-its parent bus. Most commonly this means the offsets and lengths of memory-mapped IO register
-blocks, but may have a different meaning on some bus types. Addresses in the address space defined
-by root node are cpu real addresses.
+The value is a <prop-encoded-array>, composed of an arbitrary number of
+pairs of address and length, <address length>. The number of <u32> cells
+required to specify the address and length are bus-specific and are
+specified by the #address-cells and #size-cells properties in the parent
+of the device node. If the parent node specifies a value of 0 for
+#size-cells, the length field in the value of reg shall be omitted.
 
-==== virtual-reg
+.Example
+Suppose a device within a system-on-a-chip had two blocks of
+registers—a 32-byte block at offset 0x3000 in the SOC and a 256-byte
+block at offset 0xFE00. The reg property would be encoded as follows
+(assuming #address-cells and #size-cells values of 1):
 
-The value is a <prop-encoded-array>, composed of an arbitrary number of pairs of address
-and length, <address length>. The number of <u32> cells required to specify the address
-and length are bus-specific and are specified by the #address-cells and #size-cells properties
-in the parent of the device node. If the parent node specifies a value of 0 for #size-cells, the
-length field in the value of reg shall be omitted.
-Example:
-Suppose a device within a system-on-a-chip had two blocks of registers—a 32-byte block at
-offset 0x3000 in the SOC and a 256-byte block at offset 0xFE00. The reg property would be
-encoded as follows (assuming #address-cells and #size-cells values of 1):
+[listing]
 reg = <0x3000 0x20 0xFE00 0x100>;
 
-Property: virtual-reg
-Value type: <u32>
-Description:
-The virtual-reg property specifies an effective address that maps to the first physical address
-specified in the reg property of the device node. This property enables boot programs to
-provide client programs with virtual-to-physical mappings that have been set up.
+==== virtual-reg
+[cols="10,90"]
+|===
+|Property |_virtual-reg_
+|Value type |<u32>
+|===
+.Description
+The virtual-reg property specifies an effective address that maps to the
+first physical address specified in the reg property of the device node.
+This property enables boot programs to provide client programs with
+virtual-to-physical mappings that have been set up.
 
 ==== ranges
-Property: ranges
-Value type: <empty> or <prop-encoded-array> encoded as arbitrary number of triplets of (child-busaddress, parent-bus-address, length).
-Description:
-The ranges property provides a means of defining a mapping or translation between the
-address space of the bus (the child address space) and the address space of the bus node's
-parent (the parent address space).
-The format of the value of the ranges property is an arbitrary number of triplets of (child-busaddress, parent-bus-address, length)
+[cols="10,90"]
+|===
+|Property |_ranges_
+|Value type |<empty> or <prop-encoded-array> encoded as arbitrary number
+of triplets of (child-busaddress, parent-bus-address, length).
+|===
+.Description
+The ranges property provides a means of defining a mapping or
+translation between the address space of the bus (the child address
+space) and the address space of the bus node's parent (the parent
+address space).
+
+The format of the value of the ranges property is an arbitrary number of
+triplets of (child-busaddress, parent-bus-address, length)
 * The child-bus-address is a physical address within the child bus’
   address space. The number of cells to represent the address is bus
   dependent and can be determined from the #address-cells of this node
   (the node in which the ranges property appears).
-
 * The parent-bus-address is a physical address within the parent bus’
   address space. The number of cells to represent the parent address is
   bus dependent and can be determined from the #address-cells property
   of the node that defines the parent’s address space.
-
 * The length specifies the size of the range in the child’s address
   space. The number of cells to represent the size can be determined
   from the #size-cells of this node (the node in which the ranges
   property appears).
 
-If the property is defined with an <empty> value, it specifies that the parent and child address
-space is identical, and no address translation is required.
-If the property is not present in a bus node, it is assumed that no mapping exists between
-children of the node and the parent address space.
+If the property is defined with an <empty> value, it specifies that the
+parent and child address space is identical, and no address translation
+is required.
 
+If the property is not present in a bus node, it is assumed that no
+mapping exists between children of the node and the parent address
+space.
+
+.Example
 See the example in Figure 2-4.
 
+.Figure 2-4
+----
+FIXME
 soc
 
 compatible = "simple-bus";
@@ -835,35 +929,43 @@ ranges = <0x0 0xe0000000 0x00100000>;
 
 serial
 
-
 device_type = "serial";
 compatible = "ns16550";
 reg = <0x4600 0x100>;
 clock-frequency = <0>;
 interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
+----
 
-Figure 2-4
-In Figure 2-4 , the soc node specifies a ranges property of
+In Figure 2-4, the soc node specifies a ranges property of
+
+[listing]
 <0x0 0xe0000000 0x00100000>;
 
-This property value specifies that for an 1024KB range of address space, a child node
-addressed at physical 0x0 maps to a parent address of physical 0xe0000000. With this
-mapping, the serial device node can be addressed by a load or store at address
-0xe0004600, an offset of 0x4600 (specified in reg) plus the 0xe0000000 mapping specified in
-ranges.
+This property value specifies that for an 1024KB range of address space,
+a child node addressed at physical 0x0 maps to a parent address of
+physical 0xe0000000. With this mapping, the serial device node can be
+addressed by a load or store at address 0xe0004600, an offset of 0x4600
+(specified in reg) plus the 0xe0000000 mapping specified in _ranges_.
 
 ==== dma-ranges
-Property: dma-ranges
-Value type: <empty> or <prop-encoded-array> encoded as arbitrary number of triplets of (child-busaddress, parent-bus-address, length).
-Description:
-The dma-ranges property is used to describe the direct memory access (DMA) structure of a
-memory-mapped bus whose device tree parent can be accessed from DMA operations
-originating from the bus. It provides a means of defining a mapping or translation between the
-physical address space of the bus and the physical address space of the parent of the bus.
-The format of the value of the dma-ranges property is an arbitrary number of triplets of
-(child-bus-address, parent-bus-address, length). Each triplet specified describes a contiguous
-DMA address range.
+[cols="10,90"]
+|===
+|Property |_dma-ranges_
+|Value type |<empty> or <prop-encoded-array> encoded as arbitrary number
+of triplets of (_child-bus-address_, _parent-bus-address_, _length_).
+|===
+.Description
+The _dma-ranges_ property is used to describe the direct memory access
+(DMA) structure of a memory-mapped bus whose device tree parent can be
+accessed from DMA operations originating from the bus. It provides a
+means of defining a mapping or translation between the physical address
+space of the bus and the physical address space of the parent of the
+bus.
+
+The format of the value of the dma-ranges property is an arbitrary
+number of triplets of (child-bus-address, parent-bus-address, length).
+Each triplet specified describes a contiguous DMA address range.
 
 * The child-bus-address is a physical address within the child bus’
   address space. The number of cells to represent the address depends on
@@ -881,31 +983,38 @@ DMA address range.
   property appears).
 
 ==== name
-Compatibility Note
-Property: name
-Value type: <string>
-Description:
-The name property is a string specifying the name of the node. This property is deprecated,
-and its use is not recommended. However, it might be used in older non-ePAPR-compliant
-device trees.
-Operating system should determine a node’s name based on the name component of the node
-name (see section 2.2.1).
+.Compatibility Note
+****
+[cols="10,90"]
+|===
+|Property |_name_
+|Value type |<string>
+|===
+.Description
+The name property is a string specifying the name of the node. This
+property is deprecated, and its use is not recommended. However, it
+might be used in older non-ePAPR-compliant device trees.  Operating
+system should determine a node’s name based on the name component of the
+node name (see section 2.2.1).
+****
 
 
 ==== device_type
-
-Property: device_type
-Value type: <string>
-Description:
-The device_type property was used in IEEE 1275 to describe the device’s FCode
-programming model. Because ePAPR does not have FCode, new use of the property is
-deprecated, and it should be included only on cpu and memory nodes for compatibility with
-IEEE 1275–derived device trees.
+[cols="10,90"]
+|===
+|Property |_device_type_
+|Value type |<string>
+|===
+.Description
+The device_type property was used in IEEE 1275 to describe the device’s
+FCode programming model. Because ePAPR does not have FCode, new use of
+the property is deprecated, and it should be included only on cpu and
+memory nodes for compatibility with IEEE 1275–derived device trees.
 
 === Interrupts and Interrupt Mapping
 The ePAPR adopts the interrupt tree model of representing interrupts
 specified in Open Firmware Recommended Practice: Interrupt Mapping,
-Version 0.9 [7]. Within the device tree a logical interrupt tree exists
+Version 0.9 <<7>>. Within the device tree a logical interrupt tree exists
 that represents the hierarchy and routing of interrupts in the platform
 hardware. While generically referred to as an interrupt tree it is more
 technically a directed acyclic graph.
@@ -933,15 +1042,17 @@ An interrupt domain is the context in which an interrupt specifier is
 interpreted. The root of the domain is either (1) an interrupt
 controller or (2) an interrupt nexus.
 
-1. An interrupt controller is physical device and will need a driver to handle interrupts routed
-through it. It may also cascade into another interrupt domain. An interrupt controller is
-specified by the presence of an interrupt-controller property on that node in the device tree.
-2. An interrupt nexus defines a translation between one interrupt domain and another. The
-translation is based on both domain-specific and bus-specific information. This translation
-between domains is performed with the interrupt-map property. For example, a PCI controller
-device node could be an interrupt nexus that defines a translation from the PCI interrupt
-namespace (INTA, INTB, etc.) to an interrupt controller with Interrupt Request (IRQ)
-numbers.
+1. An interrupt controller is physical device and will need a driver to
+handle interrupts routed through it. It may also cascade into another
+interrupt domain. An interrupt controller is specified by the presence
+of an interrupt-controller property on that node in the device tree.
+2. An interrupt nexus defines a translation between one interrupt domain
+and another. The translation is based on both domain-specific and
+bus-specific information. This translation between domains is performed
+with the interrupt-map property. For example, a PCI controller device
+node could be an interrupt nexus that defines a translation from the PCI
+interrupt namespace (INTA, INTB, etc.) to an interrupt controller with
+Interrupt Request (IRQ) numbers.
 
 The root of the interrupt tree is determined when traversal of the
 interrupt tree reaches an interrupt controller node without an
@@ -950,7 +1061,9 @@ interrupts property and thus no explicit interrupt parent.
 See Figure 2-5 for an example of a graphical representation of a device tree with interrupt parent
 relationships shown. Figure 2-6 shows the corresponding interrupt tree.
 
-Device Tree
+.Figure 2-5 Device Tree
+----
+FIXME
 
 /
 simple bus
@@ -981,10 +1094,10 @@ slot0
 interrupt-parent = <&pci-host-bridge>;
 
 interrupt-parent = <&pci-pci-bridge>;
+----
 
-Figure 2-5
-
-
+.Figure 2-6 Interrupt Tree
+----
 Interrupt Tree
 open-pic
 
@@ -1006,150 +1119,159 @@ slot0
 
 interrupt
 domains
-
-Figure 2-6
+----
 
 In the example shown in Figure 2-5 and Figure 2-6 :
-• The open-pic interrupt controller is the root of the interrupt tree.
-• The interrupt tree root has three children—devices that route their interrupts directly to the
-open-pic
-o device1
-o device2
-o PCI bus controller
-• Three interrupt domains exist—one rooted at the open-pic node, one at the PCI host
-bridge node, and one at the PCI-PCI bridge node.
-• There are two nexus nodes— one at the PCI host bridge and one at the PCI-PCI
-bridge
+* The open-pic interrupt controller is the root of the interrupt tree.
+* The interrupt tree root has three children—devices that route their
+  interrupts directly to the open-pic
+** device1
+** device2
+** PCI bus controller
+* Three interrupt domains exist—one rooted at the open-pic node, one at
+  the PCI host bridge node, and one at the PCI-PCI bridge node.
+* There are two nexus nodes— one at the PCI host bridge and one at the
+  PCI-PCI bridge
 
 
 ==== Properties for Interrupt Generating Devices
 ===== interrupts
 Property: interrupts
+
 Value type: <prop-encoded-array> encoded as arbitrary number of interrupt specifiers
-Description:
-The interrupts property of a device node defines the interrupt or interrupts that are generated
-by the device. The value of the interrupts property consists of an arbitrary number of interrupt
-specifiers. The format of an interrupt specifier is defined by the binding of the interrupt
-domain root.
-Example:
-A common definition of an interrupt specifier in an open PIC–compatible interrupt domain
-consists of two cells—an interrupt number and level/sense information. See the following
-example, which defines a single interrupt specifier, with an interrupt number of 0xA and
+
+.Description
+The interrupts property of a device node defines the interrupt or
+interrupts that are generated by the device. The value of the interrupts
+property consists of an arbitrary number of interrupt specifiers. The
+format of an interrupt specifier is defined by the binding of the
+interrupt domain root.
+
+.Example
+A common definition of an interrupt specifier in an open PIC–compatible
+interrupt domain consists of two cells—an interrupt number and
+level/sense information. See the following example, which defines a
+single interrupt specifier, with an interrupt number of 0xA and
 level/sense encoding of 8.
+
+[listing]
 interrupts = <0xA 8>;
 
 ===== interrupt-parent
 Property: interrupt-parent
+
 Value type: <phandle>
-Description:
-Because the hierarchy of the nodes in the interrupt tree might not match the device tree, the
-interrupt-parent property is available to make the definition of an interrupt parent explicit.
-The value is the phandle to the interrupt parent. If this property is missing from a device, its
+
+.Description
+Because the hierarchy of the nodes in the interrupt tree might not match
+the device tree, the interrupt-parent property is available to make the
+definition of an interrupt parent explicit.  The value is the phandle to
+the interrupt parent. If this property is missing from a device, its
 interrupt parent is assumed to be its device tree parent.
 
 ==== Properties for Interrupt Controllers
 ===== #interrupt-cells
 Property: #interrupt-cells
+
 Value type: <u32>
-Description:
-The #interrupt-cells property defines the number of cells required to encode an interrupt
-specifier for an interrupt domain.
 
+.Description
+The #interrupt-cells property defines the number of cells required to
+encode an interrupt specifier for an interrupt domain.
 
-===== interrupt-contr oller
+===== interrupt-controller
+Property: interrupt-controller
 
+Value type: <empty>
+
+.Description
+The presence of an interrupt-controller property defines a node as an
+interrupt controller node.
 
 ==== Interrupt Nexus Properties
 
-
-===== interrupt-map
-
-Property: interrupt-controller
-Value type: <empty>
-Description:
-The presence of an interrupt-controller property defines a node as an interrupt controller node.
-
 An interrupt nexus node shall have an #interrupt-cells property.
 
+===== interrupt-map
 Property: interrupt-map
+
 Value type: <prop-encoded-array> encoded as an arbitrary number of interrupt mapping entries.
-Description:
-An interrupt-map is a property on a nexus node that bridges one interrupt domain with a set
-of parent interrupt domains and specifies how interrupt specifiers in the child domain are
-mapped to their respective parent domains.
-The interrupt map is a table where each row is a mapping entry consisting of five
-components: child unit address, child interrupt specifier, interrupt-parent, parent unit
-address, parent interrupt specifier.
-•
 
-child unit address. The unit address of the child node being mapped. The number of
-32-bit cells required to specify this is described by the #address-cells property of the
-bus node on which the child is located.
+.Description
+An interrupt-map is a property on a nexus node that bridges one
+interrupt domain with a set of parent interrupt domains and specifies
+how interrupt specifiers in the child domain are mapped to their
+respective parent domains.
 
-•
+The interrupt map is a table where each row is a mapping entry
+consisting of five components: child unit address, child interrupt
+specifier, interrupt-parent, parent unit address, parent interrupt
+specifier.
 
-child interrupt specifier. The interrupt specifier of the child node being mapped.
-The number of 32-bit cells required to specify this component is described by the
-#interrupt-cells property of this node—the nexus node containing the interrupt-map
-property.
+child unit address:: The unit address of the child node being mapped.
+The number of 32-bit cells required to specify this is described by the
+#address-cells property of the bus node on which the child is located.
 
-•
+child interrupt specifier:: The interrupt specifier of the child node
+being mapped.  The number of 32-bit cells required to specify this
+component is described by the #interrupt-cells property of this node—the
+nexus node containing the interrupt-map property.
 
-interrupt-parent . A single <phandle> value that points to the interrupt parent to
+interrupt-parent:: A single <phandle> value that points to the interrupt parent to
 which the child domain is being mapped.
 
+parent unit address:: The unit address in the domain of the interrupt
+parent. The number of 32-bit cells required to specify this address is
+described by the #addresscells property of the node pointed to by the
+interrupt-parent field.
 
+parent interrupt specifier:: The interrupt specifier in the parent
+domain. The number of 32-bit cells required to specify this component is
+described by the #interrupt-cells property of this node—the nexus node
+containing the interrupt-map property.
 
+Lookups are performed on the interrupt mapping table by matching a
+unit-address/interrupt specifier pair against the child components in
+the interrupt-map. Because some fields in the unit interrupt specifier
+may not be relevant, a mask is applied before the lookup is done. This
+mask is defined in the interrupt-map-mask property (see section
+2.4.3.2).
 
-
-•
-
-parent unit address. The unit address in the domain of the interrupt parent. The
-number of 32-bit cells required to specify this address is described by the #addresscells property of the node pointed to by the interrupt-parent field.
-
-•
-
-parent interrupt specifier. The interrupt specifier in the parent domain. The number
-of 32-bit cells required to specify this component is described by the #interrupt-cells
-property of this node—the nexus node containing the interrupt-map property.
-
-Lookups are performed on the interrupt mapping table by matching a unit-address/interrupt
-specifier pair against the child components in the interrupt-map. Because some fields in the
-unit interrupt specifier may not be relevant, a mask is applied before the lookup is done. This
-mask is defined in the interrupt-map-mask property (see section 2.4.3.2).
-Note: Both the child node and the interrupt parent node are required to have #address-cells
-and #interrupt-cells properties defined. If a unit address component is not required,
-#address-cells shall be explicitly defined to be zero.
-
+Note: Both the child node and the interrupt parent node are required to
+have #address-cells and #interrupt-cells properties defined. If a unit
+address component is not required, #address-cells shall be explicitly
+defined to be zero.
 
 ===== interrupt-map-mask
+Property: interrupt-map-mask
 
+Value type: <prop-encoded-array> encoded as a bit mask
+
+.Description
+An interrupt-map-mask property is specified for a nexus node in the
+interrupt tree. This property specifies a mask that is applied to the
+incoming unit interrupt specifier being looked up in the table specified
+in the interrupt-map property.
 
 ===== #interrupts-cells
-
-Property: interrupt-map-mask
-Value type: <prop-encoded-array> encoded as a bit mask
-Description:
-An interrupt-map-mask property is specified for a nexus node in the interrupt tree. This
-property specifies a mask that is applied to the incoming unit interrupt specifier being looked
-up in the table specified in the interrupt-map property.
-
 Property: #interrupts-cells
+
 Value type: <u32>
-Description:
-The #interrupt-cells property defines the number of cells required to encode an interrupt
-specifier for an interrupt domain.
 
-
-
-
-
+.Description
+The #interrupt-cells property defines the number of cells required to
+encode an interrupt specifier for an interrupt domain.
 
 ==== Interrupt Mapping Example
-Figure 2-7 shows the representation of a fragment of a device tree with a PCI bus controller and a
-sample interrupt map for describing the interrupt routing for two PCI slots (IDSEL 0x11,0x12). The
-INTA, INTB, INTC, and INTD pins for slots 1 and 2 are wired to the Open PIC interrupt controller.
+Figure 2-7 shows the representation of a fragment of a device tree with
+a PCI bus controller and a sample interrupt map for describing the
+interrupt routing for two PCI slots (IDSEL 0x11,0x12). The INTA, INTB,
+INTC, and INTD pins for slots 1 and 2 are wired to the Open PIC
+interrupt controller.
 
+.Figure 2-7 Interrupt Mapping Example
+----
+FIXME
 /
 compatible = "simple-bus";
 #address-cells = <1>;
@@ -1218,27 +1340,21 @@ INTD
 */
 */
 */
+----
 
-Figure
-27
-•
+One Open PIC interrupt controller is represented and is identified as an
+interrupt controller with an interrupt-controller property.
 
-One Open PIC interrupt controller is represented and is identified as an interrupt controller
-with an interrupt-controller property.
+Each row in the interrupt-map table consists of five parts—a child unit
+address and interrupt specifier, which is mapped to an interrupt-parent
+node with a specified parent unit address and interrupt specifier.
 
-•
+For example, the first row of the interrupt-map table specifies the
+mapping for INTA of slot 1.  The components of that row are shown in the
+following diagram.
 
-Each row in the interrupt-map table consists of five parts—a child unit address and interrupt
-specifier, which is mapped to an interrupt-parent node with a specified parent unit address
-and interrupt specifier.
-
-
-
-
-•
-
-For example, the first row of the interrupt-map table specifies the mapping for INTA of slot 1.
-The components of that row are shown in the following diagram.
+----
+FIXME
 0x8800 0 0
 child unit
 address
@@ -1259,69 +1375,67 @@ interrupt
 parent
 unit address specifier
 is empty
+----
 
-The child unit address is <0x8800 0 0>. This value is encoded with three 32-bit
-cells, which is determined by the value of the #address-cells property (value of 3) of
-the PCI controller. The three cells represent the PCI address as described by the
-binding for the PCI bus.
- The encoding includes the bus number (0x0 << 16), device number (0x11
-<< 11), and function number (0x0 << 8).
-o The child interrupt specifier is <1>, which specifies INTA as described by the PCI
-binding. This takes one 32-bit cell as specified by the #interrupt-cells property (value
-of 1) of the PCI controller, which is the child interrupt domain.
-o The interrupt parent is specified by a phandle which points to the interrupt parent of
-the slot, the Open PIC interrupt controller.
-o The parent has no unit address because the parent interrupt domain (the open-pic
-node) has an #address-cells value of 0.
-o The parent interrupt specifier is <2 1>. The number of cells to represent the
-interrupt specifier (two cells) is determined by the #interrupt-cells property on the
-interrupt parent, the open-pic node.
- The value <2 1> is a value specified by the device binding for the Open
-PIC interrupt controller (see section 6.5). The value <2> specifies the
-physical interrupt source number on the interrupt controller to which INTA
-is wired. The value <1> specifies the level/sense encoding.
-In this example, the interrupt-map-mask property has a value of <0xf800 0 0 7>. This
-mask is applied to a child unit interrupt specifier before performing a lookup in the interruptmap table.
-Example: To perform a lookup of the open-pic interrupt source number for INTB for IDSEL
-0x12 (slot 2), function 0x3, the following steps would be performed:
-o The child unit address and interrupt specifier form the value <0x9300 0 0 2>.
- The encoding of the address includes the bus number (0x0 << 16), device
-number (0x12 << 11), and function number (0x3 << 8).
- The interrupt specifier is 2, which is the encoding for INTB as per the PCI
-binding.
-o The interrupt-map-mask value <0xf800 0 0 7> is applied, giving a result of
-<0x9000 0 0 2>.
-o That result is looked up in the interrupt-map table, which maps to the parent interrupt
-specifier <4 1>.
-o
+* The child unit address is <0x8800 0 0>. This value is encoded with
+  three 32-bit cells, which is determined by the value of the
+  #address-cells property (value of 3) of the PCI controller. The three
+  cells represent the PCI address as described by the binding for the
+  PCI bus.
+** The encoding includes the bus number (0x0 << 16), device number (0x11
+   << 11), and function number (0x0 << 8).
+* The child interrupt specifier is <1>, which specifies INTA as
+  described by the PCI binding. This takes one 32-bit cell as specified
+  by the #interrupt-cells property (value of 1) of the PCI controller,
+  which is the child interrupt domain.
+* The interrupt parent is specified by a phandle which points to the
+  interrupt parent of the slot, the Open PIC interrupt controller.
+* The parent has no unit address because the parent interrupt domain
+  (the open-pic node) has an #address-cells value of 0.
+* The parent interrupt specifier is <2 1>. The number of cells to
+  represent the interrupt specifier (two cells) is determined by
+  the #interrupt-cells property on the interrupt parent, the open-pic
+  node.
+** The value <2 1> is a value specified by the device binding for the
+   Open PIC interrupt controller (see section 6.5). The value <2>
+   specifies the physical interrupt source number on the interrupt
+   controller to which INTA is wired. The value <1> specifies the
+   level/sense encoding.
 
-•
-•
+In this example, the interrupt-map-mask property has a value of
+<0xf800 0 0 7>. This mask is applied to a child unit interrupt
+specifier before performing a lookup in the interruptmap table.
 
+To perform a lookup of the open-pic interrupt source number for INTB for
+IDSEL 0x12 (slot 2), function 0x3, the following steps would be
+performed:
 
+* The child unit address and interrupt specifier form the value <0x9300 0 0 2>.
+** The encoding of the address includes the bus number (0x0 << 16),
+   device number (0x12 << 11), and function number (0x3 << 8).
+** The interrupt specifier is 2, which is the encoding for INTB as per
+   the PCI binding.
+* The interrupt-map-mask value <0xf800 0 0 7> is applied, giving a
+  result of <0x9000 0 0 2>.
+* That result is looked up in the interrupt-map table, which maps to the
+  parent interrupt specifier <4 1>.
 
-
-
-3 Device Node Requirements
-
-
+== Device Node Requirements
 === Base Device Node Types
+The sections that follow specify the requirements for the base set of
+device nodes required in an ePAPR-compliant device tree.
 
+All device trees shall have a root node and the following nodes shall be
+present at the root of all device trees:
+
+* One cpus node
+* At least one memory node
 
 === Root node
+The device tree has a single root node of which all other device nodes
+are descendants. The full path to the root node is /.
 
-The sections that follow specify the requirements for the base set of device nodes required in an
-ePAPR-compliant device tree.
-All device trees shall have a root node and the following nodes shall be present at the root of all
-device trees:
-• One cpus node
-• At least one memory node
-
-The device tree has a single root node of which all other device nodes are descendants. The full path
-to the root node is /.
-Properties
-
-Table 3-1 Root node properties
+.Table 3-1 Root Node Properties
 Property Name
 
 Usage
@@ -2146,7 +2260,7 @@ next-level-cache = <&L3>; // phandle to L3
 
 
 
-4 Client Program Image Format
+== Client Program Image Format
 
 
 === Variable Address Image Format
@@ -2158,20 +2272,22 @@ next-level-cache = <&L3>; // phandle to L3
 ==== Boot Program Requirements
 
 
-===== Pr ocessing of PT_LOAD segments
+===== Processing of PT_LOAD segments
+This section describes the image format in which an ePAPR client is
+encoded in order to boot it from an ePAPR-compliant boot program. Two
+variants on the image format are described: variable-address images and
+fixed-address images. ePAPR-compliant boot programs shall support client
+images in the variable-address format, should support images in the
+fixed-address format, and may also support other formats not described
+in this document.
 
-This section describes the image format in which an ePAPR client is encoded in order to boot it from
-an ePAPR-compliant boot program. Two variants on the image format are described: variable-address
-images and fixed-address images. ePAPR-compliant boot programs shall support client images in the
-variable-address format, should support images in the fixed-address format, and may also support
-other formats not described in this document.
+This ePAPR image format is a constrained form of ELF (Executable and
+Linking Format, see <<17>>) executable. That is, an ePAPR client image
+shall be a valid ELF file, but also has additional requirements
+described in the next sections.
 
-This ePAPR image format is a constrained form of ELF (Executable and Linking Format, see [17])
-executable. That is, an ePAPR client image shall be a valid ELF file, but also has additional
-requirements described in the next sections.
-
-A variable-address client image is a 32-bit ELF client image with the following ELF header field
-values:
+A variable-address client image is a 32-bit ELF client image with the
+following ELF header field values:
 e_ident[EI_CLASS]
 e_ident[EI_DATA]
 e_type
@@ -2277,7 +2393,7 @@ in question.
 
 
 
-5 Client Program Boot Requirements
+== Client Program Boot Requirements
 
 
 === Boot and Secondary CPUs
@@ -2316,22 +2432,12 @@ naturally aligned to the size of the IMA.
 subject to broadcast invalidates from other CPUs)
 4. The Translation ID (TID) field in the TLB entry or entries shall be zero.
 5. The memory and cache access attributes (WIMGE) have the following requirements:
-
-
-
-
-•
-•
-•
-
-
+[verse]
 WIMG = 001x
 E=0 (i.e., big-endian)
 VLE (if implemented) is set to 0
-
 6. An IMA may be mapped by a TLB entry larger than the IMA size, provided the MMU
 guarded attribute is set (G=1)
-
 7. An IMA may span multiple TLB entries.
 Programming Note
 Those CPUs with an IPROT capable TLB should use the IPROT facility to ensure
@@ -2423,21 +2529,18 @@ The boot program shall leave all devices with the following conditions true:
 • All devices: no DMA and not interrupting
 • Host bridges: responding to config cycles and passing through config cycles to children
 
-A boot program might pass a client program a device tree containing device nodes with a virtual-reg
-property (see 2.3.7, virtual-reg). The virtual-reg property describes an Initial I/O (or IIO) mapping set
-up by firmware, and the value is the effective address of a device’s registers.
-For Book III-E CPUs, effective to physical address mappings shall be present in the CPU’s MMU to
-map any IIO. An IIO has the following requirements on Book III-E CPUs:
+A boot program might pass a client program a device tree containing
+device nodes with a virtual-reg property (see 2.3.7, virtual-reg). The
+virtual-reg property describes an Initial I/O (or IIO) mapping set up by
+firmware, and the value is the effective address of a device’s
+registers.  For Book III-E CPUs, effective to physical address mappings
+shall be present in the CPU’s MMU to map any IIO. An IIO has the
+following requirements on Book III-E CPUs:
 1. An IIO shall be virtually and physically contiguous.
-2. An IIO shall map the effective address in virtual-reg to the physical address at which the
-device appears at the point of entry.
-
-
-
-
-
-3. An IIO shall not be invalidated except by client’s explicit action (i.e., not subject to broadcast
-invalidates from other partitions).
+2. An IIO shall map the effective address in virtual-reg to the physical
+   address at which the device appears at the point of entry.
+3. An IIO shall not be invalidated except by client’s explicit action
+   (i.e., not subject to broadcast invalidates from other partitions).
 4. The Translation ID (TID) field in the TLB entry shall be zero.
 5. The memory and cache access attributes (WIMGE) have the following requirements:
 • WIMG shall be suitable for accessing the device in question. Typically I=1, G=1.
@@ -2446,37 +2549,34 @@ invalidates from other partitions).
 7. Multiple devices may share an IIO.
 
 ==== Boot CPU Entry Requirements: Real Mode
-For real mode (i.e., non-Book III-E) CPUs, the following requirements apply at client entry for boot
-CPUs:
-1. The CPU shall have address translation disabled at client entry (i.e., MSR[IR]=0,
-MSR[DR]=0).
-2. All PT_LOAD segments shall be loaded into an area of memory that is appropriate for the
-platform.
-3. The device tree shall be loaded into the an area of memory that is appropriate for the platform
-(with the address in r3). The device tree must not overlap any PT_LOAD segment (taking
-into account the p_memsz field in the program header which may be different than
-p_filesz).
-4. r7 shall contain the size of the contiguous physical memory available to the client.
-
+For real mode (i.e., non-Book III-E) CPUs, the following requirements
+apply at client entry for boot CPUs:
+1. The CPU shall have address translation disabled at client entry
+   (i.e., MSR[IR]=0, MSR[DR]=0).
+2. All PT_LOAD segments shall be loaded into an area of memory that is
+   appropriate for the platform.
+3. The device tree shall be loaded into the an area of memory that is
+   appropriate for the platform (with the address in r3). The device
+   tree must not overlap any PT_LOAD segment (taking into account the
+   p_memsz field in the program header which may be different than
+   p_filesz).
+4. r7 shall contain the size of the contiguous physical memory available
+   to the client.
 
 ==== Boot CPU Entry Requirements for IMAs: Book IIII-E
 For Book III-E CPUs the following requirements apply at client entry for boot CPUs:
 1. The Boot IMA (BIMA) mapping in the MMU shall be mapped at effective address 0.
 2. All PT_LOAD segments shall be loaded into BIMA.
-3. The device tree shall be loaded into the BIMA (with the address in r3). The device tree must
-not overlap any PT_LOAD segment (taking into account the p_memsz field in the program
-header which may be different than p_filesz).
+3. The device tree shall be loaded into the BIMA (with the address in
+   r3). The device tree must not overlap any PT_LOAD segment (taking
+   into account the p_memsz field in the program header which may be
+   different than p_filesz).
 4. IIOs shall be present for all devices with a virtual-reg property
-
-
-
-
-
 5. Other mappings may be present in Address Space (AS) 0.
 6. No mappings shall be present in Address Space (AS) 1.
 7. r7 shall contain the size of the BIMA.
-8. The MMU mappings for the BIMA and all IIOs shall be such that the TLBs can
-accommodate a reasonable number of additional mappings.
+8. The MMU mappings for the BIMA and all IIOs shall be such that the
+   TLBs can accommodate a reasonable number of additional mappings.
 
 Programming Notes
 • A boot program might wish to select BIMA size based on client image layout in order to
@@ -2485,82 +2585,55 @@ satisfy requirement #2
 1. tlbsx on EA 0, then read and parse TLB entry
 2. from the optional initial-mapped-area property on a memory node
 
-13
-14
-
 === Symmetric Multiprocessing (SMP) Boot Requirements
-
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-
 ==== Overview
-For CPUs in an SMP configuration, one CPU shall be designated the boot CPU and initialized as
-described in section 5.4, CPU Entry Point Requirements. All other CPUs are considered secondary.
-A boot program passes control to a client program on the boot CPU only. At the time the client
-program is started, all secondary CPUs shall in a quiescent state. A quiescent CPU is in a state where
-it cannot interfere with the normal operation of other CPUs, nor can its state be affected by the normal
-operation of other running CPUs, except by an explicit method for enabling or re-enabling the
-quiescent CPU. The status property of the quiescent CPU’s cpu node in the device tree shall have a
-value of “disabled” (see 3.7.1, General Properties of CPU nodes).
+For CPUs in an SMP configuration, one CPU shall be designated the boot
+CPU and initialized as described in section 5.4, CPU Entry Point
+Requirements. All other CPUs are considered secondary.  A boot program
+passes control to a client program on the boot CPU only. At the time the
+client program is started, all secondary CPUs shall in a quiescent
+state. A quiescent CPU is in a state where it cannot interfere with the
+normal operation of other CPUs, nor can its state be affected by the
+normal operation of other running CPUs, except by an explicit method for
+enabling or re-enabling the quiescent CPU. The status property of the
+quiescent CPU’s cpu node in the device tree shall have a value of
+“disabled” (see 3.7.1, General Properties of CPU nodes).
+
 Secondary CPUs may be started using the spin table or implementation-specific mechanisms
 described in the following sections.
 
-29
-30
-
-
-
-
 ==== Spin Table
-===== Over view
-The ePAPR defines a spin table mechanism for starting secondary CPUs. The boot program places all
-secondary CPUs into a loop where each CPU spins until the branch_address field in the spin
-table is updated specifying that the core is released.
+===== Overview
+The ePAPR defines a spin table mechanism for starting secondary CPUs.
+The boot program places all secondary CPUs into a loop where each CPU
+spins until the branch_address field in the spin table is updated
+specifying that the core is released.
+
 A spin table is a table data structure consisting of 1 entry per CPU where each entry is defined as
 follows:
+[verse]
 struct {
-uint64_t
-uint64_t
-uint32_t
-uint32_t
+	uint64_t entry_addr;
+	uint64_t r3;
+	uint32_t rsvd1;
+	uint32_t pir;
 };
 
-entry_addr;
-r3;
-rsvd1;
-pir;
-
 The spin table fields are defined as follows:
-•
 
 entry_addr. Specifies the physical address of the client entry point for the spin table code to
 branch to. The boot program's spin loop must wait until the least significant bit of
 entry_addr is zero.
 
-•
-
 r3. Contains the value to put in the r3 register at secondary cpu entry. The high 32-bits are
 ignored on 32-bit chip implementations. 64-bit chip implementations however shall load all
 64-bits
 
-•
-
 pir. Contains a value to load into the PIR (processor identification) register for those CPUs
 with writable PIR.
 
-Before a secondary CPU enters a spin loop, the spin table fields shall be set with these initial values:
+Before a secondary CPU enters a spin loop, the spin table fields shall
+be set with these initial values:
 Field
 entry_addr
 r3
@@ -2579,11 +2652,6 @@ The spin table shall be cache-line size aligned in memory.
 The boot program and client program shall ensure that all virtual pages through which the spin table
 can be accessed have storage control attributes such that all accesses to the spin table are not Write
 Through Required, not Caching Inhibited, Memory Coherence Required, and either not Guarded or
-
-
-
-
-
 Guarded (i.e., WIMG = 0b001x). Further, if the E storage attribute is supported, it shall be set to BigEndian (E = 0), and if the VLE storage attribute is supported, it shall be set to 0.
 Programming Note
 Some older boot programs perform Caching Inhibited and not Memory Coherence Required accesses
@@ -2592,28 +2660,38 @@ to shared storage with conflicting Caching Inhibited attribute values. If compat
 programs is required, client programs should use dcbf to flush a spin table entry from the caches both
 before and after accessing the spin table entry.
 
+===== Boot Program Requirements
+The boot program shall place a spin loop and spin table into an area of
+memory that is appropriate for the platform. If the spin loop and table
+reside in a memory region belonging to a client program, the memory
+occupied by the loop and table shall be marked reserved in the device
+tree’s DTB memory reservation block (see section 8.3, Memory Reservation
+Block).
 
-===== Boot Pr ogr am Requir ements
-The boot program shall place a spin loop and spin table into an area of memory that is appropriate for
-the platform. If the spin loop and table reside in a memory region belonging to a client program, the
-memory occupied by the loop and table shall be marked reserved in the device tree’s DTB memory
-reservation block (see section 8.3, Memory Reservation Block).
-Before starting a client program on the boot cpu, the boot program shall set certain properties in the
-device tree passed to the client as follows:
+Before starting a client program on the boot cpu, the boot program shall
+set certain properties in the device tree passed to the client as
+follows:
 • Each secondary CPU’s cpu node shall have a status property with a value of “disabled”.
 • Each secondary CPU’s cpu node shall have an enable-method property.
 • For each secondary cpu node with an enable-method value of “spin-table”, the cpu node
 shall have a cpu-release-addr property that describes the address of the applicable spin table
 entry to release the CPU.
-For secondary CPUs with address translation always enabled (e.g., Book III-E), the boot program
-shall set up an address mapping in the secondary CPU’s MMU for the spin loop and table.
-The boot program shall place a spinning CPU in a quiescent state where it cannot interfere with the
-normal operation of other CPUs, nor can its state be affected by the normal operation of other running
-CPUs, except by an explicit method for enabling or reenabling the quiescent CPU. (see the enablemethod property).
-Note in particular that a running CPU shall be able to issue broadcast TLB invalidations without
-affecting a quiescent CPU.
-When a secondary CPU is released from its spin loop, its state shall be identical to the state of boot
-CPUs (see 5.4.1, Boot CPU Initial Register State) except as noted here:
+
+For secondary CPUs with address translation always enabled (e.g., Book
+III-E), the boot program shall set up an address mapping in the
+secondary CPU’s MMU for the spin loop and table.
+
+The boot program shall place a spinning CPU in a quiescent state where
+it cannot interfere with the normal operation of other CPUs, nor can its
+state be affected by the normal operation of other running CPUs, except
+by an explicit method for enabling or reenabling the quiescent CPU. (see
+the enablemethod property).  Note in particular that a running CPU shall
+be able to issue broadcast TLB invalidations without affecting a
+quiescent CPU.
+
+When a secondary CPU is released from its spin loop, its state shall be
+identical to the state of boot CPUs (see 5.4.1, Boot CPU Initial
+Register State) except as noted here:
 • R3 contains the value of the r3 field from the spin table (only for the first thread of the CPU).
 • R6 shall be 0.
 • If the CPU has a programmable PIR register, the PIR shall contain the value of the pir field
@@ -2621,27 +2699,21 @@ from the spin table.
 • No I/O device mappings (see 5.4.3, Initial I/O Mappings (IIO)) are required.
 • For CPUs with address translation always enabled:
 
-
-
-
-
 The Secondary IMA (SIMA) mapping (described in 5.3, Initial Mapped Areas) in the
 MMU shall map effective address 0 to the entry_addr field in the spin table,
 aligned down to the SIMA size.
-o R7 shall contain the size of the SIMA.
-o The SIMA shall have a minimum size of 1MiB.
-o Other mappings may be present in Address Space (AS) 0.
-o No mappings shall be present in Address Space (AS) 1.
-o The MMU mapping for the SIMA shall be such that the TLBs can accommodate a
-reasonable number of additional mappings.
-o The SIMA mapping shall not be affected by any actions taken by any other CPU.
-For real mode (i.e., non-Book III-E) CPUs:
-o The CPU shall have address translation disabled at client entry (i.e., (MSR[IR] =0,
-MSR[DR]=0).
-o R7 shall contain the size of the contiguous physical memory available to the client.
-o
+- R7 shall contain the size of the SIMA.
+- The SIMA shall have a minimum size of 1MiB.
+- Other mappings may be present in Address Space (AS) 0.
+- No mappings shall be present in Address Space (AS) 1.
+- The MMU mapping for the SIMA shall be such that the TLBs can
+  accommodate a reasonable number of additional mappings.
+- The SIMA mapping shall not be affected by any actions taken by any other CPU.
 
-•
+For real mode (i.e., non-Book III-E) CPUs:
+- The CPU shall have address translation disabled at client entry (i.e.,
+  (MSR[IR] =0, MSR[DR]=0).
+- R7 shall contain the size of the contiguous physical memory available to the client.
 
 Note: Spin table entries do not need to lie in either the BIMA or SIMA.
 
@@ -2709,7 +2781,7 @@ CPU. Each domain could have distinct client image, device tree, boot cpu, etc.
 
 
 
-6 Device Bindings
+== Device Bindings
 
 
 === Binding Guidelines
@@ -3013,7 +3085,7 @@ phy-handle = <&PHY0>;
 This section specifies the requirements for representing open PIC compatible interrupt controllers. An
 open PIC interrupt controller implements the open PIC architecture (developed jointly by AMD and
 Cyrix) and specified in The Open Programmable Interrupt Controller (PIC) Register Interface
-Specification Revision 1.2 [18].
+Specification Revision 1.2 <<18>>.
 Interrupt specifiers in an open PIC interrupt domain are encoded with two cells. The first cell defines
 the interrupt number. The second cell defines the sense and level information.
 Sense and level information shall be encoded as follows in interrupt specifiers:
@@ -3094,7 +3166,7 @@ Note: All other standard properties (section 2.3) are allowed but are optional.
 
 
 
-7 Virtualization
+== Virtualization
 
 
 === Overview
@@ -4348,7 +4420,7 @@ Status of the hypercall
 === Idle
 
 
-EV_IDLE
+==== EV_IDLE
 
 
 Hypercall: EV_IDLE
@@ -4378,19 +4450,18 @@ Status of the hypercall
 EV_UNIMPLEMENTED : the hypervisor does not implement the EV_IDLE
 hcall
 
+== Flat Device Tree Physical Structure
+An ePAPR boot program communicates the entire device tree to the client
+program as a single, linear, pointerless data structure known as the
+flattened device tree or device tree blob.
 
-
-
-
-
-8 Flat Device Tree Physical Structure
-An ePAPR boot program communicates the entire device tree to the client program as a single, linear,
-pointerless data structure known as the flattened device tree or device tree blob.
-This data structure consists of a small header (see 8.2), followed by three variable sized sections: the
-memory reservation block (see 8.3), the structure block (see 8.4) and the strings block (see 8.5). These
-should be present in the flattened device tree in that order.
-Thus, the device tree structure as a whole, when loaded into memory at address, will resemble the
-diagram in Figure 8-1 (lower addresses are at the top of the diagram).
+This data structure consists of a small header (see 8.2), followed by
+three variable sized sections: the memory reservation block (see 8.3),
+the structure block (see 8.4) and the strings block (see 8.5). These
+should be present in the flattened device tree in that order.  Thus, the
+device tree structure as a whole, when loaded into memory at address,
+will resemble the diagram in Figure 8-1 (lower addresses are at the top
+of the diagram).
 
 Figure 8-1 Device Tree Structure
 address
@@ -4722,12 +4793,17 @@ description is not a formal syntax definition of DTS, but describes the basic co
 represent device trees.
 
 Node and property definitions
-Device tree nodes are defined with a node name and unit address with braces marking the start and
-end of the node definition. They may be preceded by a label.
+Device tree nodes are defined with a node name and unit address with
+braces marking the start and end of the node definition. They may be
+preceded by a label.
+
+----
 [label:] node-name[@unit-address] {
-[properties definitions]
-[child nodes]
+	[properties definitions]
+	[child nodes]
 }
+----
+
 Nodes may contain property definitions and/or child node definitions. If both are present, properties
 shall come before child nodes.
 Property definitions are name value pairs in the form:
@@ -4795,40 +4871,31 @@ prop = [ab cd ef byte4: 00 ff fe];
 str = start: "string value" end: ;
 
 File layout
-Version 1 DTS files have the overall layout:
+
+.Version 1 DTS files have the overall layout:
+----
 /dts-v1/;
 [memory reservations]
 / {
-[property definitions]
-[child nodes]
+	[property definitions]
+	[child nodes]
 };
-•
+----
 
 The /dts-v1/; shall be present to identify the file as a version 1 DTS (dts files without this tag
 will be treated by dtc as being in the obsolete version 0, which uses a different format for
 integers in addition to other small but incompatible changes).
 
-•
-
-Memory reservations define an entry for the device tree blob's memory reservation table.
-They have the form:
-e.g., /memreserve/ <address> <length>;
+Memory reservations define an entry for the device tree blob's memory
+reservation table.  They have the form: e.g., /memreserve/ <address> <length>;
 Where <address> and <length> are 64-bit C-style integers.
 
-•
+- The / { ... }; section defines the root node of the device tree.
+- C style (/* ... */) and C++ style (// ...) comments are supported.
 
-The / { ... }; section defines the root node of the device tree.
-
-•
-
-C style (/* ... */) and C++ style (// ...) comments are supported.
-
-
-
-
-
-Appendix B1 Ebony Device Tree
+== Appendix B1 Ebony Device Tree
 This appendix shows a complete device tree for the IBM 440-based Ebony system.
+----
 /*
 * Device Tree Source for IBM Ebony
 *
@@ -4883,10 +4950,6 @@ device_type = "memory";
 reg = <0x0 0x0 0x8000000>;
 };
 
-
-
-
-
 UIC0: interrupt-controller0 {
 compatible = "ibm,uic-440gp", "ibm,uic";
 interrupt-controller;
@@ -4938,11 +5001,6 @@ interrupts = <0x0 0x1 0x2 0x3 0x4>;
 interrupt-map = <
 0 &UIC0 a 4
 1 &UCI0 b 4
-
-
-
-
-
 2 &UCI1 0 4
 3 &UCI1 1 4
 4 &UIC1 2 4>;
@@ -4994,17 +5052,7 @@ partition@0 {
 reg = <0x0 0x380000>;
 label = "fs";
 };
-
-
-
-
-
 };
-
-
-
-
-
 nvram@1,0 {
 compatible = "ds1743-nvram";
 reg = <0x1 0x0 0x2000>;
@@ -5055,11 +5103,6 @@ reg = <0x40000500 0x14>;
 interrupts = <0x3 0x4>;
 interrupt-parent = <&UIC0>;
 };
-
-
-
-
-
 gpio@40000700 {
 compatible = "ibm,gpio-440gp";
 reg = <0x40000700 0x20>;
@@ -5112,11 +5155,6 @@ gpt@40000a00 {
 reg = <0x40000a00 0xd4>;
 interrupts = <0x12 0x4 0x13 0x4 0x14 0x4 0x15 0x4 0x16 0x4>;
 interrupt-parent = <&UIC0>;
-
-
-
-
-
 };
 };
 PCIX0: pci@20ec00000 {
@@ -5143,14 +5181,12 @@ interrupt-map = <
 };
 };
 };
+----
 
-
-
-
-
-Appendix B2 – MPC8572DS Device Tree
+== Appendix B2 – MPC8572DS Device Tree
 This appendix shows a device tree for the Freescale MPC8572DS system. Note: to
 simplify the example, some portions of the device tree have been removed.
+----
 /*
 * MPC8572 DS Device Tree Source
 *
@@ -5202,11 +5238,6 @@ next-level-cache = <&L2>;
 cpu@1 {
 device_type = "cpu";
 reg = <0x1>;
-
-
-
-
-
 d-cache-line-size = <32>;
 i-cache-line-size = <32>;
 d-cache-size = <0x8000>;
@@ -5265,11 +5296,6 @@ interrupts = <16 2>;
 i2c@3000 {
 #address-cells = <1>;
 #size-cells = <0>;
-
-
-
-
-
 cell-index = <0>;
 compatible = "fsl-i2c";
 reg = <0x3000 0x100>;
@@ -5321,11 +5347,6 @@ interrupts = <42 2>;
 global-utilities@e0000 {
 //global utilities block
 compatible = "fsl,mpc8572-guts";
-
-
-
-
-
 reg = <0xe0000 0x1000>;
 fsl,has-rstcr;
 };
@@ -5380,11 +5401,6 @@ interrupt-map = <
 0000 0x0 0x0 0x2 &mpic 0x5 0x1
 0000 0x0 0x0 0x3 &mpic 0x6 0x1
 0000 0x0 0x0 0x4 &mpic 0x7 0x1
-
-
-
-
-
 >;
 pcie@0 {
 reg = <0x0 0x0 0x0 0x0 0x0>;
@@ -5399,6 +5415,4 @@ ranges = <0x2000000 0x0 0xa0000000
 };
 };
 };
-
-
-
+----
