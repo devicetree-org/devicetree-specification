@@ -606,7 +606,10 @@ address+1  22
 address+2  33
 address+3  44
 
-|<u64> a|Represents a 64-bit integer in big-endian format. Consists of two <u32> values where the first value contains the most significant bits of the integer and the second value contains the least significant bits.
+|<u64> a|Represents a 64-bit integer in big-endian format. Consists of
+two <u32> values where the first value contains the most significant
+bits of the integer and the second value contains the least significant
+bits.
 
 Example: the 64-bit value 0x1122334455667788 would be represented as two
 cells as: <0x11223344 0x55667788>.
@@ -640,8 +643,9 @@ another node in the device tree. Any node that can be referenced defines
 a phandle property with a unique <u32> value. That unique number is
 specified for the value of properties with a phandle value type.
 
-|<stringlist> a|A list of <string> values concatenated together. Example: The string list
-“hello”,“world” would be represented in memory as:
+|<stringlist> a|A list of <string> values concatenated together.
+
+Example: The string list “hello”,“world” would be represented in memory as:
 [listing]
    address  68  'h'
  address+1  65  'e'
@@ -675,24 +679,26 @@ Tree Source (DTS) format for specifying nodes and properties.
 |Value type |<stringlist>
 |===
 .Description
-The compatible property value consists of one or more strings that define the specific
-programming model for the device. This list of strings should be used by a client program for
-device driver selection. The property value consists of a concatenated list of null terminated
-strings, from most specific to most general. They allow a device to express its compatibility
-with a family of similar devices, potentially allowing a single device driver to match against
-several devices.
+The compatible property value consists of one or more strings that
+define the specific programming model for the device. This list of
+strings should be used by a client program for device driver selection.
+The property value consists of a concatenated list of null terminated
+strings, from most specific to most general. They allow a device to
+express its compatibility with a family of similar devices, potentially
+allowing a single device driver to match against several devices.
 
 The recommended format is “manufacturer,model”, where manufacturer is a
-string describing the name of the manufacturer (such as a stock ticker symbol), and model
-specifies the model number.
+string describing the name of the manufacturer (such as a stock ticker
+symbol), and model specifies the model number.
 
 .Example
 [listing]
 compatible = “fsl,mpc8641-uart”, “ns16550";
 
-In this example, an operating system would first try to locate a device driver that supported
-fsl,mpc8641-uart. If a driver was not found, it would then try to locate a driver that supported
-the more general ns16550 device type.
+In this example, an operating system would first try to locate a device
+driver that supported fsl,mpc8641-uart. If a driver was not found, it
+would then try to locate a driver that supported the more general
+ns16550 device type.
 
 ==== model
 [cols="10,90"]
@@ -701,7 +707,7 @@ the more general ns16550 device type.
 |Value type |<stringlist>
 |===
 .Description
-The model property value is a <string> that specifies the manufacturer’s
+The model property value is a <string> that specifies the manufacturer's
 model number of the device.
 
 The recommended format is: “manufacturer,model”, where manufacturer is a
@@ -739,10 +745,11 @@ interrupt-parent = <1>;
 
 .Compatibility Note
 ****
-Older versions of device trees may be encountered that contain a deprecated form of this
-property called linux,phandle. For compatibility, a client program might want to
-support linux,phandle if a phandle property is not present. The meaning and use of
-the two properties is identical.
+Older versions of device trees may be encountered that contain a
+deprecated form of this property called linux,phandle. For
+compatibility, a client program might want to support linux,phandle if a
+phandle property is not present. The meaning and use of the two
+properties is identical.
 ****
 
 .Programming Note
@@ -772,7 +779,8 @@ values are listed and defined in the following table.
 it might become operational in the future (for example, something is not
 plugged in, or switched off).
 
-Refer to the device binding for details on what disabled means for a given device.
+Refer to the device binding for details on what disabled means for a
+given device.
 
 |“fail” |Indicates that the device is not operational. A serious error
 was detected in the device, and it is unlikely to become operational
@@ -1058,8 +1066,9 @@ The root of the interrupt tree is determined when traversal of the
 interrupt tree reaches an interrupt controller node without an
 interrupts property and thus no explicit interrupt parent.
 
-See Figure 2-5 for an example of a graphical representation of a device tree with interrupt parent
-relationships shown. Figure 2-6 shows the corresponding interrupt tree.
+See Figure 2-5 for an example of a graphical representation of a device
+tree with interrupt parent relationships shown. Figure 2-6 shows the
+corresponding interrupt tree.
 
 .Figure 2-5 Device Tree
 ----
@@ -1217,8 +1226,8 @@ being mapped.  The number of 32-bit cells required to specify this
 component is described by the #interrupt-cells property of this node—the
 nexus node containing the interrupt-map property.
 
-interrupt-parent:: A single <phandle> value that points to the interrupt parent to
-which the child domain is being mapped.
+interrupt-parent:: A single <phandle> value that points to the interrupt
+parent to which the child domain is being mapped.
 
 parent unit address:: The unit address in the domain of the interrupt
 parent. The number of 32-bit cells required to specify this address is
@@ -1428,325 +1437,270 @@ device nodes required in an ePAPR-compliant device tree.
 All device trees shall have a root node and the following nodes shall be
 present at the root of all device trees:
 
-* One cpus node
-* At least one memory node
+* One _cpus_ node
+* At least one _memory_ node
 
 === Root node
 The device tree has a single root node of which all other device nodes
 are descendants. The full path to the root node is /.
 
 .Table 3-1 Root Node Properties
-Property Name
+[options="header", cols="15,^10,^10,65"]
+|===
+|Property Name |Usage |Value Type |Definition
+|#address-cells |R |<u32> |Specifies the number of <u32> cells to
+represent the address in the reg property in children of root.
+|#size-cells |R |<u32> |Specifies the number of <u32> cells to represent
+the size in the reg property in children of root.
+|model |R |<string> |Specifies a string that uniquely identifies the
+model of the system board. The recommended format is
+“manufacturer,model-number”.
+|compatible |R |<stringlist> a|Specifies a list of platform
+architectures with which this platform is compatible. This property can
+be used by operating systems in selecting platform specific code. The
+recommended form of the property value is:
 
-Usage
-
-Value
-Type
-
-Definition
-
-#address-cells
-
-R
-
-<u32>
-
-#size-cells
-
-R
-
-<u32>
-
-model
-
-R
-
-<string>
-
-compatible
-
-R
-
-<stringlist>
-
-Specifies the number of <u32> cells to represent the address in the reg
-property in children of root.
-Specifies the number of <u32> cells to represent the size in the reg property
-in children of root.
-Specifies a string that uniquely identifies the model of the system board. The
-recommended format is “manufacturer,model-number”.
-Specifies a list of platform architectures with which this platform is
-compatible. This property can be used by operating systems in selecting
-platform specific code. The recommended form of the property value is:
+[listing]
 “<Manufacturer>,<Model-number>”
+
 For example:
+[listing]
 compatible = “fsl,mpc8572ds”
+|epapr-version |R |<string> a|This property shall contain the string: “ePAPR-<ePAPR version>”
 
-epapr-version
-
-R
-
-<string>
-
-This property shall contain the string:
-“ePAPR-<ePAPR version>”
 where:
-•
+====
 <ePAPR version> is the text (without blanks) after the word
 Version on the cover page of the PAPR spec that the platform
 adheres to
+====
+
 For example:
+[listing]
 epapr-version = “ePAPR-1.1”
+|===
 
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+
 Note: All other standard properties (section 2.3) are allowed but are optional.
-
-
-
-
-
 
 === aliases node
-A device tree may have an aliases node (/aliases) that defines one or more alias properties. The
-alias node shall be at the root of the device tree and have the node name aliases.
-Each property of the /aliases node defines an alias. The property name specifies the alias name.
-The property value specifies the full path to a node in the device tree. For example, the property
-serial0 = “/simple-bus@fe000000/serial@llc500” defines the alias serial0.
-Alias names shall be a lowercase text strings of 1 to 31 characters from the following set of characters.
+A device tree may have an aliases node (/aliases) that defines one or
+more alias properties. The alias node shall be at the root of the device
+tree and have the node name aliases.
 
-Table 3-2 Characters for alias names
-Character
+Each property of the /aliases node defines an alias. The property name
+specifies the alias name.  The property value specifies the full path to
+a node in the device tree. For example, the property serial0 =
+“/simple-bus@fe000000/serial@llc500” defines the alias serial0.
 
-0-9
-a-z
+Alias names shall be a lowercase text strings of 1 to 31 characters from
+the following set of characters.
 
-Description
+.Table 3-2 Characters for alias names
+[options="header", cols="^10,30", width="50"]
+|===
+|Character |Description
+|0-9 |digit
+|a-z |lowercase letter
+|- |dash
+|===
 
-digit
-lowercase character
-dash
+An alias value is a device path and is encoded as a string. The value
+represents the full path to a node, but the path does not need to refer
+to a leaf node.
 
-An alias value is a device path and is encoded as a string. The value represents the full path to a node,
-but the path does not need to refer to a leaf node.
-A client program may use an alias property name to refer to a full device path as all or part of its string
-value. A client program, when considering a string as a device path, shall detect and use the alias.
-Example:
+A client program may use an alias property name to refer to a full
+device path as all or part of its string value. A client program, when
+considering a string as a device path, shall detect and use the alias.
+
+.Example
+[listing]
 aliases {
-serial0 = "/simple-bus@fe000000/serial@llc500";
-ethernet0 = "/simple-bus@fe000000/ethernet@31c000";
+	serial0 = "/simple-bus@fe000000/serial@llc500";
+	ethernet0 = "/simple-bus@fe000000/ethernet@31c000";
 }
-Given the alias serial0, a client program can look at the /aliases node and determine the alias
-refers to the device path /simple-bus@fe000000/serial@llc500.
 
-
-
-
+Given the alias serial0, a client program can look at the /aliases node
+and determine the alias refers to the device path
+/simple-bus@fe000000/serial@llc500.
 
 === Memory node
-A memory device node is required for all device trees and describes the physical memory layout for
-the system. If a system has multiple ranges of memory, multiple memory nodes can be created, or the
-ranges can be specified in the reg property of a single memory node.
+A memory device node is required for all device trees and describes the
+physical memory layout for the system. If a system has multiple ranges
+of memory, multiple memory nodes can be created, or the ranges can be
+specified in the reg property of a single memory node.
+
 The name component of the node name (see 2.2.1) shall be memory.
-The client program may access memory not covered by any memory reservations (see section 8.3)
-using any storage attributes it chooses. However, before changing the storage attributes used to access
-a real page, the client program is responsible for performing actions required by the architecture and
-implementation, possibly including flushing the real page from the caches. The boot program is
-responsible for ensuring that, without taking any action associated with a change in storage attributes,
-the client program can safely access all memory (including memory covered by memory reservations)
-as WIMG = 0b001x. That is:
-• not Write Through Required
-• not Caching Inhibited
-• Memory Coherence Required
-• either not Guarded or Guarded (i.e., WIMG = 0b001x)
+
+The client program may access memory not covered by any memory
+reservations (see section 8.3) using any storage attributes it chooses.
+However, before changing the storage attributes used to access a real
+page, the client program is responsible for performing actions required
+by the architecture and implementation, possibly including flushing the
+real page from the caches. The boot program is responsible for ensuring
+that, without taking any action associated with a change in storage
+attributes, the client program can safely access all memory (including
+memory covered by memory reservations) as WIMG = 0b001x. That is:
+
+* not Write Through Required not Caching Inhibited Memory Coherence
+* Required either not Guarded or Guarded (i.e., WIMG = 0b001x)
+
 If the VLE storage attribute is supported, with VLE=0.
-Properties
 
-Table 3-3 Memory node properties
-Property Name
+.Table 3-3 Memory node properties
+[options="header", cols="15,^10,^10,65"]
+|===
+|Property Name |Usage |Value Type |Definition
+|device_type |R |<string> |Value shall be "memory"
+|reg |R |<prop-encoded-array> |
+Consists of an arbitrary number of address and size pairs that specify
+the physical address and size of the memory ranges.
 
-Usage
-
-device_type
-reg
-
-R
-R
-
-initial-mapped-area
-
-O
-
-Value
-Type
-
-Definition
-
-<string>
-<propencodedarray>
-<propencodedarray>
-
-Value shall be “memory”.
-Consists of an arbitrary number of address and size pairs that specify the
-physical address and size of the memory ranges.
+|initial-mapped-area |O |<prop-encoded-array> |
 Specifies the address and size of the Initial Mapped Area (see section 5.3).
 
-Is a prop-encoded-array consisting of a triplet of (effective address, physical
-address, size). The effective and physical address shall each be 64-bit (<u64>
-value), and the size shall be 32-bits (<u32> value).
+Is a prop-encoded-array consisting of a triplet of (effective address,
+physical address, size). The effective and physical address shall each
+be 64-bit (<u64> value), and the size shall be 32-bits (<u32> value).
+|===
+
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
-
-Example
+.Example
 Given a 64-bit Power system with the following physical memory layout:
-• RAM: starting address 0x0, length 0x80000000 (2GB)
-• RAM: starting address 0x100000000, length 0x100000000 (4GB)
-Memory nodes could be defined as follows, assuming an #address-cells value of 2 and a #size-cells
-value of 2:
 
+* RAM: starting address 0x0, length 0x80000000 (2GB)
+* RAM: starting address 0x100000000, length 0x100000000 (4GB)
 
+Memory nodes could be defined as follows, assuming an #address-cells
+value of 2 and a #size-cells value of 2:
 
-
-Example #1
-
-
-=== Chosen
-
+.Example #1
+[listing]
 memory@0 {
-device_type = "memory";
-reg = <0x000000000 0x00000000 0x00000000 0x80000000
-0x000000001 0x00000000 0x00000001 0x00000000>;
+	device_type = "memory";
+	reg = <0x000000000 0x00000000 0x00000000 0x80000000
+	       0x000000001 0x00000000 0x00000001 0x00000000>;
 };
 
-Example #2
+.Example #2
+[listing]
 memory@0 {
-device_type = "memory";
-reg = <0x000000000 0x00000000 0x00000000 0x80000000>;
+	device_type = "memory";
+	reg = <0x000000000 0x00000000 0x00000000 0x80000000>;
 };
 memory@100000000 {
-device_type = "memory";
-reg = <0x000000001 0x00000000 0x00000001 0x00000000>;
+	device_type = "memory";
+	reg = <0x000000001 0x00000000 0x00000001 0x00000000>;
 };
 
-The reg property is used to define the address and size of the two memory ranges. The 2 GB I/O
-region is skipped. Note that the #address-cells and #size-cells properties of the root node specify a
-value of 2, which means that two 32-bit cells are required to define the address and length for the reg
-property of the memory node.
+The reg property is used to define the address and size of the two
+memory ranges. The 2 GB I/O region is skipped. Note that the
+#address-cells and #size-cells properties of the root node specify a
+value of 2, which means that two 32-bit cells are required to define the
+address and length for the reg property of the memory node.
 
-The chosen node does not represent a real device in the system but describes parameters chosen or
-specified by the system firmware at run time. It shall be a child of the root node.
+=== Chosen
+The chosen node does not represent a real device in the system but
+describes parameters chosen or specified by the system firmware at run
+time. It shall be a child of the root node.
+
 The node name (see 2.2.1) shall be chosen.
-Properties
 
-Table 3-4 Chosen node properties
-Property Name
+.Table 3-4 Chosen node properties
+[options="header", cols="15,^10,^10,65"]
+|===
+|Property Name |Usage |Value Type |Definition
+|bootargs |O |<string> |A string that specifies the boot arguments for
+the client program. The value could potentially be a null string if no
+boot arguments are required.
 
+|stdout-path |O |<string> |A string that specifies the full path to the
+node representing the device to be used for boot console output. If the
+character ":" is present in the value it terminates the path. The value
+may be an alias.
 
+If the stdin-path property is not specified, stdout-path should be
+assumed to define the input device.
 
-Usage
+|stdin-path |O |<string> |A string that specifies the full path to the
+node representing the device to be used for boot console input. If the
+character ":" is present in the value it terminates the path. The value
+may be an alias.
+|===
 
-Value
-Type
-
-Definition
-A string that specifies the boot arguments for the client program. The value
-could potentially be a null string if no boot arguments are required.
-A string that specifies the full path to the node representing the device to be
-used for boot console output. If the character ":" is present in the value it
-terminates the path. The value may be an alias.
-
-bootargs
-
-O
-
-<string>
-
-stdout-path
-
-O
-
-<string>
-
-If the stdin-path property is not specified, stdout-path should be assumed to
-define the input device.
-stdin-path
-O
-<string>
-A string that specifies the full path to the node representing the device to be
-used for boot console input. If the character ":" is present in the value it
-terminates the path. The value may be an alias.
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
-
-
-
-
-Example
+.Example
+[listing]
 chosen {
-bootargs = “root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200”;
+	bootargs = “root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200”;
 };
 
-Compatibility Note
-Older versions of device trees may be encountered that contain a deprecated form of the stdout-path
-property called linux,stdout-path. For compatibility, a client program might want to support
-linux,stdout-path if a stdout-path property is not present. The meaning and use of the two properties is
-identical.
+.Compatibility Note
+****
+Older versions of device trees may be encountered that contain a
+deprecated form of the stdout-path property called linux,stdout-path.
+For compatibility, a client program might want to support
+linux,stdout-path if a stdout-path property is not present. The meaning
+and use of the two properties is identical.
+****
 
 
 === CPUS Node Properties
-A cpus node is required for all device trees. It does not represent a real device in the system, but acts
-as a container for child cpu nodes which represent the systems CPUs.
+A cpus node is required for all device trees. It does not represent a
+real device in the system, but acts as a container for child cpu nodes
+which represent the systems CPUs.
+
 The node name (see 2.2.1) shall be cpus.
-Properties
 
-Table 3-5 cpus node properties
-Property Name
-#address-cells
+.Table 3-5 cpus node properties
+[options="header", cols="15,^10,^10,65"]
+|===
+|Property Name |Usage |Value Type |Definition
+|#address-cells |R |<u32> | The value specifies how many cells each
+element of the reg property array takes in children of this node.
 
-Usage
+|#size-cells |R |<u32> | Value shall be 0. Specifies that no size is
+required in the reg property in children of this node.
+|===
 
-Value
-Type
+Usage legend: R=Required, O=Optional, OR=Optional but Recommended,
+SD=See Definition
 
-R
+Note: All other standard properties (section 2.3) are allowed but are
+optional.
 
-<u32>
+The cpus node may contain properties that are common across CPU nodes.
+See section 3.7 for details.
 
-Definition
-
-The value specifies how many cells each element of the reg property array
-takes in children of this node.
-#size-cells
-R
-<u32>
-Value shall be 0. Specifies that no size is required in the reg property in
-children of this node.
-Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-Note: All other standard properties (section 2.3) are allowed but are optional.
-
-
-The cpus node may contain properties that are common across CPU nodes. See section 3.7 for details.
 For an example, see section 3.7.4.
 
 === CPU Node Properties
-A cpu node represents a hardware execution block that is sufficiently independent that it is capable of
-running an operating system without interfering with other CPUs possibly running other operating
-systems.
-Hardware threads that share an MMU would generally be represented under one cpu node. If other
-more complex CPU topographies are designed, the binding for the CPU must describe the topography
-(e.g. threads that don't share an MMU).
+A cpu node represents a hardware execution block that is sufficiently
+independent that it is capable of running an operating system without
+interfering with other CPUs possibly running other operating systems.
 
+Hardware threads that share an MMU would generally be represented under
+one cpu node. If other more complex CPU topographies are designed, the
+binding for the CPU must describe the topography (e.g. threads that
+don't share an MMU).
 
+CPUs and threads are numbered through a unified number-space that should
+match as closely as possible the interrupt controller's numbering of
+CPUs/threads.
 
+Properties that have identical values across CPU nodes may be placed in
+the cpus node instead. A client program must first examine a specific
+CPU node, but if an expected property is not found then it should look
+at the parent cpus node. This results in a less verbose representation
+of properties which are identical across all CPUs.
 
-
-CPUs and threads are numbered through a unified number-space that should match as closely as
-possible the interrupt controller's numbering of CPUs/threads.
-Properties that have identical values across CPU nodes may be placed in the cpus node instead. A
-client program must first examine a specific CPU node, but if an expected property is not found then it
-should look at the parent cpus node. This results in a less verbose representation of properties which
-are identical across all CPUs.
 The node name for every cpu node (see 2.2.1) should be cpu.
 
 ==== General Properties of CPU nodes
