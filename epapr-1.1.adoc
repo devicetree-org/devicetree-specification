@@ -1967,116 +1967,97 @@ cpus {
 
 
 === Multi-level and Shared Caches
-Processors and systems may implement additional levels of cache hierarchy—for example, secondlevel (L2) or third-level (L3) caches. These caches can potentially be tightly integrated to the CPU or
+Processors and systems may implement additional levels of cache
+hierarchy—for example, secondlevel (L2) or third-level (L3) caches.
+These caches can potentially be tightly integrated to the CPU or
 possibly shared between multiple CPUs.
-A device node with a compatible value of "cache" describes these types of caches.
-The cache node shall define a phandle property, and all cpu nodes or cache nodes that are associated
-with or share the cache each shall contain a next-level-cache property that specifies the phandle to the
+
+A device node with a compatible value of "cache" describes these types
+of caches.
+
+The cache node shall define a phandle property, and all cpu nodes or
+cache nodes that are associated with or share the cache each shall
+contain a next-level-cache property that specifies the phandle to the
 cache node.
-A cache node may be represented under a CPU node or any other appropriate location in the device
-tree.
-Multiple-level and shared caches are represented with the properties in Table 3-9. The L1 cache
-properties are described in Table 3-8.
-Table 3-9 Multiple-level and shared cache properties
-Property Name
-compatible
-cache-level
 
-Usage
+A cache node may be represented under a CPU node or any other
+appropriate location in the device tree.
 
-Value
-Type
+Multiple-level and shared caches are represented with the properties in
+Table 3-9. The L1 cache properties are described in Table 3-8.
 
-R
-R
-
-<string>
-<u32>
-
-Definition
-
-A standard property. The value shall include the string “cache”
-Specifies the level in the cache hierarchy. For example, a level 2 cache
+.Table 3-9 Multiple-level and shared cache properties
+[options="header", cols="15,^10,^10,65"]
+|===
+|Property Name |Usage |Value Type |Definition
+|compatible |R |<string> |A standard property. The value shall include the string “cache”
+|cache-level |R |<u32> |Specifies the level in the cache hierarchy. For example, a level 2 cache
 has a value of <2>.
+|===
+
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
-
-
-
-
-
-Example
+.Example
 See the following example of a device tree representation of two CPUs, each with their own on-chip
 L2 and a shared L3.
+
+----
 cpus {
-#address-cells = <1>;
-#size-cells = <0>;
-cpu@0 {
-device_type = "cpu";
-reg = <0>;
-cache-unified;
-cache-size = <0x8000>;
-// L1, 32KB
-cache-block-size = <32>;
-timebase-frequency = <82500000>; // 82.5 MHz
-next-level-cache = <&L2_0>;
-// phandle to L2
-L2_0:l2-cache {
-compatible = “cache”;
-cache-unified;
-cache-size = <0x40000>;
-cache-sets = <1024>;
-cache-block-size = <32>;
-cache-level = <2>;
-next-level-cache = <&L3>;
-L3:l3-cache {
-compatible = “cache”;
-cache-unified;
-cache-size = <0x40000>;
-cache-sets = <0x400>;
-cache-block-size = <32>
-cache-level = <3>;
+	#address-cells = <1>;
+	#size-cells = <0>;
+	cpu@0 {
+		device_type = "cpu";
+		reg = <0>;
+		cache-unified;
+		cache-size = <0x8000>; // L1, 32KB
+		cache-block-size = <32>;
+		timebase-frequency = <82500000>; // 82.5 MHz
+		next-level-cache = <&L2_0>; // phandle to L2
+
+		L2_0:l2-cache {
+			compatible = “cache”;
+			cache-unified;
+			cache-size = <0x40000>; // 256 KB
+
+			cache-sets = <1024>;
+			cache-block-size = <32>;
+			cache-level = <2>;
+			next-level-cache = <&L3>; // phandle to L3
+
+			L3:l3-cache {
+				compatible = “cache”;
+				cache-unified;
+				cache-size = <0x40000>; // 256 KB
+				cache-sets = <0x400>; // 1024
+				cache-block-size = <32>
+				cache-level = <3>;
+			};
+		};
+	};
+
+	cpu@1 {
+		device_type = "cpu";
+		reg = <0>;
+		cache-unified;
+		cache-block-size = <32>;
+		cache-size = <0x8000>; // L1, 32KB
+		timebase-frequency = <82500000>; // 82.5 MHz
+		clock-frequency = <825000000>; // 825 MHz
+		cache-level = <2>;
+		next-level-cache = <&L2_1>; // phandle to L2
+		L2_1:l2-cache {
+			compatible = “cache”;
+			cache-unified;
+			cache-size = <0x40000>; // 256 KB
+			cache-sets = <0x400>; // 1024
+			cache-line-size = <32> // 32 bytes
+			next-level-cache = <&L3>; // phandle to L3
+		};
+	};
 };
-};
-
-// 256 KB
-
-// phandle to L3
-
-// 256 KB
-// 1024
-
-};
-cpu@1 {
-device_type = "cpu";
-reg = <0>;
-cache-unified;
-cache-block-size = <32>;
-cache-size = <0x8000>;
-// L1, 32KB
-timebase-frequency = <82500000>; // 82.5 MHz
-clock-frequency = <825000000>; // 825 MHz
-cache-level = <2>;
-next-level-cache = <&L2_1>;
-// phandle to L2
-L2_1:l2-cache {
-compatible = “cache”;
-cache-unified;
-cache-size = <0x40000>;
-// 256 KB
-cache-sets = <0x400>;
-// 1024
-cache-line-size = <32>
-// 32 bytes
-next-level-cache = <&L3>; // phandle to L3
-};
-};
-};
-
-
-
-
+----
 
 == Client Program Image Format
 
