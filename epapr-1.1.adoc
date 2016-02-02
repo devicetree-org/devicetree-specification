@@ -304,8 +304,8 @@ requirements or considerations for 32-bit and 64-bit addressing.
 - [[[b20]]] _64-bit PowerPC ELF Application Binary Interface Supplement
   1.9_, Ian Lance Taylor, 2004
 
-=== Definition of Terms
 [glossary]
+=== Definition of Terms
 AMP:: Asymmetric Multiprocessing. Computer architecture where two or
 more CPUs are executing different tasks. Typically, an AMP system
 executes different operating system images on separate CPUs.

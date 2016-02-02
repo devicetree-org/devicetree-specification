@@ -6,7 +6,7 @@ all: epapr-1.1.html epapr-1.1.xml epapr-1.1.pdf
 	xsltproc -o $@ $(STYLESHEETS_DIR)/fo/docbook.xsl $<
 
 %.pdf: %.fo
-	fop -pdf $@ -fo $<
+	fop -pdf $@ -fo $< -d
 
 %.xml: %.adoc
 	asciidoctor $< -b docbook5
