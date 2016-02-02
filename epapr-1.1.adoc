@@ -1,4 +1,7 @@
-= Standard for Embedded Power Architecture(TM) Platform Requirements (ePAPR)
+:spec: ePAPR
+:spec full name: Embedded Power Architecture(TM) Platform Requirements
+
+= Standard for {specfullname} ({spec})
 Power.org(TM)
 Version 1.1, 08 April 2011
 :toc: macro
@@ -91,7 +94,7 @@ Wind River
 
 [float]
 == Other Acknowledgements
-Significant aspects of the ePAPR device tree are based on work done by
+Significant aspects of the {spec} device tree are based on work done by
 the Open Firmware Working Group which developed bindings for IEEE-1275.
 We would like to acknowledge their contributions.
 
@@ -130,12 +133,11 @@ hypervisors, operating systems, and special purpose programs. A piece of
 software (e.g. a hypervisor) may be both a client program and a boot
 program.
 
-This specification, the Embedded Power Architecture Platform
-Requirements (ePAPR), provides a complete boot program to client program
-interface definition, combined with minimum system requirements that
-facilitate the development of a wide variety of embedded systems based
-on CPUs that implement the Power architecture as defined in the Power
-ISA(TM)<<1>>.
+This specification, the {specfullname} ({spec}), provides a complete boot
+program to client program interface definition, combined with minimum system
+requirements that facilitate the development of a wide variety of embedded
+systems based on CPUs that implement the Power architecture as defined in the
+Power ISA(TM)<<1>>.
 
 This specification is targeted towards the requirements of embedded
 systems. An embedded system typically consists of system hardware, an
@@ -155,13 +157,13 @@ can include:
   operating systems, and custom or proprietary operating systems
 
 ==== Organization of this Document
-Chapter 1 introduces the architecture being specified by the ePAPR.
+Chapter 1 introduces the architecture being specified by the {spec}.
 
 Chapter 2 introduces the device tree concept and describes its logical
 structure and standard properties.
 
 Chapter 3 specifies the definition of a base set of device nodes
-required by ePAPR-compliant device trees.
+required by {spec}-compliant device trees.
 
 Chapter 4 specifies the ELF client program image format.
 
@@ -171,7 +173,7 @@ programs on single and multiple CPU systems.
 Chapter 6 describes device bindings for certain classes of devices and
 specific device types.
 
-Chapter 7 describes ePAPR virtualization extensions-- hypercall ABI,
+Chapter 7 describes {spec} virtualization extensions-- hypercall ABI,
 hypercall APIs, and device tree conventions related to virtualization.
 
 Chapter 8 specifies the physical structure of device trees.
@@ -196,7 +198,7 @@ Syntax_ form. See _Appendix A Device Tree Source Format (version 1)_ for
 an overview of this syntax.
 
 === Relationship to IEEE(TM) 1275
-The ePAPR is loosely related to the IEEE 1275 Open Firmware
+The {spec} is loosely related to the IEEE 1275 Open Firmware
 standard—_IEEE Standard for Boot (Initialization Configuration)
 Firmware: Core Requirements and Practices_ <<1>>.
 
@@ -208,7 +210,7 @@ loading an operating system from user-installed I/O devices.
 
 Because of the nature of embedded systems, some of these problems faced
 by open, general purpose computers do not apply. Notable features of the
-IEEE 1275 specification that are omitted from the ePAPR include:
+IEEE 1275 specification that are omitted from the {spec} include:
 * Plug-in device drivers
 * FCode
 * The programmable Open Firmware user interface based on Forth
@@ -221,8 +223,8 @@ hardware information to client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
 
 ==== 32-bit and 64-bit Support
-The ePAPR supports CPUs with both 32-bit and 64-bit addressing
-capabilities. Where applicable, sections of the ePAPR describe any
+The {spec} supports CPUs with both 32-bit and 64-bit addressing
+capabilities. Where applicable, sections of the {spec} describe any
 requirements or considerations for 32-bit and 64-bit addressing.
 
 === References
@@ -233,7 +235,7 @@ requirements or considerations for 32-bit and 64-bit addressing.
 - [[[2]]] _Boot (Initialization Configuration) Firmware: Core
   Requirements and Practices_, 1994, This is the core standard (also
   known as IEEE 1275) that defines the device tree concept adopted by
-  the ePAPR. It is available from Global Engineering (http://global.ihs.com/).
+  the {spec}. It is available from Global Engineering (http://global.ihs.com/).
 
 - [[[3]]] _PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
   (Initialization, Configuration) Firmware_, Version 2.1, Open Firmware
@@ -365,14 +367,14 @@ method for enabling or re-enabling the quiescent CPU.
 
 == The Device Tree
 === Overview
-The ePAPR specifies a construct called a _device tree_ to describe
+The {spec} specifies a construct called a _device tree_ to describe
 system hardware. A boot program loads a device tree into a client
 program's memory and passes a pointer to the device tree to the client.
 
 This chapter describes the logical structure of the device tree and
 specifies a base set of properties for use in describing device nodes.
-Chapter 3 specifies certain device nodes required by an ePAPRcompliant
-device tree. Chapter 6 describes the ePAPR defined device bindings— the
+Chapter 3 specifies certain device nodes required by an {spec}compliant
+device tree. Chapter 6 describes the {spec} defined device bindings— the
 requirements for representing certain device types classes of devices.
 Chapter 8 describes the in-memory encoding of the device tree.
 
@@ -381,7 +383,7 @@ devices in a system. Each node has property/value pairs that describe
 the characteristics of the device being represented. Each node has
 exactly one parent except for the root node, which has no parent.
 
-An ePAPR-compliant device tree describes device information in a system
+An {spec}-compliant device tree describes device information in a system
 that cannot necessarily be dynamically detected by a client program. For
 example, the architecture of PCI enables a client to probe and detect
 attached devices, and thus device tree nodes describing PCI devices
@@ -588,7 +590,7 @@ Properties might have an empty value if conveying true-false
 information. In this case, the presence or absence of the property is
 sufficiently descriptive.
 
-Table 2-3 describes the set of basic value types defined by the ePAPR.
+Table 2-3 describes the set of basic value types defined by the {spec}.
 
 .Table 2-3 Property values
 [option="header", cols="^10,90"]
@@ -662,9 +664,9 @@ address+11  00  '\n'
 |===
 
 === Standard Properties
-The ePAPR specifies a set of standard properties for device nodes. These
+The {spec} specifies a set of standard properties for device nodes. These
 properties are described in detail in this section. Device nodes defined
-by the ePAPR (see Chapter 3, Device Node Requirements) may specify
+by the {spec} (see Chapter 3, Device Node Requirements) may specify
 additional requirements or constraints regarding the use of the standard
 properties. Device bindings (Chapter 6) that describe the representation
 of specific devices may also specify additional requirements.
@@ -809,7 +811,7 @@ property.
 The #address-cells and #size-cells properties are not inherited from
 ancestors in the device tree. They shall be explicitly defined.
 
-An ePAPR-compliant boot program shall supply #address-cells and
+An {spec}-compliant boot program shall supply #address-cells and
 #size-cells on all nodes that have children.
 
 If missing, a client program should assume a default value of 2 for
@@ -1001,7 +1003,7 @@ Each triplet specified describes a contiguous DMA address range.
 .Description
 The name property is a string specifying the name of the node. This
 property is deprecated, and its use is not recommended. However, it
-might be used in older non-ePAPR-compliant device trees.  Operating
+might be used in older non-{spec}-compliant device trees.  Operating
 system should determine a node's name based on the name component of the
 node name (see section 2.2.1).
 ****
@@ -1015,12 +1017,12 @@ node name (see section 2.2.1).
 |===
 .Description
 The device_type property was used in IEEE 1275 to describe the device's
-FCode programming model. Because ePAPR does not have FCode, new use of
+FCode programming model. Because {spec} does not have FCode, new use of
 the property is deprecated, and it should be included only on cpu and
 memory nodes for compatibility with IEEE 1275–derived device trees.
 
 === Interrupts and Interrupt Mapping
-The ePAPR adopts the interrupt tree model of representing interrupts
+The {spec} adopts the interrupt tree model of representing interrupts
 specified in Open Firmware Recommended Practice: Interrupt Mapping,
 Version 0.9 <<7>>. Within the device tree a logical interrupt tree exists
 that represents the hierarchy and routing of interrupts in the platform
@@ -1432,7 +1434,7 @@ performed:
 == Device Node Requirements
 === Base Device Node Types
 The sections that follow specify the requirements for the base set of
-device nodes required in an ePAPR-compliant device tree.
+device nodes required in an {spec}-compliant device tree.
 
 All device trees shall have a root node and the following nodes shall be
 present at the root of all device trees:
@@ -1466,18 +1468,18 @@ recommended form of the property value is:
 For example:
 [listing]
 compatible = “fsl,mpc8572ds”
-|epapr-version |R |<string> a|This property shall contain the string: “ePAPR-<ePAPR version>”
+|epapr-version |R |<string> a|This property shall contain the string: “{spec}-<{spec} version>”
 
 where:
 ====
-<ePAPR version> is the text (without blanks) after the word
+<{spec} version> is the text (without blanks) after the word
 Version on the cover page of the PAPR spec that the platform
 adheres to
 ====
 
 For example:
 [listing]
-epapr-version = “ePAPR-1.1”
+epapr-version = “{spec}-1.1”
 |===
 
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
@@ -1791,7 +1793,7 @@ program recognizes any of the methods, it may use it. The value shall be
 one of the following:
 
 * "spin-table" The CPU is enabled with the spin table method
-defined in the ePAPR.
+defined in the {spec}.
 * "[vendor],[method]" An implementation-dependent string
 that describes the method by which a CPU is released from a "disabled"
 state. The required format is: "vendor,method" where vendor is a string
@@ -1800,7 +1802,7 @@ describing the vendorspecific mechanism.
 
 Example: "fsl,MPC8572DS"
 
-Note: Other methods may be added to later revisions of the ePAPR
+Note: Other methods may be added to later revisions of the {spec}
 specification.
 
 |cpu-release-addr |SD |<u64> a|The cpu-release-addr property is required
@@ -2062,17 +2064,17 @@ cpus {
 ----
 
 == Client Program Image Format
-This section describes the image format in which an ePAPR client is
-encoded in order to boot it from an ePAPR-compliant boot program. Two
+This section describes the image format in which an {spec} client is
+encoded in order to boot it from an {spec}-compliant boot program. Two
 variants on the image format are described: variable-address images and
-fixed-address images. ePAPR-compliant boot programs shall support client
+fixed-address images. {spec}-compliant boot programs shall support client
 images in the variable-address format, should support images in the
 fixed-address format, and may also support other formats not described
 in this document.
 
 === Variable Address Image Format
-This ePAPR image format is a constrained form of ELF (Executable and
-Linking Format, see <<17>>) executable. That is, an ePAPR client image
+This {spec} image format is a constrained form of ELF (Executable and
+Linking Format, see <<17>>) executable. That is, an {spec} client image
 shall be a valid ELF file, but also has additional requirements
 described in the next sections.
 
@@ -2088,7 +2090,7 @@ e_machine         EM_PPC(0x14)
 That is, it is a 32-bit Power shared-object image in 2's complement, big-endian
 format.
 
-Every ePAPR image shall have at least one program header of type PT_LOAD. It
+Every {spec} image shall have at least one program header of type PT_LOAD. It
 may also have other valid ELF program headers. The client image shall be
 arranged so that all its ELF program headers lie within the first 1024 bytes of
 the image.
@@ -2146,7 +2148,7 @@ environment, not the environment in which the entry point is executed.
 
 The code at the entry point shall be written so that it can be executed at any
 address. It shall establish a suitable environment in which the remainder of
-the client program executes. The ePAPR does not specify its method, but the
+the client program executes. The {spec} does not specify its method, but the
 task could involve:
 
 * Processing ELF relocations to relocate the client's own image to its loaded
@@ -2272,7 +2274,7 @@ Note: This address shall be 8 bytes aligned in memory.
 |R4 |0
 |R5 |0
 |R6 a|
-ePAPR magic value—to distinguish from non-ePAPR compliant firmware
+{spec} magic value—to distinguish from non-{spec} compliant firmware
 
 * For Book III-E CPUs shall be 0x45504150
 * For non-Book III-E CPUs shall be 0x65504150
@@ -2397,7 +2399,7 @@ implementation-specific mechanisms described in the following sections.
 
 ==== Spin Table
 ===== Overview
-The ePAPR defines a spin table mechanism for starting secondary CPUs.
+The {spec} defines a spin table mechanism for starting secondary CPUs.
 The boot program places all secondary CPUs into a loop where each CPU
 spins until the branch_address field in the spin table is updated
 specifying that the core is released.
@@ -2571,11 +2573,11 @@ Some CPUs have implementation-specific mechanisms to hold CPUs in reset
 (or otherwise inhibit them from executing instructions) and can also
 direct CPUs to arbitrary reset vectors.
 
-The use of implementation-specific mechanisms is permitted by the ePAPR.
+The use of implementation-specific mechanisms is permitted by the {spec}.
 CPUs with this capability are indicated by an implementation-specific
 value in the enable-method property of a CPU node. A client program can
 release these types of CPUs using implementation-specific means not
-specified by the ePAPR.
+specified by the {spec}.
 
 ==== Timebase Synchronization
 For configurations that use the spin table method of booting secondary
@@ -2592,7 +2594,7 @@ the implementation specific method.
 
 === Asymmetric Configuration Considerations
 For multiple CPUs in a partitioned or asymmetric (AMP) configuration,
-the ePAPR boot requirements apply independently to each domain or
+the {spec} boot requirements apply independently to each domain or
 partition. For example, a four-CPU system could be partitioned into
 three domains: one SMP domain with two CPUs and two UP domains each with
 one CPU. Each domain could have distinct client image, device tree, boot
@@ -2624,7 +2626,7 @@ Some recommended practices include:
    applicable for the new device.  This usage typically includes the reg
    and interrupts properties at a minimum.
 3. Use the conventions specified in section 6 (Device Bindings) if the
-   new device fits into one the ePAPR defined device classes.
+   new device fits into one the {spec} defined device classes.
 4. Use the miscellaneous property conventions specified in section
    6.1.2, if applicable.
 5. If new properties are needed by the binding, the recommended format
@@ -2919,7 +2921,7 @@ Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Defini
 Note: All other standard properties (section 2.3) are allowed but are optional.
 
 == Flat Device Tree Physical Structure
-An ePAPR boot program communicates the entire device tree to the client
+An {spec} boot program communicates the entire device tree to the client
 program as a single, linear, pointerless data structure known as the
 flattened device tree or device tree blob.
 
@@ -2960,10 +2962,10 @@ defined since the original definition of the format. Fields in the
 header give the version, so that the client program can determine if the
 device tree is encoded in a compatible format.
 
-This document describes only version 17 of the format. ePAPR-compliant
+This document describes only version 17 of the format. {spec}-compliant
 boot programs shall provide a device tree of version 17 or later, and
 should provide a device tree of a version that is backwards compatible
-with version 16. ePAPR-compliant client programs shall accept device
+with version 16. {spec}-compliant client programs shall accept device
 trees of any version backwards compatible with version 17 and may accept
 other versions as well.
 
@@ -3009,7 +3011,7 @@ memory reservation block (see 8.3) from the beginning of the header.
 
 version:: This field shall contain the version of the device tree data
 structure. The version is 17 if using the structure as defined in this
-document. An ePAPR boot program may provide the device tree of a later
+document. An {spec} boot program may provide the device tree of a later
 version, in which case this field shall contain the version number
 defined in whichever later document gives the details of that version.
 
@@ -3018,13 +3020,13 @@ device tree data structure with which the version used is backwards
 compatible. So, for the structure as defined in this document (version
 17), this field shall contain 16 because version 17 is backwards
 compatible with version 16, but not earlier versions. As per 8.1, an
-ePAPR boot program should provide a device tree in a format which is
+{spec} boot program should provide a device tree in a format which is
 backwards compatible with version 16, and thus this field shall always
 contain 16.
 
 boot_cpuid_phys:: This field shall contain the physical ID of the
 system's boot CPU. It shall be identical to the physical ID given in the
-reg property of that CPU node within the device tree.
+_reg_ property of that CPU node within the device tree.
 
 size_dt_strings:: This field shall contain the length in bytes of the
 strings block section of the device tree blob.
@@ -3039,10 +3041,10 @@ of areas in physical memory which are _reserved_; that is, which shall
 not be used for general memory allocations. It is used to protect vital
 data structures from being overwritten by the client program. For
 example, on some systems with an IOMMU, the TCE (translation control
-entry) tables initialized by an ePAPR boot program would need to be
+entry) tables initialized by an {spec} boot program would need to be
 protected in this manner. Likewise, any boot program code or data used
 during the client program's runtime would need to be reserved (e.g.,
-RTAS on Open Firmware platforms). The ePAPR does not require the boot
+RTAS on Open Firmware platforms). The {spec} does not require the boot
 program to provide any such runtime components, but it does not prohibit
 implementations from doing so as an extension.
 
@@ -3245,9 +3247,9 @@ shall have aligned offsets from the beginning of the device tree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
 ensure that the device tree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
-boundary. As described in 5.2 (Device Tree) an ePAPRcompliant boot
+boundary. As described in 5.2 (Device Tree) an {spec}compliant boot
 program shall load the device tree blob at such an aligned address
-before passing it to the client program. If an ePAPR client program
+before passing it to the client program. If an {spec} client program
 relocates the device tree blob in memory, it should only do so to
 another 8-byte aligned address.
 
