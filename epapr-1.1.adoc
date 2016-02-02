@@ -137,7 +137,7 @@ This specification, the {specfullname} ({spec}), provides a complete boot
 program to client program interface definition, combined with minimum system
 requirements that facilitate the development of a wide variety of embedded
 systems based on CPUs that implement the Power architecture as defined in the
-Power ISA(TM)<<1>>.
+Power ISA(TM)<<b1>>.
 
 This specification is targeted towards the requirements of embedded
 systems. An embedded system typically consists of system hardware, an
@@ -200,10 +200,10 @@ an overview of this syntax.
 === Relationship to IEEE(TM) 1275
 The {spec} is loosely related to the IEEE 1275 Open Firmware
 standard—_IEEE Standard for Boot (Initialization Configuration)
-Firmware: Core Requirements and Practices_ <<1>>.
+Firmware: Core Requirements and Practices_ <<b1>>.
 
 The original IEEE 1275 specification and its derivatives such as CHRP
-<<10>> and PAPR <<16>> address problems of general purpose
+<<b10>> and PAPR <<b16>> address problems of general purpose
 computers, such as how a single version of an operating system can work
 on several different computers within the same family and the problem of
 loading an operating system from user-installed I/O devices.
@@ -229,79 +229,79 @@ requirements or considerations for 32-bit and 64-bit addressing.
 
 === References
 [bibliography]
-- [[[1]]] _Power ISA(TM)_, Version 2.06 Revision B, July 23, 2010. It is
+- [[[b1]]] _Power ISA(TM)_, Version 2.06 Revision B, July 23, 2010. It is
   available from power.org (http://power.org)
 
-- [[[2]]] _Boot (Initialization Configuration) Firmware: Core
+- [[[b2]]] _Boot (Initialization Configuration) Firmware: Core
   Requirements and Practices_, 1994, This is the core standard (also
   known as IEEE 1275) that defines the device tree concept adopted by
   the {spec}. It is available from Global Engineering (http://global.ihs.com/).
 
-- [[[3]]] _PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
+- [[[b3]]] _PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
   (Initialization, Configuration) Firmware_, Version 2.1, Open Firmware
   Working Group, (http://playground.sun.com/1275/bindings/ppc/release/ppc-2_1.html),
   1996, This document specifies the PowerPC processor specific binding
   to the base standard.
 
-- [[[4]]] _booting-without-of.txt_, Ben Herrenschmidt, Becky Bruce, et al.,
+- [[[b4]]] _booting-without-of.txt_, Ben Herrenschmidt, Becky Bruce, et al.,
   From the Linux kernel source tree
   (http://www.kernel.org/), Describes the device tree as used by the Linux kernel.
 
-- [[[5]]] _Device Trees Everywhere_, David Gibson and Ben Herrenschmidt
+- [[[b5]]] _Device Trees Everywhere_, David Gibson and Ben Herrenschmidt
   (http://ozlabs.org/~dgibson/home/papers/dtc-paper.pdf),
   An overview of the concept of the device tree and device tree compiler.
 
-- [[[6]]] _PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
+- [[[b6]]] _PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
   (Initialization Configuration) Firmware_, Revision 2.1,
   Open Firmware Working Group, 1998
   (http://playground.sun.com/1275/bindings/pci/pci2_1.pdf)
 
-- [[[7]]] _Open Firmware Recommended Practice: Interrupt Mapping_, Version 0.9,
+- [[[b7]]] _Open Firmware Recommended Practice: Interrupt Mapping_, Version 0.9,
   Open Firmware Working Group, 1996
   (http://playground.sun.com/1275/practice/imap/imap0_9d.pdf)
 
-- [[[8]]] _Open Firmware Recommended Practice: Device Support Extensions_, Version 1.0,
+- [[[b8]]] _Open Firmware Recommended Practice: Device Support Extensions_, Version 1.0,
   Open Firmware Working Group, 1997,
   (http://playground.sun.com/1275/practice/devicex/dse1_0a.html)
   This document describes the binding for various device types such as
   network, RTC, keyboard, sound, etc.
 
-- [[[9]]] _Open Firmware Recommended Practice: Universal Serial Bus
+- [[[b9]]] _Open Firmware Recommended Practice: Universal Serial Bus
   Binding to IEEE 1275_, Version 1,
   Open Firmware Working Group, 1998
   (http://playground.sun.com/1275/bindings/usb/usb-1_0.ps)
 
-- [[[10]]] _PowerPC Microprocessor Common Hardware Reference Platform (CHRP)
+- [[[b10]]] _PowerPC Microprocessor Common Hardware Reference Platform (CHRP)
   Binding_, Version 1.8,
   Open Firmware Working Group, 1998
   (http://playground.sun.com/1275/bindings/chrp/chrp1_8a.ps).
   This document specifies the properties for Open PIC-compatible
   interrupt controllers.
 
-- [[[11]]] _CHRP ISA Interrupt Controller Device Binding_,
+- [[[b11]]] _CHRP ISA Interrupt Controller Device Binding_,
   Unapproved Draft version 1.1,
   Open Firmware Working Group, Aug 19, 1996
   (http://playground.sun.com/1275/bindings/devices/postscript/isa-pic-1_1d.ps)
 
-- [[[12]]] _The Open Programmable Interrupt Controller (PIC) Register
+- [[[b12]]] _The Open Programmable Interrupt Controller (PIC) Register
   Interface Specification_, Revision 1.2,
   Advanced Micro Devices and Cyrix Corporation, October 1995
 
-- [[[13]]] _PCI Local Bus Specification_, Revision 2.2, PCI Special Interest Group
-- [[[14]]] _PCI Express Base Specification_, Revision 1.0a, PCI Special Interest Group
-- [[[15]]] _PCI-Express Binding to OF_, P1275 Openboot Working Group Proposal, 18 August 2004
-- [[[16]]] _Power.org Standard for Power Architecture Platform Requirements_, power.org
+- [[[b13]]] _PCI Local Bus Specification_, Revision 2.2, PCI Special Interest Group
+- [[[b14]]] _PCI Express Base Specification_, Revision 1.0a, PCI Special Interest Group
+- [[[b15]]] _PCI-Express Binding to OF_, P1275 Openboot Working Group Proposal, 18 August 2004
+- [[[b16]]] _Power.org Standard for Power Architecture Platform Requirements_, power.org
 
-- [[[17]]] _System V Application Binary Interface, Edition 4.1_,
+- [[[b17]]] _System V Application Binary Interface, Edition 4.1_,
   Published by The Santa Cruz Operation, Inc., 1997
 
-- [[[18]]] _The Open Programmable Interrupt Controller (PIC) Register
+- [[[b18]]] _The Open Programmable Interrupt Controller (PIC) Register
   Interface Specification Revision 1.2_, AMD and Cyrix, October 1995
 
-- [[[19]]] _RFC 2119, Key words for use in RFCs to Indicate Requirement
+- [[[b19]]] _RFC 2119, Key words for use in RFCs to Indicate Requirement
   Levels_, http://www.ietf.org/rfc/rfc2119.txt
 
-- [[[20]]] _64-bit PowerPC ELF Application Binary Interface Supplement
+- [[[b20]]] _64-bit PowerPC ELF Application Binary Interface Supplement
   1.9_, Ian Lance Taylor, 2004
 
 === Definition of Terms
@@ -392,7 +392,7 @@ PCI host bridge device in the system if it cannot be detected by
 probing.
 
 .Example
-<<Figure 2-1>> shows an example representation of a simple device tree that
+Figure 2-1 shows an example representation of a simple device tree that
 is nearly complete enough to boot a simple operating system, with the
 platform type, CPU, and memory described. Device nodes are shown with
 properties and values shown beside the node.
@@ -1024,7 +1024,7 @@ memory nodes for compatibility with IEEE 1275–derived device trees.
 === Interrupts and Interrupt Mapping
 The {spec} adopts the interrupt tree model of representing interrupts
 specified in _Open Firmware Recommended Practice: Interrupt Mapping,
-Version 0.9_ <<7>>. Within the device tree a logical interrupt tree exists
+Version 0.9_ <<b7>>. Within the device tree a logical interrupt tree exists
 that represents the hierarchy and routing of interrupts in the platform
 hardware. While generically referred to as an interrupt tree it is more
 technically a directed acyclic graph.
@@ -2075,7 +2075,7 @@ in this document.
 
 === Variable Address Image Format
 This {spec} image format is a constrained form of ELF (Executable and
-Linking Format, see <<17>>) executable. That is, an {spec} client image
+Linking Format, see <<b17>>) executable. That is, an {spec} client image
 shall be a valid ELF file, but also has additional requirements
 described in the next sections.
 
@@ -2870,7 +2870,7 @@ This section specifies the requirements for representing open PIC
 compatible interrupt controllers. An open PIC interrupt controller
 implements the open PIC architecture (developed jointly by AMD and
 Cyrix) and specified in The Open Programmable Interrupt Controller (PIC)
-Register Interface Specification Revision 1.2 <<18>>.
+Register Interface Specification Revision 1.2 <<b18>>.
 
 Interrupt specifiers in an open PIC interrupt domain are encoded with
 two cells. The first cell defines the interrupt number. The second cell
