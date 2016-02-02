@@ -635,7 +635,7 @@ address+1  65  'e'
 address+2  6C  'l'
 address+3  6C  'l'
 address+4  6F  'o'
-address+5  00  '\n'
+address+5  00  '\0'
 
 |<prop-encoded-array> |Format is specific to the property. See the
 property definition.
@@ -654,13 +654,13 @@ Example: The string list “hello”,“world” would be represented in memory 
  address+2  6C  'l'
  address+3  6C  'l'
  address+4  6F  'o'
- address+5  00  '\n'
+ address+5  00  '\0'
  address+6  77  'w'
  address+7  6f  'o'
  address+8  72  'r'
  address+9  6C  'l'
 address+10  64  'd'
-address+11  00  '\n'
+address+11  00  '\0'
 |===
 
 === Standard Properties
