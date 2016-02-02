@@ -677,11 +677,11 @@ Tree Source (DTS) format for specifying nodes and properties.
 ==== compatible
 [cols="10,90"]
 |===
-|Property |compatible
-|Value type |<stringlist>
+|Property |_compatible_
+|Value type |_<stringlist>_
 |===
 .Description
-The compatible property value consists of one or more strings that
+The _compatible_ property value consists of one or more strings that
 define the specific programming model for the device. This list of
 strings should be used by a client program for device driver selection.
 The property value consists of a concatenated list of null terminated
@@ -689,9 +689,9 @@ strings, from most specific to most general. They allow a device to
 express its compatibility with a family of similar devices, potentially
 allowing a single device driver to match against several devices.
 
-The recommended format is “manufacturer,model”, where manufacturer is a
+The recommended format is ``“manufacturer,model”``, where ``manufacturer`` is a
 string describing the name of the manufacturer (such as a stock ticker
-symbol), and model specifies the model number.
+symbol), and ``model`` specifies the model number.
 
 .Example
 [listing]
@@ -705,16 +705,17 @@ ns16550 device type.
 ==== model
 [cols="10,90"]
 |===
-|Property |model
-|Value type |<stringlist>
+|Property |_model_
+|Value type |_<stringlist>_
 |===
 .Description
 The model property value is a <string> that specifies the manufacturer's
 model number of the device.
 
-The recommended format is: “manufacturer,model”, where manufacturer is a
+The recommended format is: ``“manufacturer,model”``, where ``manufacturer`` is a
 string describing the name of the manufacturer (such as a stock ticker
 symbol), and model specifies the model number.
+// TODO: ARM boards use a free form string here
 .Example
 [listing]
 model = “fsl,MPC8349EMITX”;
@@ -723,13 +724,12 @@ model = “fsl,MPC8349EMITX”;
 [cols="10,90"]
 |===
 |Property |_phandle_
-|Value type |<u32>
+|Value type |_<u32>_
 |===
 .Description
-The phandle property specifies a numerical identifier for a node that is
-unique within the device tree. The phandle property value is used by
-other nodes that need to refer to the node associated with the
-property.
+The _phandle_ property specifies a numerical identifier for a node that is
+unique within the device tree. The _phandle_ property value is used by
+other nodes that need to refer to the node associated with the property.
 .Example
 See the following device tree excerpt:
 
@@ -739,7 +739,7 @@ pic@10000000 {
 	interrupt-controller;
 };
 
-A phandle value of 1 is defined. Another device node could reference the
+A _phandle_ value of 1 is defined. Another device node could reference the
 pic node with a phandle value of 1:
 
 [listing]
@@ -748,9 +748,9 @@ interrupt-parent = <1>;
 .Compatibility Note
 ****
 Older versions of device trees may be encountered that contain a
-deprecated form of this property called linux,phandle. For
-compatibility, a client program might want to support linux,phandle if a
-phandle property is not present. The meaning and use of the two
+deprecated form of this property called ``linux,phandle``. For
+compatibility, a client program might want to support ``linux,phandle`` if
+a ``phandle`` property is not present. The meaning and use of the two
 properties is identical.
 ****
 
@@ -758,7 +758,7 @@ properties is identical.
 ****
 Most device trees in Device Tree Syntax (DTS) (see Appendix A) will not
 contain explicit phandle properties. The DTC tool automatically inserts
-the phandle properties when the DTS is compiled into the binary DTB
+the ``phandle`` properties when the DTS is compiled into the binary DTB
 format.
 ****
 
@@ -766,10 +766,10 @@ format.
 [cols="10,90"]
 |===
 |Property |_status_
-|Value type |<string>
+|Value type |_<string>_
 |===
 .Description
-The status property indicates the operational status of a device. Valid
+The _status_ property indicates the operational status of a device. Valid
 values are listed and defined in the following table.
 
 .Table 2-4 Values for status property
@@ -797,25 +797,25 @@ the device and indicates the error condition detected.
 [cols="10,90"]
 |===
 |Property |_#address-cells_, _#size-cells_
-|Value type |<u32>
+|Value type |_<u32>_
 |===
 .Description
-The #address-cells and #size-cells properties may be used in any device
+The _#address-cells_ and _#size-cells_ properties may be used in any device
 node that has children in the device tree hierarchy and describes how
-child device nodes should be addressed. The #address-cells property
+child device nodes should be addressed. The _#address-cells_ property
 defines the number of <u32> cells used to encode the address field in a
-child node's reg property. The #size-cells property defines the number
-of <u32> cells used to encode the size field in a child node's reg
+child node's _reg_ property. The _#size-cells_ property defines the number
+of <u32> cells used to encode the size field in a child node's _reg_
 property.
 
-The #address-cells and #size-cells properties are not inherited from
+The _#address-cells_ and _#size-cells_ properties are not inherited from
 ancestors in the device tree. They shall be explicitly defined.
 
-An {spec}-compliant boot program shall supply #address-cells and
-#size-cells on all nodes that have children.
+An {spec}-compliant boot program shall supply _#address-cells_ and
+_#size-cells_ on all nodes that have children.
 
 If missing, a client program should assume a default value of 2 for
-#address-cells, and a value of 1 for #size-cells.
+_#address-cells_, and a value of 1 for _#size-cells_.
 
 .Example
 See the device tree fragment shown in Figure 2-3.
@@ -838,12 +838,12 @@ interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
 ----
 
-In Figure 2-3, the #address-cells and #size-cells properties of the soc
+In Figure 2-3, the _#address-cells_ and _#size-cells_ properties of the soc
 node are both set to 1. This setting specifies that one cell is required
 to represent an address and one cell is required to represent the size
 of nodes that are children of this node.
 
-The serial device reg property necessarily follows this specification
+The serial device _reg_ property necessarily follows this specification
 set in the parent (soc) node—the address is represented by a single cell
 (0x4600), and the size is represented by a single cell (0x100).
 
@@ -851,27 +851,27 @@ set in the parent (soc) node—the address is represented by a single cell
 [cols="10,90"]
 |===
 |Property |_reg_
-|Value type |<prop-encoded-array> encoded as arbitrary number of (address,length) pairs.
+|Value type |_<prop-encoded-array>_ encoded as arbitrary number of (address,length) pairs.
 |===
 .Description
-The reg property describes the address of the device's resources within
+The _reg_ property describes the address of the device's resources within
 the address space defined by its parent bus. Most commonly this means
 the offsets and lengths of memory-mapped IO register blocks, but may
 have a different meaning on some bus types. Addresses in the address
 space defined by root node are cpu real addresses.
 
-The value is a <prop-encoded-array>, composed of an arbitrary number of
-pairs of address and length, <address length>. The number of <u32> cells
+The value is a _<prop-encoded-array>_, composed of an arbitrary number of
+pairs of address and length, _<address length>_. The number of _<u32>_ cells
 required to specify the address and length are bus-specific and are
-specified by the #address-cells and #size-cells properties in the parent
+specified by the _#address-cells_ and _#size-cells_ properties in the parent
 of the device node. If the parent node specifies a value of 0 for
-#size-cells, the length field in the value of reg shall be omitted.
+_#size-cells_, the length field in the value of _reg_ shall be omitted.
 
 .Example
 Suppose a device within a system-on-a-chip had two blocks of
 registers—a 32-byte block at offset 0x3000 in the SOC and a 256-byte
-block at offset 0xFE00. The reg property would be encoded as follows
-(assuming #address-cells and #size-cells values of 1):
+block at offset 0xFE00. The _reg_ property would be encoded as follows
+(assuming _#address-cells_ and _#size-cells_ values of 1):
 
 [listing]
 reg = <0x3000 0x20 0xFE00 0x100>;
@@ -880,11 +880,11 @@ reg = <0x3000 0x20 0xFE00 0x100>;
 [cols="10,90"]
 |===
 |Property |_virtual-reg_
-|Value type |<u32>
+|Value type |_<u32>_
 |===
 .Description
-The virtual-reg property specifies an effective address that maps to the
-first physical address specified in the reg property of the device node.
+The _virtual-reg_ property specifies an effective address that maps to the
+first physical address specified in the _reg_ property of the device node.
 This property enables boot programs to provide client programs with
 virtual-to-physical mappings that have been set up.
 
@@ -892,28 +892,28 @@ virtual-to-physical mappings that have been set up.
 [cols="10,90"]
 |===
 |Property |_ranges_
-|Value type |<empty> or <prop-encoded-array> encoded as arbitrary number
-of triplets of (child-busaddress, parent-bus-address, length).
+|Value type |_<empty>_ or _<prop-encoded-array>_ encoded as arbitrary number
+of triplets of (_child-bus-address_, _parent-bus-address_, _length_).
 |===
 .Description
-The ranges property provides a means of defining a mapping or
+The _ranges_ property provides a means of defining a mapping or
 translation between the address space of the bus (the child address
 space) and the address space of the bus node's parent (the parent
 address space).
 
-The format of the value of the ranges property is an arbitrary number of
-triplets of (child-busaddress, parent-bus-address, length)
-* The child-bus-address is a physical address within the child bus'
+The format of the value of the _ranges_ property is an arbitrary number of
+triplets of (_child-bus-address_, _parent-bus-address_, _length_)
+* The _child-bus-address_ is a physical address within the child bus'
   address space. The number of cells to represent the address is bus
-  dependent and can be determined from the #address-cells of this node
-  (the node in which the ranges property appears).
-* The parent-bus-address is a physical address within the parent bus'
+  dependent and can be determined from the _#address-cells_ of this node
+  (the node in which the _ranges_ property appears).
+* The _parent-bus-address_ is a physical address within the parent bus'
   address space. The number of cells to represent the parent address is
-  bus dependent and can be determined from the #address-cells property
+  bus dependent and can be determined from the _#address-cells_ property
   of the node that defines the parent's address space.
-* The length specifies the size of the range in the child's address
+* The _length_ specifies the size of the range in the child's address
   space. The number of cells to represent the size can be determined
-  from the #size-cells of this node (the node in which the ranges
+  from the _#size-cells_ of this node (the node in which the _ranges_
   property appears).
 
 If the property is defined with an <empty> value, it specifies that the
@@ -934,7 +934,7 @@ soc
 
 compatible = "simple-bus";
 #address-cells = <1>;
-#size-cells = <1>;
+_#size-cells_ = <1>;
 ranges = <0x0 0xe0000000 0x00100000>;
 
 serial
@@ -947,22 +947,22 @@ interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
 ----
 
-In Figure 2-4, the soc node specifies a ranges property of
+In Figure 2-4, the ``soc`` node specifies a _ranges_ property of
 
 [listing]
 <0x0 0xe0000000 0x00100000>;
 
 This property value specifies that for an 1024KB range of address space,
 a child node addressed at physical 0x0 maps to a parent address of
-physical 0xe0000000. With this mapping, the serial device node can be
+physical 0xe0000000. With this mapping, the ``serial`` device node can be
 addressed by a load or store at address 0xe0004600, an offset of 0x4600
-(specified in reg) plus the 0xe0000000 mapping specified in _ranges_.
+(specified in _reg_) plus the 0xe0000000 mapping specified in _ranges_.
 
 ==== dma-ranges
 [cols="10,90"]
 |===
 |Property |_dma-ranges_
-|Value type |<empty> or <prop-encoded-array> encoded as arbitrary number
+|Value type |_<empty>_ or _<prop-encoded-array>_ encoded as arbitrary number
 of triplets of (_child-bus-address_, _parent-bus-address_, _length_).
 |===
 .Description
@@ -973,23 +973,23 @@ means of defining a mapping or translation between the physical address
 space of the bus and the physical address space of the parent of the
 bus.
 
-The format of the value of the dma-ranges property is an arbitrary
-number of triplets of (child-bus-address, parent-bus-address, length).
+The format of the value of the _dma-ranges_ property is an arbitrary
+number of triplets of (_child-bus-address_, _parent-bus-address, _length_).
 Each triplet specified describes a contiguous DMA address range.
 
-* The child-bus-address is a physical address within the child bus'
+* The _child-bus-address_ is a physical address within the child bus'
   address space. The number of cells to represent the address depends on
-  the bus and can be determined from the #address-cells of this node
-  (the node in which the dma-ranges property appears).
+  the bus and can be determined from the _#address-cells_ of this node
+  (the node in which the _dma-ranges_ property appears).
 
-* The parent-bus-address is a physical address within the parent bus'
+* The _parent-bus-address_ is a physical address within the parent bus'
   address space.  The number of cells to represent the parent address is
-  bus dependent and can be determined from the #address-cells property
+  bus dependent and can be determined from the _#address-cells_ property
   of the node that defines the parent's address space.
 
-* The length specifies the size of the range in the child's address
+* The _length_ specifies the size of the range in the child's address
   space. The number of cells to represent the size can be determined
-  from the #size-cells of this node (the node in which the dma-ranges
+  from the _#size-cells_ of this node (the node in which the dma-ranges
   property appears).
 
 ==== name
@@ -1001,10 +1001,10 @@ Each triplet specified describes a contiguous DMA address range.
 |Value type |<string>
 |===
 .Description
-The name property is a string specifying the name of the node. This
+The _name_ property is a string specifying the name of the node. This
 property is deprecated, and its use is not recommended. However, it
 might be used in older non-{spec}-compliant device trees.  Operating
-system should determine a node's name based on the name component of the
+system should determine a node's name based on the _name_ component of the
 node name (see section 2.2.1).
 ****
 
@@ -1013,37 +1013,37 @@ node name (see section 2.2.1).
 [cols="10,90"]
 |===
 |Property |_device_type_
-|Value type |<string>
+|Value type |_<string>_
 |===
 .Description
-The device_type property was used in IEEE 1275 to describe the device's
+The _device_type_ property was used in IEEE 1275 to describe the device's
 FCode programming model. Because {spec} does not have FCode, new use of
 the property is deprecated, and it should be included only on cpu and
 memory nodes for compatibility with IEEE 1275–derived device trees.
 
 === Interrupts and Interrupt Mapping
 The {spec} adopts the interrupt tree model of representing interrupts
-specified in Open Firmware Recommended Practice: Interrupt Mapping,
-Version 0.9 <<7>>. Within the device tree a logical interrupt tree exists
+specified in _Open Firmware Recommended Practice: Interrupt Mapping,
+Version 0.9_ <<7>>. Within the device tree a logical interrupt tree exists
 that represents the hierarchy and routing of interrupts in the platform
 hardware. While generically referred to as an interrupt tree it is more
 technically a directed acyclic graph.
 
 The physical wiring of an interrupt source to an interrupt controller is
-represented in the device tree with the interrupt-parent property. Nodes
-that represent interrupt-generating devices contain an interrupt-parent
-property which has a phandle value that points to the device to which
+represented in the device tree with the _interrupt-parent_ property. Nodes
+that represent interrupt-generating devices contain an _interrupt-parent_
+property which has a _phandle_ value that points to the device to which
 the device's interrupts are routed, typically an interrupt controller.
-If an interrupt-generating device does not have an interrupt-parent
+If an interrupt-generating device does not have an _interrupt-parent_
 property, its interrupt parent is assumed to be its device tree parent.
 
-Each interrupt generating device contains an interrupts property with a
+Each interrupt generating device contains an _interrupts_ property with a
 value describing one or more interrupt sources for that device—each
-source represented with information called an interrupt specifier. The
-format and meaning of an interrupt specifier is interrupt domain
+source represented with information called an _interrupt specifier_. The
+format and meaning of an _interrupt specifier_ is interrupt domain
 specific, i.e., it is dependent on properties on the node at the root of
-its interrupt domain. The #interrupt-cells property is used by the root
-of an interrupt domain to define the number of <u32> values needed to
+its interrupt domain. The _#interrupt-cells_ property is used by the root
+of an interrupt domain to define the number of _<u32>_ values needed to
 encode an interrupt specifier. For example, for an Open PIC interrupt
 controller, an interrupt-specifer takes two 32-bit values and consists
 of an interrupt number and level/sense information for the interrupt.
@@ -1052,21 +1052,21 @@ An interrupt domain is the context in which an interrupt specifier is
 interpreted. The root of the domain is either (1) an interrupt
 controller or (2) an interrupt nexus.
 
-1. An interrupt controller is physical device and will need a driver to
+1. An _interrupt controller_ is physical device and will need a driver to
 handle interrupts routed through it. It may also cascade into another
 interrupt domain. An interrupt controller is specified by the presence
-of an interrupt-controller property on that node in the device tree.
-2. An interrupt nexus defines a translation between one interrupt domain
+of an _interrupt-controller_ property on that node in the device tree.
+2. An _interrupt nexus_ defines a translation between one interrupt domain
 and another. The translation is based on both domain-specific and
 bus-specific information. This translation between domains is performed
-with the interrupt-map property. For example, a PCI controller device
+with the _interrupt-map_ property. For example, a PCI controller device
 node could be an interrupt nexus that defines a translation from the PCI
 interrupt namespace (INTA, INTB, etc.) to an interrupt controller with
 Interrupt Request (IRQ) numbers.
 
 The root of the interrupt tree is determined when traversal of the
 interrupt tree reaches an interrupt controller node without an
-interrupts property and thus no explicit interrupt parent.
+_interrupts_ property and thus no explicit interrupt parent.
 
 See Figure 2-5 for an example of a graphical representation of a device
 tree with interrupt parent relationships shown. Figure 2-6 shows the
@@ -1133,27 +1133,28 @@ domains
 ----
 
 In the example shown in Figure 2-5 and Figure 2-6 :
-* The open-pic interrupt controller is the root of the interrupt tree.
+
+* The ``open-pic`` interrupt controller is the root of the interrupt tree.
 * The interrupt tree root has three children—devices that route their
-  interrupts directly to the open-pic
-** device1
-** device2
-** PCI bus controller
-* Three interrupt domains exist—one rooted at the open-pic node, one at
-  the PCI host bridge node, and one at the PCI-PCI bridge node.
-* There are two nexus nodes— one at the PCI host bridge and one at the
-  PCI-PCI bridge
+  interrupts directly to the ``open-pic``
+** ``device1``
+** ``device2``
+** ``PCI bus controller``
+* Three interrupt domains exist—one rooted at the ``open-pic`` node, one at
+  the ``PCI host bridge`` node, and one at the ``PCI-PCI bridge`` node.
+* There are two nexus nodes— one at the ``PCI host bridge`` and one at the
+  ``PCI-PCI bridge``
 
 
 ==== Properties for Interrupt Generating Devices
 ===== interrupts
-Property: interrupts
+Property: _interrupts_
 
-Value type: <prop-encoded-array> encoded as arbitrary number of interrupt specifiers
+Value type: _<prop-encoded-array>_ encoded as arbitrary number of interrupt specifiers
 
 .Description
-The interrupts property of a device node defines the interrupt or
-interrupts that are generated by the device. The value of the interrupts
+The _interrupts_ property of a device node defines the interrupt or
+interrupts that are generated by the device. The value of the _interrupts_
 property consists of an arbitrary number of interrupt specifiers. The
 format of an interrupt specifier is defined by the binding of the
 interrupt domain root.
@@ -1169,108 +1170,108 @@ level/sense encoding of 8.
 interrupts = <0xA 8>;
 
 ===== interrupt-parent
-Property: interrupt-parent
+Property: _interrupt-parent_
 
-Value type: <phandle>
+Value type: _<phandle>_
 
 .Description
 Because the hierarchy of the nodes in the interrupt tree might not match
-the device tree, the interrupt-parent property is available to make the
+the device tree, the _interrupt-parent_ property is available to make the
 definition of an interrupt parent explicit.  The value is the phandle to
 the interrupt parent. If this property is missing from a device, its
 interrupt parent is assumed to be its device tree parent.
 
 ==== Properties for Interrupt Controllers
 ===== #interrupt-cells
-Property: #interrupt-cells
+Property: _#interrupt-cells_
 
-Value type: <u32>
+Value type: _<u32>_
 
 .Description
-The #interrupt-cells property defines the number of cells required to
+The _#interrupt-cells_ property defines the number of cells required to
 encode an interrupt specifier for an interrupt domain.
 
 ===== interrupt-controller
-Property: interrupt-controller
+Property: _interrupt-controller_
 
-Value type: <empty>
+Value type: _<empty>_
 
 .Description
-The presence of an interrupt-controller property defines a node as an
+The presence of an _interrupt-controller_ property defines a node as an
 interrupt controller node.
 
 ==== Interrupt Nexus Properties
 
-An interrupt nexus node shall have an #interrupt-cells property.
+An interrupt nexus node shall have an _#interrupt-cells_ property.
 
 ===== interrupt-map
-Property: interrupt-map
+Property: _interrupt-map_
 
-Value type: <prop-encoded-array> encoded as an arbitrary number of interrupt mapping entries.
+Value type: _<prop-encoded-array>_ encoded as an arbitrary number of interrupt mapping entries.
 
 .Description
-An interrupt-map is a property on a nexus node that bridges one
+An _interrupt-map_ is a property on a nexus node that bridges one
 interrupt domain with a set of parent interrupt domains and specifies
 how interrupt specifiers in the child domain are mapped to their
 respective parent domains.
 
 The interrupt map is a table where each row is a mapping entry
-consisting of five components: child unit address, child interrupt
-specifier, interrupt-parent, parent unit address, parent interrupt
-specifier.
+consisting of five components: _child unit address_, _child interrupt
+specifier_, _interrupt-parent_, _parent unit address_, _parent interrupt
+specifier_.
 
 child unit address:: The unit address of the child node being mapped.
 The number of 32-bit cells required to specify this is described by the
-#address-cells property of the bus node on which the child is located.
+_#address-cells_ property of the bus node on which the child is located.
 
 child interrupt specifier:: The interrupt specifier of the child node
 being mapped.  The number of 32-bit cells required to specify this
-component is described by the #interrupt-cells property of this node—the
-nexus node containing the interrupt-map property.
+component is described by the _#interrupt-cells_ property of this node—the
+nexus node containing the _interrupt-map_ property.
 
-interrupt-parent:: A single <phandle> value that points to the interrupt
+interrupt-parent:: A single _<phandle>_ value that points to the interrupt
 parent to which the child domain is being mapped.
 
 parent unit address:: The unit address in the domain of the interrupt
 parent. The number of 32-bit cells required to specify this address is
-described by the #addresscells property of the node pointed to by the
+described by the _#address-cells_ property of the node pointed to by the
 interrupt-parent field.
 
 parent interrupt specifier:: The interrupt specifier in the parent
 domain. The number of 32-bit cells required to specify this component is
-described by the #interrupt-cells property of this node—the nexus node
-containing the interrupt-map property.
+described by the _#interrupt-cells_ property of this node—the nexus node
+containing the _interrupt-map_ property.
 
 Lookups are performed on the interrupt mapping table by matching a
 unit-address/interrupt specifier pair against the child components in
 the interrupt-map. Because some fields in the unit interrupt specifier
 may not be relevant, a mask is applied before the lookup is done. This
-mask is defined in the interrupt-map-mask property (see section
+mask is defined in the _interrupt-map-mask_ property (see section
 2.4.3.2).
 
 Note: Both the child node and the interrupt parent node are required to
-have #address-cells and #interrupt-cells properties defined. If a unit
-address component is not required, #address-cells shall be explicitly
+have _#address-cells_ and _#interrupt-cells_ properties defined. If a unit
+address component is not required, _#address-cells_ shall be explicitly
 defined to be zero.
 
 ===== interrupt-map-mask
-Property: interrupt-map-mask
+Property: _interrupt-map-mask_
 
-Value type: <prop-encoded-array> encoded as a bit mask
+Value type: _<prop-encoded-array>_ encoded as a bit mask
 
 .Description
-An interrupt-map-mask property is specified for a nexus node in the
+An _interrupt-map-mask_ property is specified for a nexus node in the
 interrupt tree. This property specifies a mask that is applied to the
 incoming unit interrupt specifier being looked up in the table specified
-in the interrupt-map property.
+in the _interrupt-map_ property.
 
-===== #interrupts-cells
-Property: #interrupts-cells
+===== #interrupt-cells
+Property: _#interrupt-cells_
 
 Value type: <u32>
 
 .Description
-The #interrupt-cells property defines the number of cells required to
+The _#interrupt-cells_ property defines the number of cells required to
 encode an interrupt specifier for an interrupt domain.
 
 ==== Interrupt Mapping Example
@@ -1354,10 +1355,10 @@ INTD
 ----
 
 One Open PIC interrupt controller is represented and is identified as an
-interrupt controller with an interrupt-controller property.
+interrupt controller with an _interrupt-controller_ property.
 
 Each row in the interrupt-map table consists of five parts—a child unit
-address and interrupt specifier, which is mapped to an interrupt-parent
+address and interrupt specifier, which is mapped to an _interrupt-parent_
 node with a specified parent unit address and interrupt specifier.
 
 For example, the first row of the interrupt-map table specifies the
@@ -1388,27 +1389,27 @@ unit address specifier
 is empty
 ----
 
-* The child unit address is <0x8800 0 0>. This value is encoded with
+* The child unit address is ``<0x8800 0 0>``. This value is encoded with
   three 32-bit cells, which is determined by the value of the
-  #address-cells property (value of 3) of the PCI controller. The three
+  _#address-cells_ property (value of 3) of the PCI controller. The three
   cells represent the PCI address as described by the binding for the
   PCI bus.
 ** The encoding includes the bus number (0x0 << 16), device number (0x11
    << 11), and function number (0x0 << 8).
-* The child interrupt specifier is <1>, which specifies INTA as
+* The child interrupt specifier is ``<1>``, which specifies INTA as
   described by the PCI binding. This takes one 32-bit cell as specified
-  by the #interrupt-cells property (value of 1) of the PCI controller,
+  by the _#interrupt-cells_ property (value of 1) of the PCI controller,
   which is the child interrupt domain.
 * The interrupt parent is specified by a phandle which points to the
   interrupt parent of the slot, the Open PIC interrupt controller.
 * The parent has no unit address because the parent interrupt domain
-  (the open-pic node) has an #address-cells value of 0.
+  (the open-pic node) has an _#address-cells_ value of 0.
 * The parent interrupt specifier is <2 1>. The number of cells to
   represent the interrupt specifier (two cells) is determined by
-  the #interrupt-cells property on the interrupt parent, the open-pic
+  the _#interrupt-cells_ property on the interrupt parent, the open-pic
   node.
-** The value <2 1> is a value specified by the device binding for the
-   Open PIC interrupt controller (see section 6.5). The value <2>
+** The value ``<2 1>`` is a value specified by the device binding for the
+   Open PIC interrupt controller (see section 6.5). The value ``<2>``
    specifies the physical interrupt source number on the interrupt
    controller to which INTA is wired. The value <1> specifies the
    level/sense encoding.
@@ -1421,15 +1422,15 @@ To perform a lookup of the open-pic interrupt source number for INTB for
 IDSEL 0x12 (slot 2), function 0x3, the following steps would be
 performed:
 
-* The child unit address and interrupt specifier form the value <0x9300 0 0 2>.
+* The child unit address and interrupt specifier form the value ``<0x9300 0 0 2>``.
 ** The encoding of the address includes the bus number (0x0 << 16),
    device number (0x12 << 11), and function number (0x3 << 8).
 ** The interrupt specifier is 2, which is the encoding for INTB as per
    the PCI binding.
-* The interrupt-map-mask value <0xf800 0 0 7> is applied, giving a
-  result of <0x9000 0 0 2>.
-* That result is looked up in the interrupt-map table, which maps to the
-  parent interrupt specifier <4 1>.
+* The interrupt-map-mask value ``<0xf800 0 0 7>`` is applied, giving a
+  result of ``<0x9000 0 0 2>``.
+* That result is looked up in the _interrupt-map_ table, which maps to the
+  parent interrupt specifier ``<4 1>``.
 
 == Device Node Requirements
 === Base Device Node Types
@@ -1451,9 +1452,9 @@ are descendants. The full path to the root node is /.
 |===
 |Property Name |Usage |Value Type |Definition
 |#address-cells |R |<u32> |Specifies the number of <u32> cells to
-represent the address in the reg property in children of root.
+represent the address in the _reg_ property in children of root.
 |#size-cells |R |<u32> |Specifies the number of <u32> cells to represent
-the size in the reg property in children of root.
+the size in the _reg_ property in children of root.
 |model |R |<string> |Specifies a string that uniquely identifies the
 model of the system board. The recommended format is
 “manufacturer,model-number”.
@@ -1531,7 +1532,7 @@ and determine the alias refers to the device path
 A memory device node is required for all device trees and describes the
 physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
-specified in the reg property of a single memory node.
+specified in the _reg_ property of a single memory node.
 
 The name component of the node name (see 2.2.1) shall be memory.
 
@@ -1577,8 +1578,8 @@ Given a 64-bit Power system with the following physical memory layout:
 * RAM: starting address 0x0, length 0x80000000 (2GB)
 * RAM: starting address 0x100000000, length 0x100000000 (4GB)
 
-Memory nodes could be defined as follows, assuming an #address-cells
-value of 2 and a #size-cells value of 2:
+Memory nodes could be defined as follows, assuming an _#address-cells_
+value of 2 and a _#size-cells_ value of 2:
 
 .Example #1
 [listing]
@@ -1599,11 +1600,11 @@ memory@100000000 {
 	reg = <0x000000001 0x00000000 0x00000001 0x00000000>;
 };
 
-The reg property is used to define the address and size of the two
+The _reg_ property is used to define the address and size of the two
 memory ranges. The 2 GB I/O region is skipped. Note that the
-#address-cells and #size-cells properties of the root node specify a
+_#address-cells_ and _#size-cells_ properties of the root node specify a
 value of 2, which means that two 32-bit cells are required to define the
-address and length for the reg property of the memory node.
+address and length for the _reg_ property of the memory node.
 
 === Chosen
 The chosen node does not represent a real device in the system but
@@ -1666,10 +1667,10 @@ The node name (see 2.2.1) shall be cpus.
 |===
 |Property Name |Usage |Value Type |Definition
 |#address-cells |R |<u32> | The value specifies how many cells each
-element of the reg property array takes in children of this node.
+element of the _reg_ property array takes in children of this node.
 
 |#size-cells |R |<u32> | Value shall be 0. Specifies that no size is
-required in the reg property in children of this node.
+required in the _reg_ property in children of this node.
 |===
 
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended,
@@ -1720,10 +1721,10 @@ with specific applicable detail.
 CPU/threads represented by the CPU node.
 
 If a CPU supports more than one thread (i.e. multiple streams of
-execution) the reg property is an array with 1 element per thread. The
-#address-cells on the /cpus node specifies how many cells each element
+execution) the _reg_ property is an array with 1 element per thread. The
+_#address-cells_ on the /cpus node specifies how many cells each element
 of the array takes. Software can determine the number of threads by
-dividing the size of reg by the parent node's #address-cells.
+dividing the size of _reg_ by the parent node's _#address-cells_.
 
 If a CPU/thread can be the target of an external interrupt the "reg"
 property value must be a unique CPU/thread id that is addressable by
@@ -2318,8 +2319,8 @@ The boot program shall leave all devices with the following conditions true:
 
 ==== Initial I/O Mappings (IIO)
 A boot program might pass a client program a device tree containing
-device nodes with a virtual-reg property (see 2.3.7, virtual-reg). The
-virtual-reg property describes an Initial I/O (or IIO) mapping set up by
+device nodes with a _virtual-reg_ property (see 2.3.7, _virtual-reg_). The
+_virtual-reg_ property describes an Initial I/O (or IIO) mapping set up by
 firmware, and the value is the effective address of a device's
 registers.
 
@@ -2328,7 +2329,7 @@ shall be present in the CPU's MMU to map any IIO. An IIO has the
 following requirements on Book III-E CPUs:
 
 1. An IIO shall be virtually and physically contiguous.
-2. An IIO shall map the effective address in virtual-reg to the physical
+2. An IIO shall map the effective address in _virtual-reg_ to the physical
    address at which the device appears at the point of entry.
 3. An IIO shall not be invalidated except by client's explicit action
    (i.e., not subject to broadcast invalidates from other partitions).
@@ -2363,7 +2364,7 @@ For Book III-E CPUs the following requirements apply at client entry for boot CP
    r3). The device tree must not overlap any PT_LOAD segment (taking
    into account the p_memsz field in the program header which may be
    different than p_filesz).
-4. IIOs shall be present for all devices with a virtual-reg property
+4. IIOs shall be present for all devices with a _virtual-reg_ property
 5. Other mappings may be present in Address Space (AS) 0.
 6. No mappings shall be present in Address Space (AS) 1.
 7. r7 shall contain the size of the BIMA.
@@ -2436,7 +2437,7 @@ be set with these initial values:
 |===
 |Field |Initial Value
 |entry_addr | 0x1
-|r3 | Value of the reg property from the CPU node in the device
+|r3 | Value of the _reg_ property from the CPU node in the device
 tree that corresponds to this CPU.
 |pir | A valid PIR value, different on each CPU within the same
 partition.
@@ -2623,7 +2624,7 @@ Some recommended practices include:
 
 1. Define a compatible string using the conventions described in section 2.3.1.
 2. Use the standard properties (defined in sections 2.3 and 2.4) as
-   applicable for the new device.  This usage typically includes the reg
+   applicable for the new device.  This usage typically includes the _reg_
    and interrupts properties at a minimum.
 3. Use the conventions specified in section 6 (Device Bindings) if the
    new device fits into one the {spec} defined device classes.
@@ -2657,16 +2658,16 @@ forms:
 Property:: reg-shift
 Value type:: <u32>
 Description::
-The reg-shift property provides a mechanism to represent devices that
+The _reg-shift_ property provides a mechanism to represent devices that
 are identical in most respects except for the number of bytes between
-registers. The reg-shift property specifies in bytes how far the
+registers. The _reg-shift_ property specifies in bytes how far the
 discrete device registers are separated from each other. The individual
 register location is calculated by using following formula: “registers
 address” << reg-shift. If unspecified, the default value is 0.
 +
 For example, in a system where 16540 UART registers are located at
-addresses 0x0, 0x4, 0x8, 0xC, 0x10, 0x14, 0x18, and 0x1C, a reg-shift =
-<2> property would be used to specify register locations.
+addresses 0x0, 0x4, 0x8, 0xC, 0x10, 0x14, 0x18, and 0x1C, a ``reg-shift =
+<2>`` property would be used to specify register locations.
 
 ===== label
 [horizontal]
@@ -2744,7 +2745,7 @@ the default value is 0.
 
 |virtual-reg |SD |<u32> or <u64> |
 See section 2.3.7. Specifies an effective address that maps to the first
-physical address specified in the reg property. This property is
+physical address specified in the _reg_ property. This property is
 required if this device node is the system's console.
 |===
 
