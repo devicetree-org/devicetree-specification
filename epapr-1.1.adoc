@@ -326,7 +326,7 @@ operating system software. Examples of a client program include:
 bootloaders, hypervisors, operating systems, and special purpose
 programs.
 
-cell. A unit of information consisting of 32 bits.
+cell:: A unit of information consisting of 32 bits.
 
 DMA:: Direct memory access
 DTB:: Device tree blob. Compact binary representation of the device tree.
