@@ -1,12 +1,13 @@
 STYLESHEETS_DIR = /usr/share/xml/docbook/stylesheet/nwalsh
+DOC=epapr-1.1
 
-all: epapr-1.1.html epapr-1.1.xml epapr-1.1.pdf
+all: $(DOC).html $(DOC).xml $(DOC).pdf
 
 %.fo: %.xml
 	xsltproc -o $@ $(STYLESHEETS_DIR)/fo/docbook.xsl $<
 
 %.pdf: %.fo
-	fop -pdf $@ -fo $< -d
+	fop -pdf $@ -fo $<
 
 %.xml: %.adoc
 	asciidoctor $< -b docbook5
@@ -14,5 +15,5 @@ all: epapr-1.1.html epapr-1.1.xml epapr-1.1.pdf
 %.html: %.adoc
 	asciidoctor $<
 
-#%.html: %.xml
-#	xsltproc -o $@ $(STYLESHEETS_DIR)/xhtml/docbook.xsl $<
+clean:
+	rm -f $(DOC).html $(DOC).xml $(DOC).pdf

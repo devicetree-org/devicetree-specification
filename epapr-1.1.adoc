@@ -227,8 +227,8 @@ The {spec} supports CPUs with both 32-bit and 64-bit addressing
 capabilities. Where applicable, sections of the {spec} describe any
 requirements or considerations for 32-bit and 64-bit addressing.
 
-=== References
 [bibliography]
+=== References
 - [[[b1]]] _Power ISA(TM)_, Version 2.06 Revision B, July 23, 2010. It is
   available from power.org (http://power.org)
 
