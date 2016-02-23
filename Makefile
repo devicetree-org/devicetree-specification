@@ -1,5 +1,6 @@
 STYLESHEETS_DIR = /usr/share/xml/docbook/stylesheet/nwalsh
 DOC=epapr-1.1
+ASCIIDOCTOR=asciidoctor -r asciidoctor-diagram
 
 all: $(DOC).html $(DOC).xml $(DOC).pdf
 
@@ -10,10 +11,10 @@ all: $(DOC).html $(DOC).xml $(DOC).pdf
 	fop -pdf $@ -fo $<
 
 %.xml: %.adoc
-	asciidoctor $< -b docbook5
+	$(ASCIIDOCTOR) $< -b docbook5
 
 %.html: %.adoc
-	asciidoctor $<
+	$(ASCIIDOCTOR) $<
 
 clean:
 	rm -f $(DOC).html $(DOC).xml $(DOC).pdf
