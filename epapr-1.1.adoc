@@ -399,36 +399,48 @@ is nearly complete enough to boot a simple operating system, with the
 platform type, CPU, and memory described. Device nodes are shown with
 properties and values shown beside the node.
 
-.Figure 2-1
+.Device Tree Logical Structure
+[graphviz]
 ----
-FIXME
+digraph tree
+{
+	rankdir = LR;
+	ranksep = equally;
+	size = "4.5";
+	node [shape="Mrecord"; width="2.5"; fontname = Courier;];
 
-model = "fsl,mpc8572ds";
-compatible = "fsl,mpc8572ds";
-#address-cells = <1>;
-#size-cells = <1>;
-#address-cells = <1>;
-#size-cells = <0>;
+	"/" [ label="<l>/\l|
+		model = \"fsl,mpc8572ds\";\l
+		compatible = \"fsl,mpc8572ds\";\l
+		#address-cells = \<0\>;\l"
+	];
 
-cpus
+	"cpus" [ label="<l>cpus\l|
+		\#address-cells = \<1\>;\l
+		\#size-cells = \<0\>;\l"
+	];
 
-cpu@0
+	"cpu@0" [ label="<l>cpu@0\l|
+		device_type = \"cpu\";\l
+		reg = \<0\>;\l
+		cache-line-size = \<32\>;\l
+		cache-block-size = \<0x8000\>;\l
+		clock-frequency = \<825000000\>;\l"
+	];
 
-device_type = "cpu";
-reg = <0>;
-cache-line-size = <32>;
-cache-block-size = <0x8000>;
-timebase-frequency = <825000000>;
-clock-frequency = <825000000>;
+	"memory@0" [ label = "<l>memory@0\l|
+		reg = \<0 0x20000000\>\l"
+	];
 
-memory
+	"chosen" [ label = "<l>chosen\l" ];
+	"aliases" [ label = "<l>aliases\l" ];
 
-device_type = "memory";
-reg = <0x00000000 0x20000000>;
-
-chosen
-
-bootargs = "root=/dev/sda2";
+	"/":l:e->"cpus":l:w
+	"cpus":l:e ->"cpu@0":l:w;
+	"/":l:e->"memory@0":l:w;
+	"/":l:e->aliases:l:w;
+	"/":l:e->chosen:l:w;
+}
 ----
 
 === Device Tree Structure and Conventions
