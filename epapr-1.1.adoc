@@ -394,11 +394,12 @@ PCI host bridge device in the system if it cannot be detected by
 probing.
 
 .Example
-Figure 2-1 shows an example representation of a simple device tree that
+<<device-tree-example>> shows an example representation of a simple device tree that
 is nearly complete enough to boot a simple operating system, with the
 platform type, CPU, and memory described. Device nodes are shown with
 properties and values shown beside the node.
 
+[[device-tree-example]]
 .Device Tree Logical Structure
 [graphviz]
 ----
@@ -453,8 +454,9 @@ node-name@unit-address
 
 The _node-name_ component specifies the name of the node. It shall be 1
 to 31 characters in length and consist solely of characters from the set
-of characters in Table 2-1.
+of characters in <<node-name-characters>>
 
+[[node-name-characters]]
 .Characters for node names
 [option="header", cols="^10,30", width="200", align="center"]
 |===
@@ -474,7 +476,7 @@ describe the general class of device.
 
 The _unit-address_ component of the name is specific to the bus type on
 which the node sits. It consists of one or more ASCII characters from
-the set of characters in Table 2-1. The unit-address must match the
+the set of characters in <<node-name-characters>>. The unit-address must match the
 first address specified in the _reg_ property of the node. If the node
 has no _reg_ property, the @ and _unit-address_ must be omitted and the
 _node-name_ alone differentiates the node from other nodes at the same
@@ -564,7 +566,7 @@ The convention for specifying a device path is:
 [listing]
 /node-name-1/node-name-2/node-name-N
 
-For example, in Figure 2-2 the device path to cpu #1 would be:
+For example, in <<example-node-names>>, the device path to cpu #1 would be:
 
 [listing]
 /cpus/cpu@1
@@ -611,9 +613,10 @@ Properties might have an empty value if conveying true-false
 information. In this case, the presence or absence of the property is
 sufficiently descriptive.
 
-Table 2-3 describes the set of basic value types defined by the {spec}.
+<<property-values-table>> describes the set of basic value types defined by the {spec}.
 
-.Table 2-3 Property values
+[[property-values-table]]
+.Property values
 [option="header", cols="^10,90"]
 |===
 |Value |Description
@@ -793,7 +796,7 @@ format.
 The _status_ property indicates the operational status of a device. Valid
 values are listed and defined in the following table.
 
-.Table 2-4 Values for status property
+.Values for status property
 [options="header", cols="10,90"]
 |===
 |Value |Description
@@ -839,9 +842,10 @@ If missing, a client program should assume a default value of 2 for
 _#address-cells_, and a value of 1 for _#size-cells_.
 
 .Example
-See the device tree fragment shown in Figure 2-3.
+See the device tree fragment shown in <<address-size-cells-example>>.
 
-.Figure 2-3
+[[address-size-cells-example]]
+.Specifying number of address and size cells
 ----
 FIXME
 soc
@@ -859,7 +863,7 @@ interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
 ----
 
-In Figure 2-3, the _#address-cells_ and _#size-cells_ properties of the soc
+In <<address-size-cells-example>>, the _#address-cells_ and _#size-cells_ properties of the soc
 node are both set to 1. This setting specifies that one cell is required
 to represent an address and one cell is required to represent the size
 of nodes that are children of this node.
@@ -945,10 +949,8 @@ If the property is not present in a bus node, it is assumed that no
 mapping exists between children of the node and the parent address
 space.
 
-.Example
-See the example in Figure 2-4.
-
-.Figure 2-4
+[[address-translation-example]]
+.Address Translation Example
 ----
 FIXME
 soc
@@ -968,7 +970,7 @@ interrupts = <0xA 0x8>;
 interrupt-parent = < &ipic >;
 ----
 
-In Figure 2-4, the ``soc`` node specifies a _ranges_ property of
+In <<address-translation-example>>, the ``soc`` node specifies a _ranges_ property of
 
 [listing]
 <0x0 0xe0000000 0x00100000>;
@@ -1521,7 +1523,7 @@ a node in the device tree. For example, the property serial0 =
 Alias names shall be a lowercase text strings of 1 to 31 characters from
 the following set of characters.
 
-.Table 3-2 Characters for alias names
+.Characters for alias names
 [options="header", cols="^10,30", width="50"]
 |===
 |Character |Description
@@ -1572,7 +1574,7 @@ memory covered by memory reservations) as WIMG = 0b001x. That is:
 
 If the VLE storage attribute is supported, with VLE=0.
 
-.Table 3-3 Memory node properties
+.Memory node properties
 [options="header", cols="15,^10,^10,65"]
 |===
 |Property Name |Usage |Value Type |Definition
@@ -1634,7 +1636,7 @@ time. It shall be a child of the root node.
 
 The node name (see 2.2.1) shall be chosen.
 
-.Table 3-4 Chosen node properties
+.Chosen node properties
 [options="header", cols="15,^10,^10,65"]
 |===
 |Property Name |Usage |Value Type |Definition
@@ -1683,7 +1685,7 @@ which represent the systems CPUs.
 
 The node name (see 2.2.1) shall be cpus.
 
-.Table 3-5 cpus node properties
+.cpus node properties
 [options="header", cols="15,^10,^10,65"]
 |===
 |Property Name |Usage |Value Type |Definition
@@ -1729,10 +1731,11 @@ The node name for every cpu node (see 2.2.1) should be cpu.
 
 ==== General Properties of CPU nodes
 The following table describes the general properties of CPU nodes. Some
-of the properties described in Table 3-6 are select standard properties
+of the properties described in <<cpu-node-properties>> are select standard properties
 with specific applicable detail.
 
-.Table 3-6 cpu node general properties
+[[cpu-node-properties]]
+.cpu node general properties
 [options="header", cols="15,^10,^10,65"]
 |===
 |Property Name |Usage |Value Type |Definition
