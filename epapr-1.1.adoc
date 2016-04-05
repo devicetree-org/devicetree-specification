@@ -455,18 +455,18 @@ The _node-name_ component specifies the name of the node. It shall be 1
 to 31 characters in length and consist solely of characters from the set
 of characters in Table 2-1.
 
-.Table 2-1 Characters for node names
-[option="header", cols="^10,30", width="50", align="center"]
+.Characters for node names
+[option="header", cols="^10,30", width="200", align="center"]
 |===
 | Character | Description
-|0-9 |digit
-|a-z |lowercase letter
-|A-Z |uppercase letter
-|, |comma
-|. |period
-|_ |underscore
-|+ |plus sign
-|- |dash
+|    0-9    | digit
+|    a-z    | lowercase letter
+|    A-Z    | uppercase letter
+|     ,     | comma
+|     .     | period
+|     _     | underscore
+|     +     | plus sign
+|     -     | dash
 |===
 
 The _node-name_ shall start with a lower or uppercase character and should
@@ -576,19 +576,19 @@ characteristics of the node. Properties consist of a name and a value.
 Property names are strings of 1 to 31 characters from the following set
 of characters.
 
-.Table 2-2 Characters for property names
-[option="header", cols="^10,30", width="50", align="center"]
+.Characters for property names
+[option="header", cols="^10,30", width="200", align="center"]
 |===
 | Character | Description
-|0-9 |digit
-|a-z |lowercase letter
-|A-Z |uppercase letter
-|, |comma
-|. |period
-|_ |underscore
-|+ |plus sign
-|? |question mark
-|# |hash
+|    0-9    | digit
+|    a-z    | lowercase letter
+|    A-Z    | uppercase letter
+|     ,     | comma
+|     .     | period
+|     _     | underscore
+|     +     | plus sign
+|     ?     | question mark
+|     #     | hash
 |===
 
 Nonstandard property names should specify a unique string prefix, such
