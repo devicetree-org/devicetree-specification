@@ -52,16 +52,20 @@ and reviews.
 * Becky Bruce
 * Dale Farnsworth
 * Kumar Gala
+* Charles Garcia-Tobin
 * David Gibson
 * Ben Herrenschmidt
+* Rob Herring
 * Dan Hettena
 * Olof Johansson
 * Ashish Kalra
 * Grant Likely
 * Jon Loeliger
 * Hartmut Penner
+* Mark Rutland
 * Tim Radzykewycz
 * Heiko Schick
+* Jeff Scheel
 * Timur Tabi
 * John Traill
 * John True
@@ -73,10 +77,12 @@ and reviews.
 
 **Companies**
 
-* Freescale Semiconductor
+* ARM
 * Green Hills Software
 * IBM
+* Linaro
 * Montavista
+* NXP Semiconductor
 * Wind River
 
 **Other Acknowledgements**
