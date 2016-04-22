@@ -12,6 +12,7 @@ Welcome to Devicetree Specification's documentation!
    license
    introduction
    devicetree-basics
+   devicenodes
    references
 
 Indices and tables

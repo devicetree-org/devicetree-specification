@@ -10,97 +10,72 @@ device nodes required in an ePAPR-compliant device tree.
 All device trees shall have a root node and the following nodes shall be
 present at the root of all device trees:
 
--  One *cpus* node
+*  One *cpus* node
 
--  At least one *memory* node
+*  At least one *memory* node
 
 Root node
 ---------
 
 The device tree has a single root node of which all other device nodes
-are descendants. The full path to the root node is /.
+are descendants. The full path to the root node is ``/``.
 
-+------------+---------+---------+------------------------------------------------+
-| Property   | Usage   | Value   | Definition                                     |
-| Name       |         | Type    |                                                |
-+============+=========+=========+================================================+
-| #address-c | R       | <u32>   | Specifies the number of <u32> cells to         |
-| ells       |         |         | represent the address in the *reg* property in |
-|            |         |         | children of root.                              |
-+------------+---------+---------+------------------------------------------------+
-| #size-cell | R       | <u32>   | Specifies the number of <u32> cells to         |
-| s          |         |         | represent the size in the *reg* property in    |
-|            |         |         | children of root.                              |
-+------------+---------+---------+------------------------------------------------+
-| model      | R       | <string | Specifies a string that uniquely identifies    |
-|            |         | >       | the model of the system board. The recommended |
-|            |         |         | format is “manufacturer,model-number”.         |
-+------------+---------+---------+------------------------------------------------+
-| compatible | R       | <string | Specifies a list of platform architectures     |
-|            |         | list>   | with which this platform is compatible. This   |
-|            |         |         | property can be used by operating systems in   |
-|            |         |         | selecting platform specific code. The          |
-|            |         |         | recommended form of the property value is:     |
-|            |         |         |                                                |
-|            |         |         | ::                                             |
-|            |         |         |                                                |
-|            |         |         |     “<Manufacturer>,<Model-number>”            |
-|            |         |         |                                                |
-|            |         |         | For example:                                   |
-|            |         |         |                                                |
-|            |         |         | ::                                             |
-|            |         |         |                                                |
-|            |         |         |     compatible = “fsl,mpc8572ds”               |
-+------------+---------+---------+------------------------------------------------+
-| epapr-vers | R       | <string | This property shall contain the string:        |
-| ion        |         | >       | “ePAPR-<ePAPR version>”                        |
-|            |         |         |                                                |
-|            |         |         | where:                                         |
-|            |         |         |                                                |
-|            |         |         | <ePAPR version> is the text (without blanks)   |
-|            |         |         | after the word Version on the cover page of    |
-|            |         |         | the PAPR spec that the platform adheres to     |
-|            |         |         | For example:                                   |
-|            |         |         |                                                |
-|            |         |         | ::                                             |
-|            |         |         |                                                |
-|            |         |         |     epapr-version = “{spec}-1.1”               |
-+------------+---------+---------+------------------------------------------------+
+.. tabularcolumns:: l c l J
+.. table:: Root Node Properties
 
-Table: Table 3-1 Root Node Properties
+   =================== ====== ================= ===============================================
+   Property Name       Usage  Value Type        Definition                                     
+   =================== ====== ================= ===============================================
+   ``#address-cells``  R      ``<u32>``         Specifies the number of ``<u32>`` cells to     
+                                                represent the address in the *reg* property in 
+                                                children of root.                              
+   ``#size-cells``     R      ``<u32>``         Specifies the number of ``<u32>`` cells to     
+                                                represent the size in the *reg* property in    
+                                                children of root.                              
+   ``model``           R      ``<string>``      Specifies a string that uniquely identifies    
+                                                the model of the system board. The recommended 
+                                                format is "manufacturer,model-number".         
+   ``compatible``      R      ``<stringlist>``  Specifies a list of platform architectures     
+                                                with which this platform is compatible. This   
+                                                property can be used by operating systems in   
+                                                selecting platform specific code. The          
+                                                recommended form of the property value is:     
+                                                                                               
+                                                ``"manufacturer,model"``                   
+                                                                                               
+                                                For example:                                   
+                                                                                               
+                                                ``compatible = "fsl,mpc8572ds"``           
+   Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+   ============================================================================================
 
-Usage legend: R=Required, O=Optional, OR=Optional but Recommended,
-SD=See Definition
-
-Note: All other standard properties (section 2.3) are allowed but are
-optional.
+.. note:: All other standard properties (section 2.3) are allowed but are optional.
 
 aliases node
 ------------
 
-A device tree may have an aliases node (/aliases) that defines one or
+A device tree may have an aliases node (``/aliases``) that defines one or
 more alias properties. The alias node shall be at the root of the device
 tree and have the node name aliases.
 
-Each property of the /aliases node defines an alias. The property name
+Each property of the ``/aliases`` node defines an alias. The property name
 specifies the alias name. The property value specifies the full path to
 a node in the device tree. For example, the property serial0 =
-“/simple-bus@fe000000/serial@llc500” defines the alias serial0.
+``"/simple-bus@fe000000/serial@llc500"`` defines the alias serial0.
 
 Alias names shall be a lowercase text strings of 1 to 31 characters from
 the following set of characters.
 
-+-------------------+--------------------------------------------------------+
-| Character         | Description                                            |
-+===================+========================================================+
-| 0-9               | digit                                                  |
-+-------------------+--------------------------------------------------------+
-| a-z               | lowercase letter                                       |
-+-------------------+--------------------------------------------------------+
-| -                 | dash                                                   |
-+-------------------+--------------------------------------------------------+
+.. tabularcolumns:: c J
+.. table:: Valid characters for alias name
 
-Table: Characters for alias names
+   ========= ================
+   Character Description
+   ========= ================
+   0-9       digit
+   a-z       lowercase letter
+   \-        dash
+   ========= ================
 
 An alias value is a device path and is encoded as a string. The value
 represents the full path to a node, but the path does not need to refer
@@ -110,7 +85,7 @@ A client program may use an alias property name to refer to a full
 device path as all or part of its string value. A client program, when
 considering a string as a device path, shall detect and use the alias.
 
-**Example.**
+**Example**
 
 ::
 
@@ -119,9 +94,9 @@ considering a string as a device path, shall detect and use the alias.
         ethernet0 = "/simple-bus@fe000000/ethernet@31c000";
     }
 
-Given the alias serial0, a client program can look at the /aliases node
+Given the alias serial0, a client program can look at the aliases node
 and determine the alias refers to the device path
-/simple-bus@fe000000/serial@llc500.
+``/simple-bus@fe000000/serial@llc500``.
 
 Memory node
 -----------
@@ -131,10 +106,10 @@ physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the *reg* property of a single memory node.
 
-The name component of the node name (see 2.2.1) shall be memory.
+The name component of the node name (see FIXME 2.2.1) shall be memory.
 
 The client program may access memory not covered by any memory
-reservations (see section 8.3) using any storage attributes it chooses.
+reservations (see section 8.3 FIXME) using any storage attributes it chooses.
 However, before changing the storage attributes used to access a real
 page, the client program is responsible for performing actions required
 by the architecture and implementation, possibly including flushing the
@@ -149,36 +124,30 @@ memory covered by memory reservations) as WIMG = 0b001x. That is:
 
 If the VLE storage attribute is supported, with VLE=0.
 
-+------------+---------+---------+------------------------------------------------+
-| Property   | Usage   | Value   | Definition                                     |
-| Name       |         | Type    |                                                |
-+============+=========+=========+================================================+
-| device\_ty | R       | <string | Value shall be "memory"                        |
-| pe         |         | >       |                                                |
-+------------+---------+---------+------------------------------------------------+
-| reg        | R       | <prop-e | Consists of an arbitrary number of address and |
-|            |         | ncoded- | size pairs that specify the physical address   |
-|            |         | array>  | and size of the memory ranges.                 |
-+------------+---------+---------+------------------------------------------------+
-| initial-ma | O       | <prop-e | Specifies the address and size of the Initial  |
-| pped-area  |         | ncoded- | Mapped Area (see section 5.3).                 |
-|            |         | array>  |                                                |
-|            |         |         | Is a prop-encoded-array consisting of a        |
-|            |         |         | triplet of (effective address, physical        |
-|            |         |         | address, size). The effective and physical     |
-|            |         |         | address shall each be 64-bit (<u64> value),    |
-|            |         |         | and the size shall be 32-bits (<u32> value).   |
-+------------+---------+---------+------------------------------------------------+
+.. tabularcolumns:: l c l J
+.. table:: Memory Node Properties
 
-Table: Memory node properties
+   ======================= ====== ===================== ===============================================
+   Property Name           Usage  Value Type            Definition
+   ======================= ====== ===================== ===============================================
+   ``device_type``         R       <string>             Value shall be "memory"
+   ``reg``                 R       <prop-encoded-array> Consists of an arbitrary number of address and
+                                                        size pairs that specify the physical address
+                                                        and size of the memory ranges.
+   ``initial-mapped-area`` O       <prop-encoded-array> Specifies the address and size of the Initial
+                                                        Mapped Area (see section 5.3 FIXME).
 
-Usage legend: R=Required, O=Optional, OR=Optional but Recommended,
-SD=See Definition
+                                                        Is a prop-encoded-array consisting of a
+                                                        triplet of (effective address, physical
+                                                        address, size). The effective and physical
+                                                        address shall each be 64-bit (``<u64>`` value),
+                                                        and the size shall be 32-bits (``<u32>`` value).
+   Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
+   ====================================================================================================
 
-Note: All other standard properties (section 2.3) are allowed but are
-optional.
+.. note:: All other standard properties (section 2.3 FIXME) are allowed but are optional.
 
-**Example.**
+**Example**
 
 Given a 64-bit Power system with the following physical memory layout:
 
@@ -186,10 +155,10 @@ Given a 64-bit Power system with the following physical memory layout:
 
 -  RAM: starting address 0x100000000, length 0x100000000 (4GB)
 
-Memory nodes could be defined as follows, assuming an *#address-cells*
-value of 2 and a *#size-cells* value of 2:
+Memory nodes could be defined as follows, assuming an ``#address-cells`` == 2
+and ``#size-cells`` == 2:
 
-**Example #1.**
+**Example #1**
 
 ::
 
@@ -199,7 +168,7 @@ value of 2 and a *#size-cells* value of 2:
                0x000000001 0x00000000 0x00000001 0x00000000>;
     };
 
-**Example #2.**
+**Example #2**
 
 ::
 
@@ -212,11 +181,11 @@ value of 2 and a *#size-cells* value of 2:
         reg = <0x000000001 0x00000000 0x00000001 0x00000000>;
     };
 
-The *reg* property is used to define the address and size of the two
+The ``reg`` property is used to define the address and size of the two
 memory ranges. The 2 GB I/O region is skipped. Note that the
-*#address-cells* and *#size-cells* properties of the root node specify a
+``#address-cells`` and ``#size-cells`` properties of the root node specify a
 value of 2, which means that two 32-bit cells are required to define the
-address and length for the *reg* property of the memory node.
+address and length for the ``reg`` property of the memory node.
 
 Chosen
 ------
