@@ -13,6 +13,9 @@ Welcome to Devicetree Specification's documentation!
    introduction
    devicetree-basics
    devicenodes
+   device-bindings
+   flattened-format
+   source-language
    references
 
 Indices and tables
