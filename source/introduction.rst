@@ -13,7 +13,7 @@ hardware before passing control to software such as an operating system,
 bootloader, or hypervisor. Bootloaders and hypervisors can, in turn,
 load and transfer control to operating systems. Standard, consistent
 interfaces and conventions facilitate the interactions between these
-software components. In this document the term boot program is used to
+software components.  In this document the term boot program is used to
 generically refer to a software component that initializes the system
 state and executes another software component referred to as a *client
 program*. Examples of a boot programs include: firmware, bootloaders, and
@@ -22,14 +22,12 @@ hypervisors, operating systems, and special purpose programs. A piece of
 software (e.g. a hypervisor) may be both a client program and a boot
 program.
 
-.. FIXME - replace the powerisa reference
-
 This specification, the |spec-fullname| (|spec|),
 provides a complete boot program to client program
 interface definition, combined with minimum system requirements that
-facilitate the development of a wide variety of embedded systems based
-on CPUs that implement the Power architecture as defined in the Power
-ISA™.
+facilitate the development of a wide variety of systems.
+
+.. FIXME cgt - Rephrase the following?
 
 This specification is targeted towards the requirements of embedded
 systems. An embedded system typically consists of system hardware, an
@@ -37,14 +35,13 @@ operating system, and application software that are custom designed to
 perform a fixed, specific set of tasks. This is unlike general purpose
 computers, which are designed to be customized by a user with a variety
 of software and I/O devices. Other characteristics of embedded systems
-can include:
+may include:
 
 *  a fixed set of I/O devices, possibly highly customized for the
    application
 *  a system board optimized for size and cost
 *  limited user interface
-*  resource constraints like limited memory and limited nonvolatile
-   storage
+*  resource constraints like limited memory and limited nonvolatile storage
 *  real-time constraints
 *  use of a wide variety of operating systems, including Linux,
    real-time operating systems, and custom or proprietary operating
@@ -88,10 +85,10 @@ Examples of device tree constructs are frequently shown in *Device Tree
 Syntax* form. See *Appendix A Device Tree Source Format (version 1)* for
 an overview of this syntax.
 
-Relationship to IEEE™ 1275
---------------------------
+Relationship to IEEE™ 1275 and ePAPR
+------------------------------------
 
-The |spec| is loosely related to the IEEE 1275 Open Firmware
+|spec| is loosely related to the IEEE 1275 Open Firmware
 standard—\ *IEEE Standard for Boot (Initialization Configuration)
 Firmware: Core Requirements and Practices* [IEEE1275]_.
 
@@ -111,10 +108,15 @@ IEEE 1275 specification that are omitted from the |spec| include:
 * FCode debugging
 * Operating system debugging
 
-What *is* retained from IEEE-1275 are concepts from the device tree
+What is retained from IEEE-1275 are concepts from the device tree
 architecture by which a boot program can describe and communicate system
 hardware information to client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
+
+This specification partially supersedes the |epapr| [EPAPR] specification.
+|epapr| documents how devicetree is used by the PowerISA, and covers both
+general concepts, as well as PowerISA specific bindings.
+The text of this document was derived from |epapr|, but either removes architecture specific bindings, or moves them into an appendix.
 
 32-bit and 64-bit Support
 -------------------------
@@ -178,8 +180,7 @@ Definition of Terms
 
    physical address
        Address used by the processor to access external device, typically a
-       memory controller. The Power ISA uses the *real address* when
-       referring to a physical address.
+       memory controller.
 
    Power ISA
        Power Instruction Set Architecture.
@@ -195,8 +196,8 @@ Definition of Terms
 
    SMP
        Symmetric multiprocessing. A computer architecture where two or more
-       identical CPUs can execute the same task. Typically an SMP system
-       executes a single operating system image.
+       identical CPUs can share memory and IO and operate under a single operating
+       system.
 
    SoC
        System on a chip. A single computer chip integrating one or more CPU

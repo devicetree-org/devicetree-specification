@@ -77,3 +77,11 @@
 
 .. [b20] *64-bit PowerPC ELF Application Binary Interface Supplement
    1.9*, Ian Lance Taylor, 2004
+
+.. [EPAPR] *Power.org Standard for Embedded Power Architecture
+   Platform Requirements*, power.org, 2011,
+   https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/
+
+.. [ARMv8] *ARM DDI 0487 ARM(c) Architecture Reference Manual,
+   ARMv8 for ARMv8-A architecture profile*, ARM,
+   http://infocenter.arm.com/help/topic/com.arm.doc.ddi0487a.h/index.html

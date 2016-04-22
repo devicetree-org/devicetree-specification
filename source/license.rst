@@ -91,8 +91,8 @@ Significant aspects of the |spec-fullname| are based on work done by
 the Open Firmware Working Group which developed bindings for IEEE-1275.
 We would like to acknowledge their contributions.
 
-We would also like to acknowledge the contribution of the PowerPC Linux
-community that initially developed and implemented the flattened device
+We would also like to acknowledge the contribution of the PowerPC and ARM Linux
+communities that developed and implemented the flattened device
 tree concept.
 
 .. _revision-history:

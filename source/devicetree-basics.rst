@@ -2,46 +2,47 @@
 
 .. _chapter-devicetree:
 
-The Device Tree
-===============
+The Devicetree
+==============
 
 Overview
 --------
 
-|spec| specifies a construct called a *device tree* to describe
-system hardware. A boot program loads a device tree into a client
-program’s memory and passes a pointer to the device tree to the client.
+|spec| specifies a construct called a *devicetree* to describe
+system hardware. A boot program loads a devicetree into a client
+program’s memory and passes a pointer to the devicetree to the client.
 
-This chapter describes the logical structure of the device tree and
+This chapter describes the logical structure of the devicetree and
 specifies a base set of properties for use in describing device nodes.
 Chapter 3 specifies certain device nodes required by an |spec| compliant
-device tree. Chapter 6 describes the |spec| defined device bindings— the
+devicetree. Chapter 6 describes the |spec| defined device bindings— the
 requirements for representing certain device types classes of devices.
-Chapter 8 describes the in-memory encoding of the device tree.
+Chapter 8 describes the in-memory encoding of the devicetree.
 
-A device tree is a tree data structure with nodes that describe the
+A devicetree is a tree data structure with nodes that describe the
 devices in a system. Each node has property/value pairs that describe
 the characteristics of the device being represented. Each node has
 exactly one parent except for the root node, which has no parent.
 
-An |spec|-compliant device tree describes device information in a system
+An |spec|-compliant devicetree describes device information in a system
 that cannot necessarily be dynamically detected by a client program. For
 example, the architecture of PCI enables a client to probe and detect
-attached devices, and thus device tree nodes describing PCI devices
+attached devices, and thus devicetree nodes describing PCI devices
 might not be required. However, a device node is required to describe a
 PCI host bridge device in the system if it cannot be detected by
 probing.
 
 **Example**
 
-:numref:`example-simple-devicetree` shows an example representation of a simple device tree that is nearly
+:numref:`example-simple-devicetree` shows an example representation of a
+simple devicetree that is nearly
 complete enough to boot a simple operating system, with the platform
 type, CPU, and memory described. Device nodes are shown with properties
 and values shown beside the node.
 
 .. _example-simple-devicetree:
 .. digraph:: tree
-   :caption: Device Tree Example
+   :caption: Devicetree Example
 
    rankdir = LR;
    ranksep = equally;
@@ -53,8 +54,8 @@ and values shown beside the node.
    "/":e    -> "ethernet@fe001000":w;
    "/":e    -> "ethernet@fe002000":w;
 
-Device Tree Structure and Conventions
--------------------------------------
+Devicetree Structure and Conventions
+------------------------------------
 
 Node Names
 ~~~~~~~~~~
@@ -62,7 +63,7 @@ Node Names
 Node Name Requirements
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Each node in the device tree is named according to the following
+Each node in the devicetree is named according to the following
 convention:
 
    ``node-name@unit-address``
@@ -164,7 +165,7 @@ name should be one of the following choices:
 Path Names
 ~~~~~~~~~~
 
-A node in the device tree can be uniquely identified by specifying the
+A node in the devicetree can be uniquely identified by specifying the
 full path from the root node, through all descendant nodes, to the
 desired node.
 
@@ -187,7 +188,7 @@ undefined.
 Properties
 ~~~~~~~~~~
 
-Each node in the device tree has properties that describe the
+Each node in the devicetree has properties that describe the
 characteristics of the node. Properties consist of a name and a value.
 
 Property Names
@@ -290,7 +291,7 @@ sufficiently descriptive.
    | ``<prop-encoded-array>``| Format is specific to the property. See the property definition.     |
    +-------------------------+----------------------------------------------------------------------+
    | ``<phandle>``           | A ``<u32>`` value. A *phandle* value is a way to reference another   |
-   |                         | node in the device tree. Any node that can be referenced defines     |
+   |                         | node in the devicetree. Any node that can be referenced defines      |
    |                         | a phandle property with a unique ``<u32>`` value. That unique number |
    |                         | is specified for the value of properties with a phandle value        |
    |                         | type.                                                                |
@@ -326,8 +327,8 @@ additional requirements or constraints regarding the use of the standard
 properties. :FIXME`chapter-device-bindings` that describe the representation
 of specific devices may also specify additional requirements.
 
-.. note:: All examples of device tree nodes in this document use the
-   :abbr:`DTS (Device Tree Source)` format for specifying nodes and properties.
+.. note:: All examples of devicetree nodes in this document use the
+   :abbr:`DTS (Devicetree Source)` format for specifying nodes and properties.
 
 compatible
 ~~~~~~~~~~
@@ -390,13 +391,13 @@ Value type: ``<u32>``
 Description:
 
    The *phandle* property specifies a numerical identifier for a node that
-   is unique within the device tree. The *phandle* property value is used
+   is unique within the devicetree. The *phandle* property value is used
    by other nodes that need to refer to the node associated with the
    property.
 
 Example:
 
-   See the following device tree excerpt:
+   See the following devicetree excerpt:
 
    ::
 
@@ -412,13 +413,13 @@ Example:
 
       interrupt-parent = <1>;
 
-.. note:: Older versions of device trees may be encountered that contain a
+.. note:: Older versions of devicetrees may be encountered that contain a
    deprecated form of this property called ``linux,phandle``. For
    compatibility, a client program might want to support ``linux,phandle``
    if a ``phandle`` property is not present. The meaning and use of the two
    properties is identical.
 
-.. note:: Most device trees in :abbr:`DTS (Device Tree Syntax)` (see Appendix A) will not
+.. note:: Most devicetrees in :abbr:`DTS (Device Tree Syntax)` (see Appendix A) will not
    contain explicit phandle properties. The DTC tool automatically inserts
    the ``phandle`` properties when the DTS is compiled into the binary DTB
    format.
@@ -470,7 +471,7 @@ Value type: ``<u32>``
 Description:
 
    The *#address-cells* and *#size-cells* properties may be used in any
-   device node that has children in the device tree hierarchy and describes
+   device node that has children in the devicetree hierarchy and describes
    how child device nodes should be addressed. The *#address-cells*
    property defines the number of <u32> cells used to encode the address
    field in a child node’s *reg* property. The *#size-cells* property
@@ -478,7 +479,7 @@ Description:
    child node’s *reg* property.
 
    The *#address-cells* and *#size-cells* properties are not inherited from
-   ancestors in the device tree. They shall be explicitly defined.
+   ancestors in the devicetree. They shall be explicitly defined.
 
    An |spec|-compliant boot program shall supply *#address-cells* and
    *#size-cells* on all nodes that have children.
@@ -488,7 +489,7 @@ Description:
 
 Example:
 
-   See the following device tree excerpt:
+   See the following devicetree excerpt:
 
    ::
 
@@ -640,7 +641,7 @@ Value type: ``<empty>`` or ``<prop-encoded-array>`` encoded as an arbitrary numb
 Description:
 
    The *dma-ranges* property is used to describe the direct memory access
-   (DMA) structure of a memory-mapped bus whose device tree parent can be
+   (DMA) structure of a memory-mapped bus whose devicetree parent can be
    accessed from DMA operations originating from the bus. It provides a
    means of defining a mapping or translation between the physical address
    space of the bus and the physical address space of the parent of the
@@ -675,7 +676,7 @@ Description:
 
    The *name* property is a string specifying the name of the node. This
    property is deprecated, and its use is not recommended. However, it
-   might be used in older non-|spec|-compliant device trees. Operating
+   might be used in older non-|spec|-compliant devicetrees. Operating
    system should determine a node’s name based on the *name* component of
    the node name (see section 2.2.1).
 
@@ -691,26 +692,26 @@ Description:
    The *device\_type* property was used in IEEE 1275 to describe the
    device’s FCode programming model. Because |spec| does not have FCode, new
    use of the property is deprecated, and it should be included only on cpu
-   and memory nodes for compatibility with IEEE 1275–derived device trees.
+   and memory nodes for compatibility with IEEE 1275–derived devicetrees.
 
 Interrupts and Interrupt Mapping
 --------------------------------
 
 |spec| adopts the interrupt tree model of representing interrupts
 specified in *Open Firmware Recommended Practice: Interrupt Mapping,
-Version 0.9* [b7]_. Within the device tree a logical interrupt tree exists
+Version 0.9* [b7]_. Within the devicetree a logical interrupt tree exists
 that represents the hierarchy and routing of interrupts in the platform
 hardware. While generically referred to as an interrupt tree it is more
 technically a directed acyclic graph.
 
 The physical wiring of an interrupt source to an interrupt controller is
-represented in the device tree with the *interrupt-parent* property.
+represented in the devicetree with the *interrupt-parent* property.
 Nodes that represent interrupt-generating devices contain an
 *interrupt-parent* property which has a *phandle* value that points to
 the device to which the device’s interrupts are routed, typically an
 interrupt controller. If an interrupt-generating device does not have an
 *interrupt-parent* property, its interrupt parent is assumed to be its
-device tree parent.
+devicetree parent.
 
 Each interrupt generating device contains an *interrupts* property with
 a value describing one or more interrupt sources for that device—each
@@ -732,7 +733,7 @@ controller or (2) an interrupt nexus.
    to handle interrupts routed through it. It may also cascade into
    another interrupt domain. An interrupt controller is specified by the
    presence of an *interrupt-controller* property on that node in the
-   device tree.
+   devicetree.
 
 #. An *interrupt nexus* defines a translation between one interrupt
    domain and another. The translation is based on both domain-specific
@@ -746,9 +747,10 @@ The root of the interrupt tree is determined when traversal of the
 interrupt tree reaches an interrupt controller node without an
 *interrupts* property and thus no explicit interrupt parent.
 
-See :numref:`example-interrupt-tree` for an example of a graphical representation of a device
-tree with interrupt parent relationships shown. It shows both the natural structure of the device
-tree as well as where each node sits in the logical interrupt tree.
+See :numref:`example-interrupt-tree` for an example of a graphical
+representation of a devicetree with interrupt parent relationships shown. It
+shows both the natural structure of the devicetree as well as where each node
+sits in the logical interrupt tree.
 
 .. _example-interrupt-tree:
 .. digraph:: tree
@@ -760,7 +762,7 @@ tree as well as where each node sits in the logical interrupt tree.
    node [ shape="Mrecord" width="2.5" ]
 
    subgraph cluster_devices {
-      label = "Device tree"
+      label = "Devicetree"
       graph [ style = dotted ]
       "device1" [ label = "device1 | interrupt-parent=\<&open-pic\>" ]
       "device2" [ label = "device2 | interrupt-parent=\<&gpioctrl\>" ]
@@ -870,10 +872,10 @@ Value type: ``<phandle>``
 Description:
 
    Because the hierarchy of the nodes in the interrupt tree might not match
-   the device tree, the *interrupt-parent* property is available to make
+   the devicetree, the *interrupt-parent* property is available to make
    the definition of an interrupt parent explicit. The value is the phandle
    to the interrupt parent. If this property is missing from a device, its
-   interrupt parent is assumed to be its device tree parent.
+   interrupt parent is assumed to be its devicetree parent.
 
 Properties for Interrupt Controllers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -996,7 +998,7 @@ Description:
 Interrupt Mapping Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following shows the representation of a fragment of a device tree with
+The following shows the representation of a fragment of a devicetree with
 a PCI bus controller and a sample interrupt map for describing the
 interrupt routing for two PCI slots (IDSEL 0x11,0x12). The INTA, INTB,
 INTC, and INTD pins for slots 1 and 2 are wired to the Open PIC
