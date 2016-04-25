@@ -654,14 +654,6 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
 
 .. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
 
-Table: Table 3-9 Multiple-level and shared cache properties
-
-Usage legend: R=Required, O=Optional, OR=Optional but Recommended,
-SD=See Definition
-
-Note: All other standard properties (section FIXME 2.3) are allowed but are
-optional.
-
 **Example**
 
 See the following example of a device tree representation of two CPUs,
