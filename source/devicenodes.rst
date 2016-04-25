@@ -98,8 +98,8 @@ Given the alias serial0, a client program can look at the aliases node
 and determine the alias refers to the device path
 ``/simple-bus@fe000000/serial@llc500``.
 
-Memory node
------------
+``/memory`` node
+----------------
 
 A memory device node is required for all device trees and describes the
 physical memory layout for the system. If a system has multiple ranges
@@ -187,14 +187,14 @@ memory ranges. The 2 GB I/O region is skipped. Note that the
 value of 2, which means that two 32-bit cells are required to define the
 address and length for the ``reg`` property of the memory node.
 
-Chosen
-------
+``/chosen`` Node
+----------------
 
-The chosen node does not represent a real device in the system but
+The ``/chosen`` node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.
 
-The node name (see FIXME 2.2.1) shall be ``//chosen``.
+The node name (see FIXME 2.2.1) shall be ``/chosen``.
 
 .. tabularcolumns:: l c l J
 .. table:: ``/chosen`` Node Properties
@@ -238,8 +238,8 @@ For compatibility, a client program might want to support
 linux,stdout-path if a stdout-path property is not present. The meaning
 and use of the two properties is identical.
 
-CPUS Node Properties
---------------------
+``/cpus`` Node Properties
+-------------------------
 
 A cpus node is required for all device trees. It does not represent a
 real device in the system, but acts as a container for child cpu nodes
@@ -269,8 +269,8 @@ See section FIXME 3.7 for details.
 
 For an example, see section FIXME 3.7.4.
 
-CPU Node Properties
--------------------
+/cpus/cpu* Node Properties
+--------------------------
 
 A cpu node represents a hardware execution block that is sufficiently
 independent that it is capable of running an operating system without
@@ -293,8 +293,8 @@ of properties which are identical across all CPUs.
 
 The node name for every cpu node (see FIXME 2.2.1) should be cpu.
 
-General Properties of CPU nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+General Properties of /cpus/cpu* nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following table describes the general properties of CPU nodes. Some
 of the properties described in FIXME are select standard properties with
@@ -616,8 +616,8 @@ Here is an example of a cpus node with one child cpu node:
         };
     };
 
-Multi-level and Shared Caches
------------------------------
+Multi-level and Shared Cache Nodes (``/cpus/cpu*/l?-cache``)
+------------------------------------------------------------
 
 Processors and systems may implement additional levels of cache
 hierarchy—for example, secondlevel (L2) or third-level (L3) caches.
