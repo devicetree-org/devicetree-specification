@@ -1,59 +1,56 @@
 Flat Device Tree Physical Structure
 ===================================
 
-An ePAPR boot program communicates the entire device tree to the client
-program as a single, linear, pointerless data structure known as the
-flattened device tree or device tree blob.
+With the exception of platforms using IEEE1275 Open Firmware [IEEE1275], the
+devicetree data is contained within a single single, linear, pointerless data
+structure known as the flattened device tree or device tree blob.
 
-This data structure consists of a small header (see 8.2), followed by
-three variable sized sections: the memory reservation block (see 8.3),
-the structure block (see 8.4) and the strings block (see 8.5). These
-should be present in the flattened device tree in that order. Thus, the
-device tree structure as a whole, when loaded into memory at address,
-will resemble the diagram in Figure 8-1 (lower addresses are at the top
-of the diagram).
+FIXME Section references:
+This data structure consists of a small header (see 8.2), followed by three
+variable sized sections: the memory reservation block (see 8.3), the structure
+block (see 8.4) and the strings block (see 8.5). These should be present in the
+flattened device tree in that order. Thus, the device tree structure as a
+whole, when loaded into memory at address, will resemble the diagram in Figure
+8-1 (lower addresses are at the top of the diagram).
 
-**Figure 8-1 Device Tree Structure.**
+.. _figure_device_tree_structure
+.. digraph:: tree
+   :caption: Devicetree .dtb Structure
 
-::
+   rankdir = LR
+   ranksep = "1.5"
+   edge [ dir="none" ]
+   node [ shape="Mrecord" width="2.5" ]
 
-    FIXME
-    address
-
-    struct fdt_header
-    (free space)
-    memory reservation block
-    (free space)
-    structure block
-
-    (free space)
-    strings block
-
-    (free space)
-
-    address + totalsize
+   "node" [ label = "struct ftd_header |
+      (free space) |
+      memory reservation block |
+      (free space) |
+      structure block |
+      (free space) |
+      strings block |
+      (free space)" ]
 
 The (free space) sections may not be present, though in some cases they
 might be required to satisfy the alignment constraints of the individual
-blocks (see 8.6).
+blocks (see FIXME 8.6).
 
 Versioning
 ----------
 
-Several versions of the flattened device tree structure have been
-defined since the original definition of the format. Fields in the
-header give the version, so that the client program can determine if the
-device tree is encoded in a compatible format.
+Several versions of the flattened device tree structure have been defined since
+the original definition of the format. Fields in the header give the version,
+so that the client program can determine if the device tree is encoded in a
+compatible format.
 
-This document describes only version 17 of the format. ePAPR-compliant
-boot programs shall provide a device tree of version 17 or later, and
-should provide a device tree of a version that is backwards compatible
-with version 16. ePAPR-compliant client programs shall accept device
-trees of any version backwards compatible with version 17 and may accept
-other versions as well.
+This document describes only version 17 of the format. |spec| compliant boot
+programs shall provide a device tree of version 17 or later, and should provide
+a device tree of a version that is backwards compatible with version 16.
+|spec| compliant client programs shall accept device trees of any version
+backwards compatible with version 17 and may accept other versions as well.
 
-Note: The version is with respect to the binary structure of the device
-tree, not its content.
+.. note:: The version is with respect to the binary structure of the device
+   tree, not its content.
 
 Header
 ------
@@ -62,7 +59,7 @@ The layout of the header for the device tree is defined by the following
 C structure. All the header fields are 32-bit integers, stored in
 big-endian format.
 
-**Flattened Device Tree Header Fields.**
+**Flattened Device Tree Header Fields**
 
 ::
 
@@ -79,29 +76,29 @@ big-endian format.
             uint32_t size_dt_struct;
         };
 
-magic
+``magic``
     This field shall contain the value 0xd00dfeed (big-endian).
 
-totalsize
+``totalsize``
     This field shall contain the total size of the device tree data
     structure. This size shall encompass all sections of the structure:
     the header, the memory reservation block, structure block and
     strings block, as well as any free space gaps between the blocks or
     after the final block.
 
-off\_dt\_struct
+``off_dt_struct``
     This field shall contain the offset in bytes of the structure block
     (see 8.4) from the beginning of the header.
 
-off\_dt\_strings
+``off_dt_strings``
     This field shall contain the offset in bytes of the strings block
-    (see 8.5) from the beginning of the header.
+    (see FIXME 8.5) from the beginning of the header.
 
-off\_mem\_rsvmap
+``off_mem_rsvmap``
     This field shall contain the offset in bytes of the memory
     reservation block (see 8.3) from the beginning of the header.
 
-version
+``version``
     This field shall contain the version of the device tree data
     structure. The version is 17 if using the structure as defined in
     this document. An ePAPR boot program may provide the device tree of
@@ -109,28 +106,31 @@ version
     number defined in whichever later document gives the details of that
     version.
 
-last\_comp\_version
+``last_comp_version``
     This field shall contain the lowest version of the device tree data
     structure with which the version used is backwards compatible. So,
     for the structure as defined in this document (version 17), this
     field shall contain 16 because version 17 is backwards compatible
-    with version 16, but not earlier versions. As per 8.1, an ePAPR boot
+    with version 16, but not earlier versions. As per FIXME 8.1, a |spec| boot
     program should provide a device tree in a format which is backwards
     compatible with version 16, and thus this field shall always contain
     16.
 
-boot\_cpuid\_phys
+``boot_cpuid_phys``
     This field shall contain the physical ID of the system’s boot CPU.
-    It shall be identical to the physical ID given in the *reg* property
+    It shall be identical to the physical ID given in the ``reg`` property
     of that CPU node within the device tree.
 
-size\_dt\_strings
+``size_dt_strings``
     This field shall contain the length in bytes of the strings block
     section of the device tree blob.
 
-size\_dt\_struct
+``size_dt_struct``
     This field shall contain the length in bytes of the structure block
     section of the device tree blob.
+
+
+.. *FIXME: Add reserved memory node*
 
 Memory Reservation Block
 ------------------------
@@ -143,10 +143,10 @@ of areas in physical memory which are *reserved*; that is, which shall
 not be used for general memory allocations. It is used to protect vital
 data structures from being overwritten by the client program. For
 example, on some systems with an IOMMU, the TCE (translation control
-entry) tables initialized by an ePAPR boot program would need to be
+entry) tables initialized by a |spec| boot program would need to be
 protected in this manner. Likewise, any boot program code or data used
 during the client program’s runtime would need to be reserved (e.g.,
-RTAS on Open Firmware platforms). The ePAPR does not require the boot
+RTAS on Open Firmware platforms). |spec| does not require the boot
 program to provide any such runtime components, but it does not prohibit
 implementations from doing so as an extension.
 
@@ -170,6 +170,8 @@ speculative memory reads through a non-guarded virtual page).
 
 This requirement is necessary because any memory that is not reserved
 may be accessed by the client program with arbitrary storage attributes.
+
+.. FIXME: Power ISA reference to be moved to appendix
 
 Any accesses to reserved memory by or caused by the boot program must be
 done as not Caching Inhibited and Memory Coherence Required (i.e., WIMG
@@ -207,9 +209,9 @@ reserved blocks shall be terminated with an entry where both address and
 size are equal to 0. Note that the address and size values are always
 64-bit. On 32-bit CPUs the upper 32-bits of the value are ignored.
 
-Each uint64\_t in the memory reservation block, and thus the memory
+Each uint64_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
-offset from the beginning of the device tree blob (see 8.6)
+offset from the beginning of the device tree blob (see FIXME 8.6)
 
 Structure Block
 ---------------
@@ -221,7 +223,7 @@ described in 0.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
-device tree blob (see 8.6).
+device tree blob (see FIXME 8.6).
 
 Lexical structure
 ~~~~~~~~~~~~~~~~~
@@ -235,103 +237,92 @@ previous token’s data.
 
 The five token types are as follows:
 
-FDT\_BEGIN\_NODE (0x00000001)
-    The FDT\_BEGIN\_NODE token marks the beginning of a node’s
+``FDT_BEGIN_NODE`` (0x00000001)
+    The FDT_BEGIN_NODE token marks the beginning of a node’s
     representation. It shall be followed by the node’s unit name as
     extra data. The name is stored as a null-terminated string, and
     shall include the unit address (see 2.2.1, Node Names), if any. The
     node name is followed by zeroed padding bytes, if necessary for
     alignment, and then the next token, which may be any token except
-    FDT\_END.
+    FDT_END.
 
-FDT\_END\_NODE (0x00000002)
-    The FDT\_END\_NODE token marks the end of a node’s representation.
+``FDT_END_NODE`` (0x00000002)
+    The FDT_END_NODE token marks the end of a node’s representation.
     This token has no extra data; so it is followed immediately by the
-    next token, which may be any token except FDT\_PROP.
+    next token, which may be any token except FDT_PROP.
 
-FDT\_PROP (0x00000003)
-    The FDT\_PROP token marks the beginning of the representation of one
-    property in the device tree. It shall be followed by extra data
-    describing the property. This data consists first of the property’s
-    length and name represented as the following C structure:
+``FDT_PROP`` (0x00000003)
+   The FDT_PROP token marks the beginning of the representation of one
+   property in the device tree. It shall be followed by extra data
+   describing the property. This data consists first of the property’s
+   length and name represented as the following C structure:
 
-::
+   ::
 
-    struct {
-        uint32_t len;
-        uint32_t nameoff;
-    }
+      struct {
+          uint32_t len;
+          uint32_t nameoff;
+      }
 
-Both the fields in this structure are 32-bit big-endian integers.
+   Both the fields in this structure are 32-bit big-endian integers.
 
--  len gives the length of the property’s value in bytes (which may be
-   zero, indicating an empty property, see 2.2.4.2, Property Values).
+   * len gives the length of the property’s value in bytes (which may be
+     zero, indicating an empty property, see 2.2.4.2, Property Values).
 
--  nameoff gives an offset into the strings block (see 8.5) at which the
-   property’s name is stored as a null-terminated string.
+   * nameoff gives an offset into the strings block (see 8.5) at which the
+     property’s name is stored as a null-terminated string.
 
-After this structure, the property’s value is given as a byte string of
-length len. This value is followed by zeroed padding bytes (if
-necessary) to align to the next 32-bit boundary and then the next token,
-which may be any token except FDT\_END.
+   After this structure, the property’s value is given as a byte string of
+   length len. This value is followed by zeroed padding bytes (if
+   necessary) to align to the next 32-bit boundary and then the next token,
+   which may be any token except FDT_END.
 
-FDT\_NOP (0x00000004)
-    The FDT\_NOP token will be ignored by any program parsing the device
+``FDT_NOP`` (0x00000004)
+    The FDT_NOP token will be ignored by any program parsing the device
     tree. This token has no extra data; so it is followed immediately by
     the next token, which can be any valid token. A property or node
-    definition in the tree can be overwritten with FDT\_NOP tokens to
+    definition in the tree can be overwritten with FDT_NOP tokens to
     remove it from the tree without needing to move other sections of
     the tree’s representation in the device tree blob.
 
-FDT\_END (0x00000009)
-    The FDT\_END token marks the end of the structure block. There shall
-    be only one FDT\_END token, and it shall be the last token in the
+``FDT_END`` (0x00000009)
+    The FDT_END token marks the end of the structure block. There shall
+    be only one FDT_END token, and it shall be the last token in the
     structure block. It has no extra data; so the byte immediately after
-    the FDT\_END token has offset from the beginning of the structure
-    block equal to the value of the size\_dt\_struct field in the device
+    the FDT_END token has offset from the beginning of the structure
+    block equal to the value of the size_dt_struct field in the device
     tree blob header.
 
 Tree structure
 ~~~~~~~~~~~~~~
 
 The device tree structure is represented as a linear tree: the
-representation of each node begins with an FDT\_BEGIN\_NODE token and
-ends with an FDT\_END\_NODE token. The node’s properties and subnodes
-(if any) are represented before the FDT\_END\_NODE, so that the
-FDT\_BEGIN\_NODE and FDT\_END\_NODE tokens for those subnodes are nested
+representation of each node begins with an FDT_BEGIN_NODE token and
+ends with an FDT_END_NODE token. The node’s properties and subnodes
+(if any) are represented before the FDT_END_NODE, so that the
+FDT_BEGIN_NODE and FDT_END_NODE tokens for those subnodes are nested
 within those of the parent.
 
 The structure block as a whole consists of the root node’s
 representation (which contains the representations for all other nodes),
-followed by an FDT\_END token to mark the end of the structure block as
+followed by an FDT_END token to mark the end of the structure block as
 a whole.
 
 More precisely, each node’s representation consists of the following
 components:
 
--  (optionally) any number of FDT\_NOP tokens
-
--  FDT\_BEGIN\_NODE token
-
-   -  The node’s name as a null-terminated string
-
-   -  [zeroed padding bytes to align to a 4-byte boundary]
-
--  For each property of the node:
-
-   -  (optionally) any number of FDT\_NOP tokens
-
-   -  FDT\_PROP token
-
-      -  property information as given in 8.4.1
-
-      -  [zeroed padding bytes to align to a 4-byte boundary]
-
--  Representations of all child nodes in this format
-
--  (optionally) any number of FDT\_NOP tokens
-
--  FDT\_END\_NODE token
+*  (optionally) any number of FDT_NOP tokens
+*  FDT_BEGIN_NODE token
+ *  The node’s name as a null-terminated string
+ *  [zeroed padding bytes to align to a 4-byte boundary]
+*  For each property of the node:
+ *  (optionally) any number of FDT_NOP tokens
+ *  FDT_PROP token
+  *  property information as given in 8.4.1
+  *  [zeroed padding bytes to align to a 4-byte boundary]
+*  Representations of all child nodes in this format
+*  (optionally) any number of FDT_NOP tokens
+*  FDT_END_NODE token
 
 Note that this process requires that all property definitions for a
 particular node precede any subnode definitions for that node. Although
@@ -372,4 +363,3 @@ program shall load the device tree blob at such an aligned address
 before passing it to the client program. If an ePAPR client program
 relocates the device tree blob in memory, it should only do so to
 another 8-byte aligned address.
-
