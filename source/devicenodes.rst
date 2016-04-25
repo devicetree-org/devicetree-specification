@@ -51,12 +51,12 @@ are descendants. The full path to the root node is ``/``.
 
 .. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
 
-aliases node
-------------
+``/aliases`` node
+-----------------
 
 A device tree may have an aliases node (``/aliases``) that defines one or
 more alias properties. The alias node shall be at the root of the device
-tree and have the node name aliases.
+tree and have the node name ``/aliases``.
 
 Each property of the ``/aliases`` node defines an alias. The property name
 specifies the alias name. The property value specifies the full path to
