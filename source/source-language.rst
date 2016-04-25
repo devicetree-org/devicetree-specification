@@ -117,7 +117,7 @@ or they may be & followed by a node’s full path in braces. Example:
 File layout
 -----------
 
-**Version 1 DTS files have the overall layout:.**
+**Version 1 DTS files have the overall layout:**
 
 ::
 
@@ -137,9 +137,6 @@ Memory reservations define an entry for the device tree blob’s memory
 reservation table. They have the form: e.g., /memreserve/ <address>
 <length>; Where <address> and <length> are 64-bit C-style integers.
 
--  The / { }; section defines the root node of the device tree.
+*  The / { }; section defines the root node of the device tree.
 
--  C style (/* ... \*/) and C++ style (//) comments are supported.
-
-.. |Device Tree Logical Structure| image:: ./images/diag-e2a712d2228afde62596375277d681df.png
-.. |Examples of Node Names| image:: ./images/diag-9f13852998466b838915177b2a098598.png
+*  C style (/* ... \*/) and C++ style (//) comments are supported.
