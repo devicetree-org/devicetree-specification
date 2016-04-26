@@ -1,3 +1,5 @@
+.. _chapter-device-node-requirements:
+
 Device Node Requirements
 ========================
 
@@ -49,7 +51,9 @@ are descendants. The full path to the root node is ``/``.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 ``/aliases`` node
 -----------------
@@ -106,17 +110,19 @@ physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the *reg* property of a single memory node.
 
-The name component of the node name (see FIXME 2.2.1) shall be memory.
+The name component of the node name (see section :ref:`sect-node-names`)
+shall be memory.
 
 The client program may access memory not covered by any memory
-reservations (see section 8.3 FIXME) using any storage attributes it chooses.
-However, before changing the storage attributes used to access a real
-page, the client program is responsible for performing actions required
-by the architecture and implementation, possibly including flushing the
-real page from the caches. The boot program is responsible for ensuring
-that, without taking any action associated with a change in storage
-attributes, the client program can safely access all memory (including
-memory covered by memory reservations) as WIMG = 0b001x. That is:
+reservations (see section :ref:`sect-fdt-memory-reservation-block`)
+using any storage attributes it chooses. However, before changing the
+storage attributes used to access a real page, the client program is
+responsible for performing actions required by the architecture and
+implementation, possibly including flushing the real page from the
+caches. The boot program is responsible for ensuring that, without
+taking any action associated with a change in storage attributes, the
+client program can safely access all memory (including memory covered by
+memory reservations) as WIMG = 0b001x. That is:
 
 -  not Write Through Required not Caching Inhibited Memory Coherence
 
@@ -145,7 +151,9 @@ If the VLE storage attribute is supported, with VLE=0.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =======================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 **Example**
 
@@ -194,7 +202,7 @@ The ``/chosen`` node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.
 
-The node name (see FIXME 2.2.1) shall be ``/chosen``.
+The node name (see :ref:`sect-node-names`) shall be ``/chosen``.
 
 .. tabularcolumns:: l c l J
 .. table:: ``/chosen`` Node Properties
@@ -222,7 +230,9 @@ The node name (see FIXME 2.2.1) shall be ``/chosen``.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 **Example**
 
@@ -245,7 +255,7 @@ A cpus node is required for all device trees. It does not represent a
 real device in the system, but acts as a container for child cpu nodes
 which represent the systems CPUs.
 
-The node name (see FIXME 2.2.1) shall be cpus.
+The node name (see :ref:`sect-node-names`) shall be cpus.
 
 .. tabularcolumns:: l c l J
 .. table:: ``/cpus`` Node Properties
@@ -262,12 +272,16 @@ The node name (see FIXME 2.2.1) shall be cpus.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 The cpus node may contain properties that are common across CPU nodes.
-See section FIXME 3.7 for details.
+See section :ref:`sect-cpus-cpu-node-properties` for details.
 
-For an example, see section FIXME 3.7.4.
+For an example, see section :ref:`sect-cpu-node-example`.
+
+.. _sect-cpus-cpu-node-properties:
 
 /cpus/cpu* Node Properties
 --------------------------
@@ -291,7 +305,8 @@ CPU node, but if an expected property is not found then it should look
 at the parent cpus node. This results in a less verbose representation
 of properties which are identical across all CPUs.
 
-The node name for every cpu node (see FIXME 2.2.1) should be cpu.
+The node name for every cpu node (see :ref:`sect-node-names`) should be
+cpu.
 
 General Properties of /cpus/cpu* nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -423,7 +438,9 @@ specific applicable detail.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 .. tabularcolumns:: l c l J
 .. table:: ``/cpus/cpu*`` Node Power ISA Properties
@@ -474,7 +491,9 @@ specific applicable detail.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =========================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 Older versions of device trees may be encountered that contain a
 bus-frequency property on CPU nodes. For compatibility, a client-program
@@ -523,7 +542,9 @@ buffer in the processor’s MMU.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 Internal (L1) Cache Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -583,11 +604,13 @@ The following properties of a cpu node describe the processor’s internal
    ``next-level-cache``    SD    ``<phandle>``         If present, indicates that another level of
                                                        cache exists. The value is the phandle of the
                                                        next level of cache. The phandle value type is
-                                                       fully described in section FIXME 2.3.3.
+                                                       fully described in section :ref:`sect-standard-properties-phandle`.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 Older versions of device trees may be encountered that contain a
 deprecated form of the next-level-cache property called l2-cache. For
@@ -595,7 +618,10 @@ compatibility, a client-program may wish to support l2-cache if a
 next-level-cache property is not present. The meaning and use of the two
 properties is identical.
 
-**Example**
+.. _sect-cpu-node-example:
+
+Example
+~~~~~~~
 
 Here is an example of a cpus node with one child cpu node:
 
@@ -652,9 +678,12 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
 
-**Example**
+
+Example
+~~~~~~~
 
 See the following example of a device tree representation of two CPUs,
 each with their own on-chip L2 and a shared L3.

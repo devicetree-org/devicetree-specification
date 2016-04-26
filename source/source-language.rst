@@ -1,4 +1,6 @@
-Appendix A Device Tree Source Format (version 1)
+.. _chapter-devicetree-source-format:
+
+Device Tree Source Format (version 1)
 ================================================
 
 The Device Tree Source (DTS) format is a textual representation of a

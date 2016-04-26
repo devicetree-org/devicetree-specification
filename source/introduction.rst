@@ -49,19 +49,19 @@ may include:
 
 **Organization of this Document**
 
-* Chapter 1 :ref:`chapter-introduction` introduces the architecture being specified by |spec|.
-* Chapter 2 :ref:`chapter-devicetree` introduces the device tree concept and describes its logical
-  structure and standard properties.
-* Chapter 3 specifies the definition of a base set of device nodes
-  required by |spec|-compliant device trees.
-* Chapter 4 specifies the ELF client program image format.
-* Chapter 5 specifies the requirements for boot programs to start client
+* Chapter :ref:`chapter-introduction` introduces the architecture being
+  specified by |spec|.
+* Chapter :ref:`chapter-devicetree` introduces the device tree concept
+  and describes its logical structure and standard properties.
+* Chapter :ref:`chapter-device-node-requirements` specifies the
+  definition of a base set of device nodes required by |spec|-compliant
+  device trees.
+* Chapter FIXME specifies the requirements for boot programs to start client
   programs on single and multiple CPU systems.
-* Chapter 6 describes device bindings for certain classes of devices and
-  specific device types.
-* Chapter 7 describes |epapr| virtualization extensions-- hypercall ABI,
-  hypercall APIs, and device tree conventions related to virtualization.
-* Chapter 8 specifies the physical structure of device trees.
+* Chapter :ref:`chapter-device-bindings` describes device bindings for
+  certain classes of devices and specific device types.
+* Chapter :ref:`chapter-fdt-structure` specifies the physical structure
+  of device trees.
 
 **Conventions Used in this Document**
 
@@ -79,10 +79,8 @@ recommended that*).
 The word *may* is used to indicate a course of action permissible within
 the limits of the standard (*may* equals *is permitted*).
 
-.. FIXME - use reference to appendix A in case the numbering changes
-
 Examples of device tree constructs are frequently shown in *Device Tree
-Syntax* form. See *Appendix A Device Tree Source Format (version 1)* for
+Syntax* form. See section :ref:`chapter-devicetree-source-format` for
 an overview of this syntax.
 
 Relationship to IEEE™ 1275 and |epapr|

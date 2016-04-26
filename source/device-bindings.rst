@@ -1,3 +1,5 @@
+.. _chapter-device-bindings:
+
 Device Bindings
 ===============
 
@@ -10,7 +12,7 @@ Bindings may be defined as extensions of other each. For example a new
 bus type could be defined as an extension of the simple-bus binding. In
 this case, the compatible property would contain several strings
 identifying each binding—from the most specific to the most general (see
-section FIXME 2.3.1, compatible).
+section :ref:`sect-standard-properties-compatible`, compatible).
 
 Binding Guidelines
 ------------------
@@ -26,17 +28,19 @@ to provide device drivers with needed attributes of the device.
 Some recommended practices include:
 
 1. Define a compatible string using the conventions described in section
-   FIXME 2.3.1.
+   :ref:`sect-standard-properties-compatible`.
 
-2. Use the standard properties (defined in sections FIXME 2.3 and FIXME 2.4) as
+2. Use the standard properties (defined in sections
+   :ref:`sect-standard-properties` and :ref:`sect-interrupts`) as
    applicable for the new device. This usage typically includes the
    ``reg`` and interrupts properties at a minimum.
 
-3. Use the conventions specified in section FIXME 6 (Device Bindings) if the
-   new device fits into one the |spec| defined device classes.
+3. Use the conventions specified in section :ref:`chapter-device-bindings`
+   (Device Bindings) if the new device fits into one the |spec| defined
+   device classes.
 
 4. Use the miscellaneous property conventions specified in section
-   FIXME 6.1.2, if applicable.
+   :ref:`sect-misc-properties`, if applicable.
 
 5. If new properties are needed by the binding, the recommended format
    for property names is: ``"<company>,<property-name>"``, where ``<company>``
@@ -44,6 +48,8 @@ Some recommended practices include:
    the creator of the binding.
 
    Example: ``"ibm,ppc-interrupt-server#s"``
+
+.. _sect-misc-properties:
 
 Miscellaneous Properties
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -190,15 +196,17 @@ the device tree using following properties.
                                                        using following formula: ``"registers address"
                                                        << reg-shift``. If unspecified, the default
                                                        value is 0.
-   ``virtual-reg``         SD    ``<u32>``             See section FIXME 2.3.7. Specifies an effective
-                                 or                    address that maps to the first physical
-                                 ``<u64>``             address specified in the ``reg`` property. This
-                                                       property is required if this device node is
-                                                       the system’s console.
+   ``virtual-reg``         SD    ``<u32>``             See section :ref:`sect-standard-properties-virtual-reg`.
+                                 or                    Specifies an effective address that maps to the
+                                 ``<u64>``             first physical address specified in the ``reg``
+                                                       property. This property is required if this
+                                                       device node is the system’s console.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
 
 Network devices
 ---------------
@@ -395,7 +403,11 @@ specifiers:
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ====================================================================================================
 
-.. note:: All other standard properties (section FIXME 2.3) are allowed but are optional.
+.. note:: All other standard properties (section
+   :ref:`sect-standard-properties`) are allowed but are optional.
+
+
+.. _sect-bindings-simple-bus:
 
 ``simple-bus`` Compatible Value
 -------------------------------
@@ -414,6 +426,7 @@ represented as a node with a compatible value of “simple-bus”.
    ``compatible``           R     ``<string>``          Value shall include "simple-bus".
    ``ranges``               R     ``<prop encoded       This property represents the mapping between
                                   array>``              parent address to child address spaces (see
-                                                        section FIXME 2.3.8, ranges).
+                                                        section :ref:`sect-standard-properties-ranges`,
+                                                        ranges).
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ====================================================================================================

@@ -57,6 +57,8 @@ and values shown beside the node.
 Devicetree Structure and Conventions
 ------------------------------------
 
+.. _sect-node-names:
+
 Node Names
 ~~~~~~~~~~
 
@@ -317,18 +319,23 @@ sufficiently descriptive.
    |                         |        address+11  00  '\0'                                          |
    +-------------------------+----------------------------------------------------------------------+
 
+.. _sect-standard-properties:
+
 Standard Properties
 -------------------
 
 |spec| specifies a set of standard properties for device nodes. These
 properties are described in detail in this section. Device nodes defined
-by |spec| (see Chapter 3, :FIXME`chapter-device-node-requirements`) may specify
+by |spec| (see Chapter 3, :ref:`chapter-device-node-requirements`) may specify
 additional requirements or constraints regarding the use of the standard
-properties. :FIXME`chapter-device-bindings` that describe the representation
+properties. :ref:`chapter-device-bindings` that describe the representation
 of specific devices may also specify additional requirements.
 
 .. note:: All examples of devicetree nodes in this document use the
    :abbr:`DTS (Devicetree Source)` format for specifying nodes and properties.
+
+
+.. _sect-standard-properties-compatible:
 
 compatible
 ~~~~~~~~~~
@@ -380,6 +387,8 @@ Description:
 Example:
 
    ``model = “fsl,MPC8349EMITX”;``
+
+.. _sect-standard-properties-phandle:
 
 phandle
 ~~~~~~~
@@ -547,6 +556,8 @@ Example:
 
       ``reg = <0x3000 0x20 0xFE00 0x100>;``
 
+.. _sect-standard-properties-virtual-reg:
+
 virtual-reg
 ~~~~~~~~~~~
 
@@ -560,6 +571,8 @@ Description:
    the first physical address specified in the *reg* property of the device
    node. This property enables boot programs to provide client programs
    with virtual-to-physical mappings that have been set up.
+
+.. _sect-standard-properties-ranges:
 
 ranges
 ~~~~~~
@@ -678,7 +691,7 @@ Description:
    property is deprecated, and its use is not recommended. However, it
    might be used in older non-|spec|-compliant devicetrees. Operating
    system should determine a node’s name based on the *name* component of
-   the node name (see section 2.2.1).
+   the node name (see section :ref:`sect-node-names`).
 
 device_type (deprecated)
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -693,6 +706,8 @@ Description:
    device’s FCode programming model. Because |spec| does not have FCode, new
    use of the property is deprecated, and it should be included only on cpu
    and memory nodes for compatibility with IEEE 1275–derived devicetrees.
+
+.. _sect-interrupts:
 
 Interrupts and Interrupt Mapping
 --------------------------------
@@ -772,7 +787,7 @@ sits in the logical interrupt tree.
       "simple-bus" [ label = "simple-bus" ]
       "gpioctrl" [ label = "gpioctrl | interrupt-parent=\<&open-pic\>" ]
       "device3" [ label = "device3 | interrupt-parent=\<&gpioctrl\>" ]
- 
+
       "soc":e -> "device1":w
       "soc":e -> "device2":w
       "soc":e -> "open-pic":w
@@ -962,12 +977,14 @@ Description:
    the interrupt-map. Because some fields in the unit interrupt specifier
    may not be relevant, a mask is applied before the lookup is done. This
    mask is defined in the *interrupt-map-mask* property (see section
-   2.4.3.2).
+   :ref:`sect-interrupt-map-mask`).
 
    .. note:: Both the child node and the interrupt parent node are required to
       have *#address-cells* and *#interrupt-cells* properties defined. If a
       unit address component is not required, *#address-cells* shall be
       explicitly defined to be zero.
+
+.. _sect-interrupt-map-mask:
 
 interrupt-map-mask
 ^^^^^^^^^^^^^^^^^^
@@ -1004,7 +1021,8 @@ interrupt routing for two PCI slots (IDSEL 0x11,0x12). The INTA, INTB,
 INTC, and INTD pins for slots 1 and 2 are wired to the Open PIC
 interrupt controller.
 
-.. _example-interrupt-mapping
+.. _example-interrupt-mapping:
+
 ::
 
    soc {
@@ -1081,10 +1099,11 @@ node with a specified parent unit address and interrupt specifier.
     node.
 
     * The value ``<2 1>`` is a value specified by the device binding for
-      the Open PIC interrupt controller (see section 6.5). The value
-      ``<2>`` specifies the physical interrupt source number on the
-      interrupt controller to which INTA is wired. The value <1>
-      specifies the level/sense encoding.
+      the Open PIC interrupt controller (see section
+      :ref:`sect-bindings-simple-bus`). The value ``<2>`` specifies the
+      physical interrupt source number on the interrupt controller to
+      which INTA is wired. The value <1> specifies the level/sense
+      encoding.
 
 In this example, the interrupt-map-mask property has a value of <0xf800
 0 0 7>. This mask is applied to a child unit interrupt specifier before

@@ -1,3 +1,5 @@
+.. _chapter-fdt-structure:
+
 Flat Device Tree Physical Structure
 ===================================
 
@@ -5,15 +7,17 @@ With the exception of platforms using IEEE1275 Open Firmware [IEEE1275], the
 devicetree data is contained within a single single, linear, pointerless data
 structure known as the flattened device tree or device tree blob.
 
-FIXME Section references:
-This data structure consists of a small header (see 8.2), followed by three
-variable sized sections: the memory reservation block (see 8.3), the structure
-block (see 8.4) and the strings block (see 8.5). These should be present in the
-flattened device tree in that order. Thus, the device tree structure as a
-whole, when loaded into memory at address, will resemble the diagram in Figure
-8-1 (lower addresses are at the top of the diagram).
+This data structure consists of a small header (see
+:ref:`sect-fdt-header`), followed by three variable sized sections: the
+memory reservation block (see :ref:`sect-fdt-memory-reservation-block`),
+the structure block (see :ref:`sect-fdt-structure-block`) and the
+strings block (see :ref:`sect-fdt-strings-block`). These should be
+present in the flattened device tree in that order. Thus, the device
+tree structure as a whole, when loaded into memory at address, will
+resemble the diagram in Figure :numref:`figure_device_tree_structure`
+(lower addresses are at the top of the diagram).
 
-.. _figure_device_tree_structure
+.. _figure_device_tree_structure:
 .. digraph:: tree
    :caption: Devicetree .dtb Structure
 
@@ -51,6 +55,8 @@ backwards compatible with version 17 and may accept other versions as well.
 
 .. note:: The version is with respect to the binary structure of the device
    tree, not its content.
+
+.. _sect-fdt-header:
 
 Header
 ------
@@ -132,6 +138,8 @@ big-endian format.
 
 .. *FIXME: Add reserved memory node*
 
+.. _sect-fdt-memory-reservation-block:
+
 Memory Reservation Block
 ------------------------
 
@@ -212,6 +220,8 @@ size are equal to 0. Note that the address and size values are always
 Each uint64_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
 offset from the beginning of the device tree blob (see FIXME 8.6)
+
+.. _sect-fdt-structure-block:
 
 Structure Block
 ---------------
@@ -329,6 +339,8 @@ particular node precede any subnode definitions for that node. Although
 the structure would not be ambiguous if properties and subnodes were
 intermingled, the code needed to process a flat tree is simplified by
 this requirement.
+
+.. _sect-fdt-strings-block:
 
 Strings Block
 -------------
