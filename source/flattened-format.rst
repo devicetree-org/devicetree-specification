@@ -37,7 +37,9 @@ resemble the diagram in Figure :numref:`figure_device_tree_structure`
 
 The (free space) sections may not be present, though in some cases they
 might be required to satisfy the alignment constraints of the individual
-blocks (see FIXME 8.6).
+blocks (see :ref:`sect-fdt-alignment`).
+
+.. _sect-fdt-versioning:
 
 Versioning
 ----------
@@ -117,10 +119,10 @@ big-endian format.
     structure with which the version used is backwards compatible. So,
     for the structure as defined in this document (version 17), this
     field shall contain 16 because version 17 is backwards compatible
-    with version 16, but not earlier versions. As per FIXME 8.1, a |spec| boot
-    program should provide a device tree in a format which is backwards
-    compatible with version 16, and thus this field shall always contain
-    16.
+    with version 16, but not earlier versions. As per section
+    :ref:`sect-fdt-versioning`, a |spec| boot program should provide a
+    device tree in a format which is backwards compatible with version
+    16, and thus this field shall always contain 16.
 
 ``boot_cpuid_phys``
     This field shall contain the physical ID of the system’s boot CPU.
@@ -219,7 +221,8 @@ size are equal to 0. Note that the address and size values are always
 
 Each uint64_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
-offset from the beginning of the device tree blob (see FIXME 8.6)
+offset from the beginning of the device tree blob (see
+:ref:`sect-fdt-alignment`).
 
 .. _sect-fdt-structure-block:
 
@@ -233,7 +236,7 @@ described in 0.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
-device tree blob (see FIXME 8.6).
+device tree blob (see :ref:`sect-fdt-alignment`).
 
 Lexical structure
 ~~~~~~~~~~~~~~~~~
@@ -352,6 +355,8 @@ offset into the strings block.
 
 The strings block has no alignment constraints and may appear at any
 offset from the beginning of the device tree blob.
+
+.. _sect-fdt-alignment:
 
 Alignment
 ---------
