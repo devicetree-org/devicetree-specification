@@ -7,6 +7,7 @@ Welcome to Devicetree Specification's documentation!
 ====================================================
 
 .. toctree::
+   :numbered:
    :maxdepth: 3
 
    license
