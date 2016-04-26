@@ -3,8 +3,8 @@
 
 .. [IEEE1275] *Boot (Initialization Configuration) Firmware: Core Requirements
    and Practices*, 1994, This is the core standard (also known as IEEE
-   1275) that defines the device tree concept adopted by the ePAPR. It
-   is available from Global Engineering (http://global.ihs.com/).
+   1275) that defines the device tree concept adopted by the |spec| and
+   |epapr|. It is available from Global Engineering (http://global.ihs.com/).
 
 .. [b3] *PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
    (Initialization, Configuration) Firmware*, Version 2.1, Open Firmware

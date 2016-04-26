@@ -33,7 +33,7 @@ Some recommended practices include:
    ``reg`` and interrupts properties at a minimum.
 
 3. Use the conventions specified in section FIXME 6 (Device Bindings) if the
-   new device fits into one the ePAPR defined device classes.
+   new device fits into one the |spec| defined device classes.
 
 4. Use the miscellaneous property conventions specified in section
    FIXME 6.1.2, if applicable.

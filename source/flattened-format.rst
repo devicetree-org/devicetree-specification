@@ -101,7 +101,7 @@ big-endian format.
 ``version``
     This field shall contain the version of the device tree data
     structure. The version is 17 if using the structure as defined in
-    this document. An ePAPR boot program may provide the device tree of
+    this document. An |spec| boot program may provide the device tree of
     a later version, in which case this field shall contain the version
     number defined in whichever later document gives the details of that
     version.
@@ -358,8 +358,8 @@ shall have aligned offsets from the beginning of the device tree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
 ensure that the device tree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
-boundary. As described in 5.2 (Device Tree) an ePAPRcompliant boot
+boundary. As described in 5.2 (Device Tree) an |spec| compliant boot
 program shall load the device tree blob at such an aligned address
-before passing it to the client program. If an ePAPR client program
+before passing it to the client program. If an |spec| client program
 relocates the device tree blob in memory, it should only do so to
 another 8-byte aligned address.

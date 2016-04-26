@@ -5,7 +5,7 @@ Base Device Node Types
 ----------------------
 
 The sections that follow specify the requirements for the base set of
-device nodes required in an ePAPR-compliant device tree.
+device nodes required in an |spec|-compliant device tree.
 
 All device trees shall have a root node and the following nodes shall be
 present at the root of all device trees:
@@ -397,7 +397,7 @@ specific applicable detail.
                                                        The value shall be one of the following:
 
                                                        "spin-table" The CPU is enabled with the
-                                                       spin table method defined in the ePAPR.
+                                                       spin table method defined in the |spec|.
 
                                                        ``"[vendor],[method]"`` An
                                                        implementation-dependent string that
@@ -411,7 +411,7 @@ specific applicable detail.
                                                        Example: ``"fsl,MPC8572DS"``
 
                                                        Note: Other methods may be added to later
-                                                       revisions of the ePAPR specification.
+                                                       revisions of the |spec| specification.
    ``cpu-release-addr``         SD    ``<u64>``        The cpu-release-addr property is required for
                                                        cpu nodes that have an enable-method property
                                                        value of "spin-table". The value specifies the
@@ -688,7 +688,7 @@ each with their own on-chip L2 and a shared L3.
                     cache-unified;
                     cache-size = <0x40000>; // 256 KB
                     cache-sets = <0x400>; // 1024
-                    cache-block-size = 
+                    cache-block-size =
                     cache-level = <3>;
                 };
             };

@@ -85,14 +85,14 @@ Examples of device tree constructs are frequently shown in *Device Tree
 Syntax* form. See *Appendix A Device Tree Source Format (version 1)* for
 an overview of this syntax.
 
-Relationship to IEEE™ 1275 and ePAPR
+Relationship to IEEE™ 1275 and |epapr|
 ------------------------------------
 
 |spec| is loosely related to the IEEE 1275 Open Firmware
 standard—\ *IEEE Standard for Boot (Initialization Configuration)
 Firmware: Core Requirements and Practices* [IEEE1275]_.
 
-The original IEEE 1275 specification and its derivatives such as CHRP [CHRP]_ 
+The original IEEE 1275 specification and its derivatives such as CHRP [CHRP]_
 and PAPR [PAPR]_ address problems of general purpose computers, such as how a
 single version of an operating system can work on several different
 computers within the same family and the problem of loading an operating
