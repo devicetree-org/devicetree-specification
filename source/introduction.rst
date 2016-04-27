@@ -127,9 +127,9 @@ Definition of Terms
 .. glossary::
 
    AMP
-       Asymmetric Multiprocessing. Computer architecture where two or more
-       CPUs are executing different tasks. Typically, an AMP system
-       executes different operating system images on separate CPUs.
+       Asymmetric Multiprocessing. Computer available CPUs are partitioned into
+       groups, each running a distinct operating system image. The CPUs
+       may or not may not identical.
 
    boot CPU
        The first CPU which a boot program directs to a client program’s
