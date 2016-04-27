@@ -283,8 +283,8 @@ For an example, see section :ref:`sect-cpu-node-example`.
 
 .. _sect-cpus-cpu-node-properties:
 
-/cpus/cpu* Node Properties
---------------------------
+``/cpus/cpu*`` Node Properties
+------------------------------
 
 A cpu node represents a hardware execution block that is sufficiently
 independent that it is capable of running an operating system without
@@ -308,8 +308,8 @@ of properties which are identical across all CPUs.
 The node name for every cpu node (see :ref:`sect-node-names`) should be
 cpu.
 
-General Properties of /cpus/cpu* nodes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+General Properties of ``/cpus/cpu*`` nodes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following table describes the general properties of CPU nodes. Some
 of the properties described in FIXME are select standard properties with
@@ -321,7 +321,7 @@ specific applicable detail.
    ============================ ===== ================ ===============================================
    Property Name                Usage Value Type       Definition
    ============================ ===== ================ ===============================================
-   ``device_type``              R     ``<string>``     Value shall be “cpu”.
+   ``device_type``              R     ``<string>``     Value shall be "cpu".
    ``reg``                      R     array            The value of ``reg`` is a ``<prop-encoded-array>``
                                                        that defines a unique CPU/thread id for the
                                                        CPU/threads represented by the CPU node.
