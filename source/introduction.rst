@@ -8,7 +8,7 @@ Purpose and Scope
 -----------------
 
 To initialize and boot a computer system, various software components
-interact—firmware might perform low-level initialization of the system
+interact. Firmware might perform low-level initialization of the system
 hardware before passing control to software such as an operating system,
 bootloader, or hypervisor. Bootloaders and hypervisors can, in turn,
 load and transfer control to operating systems. Standard, consistent
@@ -19,15 +19,12 @@ state and executes another software component referred to as a *client
 program*. Examples of a boot programs include: firmware, bootloaders, and
 hypervisors. Examples of a client program include: bootloaders,
 hypervisors, operating systems, and special purpose programs. A piece of
-software (e.g. a hypervisor) may be both a client program and a boot
-program.
+software may be both a client program and a boot program  (e.g. a hypervisor).
 
 This specification, the |spec-fullname| (|spec|),
 provides a complete boot program to client program
 interface definition, combined with minimum system requirements that
 facilitate the development of a wide variety of systems.
-
-.. FIXME cgt - Rephrase the following?
 
 This specification is targeted towards the requirements of embedded
 systems. An embedded system typically consists of system hardware, an
