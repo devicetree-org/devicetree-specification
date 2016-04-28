@@ -14,7 +14,8 @@ program’s memory and passes a pointer to the devicetree to the client.
 
 This chapter describes the logical structure of the devicetree and
 specifies a base set of properties for use in describing device nodes.
-Chapter 3 specifies certain device nodes required by an |spec| compliant
+Chapter :ref:`chapter-device-node-requirements` specifies certain device nodes
+required by a |spec| compliant
 devicetree. Chapter 6 describes the |spec| defined device bindings— the
 requirements for representing certain device types classes of devices.
 Chapter 8 describes the in-memory encoding of the devicetree.
@@ -51,8 +52,8 @@ and values shown beside the node.
    "/":e    -> "cpus":w;
    "cpus":e -> "cpu@0":w;
    "cpus":e -> "cpu@1":w;
-   "/":e    -> "ethernet@fe001000":w;
-   "/":e    -> "ethernet@fe002000":w;
+   "/":e    -> "memory@00000000":w;
+   "/":e    -> "memory@20000000":w;
 
 Devicetree Structure and Conventions
 ------------------------------------
