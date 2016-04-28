@@ -297,84 +297,78 @@ sufficiently descriptive.
 .. _property-values-table:
 .. table:: Property values
 
-   +-------------------------+----------------------------------------------------------------------+
-   | Value                   | Description                                                          |
-   +=========================+======================================================================+
-   | ``<empty>``             | Value is empty. Used for conveying true-false information, when      |
-   |                         | the presence of absence of the property itself is sufficiently       |
-   |                         | descriptive.                                                         |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<u32>``               | A 32-bit integer in big-endian format. Example: the 32-bit value     |
-   |                         | 0x11223344 would be represented in memory as:                        |
-   |                         |                                                                      |
-   |                         |    ::                                                                |
-   |                         |                                                                      |
-   |                         |       address    11                                                  |
-   |                         |       address+1  22                                                  |
-   |                         |       address+2  33                                                  |
-   |                         |       address+3  44                                                  |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<u64>``               | Represents a 64-bit integer in big-endian format. Consists of        |
-   |                         | two ``<u32>`` values where the first value contains the most         |
-   |                         | significant bits of the integer and the second value contains        |
-   |                         | the least significant bits.                                          |
-   |                         |                                                                      |
-   |                         | Example: the 64-bit value 0x1122334455667788 would be                |
-   |                         | represented as two cells as: ``<0x11223344 0x55667788>``.            |
-   |                         |                                                                      |
-   |                         | The value would be represented in memory as:                         |
-   |                         |                                                                      |
-   |                         |    ::                                                                |
-   |                         |                                                                      |
-   |                         |         address  11                                                  |
-   |                         |       address+1  22                                                  |
-   |                         |       address+2  33                                                  |
-   |                         |       address+3  44                                                  |
-   |                         |       address+4  55                                                  |
-   |                         |       address+5  66                                                  |
-   |                         |       address+6  77                                                  |
-   |                         |       address+7  88                                                  |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<string>``            | Strings are printable and null-terminated. Example: the string       |
-   |                         | “hello” would be represented in memory as:                           |
-   |                         |                                                                      |
-   |                         |    ::                                                                |
-   |                         |                                                                      |
-   |                         |         address  68  'h'                                             |
-   |                         |       address+1  65  'e'                                             |
-   |                         |       address+2  6C  'l'                                             |
-   |                         |       address+3  6C  'l'                                             |
-   |                         |       address+4  6F  'o'                                             |
-   |                         |       address+5  00  '\0'                                            |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<prop-encoded-array>``| Format is specific to the property. See the property definition.     |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<phandle>``           | A ``<u32>`` value. A *phandle* value is a way to reference another   |
-   |                         | node in the devicetree. Any node that can be referenced defines      |
-   |                         | a phandle property with a unique ``<u32>`` value. That number        |
-   |                         | is used for the value of properties with a phandle value             |
-   |                         | type.                                                                |
-   +-------------------------+----------------------------------------------------------------------+
-   | ``<stringlist>``        | A list of ``<string>`` values concatenated together.                 |
-   |                         |                                                                      |
-   |                         | Example: The string list "hello","world" would be represented in     |
-   |                         | memory as:                                                           |
-   |                         |                                                                      |
-   |                         |    ::                                                                |
-   |                         |                                                                      |
-   |                         |           address  68  'h'                                           |
-   |                         |         address+1  65  'e'                                           |
-   |                         |         address+2  6C  'l'                                           |
-   |                         |         address+3  6C  'l'                                           |
-   |                         |         address+4  6F  'o'                                           |
-   |                         |         address+5  00  '\0'                                          |
-   |                         |         address+6  77  'w'                                           |
-   |                         |         address+7  6f  'o'                                           |
-   |                         |         address+8  72  'r'                                           |
-   |                         |         address+9  6C  'l'                                           |
-   |                         |        address+10  64  'd'                                           |
-   |                         |        address+11  00  '\0'                                          |
-   +-------------------------+----------------------------------------------------------------------+
+   ======================== ==================================================================
+   Value                    Description
+   ======================== ==================================================================
+   ``<empty>``              Value is empty. Used for conveying true-false information, when
+                            the presence of absence of the property itself is sufficiently
+                            descriptive.
+   ``<u32>``                A 32-bit integer in big-endian format. Example: the 32-bit value
+                            0x11223344 would be represented in memory as:
+
+                               ::
+
+                                  address    11
+                                  address+1  22
+                                  address+2  33
+                                  address+3  44
+   ``<u64>``                Represents a 64-bit integer in big-endian format. Consists of
+                            two ``<u32>`` values where the first value contains the most
+                            significant bits of the integer and the second value contains
+                            the least significant bits.
+
+                            Example: the 64-bit value 0x1122334455667788 would be
+                            represented as two cells as: ``<0x11223344 0x55667788>``.
+
+                            The value would be represented in memory as:
+
+                               ::
+
+                                    address  11
+                                  address+1  22
+                                  address+2  33
+                                  address+3  44
+                                  address+4  55
+                                  address+5  66
+                                  address+6  77
+                                  address+7  88
+   ``<string>``             Strings are printable and null-terminated. Example: the string
+                            “hello” would be represented in memory as:
+
+                               ::
+
+                                    address  68  'h'
+                                  address+1  65  'e'
+                                  address+2  6C  'l'
+                                  address+3  6C  'l'
+                                  address+4  6F  'o'
+                                  address+5  00  '\0'
+   ``<prop-encoded-array>`` Format is specific to the property. See the property definition.
+   ``<phandle>``            A ``<u32>`` value. A *phandle* value is a way to reference another
+                            node in the devicetree. Any node that can be referenced defines
+                            a phandle property with a unique ``<u32>`` value. That number
+                            is used for the value of properties with a phandle value
+                            type.
+   ``<stringlist>``         A list of ``<string>`` values concatenated together.
+
+                            Example: The string list "hello","world" would be represented in
+                            memory as:
+
+                               ::
+
+                                      address  68  'h'
+                                    address+1  65  'e'
+                                    address+2  6C  'l'
+                                    address+3  6C  'l'
+                                    address+4  6F  'o'
+                                    address+5  00  '\0'
+                                    address+6  77  'w'
+                                    address+7  6f  'o'
+                                    address+8  72  'r'
+                                    address+9  6C  'l'
+                                   address+10  64  'd'
+                                   address+11  00  '\0'
+   ======================== ==================================================================
 
 .. _sect-standard-properties:
 
