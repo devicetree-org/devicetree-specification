@@ -135,7 +135,8 @@ should describe the general class of device.
 
 The *unit-address* component of the name is specific to the bus type on
 which the node sits. It consists of one or more ASCII characters from
-the set of characters in ?. The unit-address must match the first
+the set of characters in :numref:`node-name-characters`. The
+unit-address must match the first
 address specified in the *reg* property of the node. If the node has no
 *reg* property, the *@unit-address* must be omitted and the
 *node-name* alone differentiates the node from other nodes at the same
@@ -178,7 +179,7 @@ The name of a node should be somewhat generic, reflecting the function
 of the device and not its precise programming model. If appropriate, the
 name should be one of the following choices:
 
-..FIXME should describe when each node name is appropriate
+.. FIXME should describe when each node name is appropriate
 
 * atm
 * cache-controller
@@ -251,8 +252,8 @@ characteristics of the node. Properties consist of a name and a value.
 Property Names
 ^^^^^^^^^^^^^^
 
-Property names are strings of 1 to 31 characters from the following set
-of characters.
+Property names are strings of 1 to 31 characters from the characters show in
+:numref:`property-name-characters`
 
 .. tabularcolumns:: c J
 .. _property-name-characters:
@@ -292,6 +293,7 @@ sufficiently descriptive.
 
 :numref:`property-values-table` describes the set of basic value types defined by the |spec|.
 
+.. tabularcolumns::  p{4cm} p{12cm}
 .. _property-values-table:
 .. table:: Property values
 
@@ -349,8 +351,8 @@ sufficiently descriptive.
    +-------------------------+----------------------------------------------------------------------+
    | ``<phandle>``           | A ``<u32>`` value. A *phandle* value is a way to reference another   |
    |                         | node in the devicetree. Any node that can be referenced defines      |
-   |                         | a phandle property with a unique ``<u32>`` value. That unique number |
-   |                         | is specified for the value of properties with a phandle value        |
+   |                         | a phandle property with a unique ``<u32>`` value. That number        |
+   |                         | is used for the value of properties with a phandle value             |
    |                         | type.                                                                |
    +-------------------------+----------------------------------------------------------------------+
    | ``<stringlist>``        | A list of ``<string>`` values concatenated together.                 |
