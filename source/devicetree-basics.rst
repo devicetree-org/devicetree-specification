@@ -113,9 +113,9 @@ The *node-name* component specifies the name of the node. It shall be 1
 to 31 characters in length and consist solely of characters from the set
 of characters in :numref:`node-name-characters`.
 
-.. tabularcolumns:: c J
+.. tabularcolumns:: c p{8cm}
 .. _node-name-characters:
-.. table:: Characters for node names
+.. table:: Valid characters for node names
 
    ========= ================
    Character Description
@@ -255,9 +255,9 @@ Property Names
 Property names are strings of 1 to 31 characters from the characters show in
 :numref:`property-name-characters`
 
-.. tabularcolumns:: c J
+.. tabularcolumns:: c p{8cm}
 .. _property-name-characters:
-.. table:: Characters for property names
+.. table:: Valid characters for property names
 
    ========= ================
    Character Description

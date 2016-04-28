@@ -70,8 +70,8 @@ a node in the device tree. For example, the property serial0 =
 Alias names shall be a lowercase text strings of 1 to 31 characters from
 the following set of characters.
 
-.. tabularcolumns:: c J
-.. table:: Valid characters for alias name
+.. tabularcolumns:: c p{8cm}
+.. table:: Valid characters for alias names
 
    ========= ================
    Character Description
