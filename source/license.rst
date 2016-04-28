@@ -25,7 +25,7 @@ provision, should be addressed to:
 | Royston Road,
 | Harston CB22 7GG
 | Attn: Devicetree.org Board Secretary
-
+|
 
 The Power Architecture and Power.org word marks and the Power and
 Power.org logos and related marks are trademarks and service marks
