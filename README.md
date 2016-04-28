@@ -2,7 +2,7 @@
 
 The latest release of the specification can be found at http://devicetree.org/
 
-This repository holds the source for the generation of the Devicetree Specification using Sphinx and LaTeX. 
+This [repository](https://github.com/devicetree-org/devicetree-specification) holds the source for the generation of the Devicetree Specification using Sphinx and LaTeX. 
 
 ## Build Instructions ##
 
