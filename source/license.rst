@@ -59,6 +59,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+.. raw:: latex
+
+    \newpage
+
 **Acknowledgements**
 
 The power.org Platform Architecture Technical Subcommittee would like
@@ -68,44 +72,52 @@ and reviews.
 
 **Individuals**
 
-* Hollis Blanchard
-* Dan Bouvier
-* Josh Boyer
-* Becky Bruce
-* Dale Farnsworth
-* Kumar Gala
-* Charles Garcia-Tobin
-* David Gibson
-* Ben Herrenschmidt
-* Rob Herring
-* Dan Hettena
-* Olof Johansson
-* Ashish Kalra
-* Grant Likely
-* Jon Loeliger
-* Hartmut Penner
-* Mark Rutland
-* Tim Radzykewycz
-* Heiko Schick
-* Jeff Scheel
-* Timur Tabi
-* John Traill
-* John True
-* Matt Tyrlik
-* Dave Willoughby
-* Scott Wood
-* Jimi Xenidis
-* Stuart Yoder
+.. hlist::
+   :columns: 3
+
+   * Hollis Blanchard
+   * Dan Bouvier
+   * Josh Boyer
+   * Becky Bruce
+   * Dale Farnsworth
+   * Kumar Gala
+   * Charles Garcia-Tobin
+   * David Gibson
+   * Ben Herrenschmidt
+   * Rob Herring
+   * Dan Hettena
+   * Olof Johansson
+   * Ashish Kalra
+   * Grant Likely
+   * Jon Loeliger
+   * Hartmut Penner
+   * Mark Rutland
+   * Tim Radzykewycz
+   * Heiko Schick
+   * Jeff Scheel
+   * Timur Tabi
+   * John Traill
+   * John True
+   * Matt Tyrlik
+   * Dave Willoughby
+   * Scott Wood
+   * Jimi Xenidis
+   * Stuart Yoder
+
 
 **Companies**
 
-* ARM
-* Green Hills Software
-* IBM
-* Linaro
-* Montavista
-* NXP Semiconductor
-* Wind River
+.. hlist::
+   :columns: 3
+
+   * ARM
+   * Green Hills Software
+   * IBM
+   * Linaro
+   * Montavista
+   * NXP Semiconductor
+   * Wind River
+
 
 **Other Acknowledgements**
 
@@ -116,6 +128,10 @@ We would like to acknowledge their contributions.
 We would also like to acknowledge the contribution of the PowerPC and ARM Linux
 communities that developed and implemented the flattened device
 tree concept.
+
+.. raw:: latex
+
+    \newpage
 
 .. _revision-history:
 
