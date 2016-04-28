@@ -353,8 +353,8 @@ specific applicable detail.
                                                        controller numberspace, the CPUs binding may
                                                        define a binding-specific representation of
                                                        PIR values if desired.
-   ``clock-frequency``          R     array            Specifies the current clock speed of the CPU
-                                                       in Hertz. The value is a <prop-encoded-array>
+   ``clock-frequency``          |     array            Specifies the current clock speed of the CPU
+                                | R                    in Hertz. The value is a <prop-encoded-array>
                                                        in one of two forms:
 
                                                        A 32-bit integer consisting of one ``<u32>``
@@ -362,8 +362,8 @@ specific applicable detail.
 
                                                        A 64-bit integer represented as a ``<u64>``
                                                        specifying the frequency.
-   ``timebase-frequency``       R     array            Specifies the current frequency at which the
-                                                       timebase and decrementer registers are updated
+   ``timebase-frequency``       |     array            Specifies the current frequency at which the
+                                | R                    timebase and decrementer registers are updated
                                                        (in Hertz). The value is a
                                                        <prop-encoded-array> in one of two forms:
 
@@ -428,8 +428,8 @@ specific applicable detail.
 
                                                        Note: Other methods may be added to later
                                                        revisions of the |spec| specification.
-   ``cpu-release-addr``         SD    ``<u64>``        The cpu-release-addr property is required for
-                                                       cpu nodes that have an enable-method property
+   ``cpu-release-addr``         |     ``<u64>``        The cpu-release-addr property is required for
+                                | SD                   cpu nodes that have an enable-method property
                                                        value of "spin-table". The value specifies the
                                                        physical address of a spin table entry that
                                                        releases a secondary CPU from its spin loop.
@@ -450,8 +450,8 @@ specific applicable detail.
    ============================ ===== ====================== ===============================================
    Property Name                Usage Value Type             Definition
    ============================ ===== ====================== ===============================================
-   ``power-isa-version``        O     ``<string>``           A string that specifies the numerical portion
-                                                             of the Power ISA version string. For example,
+   ``power-isa-version``        |     ``<string>``           A string that specifies the numerical portion
+                                | O                          of the Power ISA version string. For example,
                                                              for an implementation complying with Power ISA
                                                              Version 2.06, the value of this property would
                                                              be "2.06".
@@ -471,12 +471,12 @@ specific applicable detail.
                                                              implementation supports
                                                              [Category:Embedded.Hypervisor] as defined in
                                                              Power ISA Version 2.06.
-   ``cache-op-block-size``      SD    ``<u32>``              Specifies the block size in bytes upon which
-                                                             cache block instructions operate (e.g., dcbz).
+   ``cache-op-block-size``      |     ``<u32>``              Specifies the block size in bytes upon which
+                                | SD                         cache block instructions operate (e.g., dcbz).
                                                              Required if different than the L1 cache block
                                                              size.
-   ``reservation-granule-size`` SD    ``<u32>``              Specifies the reservation granule size
-                                                             supported by this processor in bytes.
+   ``reservation-granule-size`` |     |                      Specifies the reservation granule size
+                                | SD  | ``<u32>``            supported by this processor in bytes.
    ``mmu-type``                 O     ``<string>``           Specifies the CPU’s MMU type.
 
                                                              Valid values are shown below:
