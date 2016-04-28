@@ -1,6 +1,31 @@
 **Copyright**
 
-Copyright © 2008,2011 Power.org. All rights reserved.
+The devicetree.org word marks and the
+devicetree.org logos and related marks are trademarks and service marks
+licensed by Linaro Ltd. Implementation of certain elements of this
+document may require licenses under third party intellectual property
+rights, including without limitation, patent rights. Linaro Ltd and its
+Members are not, and shall not be held, responsible in any manner for
+identifying or failing to identify any or all such third party
+intellectual property rights.
+
+THIS DEVICETREE SPECIFICATION PROVIDED “AS IS” AND WITHOUT ANY WARRANTY
+OF ANY KIND, INCLUDING, WITHOUT LIMITATION, ANY EXPRESS OR IMPLIED
+WARRANTY OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE. IN NO EVENT SHALL LINARO LTD OR ANY MEMBER OF
+LINARO LTD BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, EXEMPLARY,
+PUNITIVE, OR CONSEQUENTIAL DAMAGES, INCLUDING, WITHOUT LIMITATION, LOST
+PROFITS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+Questions pertaining to this document, or the terms or conditions of its
+provision, should be addressed to:
+
+| LINARO LTD
+| Harston Mill, 
+| Royston Road,
+| Harston CB22 7GG
+| Attn: Devicetree.org Board Secretary
+
 
 The Power Architecture and Power.org word marks and the Power and
 Power.org logos and related marks are trademarks and service marks
@@ -60,34 +85,7 @@ and reviews.
 
 **Individuals**
 
-* Hollis Blanchard
-* Dan Bouvier
-* Josh Boyer
-* Becky Bruce
-* Dale Farnsworth
-* Kumar Gala
-* Charles Garcia-Tobin
-* David Gibson
-* Ben Herrenschmidt
-* Rob Herring
-* Dan Hettena
-* Olof Johansson
-* Ashish Kalra
-* Grant Likely
-* Jon Loeliger
-* Hartmut Penner
-* Mark Rutland
-* Tim Radzykewycz
-* Heiko Schick
-* Jeff Scheel
-* Timur Tabi
-* John Traill
-* John True
-* Matt Tyrlik
-* Dave Willoughby
-* Scott Wood
-* Jimi Xenidis
-* Stuart Yoder
+* Hollis Blanchard, Dan Bouvier, Josh Boyer, Becky Bruce, Dale Farnsworth, Kumar Gala, Charles Garcia-Tobin, David Gibson, Ben Herrenschmidt, Rob Herring, Dan Hettena, Olof Johansson, Ashish Kalra, Grant Likely, Jon Loeliger, Hartmut Penner, Mark Rutland, Tim Radzykewycz, Heiko Schick, Jeff Scheel, Timur Tabi, John Traill, John True, Matt Tyrlik, Kanta Vekaria, Dave Willoughby, Scott Wood, Jimi Xenidis, Stuart Yoder
 
 **Companies**
 
@@ -100,6 +98,7 @@ and reviews.
 * Wind River
 
 **Other Acknowledgements**
+We would like to acknowledge Power.org for preparing and publishing the |epapr| specification.
 
 Significant aspects of the |spec-fullname| are based on work done by
 the Open Firmware Working Group which developed bindings for IEEE-1275.
