@@ -1,6 +1,10 @@
-# Document Master Project for the Devicetree Specification hosted at http://devicetree.org/ #
+# Document master project for the Devicetree Specification hosted at http://devicetree.org/ #
 
 The latest release of the specification can be found at http://devicetree.org/
+
+Mailing list:
+   devicetree-spec@vger.kernel.org
+   http://vger.kernel.org/vger-lists.html#devicetree-spec
 
 This [repository](https://github.com/devicetree-org/devicetree-specification) holds the source for the generation of the Devicetree Specification using Sphinx and LaTeX. 
 
