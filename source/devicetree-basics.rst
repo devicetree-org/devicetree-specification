@@ -47,13 +47,51 @@ and values shown beside the node.
 
    rankdir = LR;
    ranksep = equally;
-   node [ shape="Mrecord"; width="2.5"; fontname = Courier; ];
+   node [ shape="Mrecord"; width="3.5"; fontname = Courier; ];
 
-   "/":e    -> "cpus":w;
-   "cpus":e -> "cpu@0":w;
-   "cpus":e -> "cpu@1":w;
-   "/":e    -> "memory@00000000":w;
-   "/":e    -> "memory@20000000":w;
+   "/" [ label = "\N |
+   model=\"fsl,mpc8572ds\"\l
+   compatible=\"fsl,mpc8572ds\"\l
+   #address-cells=\<1\>\l
+   #size-cells=\<1\>\l"]
+
+   "cpus" [ label="\N |
+   #address-cells=\<1\>\l
+   #size-cells=\<0\>\l"]
+
+   "cpu@0" [ label="\N |
+   reg=\<0\>\l
+   device_type=\"cpu\"\l
+   timebase-frequency=\<825000000\>\l
+   clock-frequency=\<825000000\>\l"]
+
+   "cpu@1" [ label="\N |
+   device_type=\"cpu\"\l
+   reg=\<1\>\l
+   timebase-frequency=\<825000000\>\l
+   clock-frequency=\<825000000\>\l"]
+
+   "memory@0" [ label="\N |
+   device_type=\"memory\"\l
+   reg=\<0 0x20000000\>\l"]
+
+   "uart@fe001000" [ label="\N |
+   compatible=\"ns16550\"\l
+   reg=\<0xfe001000 0x100\>\l"]
+
+   "chosen" [ label="\N |
+   bootargs=\"root=/dev/sda2\"\l"]
+
+   "aliases" [ label="\N |
+   serial0=\"/uart@fe001000\"\l"]
+
+   "/":e    -> "cpus":w
+   "cpus":e -> "cpu@0":w
+   "cpus":e -> "cpu@1":w
+   "/":e    -> "memory@0":w
+   "/":e    -> "uart@fe001000":w
+   "/":e    -> "chosen":w
+   "/":e    -> "aliases":w
 
 Devicetree Structure and Conventions
 ------------------------------------
@@ -110,7 +148,23 @@ identified by a forward slash (/).
 
 Examples of Node Names
 
-In :numref:`example-simple-devicetree`:
+.. _example-nodenames:
+.. digraph:: tree
+   :caption: Devicetree Example
+
+   rankdir = LR;
+   ranksep = equally;
+   node [ shape="Mrecord"; width="2.5"; fontname = Courier; ];
+
+   "/":e    -> "cpus":w
+   "cpus":e -> "cpu@0":w
+   "cpus":e -> "cpu@1":w
+   "/":e    -> "memory@0":w
+   "/":e    -> "uart@fe001000":w
+   "/":e    -> "ethernet@fe001000":w
+   "/":e    -> "ethernet@fe002000":w
+
+In :numref:`example-nodenames`:
 
 * The nodes with the name cpu are distinguished by their unit-address
   values of 0 and 1.
@@ -176,7 +230,7 @@ The convention for specifying a device path is:
 
     ``/node-name-1/node-name-2/node-name-N``
 
-For example, in :numref:`example-simple-devicetree`, the device path to cpu #1 would be:
+For example, in :numref:`example-nodenames`, the device path to cpu #1 would be:
 
     ``/cpus/cpu@1``
 
