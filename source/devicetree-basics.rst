@@ -296,6 +296,7 @@ sufficiently descriptive.
 .. tabularcolumns::  p{4cm} p{12cm}
 .. _property-values-table:
 .. table:: Property values
+   :class: longtable
 
    ======================== ==================================================================
    Value                    Description
@@ -496,6 +497,7 @@ Description:
    The *status* property indicates the operational status of a device.
    Valid values are listed and defined in the following table.
 
+   .. tabularcolumns:: l J
    .. table:: Values for status property
 
       ============== ==============================================================

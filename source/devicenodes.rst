@@ -315,8 +315,9 @@ The following table describes the general properties of CPU nodes. Some
 of the properties described in FIXME are select standard properties with
 specific applicable detail.
 
-.. tabularcolumns:: l c l J
+.. tabularcolumns:: p{2.5cm} p{1cm} p{2cm} p{9.5cm}
 .. table:: ``/cpus/cpu*`` Node General Properties
+   :class: longtable
 
    ============================ ===== ================ ===============================================
    Property Name                Usage Value Type       Definition
@@ -442,8 +443,9 @@ specific applicable detail.
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-.. tabularcolumns:: l c l J
+.. tabularcolumns:: p{2.5cm} p{1cm} p{2cm} p{9.5cm}
 .. table:: ``/cpus/cpu*`` Node Power ISA Properties
+   :class: longtable
 
    ============================ ===== ====================== ===============================================
    Property Name                Usage Value Type             Definition
