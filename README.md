@@ -12,6 +12,7 @@ This [repository](https://github.com/devicetree-org/devicetree-specification) ho
 
 Requirements:
 * Sphinx: http://sphinx-doc.org/contents.html
+ * version 1.2.3 or later
 * LaTeX (and pdflatex, and various LaTeX packages)
 * Graphviz (in particular, "dot"): http://www.graphviz.org/
 
@@ -19,7 +20,16 @@ On Ubuntu:
 
 `# apt-get install python-sphinx texlive texlive-latex-extra texlive-humanities graphviz`
 
-Then:
+If the version of python-spinx installed is too old, then an additional
+new version can be installed with the Python package installer:
+
+```
+$ apt-get install python-pip
+$ pip install --user --upgrade Sphinx
+$ export SPHINXBUILD=~/.local/bin/sphinx-build
+```
+
+Export SPHINXBUILD (see above) if Sphinx was installed with pip --user, then:
 
 ```
 $ make latexpdf # For generating pdf
@@ -27,8 +37,7 @@ $ make html # For generating a hierarchy of html pages
 $ make singlehtml # For generating a single html page
 ```
 
-Output goes in build/latex. Build backends other than PDF are not
-currently tested.
+Output goes in ./build subdirectory.
 
 ## License ##
 This project is licensed under the Apache V2 license. More information can be found 
