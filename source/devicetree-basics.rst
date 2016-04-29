@@ -282,6 +282,8 @@ organization that defined the property. Examples:
    | ``ibm,ppc-interrupt-server#s``
    | ``linux,network-index``
 
+.. _sect-property-values:
+
 Property Values
 ^^^^^^^^^^^^^^^
 

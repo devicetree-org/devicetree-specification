@@ -53,8 +53,6 @@ may include:
 * Chapter :ref:`chapter-device-node-requirements` specifies the
   definition of a base set of device nodes required by |spec|-compliant
   device trees.
-* Chapter FIXME specifies the requirements for boot programs to start client
-  programs on single and multiple CPU systems.
 * Chapter :ref:`chapter-device-bindings` describes device bindings for
   certain classes of devices and specific device types.
 * Chapter :ref:`chapter-fdt-structure` specifies the physical structure

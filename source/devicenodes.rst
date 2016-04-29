@@ -141,7 +141,7 @@ If the VLE storage attribute is supported, with VLE=0.
                                                            size pairs that specify the physical address
                                                            and size of the memory ranges.
    ``initial-mapped-area`` O      ``<prop-encoded-array>`` Specifies the address and size of the Initial
-                                                           Mapped Area (see section FIXME 5.3).
+                                                           Mapped Area
 
                                                            Is a prop-encoded-array consisting of a
                                                            triplet of (effective address, physical
@@ -312,10 +312,11 @@ General Properties of ``/cpus/cpu*`` nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following table describes the general properties of CPU nodes. Some
-of the properties described in FIXME are select standard properties with
-specific applicable detail.
+of the properties described in :numref:`table-cpu-node-props` are select
+standard properties with specific applicable detail.
 
 .. tabularcolumns:: p{2.5cm} p{1cm} p{2cm} p{9.5cm}
+.. _table-cpu-node-props:
 .. table:: ``/cpus/cpu*`` Node General Properties
    :class: longtable
 
@@ -398,11 +399,6 @@ specific applicable detail.
                                                        loop, held in reset, and electrically isolated
                                                        from the system bus or in another
                                                        implementation dependent state.
-
-                                                       Note: See section FIXME 5.5 (Symmetric
-                                                       Multiprocessing (SMP) Boot Requirements) for a
-                                                       description of how these values are used for
-                                                       booting multi-CPU SMP systems.
    ``enable-method``            SD    ``<stringlist>`` Describes the method by which a CPU in a
                                                        disabled state is enabled. This property is
                                                        required for CPUs with a status property with
@@ -433,9 +429,6 @@ specific applicable detail.
                                                        value of "spin-table". The value specifies the
                                                        physical address of a spin table entry that
                                                        releases a secondary CPU from its spin loop.
-
-                                                       See section FIXME 5.5.2, Spin Table or details on
-                                                       the structure of a spin table.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 

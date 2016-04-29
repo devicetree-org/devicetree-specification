@@ -96,15 +96,16 @@ big-endian format.
 
 ``off_dt_struct``
     This field shall contain the offset in bytes of the structure block
-    (see 8.4) from the beginning of the header.
+    (see :ref:`sect-fdt-structure-block`) from the beginning of the header.
 
 ``off_dt_strings``
     This field shall contain the offset in bytes of the strings block
-    (see FIXME 8.5) from the beginning of the header.
+    (see :ref:`sect-fdt-strings-block`) from the beginning of the header.
 
 ``off_mem_rsvmap``
     This field shall contain the offset in bytes of the memory
-    reservation block (see 8.3) from the beginning of the header.
+    reservation block (see :ref:`sect-fdt-memory-reservation-block`)
+    from the beginning of the header.
 
 ``version``
     This field shall contain the version of the device tree data
@@ -138,7 +139,7 @@ big-endian format.
     section of the device tree blob.
 
 
-.. *FIXME: Add reserved memory node*
+.. FIXME: Add reserved memory node
 
 .. _sect-fdt-memory-reservation-block:
 
@@ -238,6 +239,8 @@ Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
 device tree blob (see :ref:`sect-fdt-alignment`).
 
+.. _sect-fdt-lexical-structure:
+
 Lexical structure
 ~~~~~~~~~~~~~~~~~
 
@@ -254,7 +257,7 @@ The five token types are as follows:
     The FDT_BEGIN_NODE token marks the beginning of a node’s
     representation. It shall be followed by the node’s unit name as
     extra data. The name is stored as a null-terminated string, and
-    shall include the unit address (see 2.2.1, Node Names), if any. The
+    shall include the unit address (see :ref:`sect-node-names`), if any. The
     node name is followed by zeroed padding bytes, if necessary for
     alignment, and then the next token, which may be any token except
     FDT_END.
@@ -280,10 +283,10 @@ The five token types are as follows:
    Both the fields in this structure are 32-bit big-endian integers.
 
    * len gives the length of the property’s value in bytes (which may be
-     zero, indicating an empty property, see 2.2.4.2, Property Values).
+     zero, indicating an empty property, see :ref:`sect-property-values`).
 
-   * nameoff gives an offset into the strings block (see 8.5) at which the
-     property’s name is stored as a null-terminated string.
+   * nameoff gives an offset into the strings block (see :ref:`sect-fdt-strings-block`)
+     at which the property’s name is stored as a null-terminated string.
 
    After this structure, the property’s value is given as a byte string of
    length len. This value is followed by zeroed padding bytes (if
@@ -331,7 +334,7 @@ components:
 *  For each property of the node:
  *  (optionally) any number of FDT_NOP tokens
  *  FDT_PROP token
-  *  property information as given in 8.4.1
+  *  property information as given in :ref:`sect-fdt-lexical-structure`
   *  [zeroed padding bytes to align to a 4-byte boundary]
 *  Representations of all child nodes in this format
 *  (optionally) any number of FDT_NOP tokens
@@ -375,7 +378,7 @@ shall have aligned offsets from the beginning of the device tree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
 ensure that the device tree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
-boundary. As described in 5.2 (Device Tree) an |spec| compliant boot
+boundary. A |spec| compliant boot
 program shall load the device tree blob at such an aligned address
 before passing it to the client program. If an |spec| client program
 relocates the device tree blob in memory, it should only do so to
