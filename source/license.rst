@@ -1,4 +1,11 @@
+
 **Copyright**
+
+| Copyright 2016 Linaro, Ltd.
+| Copyright 2008,2011 Power.org, Inc.
+| Copyright 2008,2011 Freescale Semiconductor, Inc.
+| Copyright 2008,2011 International Business Machines Corporation.
+| Copyright 2016 ARM Ltd.
 
 The Linaro and devicetree.org word marks and the Linaro and
 devicetree.org logos and related marks are trademarks and service marks
@@ -35,13 +42,7 @@ provision, should be addressed to:
 | Harston CB22 7GG
 | Attn: Devicetree.org Board Secretary
 
-**LICENSE INFORMATION**
-
-| Copyright 2016 Linaro, Ltd.
-| Copyright 2008,2011 Power.org, Inc.
-| Copyright 2008,2011 Freescale Semiconductor, Inc.
-| Copyright 2008,2011 International Business Machines Corporation.
-| Copyright 2016 ARM Ltd.
+**License Information**
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -95,6 +96,7 @@ and reviews.
    * John Traill
    * John True
    * Matt Tyrlik
+   * Kanta Vekaria
    * Dave Willoughby
    * Scott Wood
    * Jimi Xenidis
