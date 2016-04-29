@@ -1,6 +1,13 @@
 **Copyright**
 
-Copyright © 2008,2011 Power.org. All rights reserved.
+The Linaro and devicetree.org word marks and the Linaro and
+devicetree.org logos and related marks are trademarks and service marks
+licensed by Linaro Ltd. Implementation of certain elements of this
+document may require licenses under third party intellectual property
+rights, including without limitation, patent rights. Linaro and its
+Members are not, and shall not be held, responsible in any manner for
+identifying or failing to identify any or all such third party
+intellectual property rights.
 
 The Power Architecture and Power.org word marks and the Power and
 Power.org logos and related marks are trademarks and service marks
@@ -11,21 +18,22 @@ Members are not, and shall not be held, responsible in any manner for
 identifying or failing to identify any or all such third party
 intellectual property rights.
 
-THIS POWER.ORG SPECIFICATION PROVIDED “AS IS” AND WITHOUT ANY WARRANTY
+THIS SPECIFICATION PROVIDED “AS IS” AND WITHOUT ANY WARRANTY
 OF ANY KIND, INCLUDING, WITHOUT LIMITATION, ANY EXPRESS OR IMPLIED
 WARRANTY OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
-PARTICULAR PURPOSE. IN NO EVENT SHALL POWER.ORG OR ANY MEMBER OF
-POWER.ORG BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, EXEMPLARY,
+PARTICULAR PURPOSE. IN NO EVENT SHALL LINARO OR ANY MEMBER OF
+LINARO BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL, EXEMPLARY,
 PUNITIVE, OR CONSEQUENTIAL DAMAGES, INCLUDING, WITHOUT LIMITATION, LOST
 PROFITS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
 Questions pertaining to this document, or the terms or conditions of its
 provision, should be addressed to:
 
-| IEEE-ISTO
-| 445 Hoes Lane
-| Piscataway, NJ 08854
-| Attn: Power.org Board Secretary
+| LINARO LTD
+| Harston Mill,
+| Royston Road,
+| Harston CB22 7GG
+| Attn: Devicetree.org Board Secretary
 
 **LICENSE INFORMATION**
 
