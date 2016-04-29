@@ -37,15 +37,11 @@ provision, should be addressed to:
 
 **LICENSE INFORMATION**
 
-Copyright 2016 Linaro, Ltd.
-
-Copyright 2008,2011 Power.org, Inc.
-
-Copyright 2008,2011 Freescale Semiconductor, Inc.
-
-Copyright 2008,2011 International Business Machines Corporation.
-
-Copyright 2016 ARM Ltd.
+| Copyright 2016 Linaro, Ltd.
+| Copyright 2008,2011 Power.org, Inc.
+| Copyright 2008,2011 Freescale Semiconductor, Inc.
+| Copyright 2008,2011 International Business Machines Corporation.
+| Copyright 2016 ARM Ltd.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
