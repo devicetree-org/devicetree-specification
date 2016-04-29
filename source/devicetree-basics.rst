@@ -147,11 +147,9 @@ additional, more specific requirements for the format of *reg* and the
 The root node does not have a node-name or unit-address. It is
 identified by a forward slash (/).
 
-Examples of Node Names
-
 .. _example-nodenames:
 .. digraph:: tree
-   :caption: Devicetree Example
+   :caption: Examples of Node Names
 
    rankdir = LR;
    ranksep = equally;
