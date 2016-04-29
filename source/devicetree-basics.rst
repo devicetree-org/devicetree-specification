@@ -179,44 +179,47 @@ name should be one of the following choices:
 
 .. FIXME should describe when each node name is appropriate
 
-* atm
-* cache-controller
-* compact-flash
-* can
-* cpu
-* crypto
-* disk
-* display
-* dma-controller
-* ethernet
-* ethernet-phy
-* fdc
-* flash
-* gpio
-* i2c
-* ide
-* interrupt-controller
-* isa
-* keyboard
-* mdio
-* memory
-* memory-controller
-* mouse
-* nvram
-* parallel
-* pc-card
-* pci
-* pcie
-* rtc
-* sata
-* scsi
-* serial
-* sound
-* spi
-* timer
-* usb
-* vme
-* watchdog
+.. hlist::
+   :columns: 3
+
+   * atm
+   * cache-controller
+   * compact-flash
+   * can
+   * cpu
+   * crypto
+   * disk
+   * display
+   * dma-controller
+   * ethernet
+   * ethernet-phy
+   * fdc
+   * flash
+   * gpio
+   * i2c
+   * ide
+   * interrupt-controller
+   * isa
+   * keyboard
+   * mdio
+   * memory
+   * memory-controller
+   * mouse
+   * nvram
+   * parallel
+   * pc-card
+   * pci
+   * pcie
+   * rtc
+   * sata
+   * scsi
+   * serial
+   * sound
+   * spi
+   * timer
+   * usb
+   * vme
+   * watchdog
 
 Path Names
 ~~~~~~~~~~
