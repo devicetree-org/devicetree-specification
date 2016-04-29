@@ -1,6 +1,6 @@
 # Document master project for the Devicetree Specification hosted at http://devicetree.org/ #
 
-The latest release of the specification can be found at http://devicetree.org/
+The latest release of the specification can be found at http://devicetree.org/ or https://github.com/devicetree-org/devicetree-specification-released
 
 Mailing list:
    devicetree-spec@vger.kernel.org
