@@ -36,7 +36,7 @@ PROFITS, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 Questions pertaining to this document, or the terms or conditions of its
 provision, should be addressed to:
 
-| LINARO LTD
+| Linaro, Ltd
 | Harston Mill,
 | Royston Road,
 | Harston CB22 7GG
