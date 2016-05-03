@@ -113,7 +113,7 @@ The *node-name* component specifies the name of the node. It shall be 1
 to 31 characters in length and consist solely of characters from the set
 of characters in :numref:`node-name-characters`.
 
-.. tabularcolumns:: c p{8cm}
+.. tabularcolumns:: | c p{8cm} |
 .. _node-name-characters:
 .. table:: Valid characters for node names
 
@@ -256,7 +256,7 @@ Property Names
 Property names are strings of 1 to 31 characters from the characters show in
 :numref:`property-name-characters`
 
-.. tabularcolumns:: c p{8cm}
+.. tabularcolumns:: | c p{8cm} |
 .. _property-name-characters:
 .. table:: Valid characters for property names
 
@@ -296,7 +296,7 @@ sufficiently descriptive.
 
 :numref:`property-values-table` describes the set of basic value types defined by the |spec|.
 
-.. tabularcolumns::  p{4cm} p{12cm}
+.. tabularcolumns:: | p{4cm} p{12cm} |
 .. _property-values-table:
 .. table:: Property values
    :class: longtable
@@ -497,34 +497,35 @@ Value type: ``<string>``
 
 Description:
 
-   The *status* property indicates the operational status of a device.
-   Valid values are listed and defined in the following table.
+   The ``status`` property indicates the operational status of a device.
+   Valid values are listed and defined in :numref:`table-prop-status-values`.
 
-   .. tabularcolumns:: l J
-   .. table:: Values for status property
+.. tabularcolumns:: | l J |
+.. _table-prop-status-values:
+.. table:: Values for status property
 
-      ============== ==============================================================
-      Value          Description
-      ============== ==============================================================
-      ``"okay"``     Indicates the device is operational
-      -------------- --------------------------------------------------------------
-      ``"disabled"`` Indicates that the device is not presently operational, but it
-                     might become operational in the future (for example, something
-                     is not plugged in, or switched off).
+   ============== ==============================================================
+   Value          Description
+   ============== ==============================================================
+   ``"okay"``     Indicates the device is operational
+   -------------- --------------------------------------------------------------
+   ``"disabled"`` Indicates that the device is not presently operational, but it
+                  might become operational in the future (for example, something
+                  is not plugged in, or switched off).
 
-                     Refer to the device binding for details on what disabled means
-                     for a given device.
-      -------------- --------------------------------------------------------------
-      ``"fail"``     Indicates that the device is not operational. A serious error
-                     was detected in the device, and it is unlikely to become
-                     operational without repair.
-      -------------- --------------------------------------------------------------
-      ``"fail-sss"`` Indicates that the device is not operational. A serious error
-                     was detected in the device and it is unlikely to become
-                     operational without repair. The sss portion of the value is
-                     specific to the device and indicates the error condition
-                     detected.
-      ============== ==============================================================
+                  Refer to the device binding for details on what disabled means
+                  for a given device.
+   -------------- --------------------------------------------------------------
+   ``"fail"``     Indicates that the device is not operational. A serious error
+                  was detected in the device, and it is unlikely to become
+                  operational without repair.
+   -------------- --------------------------------------------------------------
+   ``"fail-sss"`` Indicates that the device is not operational. A serious error
+                  was detected in the device and it is unlikely to become
+                  operational without repair. The sss portion of the value is
+                  specific to the device and indicates the error condition
+                  detected.
+   ============== ==============================================================
 
 #address-cells and #size-cells
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

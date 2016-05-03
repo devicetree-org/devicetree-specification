@@ -61,7 +61,7 @@ here to facilitate standardization of names and usage.
 ``clock-frequency`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``clock-frequency`` Property
 
    =========== ==============================================================
@@ -81,7 +81,7 @@ here to facilitate standardization of names and usage.
 ``reg-shift`` Property
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``reg-shift`` Property
 
    =========== ==============================================================
@@ -105,7 +105,7 @@ here to facilitate standardization of names and usage.
 ``label`` Property
 ^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``label`` Property
 
    =========== ==============================================================
@@ -135,7 +135,7 @@ specific representation.
 ``clock-frequency`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``clock-frequecy`` Property
 
    =========== ==============================================================
@@ -223,7 +223,7 @@ Network Class Binding
 ``address-bits`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``address-bits`` Property
 
    =========== ==============================================================
@@ -239,7 +239,7 @@ Network Class Binding
 ``local-mac-address`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``local-mac-address`` Property
 
    =========== ==============================================================
@@ -254,7 +254,7 @@ Network Class Binding
 ``mac-address`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``mac-address`` Property
 
    =========== ==============================================================
@@ -273,7 +273,7 @@ Network Class Binding
 ``max-frame-size`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``max-frame-size`` Property
 
    =========== ==============================================================
@@ -299,7 +299,7 @@ the network device class.
 ``max-speed`` Property
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``max-speed`` Property
 
    =========== ==============================================================
@@ -314,7 +314,7 @@ the network device class.
 ``phy-connection-type`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``max-speed`` Property
 
    =========== ==============================================================
@@ -329,7 +329,7 @@ the network device class.
    Example     ``phy-connection-type = “mii”;``
    =========== ==============================================================
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: Defined values for the ``max-speed`` Property
 
    ===================================== ============
@@ -350,7 +350,7 @@ the network device class.
 ``phy-handle`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``phy-handle`` Property
 
    =========== ==============================================================
@@ -387,7 +387,7 @@ specifiers:
         2 = active high level sensitive type enabled
         3 = high to low edge sensitive type enabled
 
-.. tabularcolumns:: l c l J
+.. tabularcolumns:: | l c l J |
 .. table:: Open-PIC properties
 
    ======================== ===== ===================== ===============================================
@@ -417,7 +417,7 @@ probed for devices. The devices on the bus can be accessed directly
 without additional configuration required. This type of bus is
 represented as a node with a compatible value of “simple-bus”.
 
-.. tabularcolumns:: l c l J
+.. tabularcolumns:: | l c l J |
 .. table:: ``simple-bus`` Compatible Node Properties
 
    ======================== ===== ===================== ===============================================
