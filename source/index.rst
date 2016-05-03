@@ -11,6 +11,8 @@ Welcome to Devicetree Specification's documentation!
    :maxdepth: 3
 
    license
+   acknowledgements
+   revhistory
    introduction
    devicetree-basics
    devicenodes
