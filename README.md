@@ -18,7 +18,10 @@ Requirements:
 
 On Ubuntu:
 
-`# apt-get install python-sphinx texlive texlive-latex-extra texlive-humanities graphviz`
+```
+# apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
+                  texlive-humanities texlive-generic-recommended graphviz
+```
 
 If the version of python-spinx installed is too old, then an additional
 new version can be installed with the Python package installer:
