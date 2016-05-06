@@ -332,20 +332,25 @@ the network device class.
 .. tabularcolumns:: | l J |
 .. table:: Defined values for the ``phy-connection-type`` Property
 
-   ===================================== ============
-   Connection type                       Value
-   ===================================== ============
-   Media Independent Interface           ``mii``
-   Reduced Media Independent Interface   ``rmii``
-   Gigabit Media Independent Interface   ``gmii``
-   Reduced Gigabit Media Independent     ``rgmii``
-   rgmii with internal delay             ``rgmii-id``
-   rgmii with internal delay on TX only  ``rgmii-txid``
-   rgmii with internal delay on RX only  ``rgmii-rxid``
-   Ten Bit Interface                     ``tbi``
-   Reduced Ten Bit Interface             ``rtbi``
-   Serial Media Independent Interface    ``smii``
-   ===================================== ============
+   =============================================== ============
+   Connection type                                 Value
+   =============================================== ============
+   Media Independent Interface                     ``mii``
+   Reduced Media Independent Interface             ``rmii``
+   Gigabit Media Independent Interface             ``gmii``
+   Reduced Gigabit Media Independent               ``rgmii``
+   rgmii with internal delay                       ``rgmii-id``
+   rgmii with internal delay on TX only            ``rgmii-txid``
+   rgmii with internal delay on RX only            ``rgmii-rxid``
+   Ten Bit Interface                               ``tbi``
+   Reduced Ten Bit Interface                       ``rtbi``
+   Serial Media Independent Interface              ``smii``
+   Serial Gigabit Media Independent Interface      ``sgmii``
+   Reverse Media Independent Interface             ``rev-mii``
+   10 Gigabits Media Independent Interface         ``xgmii``
+   Multimedia over Coaxial                         ``moca``
+   Quad Serial Gigabit Media Independent Interface ``qsgmii``
+   =============================================== ============
 
 ``phy-handle`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^
