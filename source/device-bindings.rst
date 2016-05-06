@@ -315,10 +315,10 @@ the network device class.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. tabularcolumns:: | l J |
-.. table:: ``max-speed`` Property
+.. table:: ``phy-connection-type`` Property
 
    =========== ==============================================================
-   Property    ``max-speed``
+   Property    ``phy-connection-type``
    =========== ==============================================================
    Value type  ``<string>``
    Description Specifies interface type between the Ethernet device and a
@@ -330,7 +330,7 @@ the network device class.
    =========== ==============================================================
 
 .. tabularcolumns:: | l J |
-.. table:: Defined values for the ``max-speed`` Property
+.. table:: Defined values for the ``phy-connection-type`` Property
 
    ===================================== ============
    Connection type                       Value
