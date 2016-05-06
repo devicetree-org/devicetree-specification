@@ -337,7 +337,7 @@ the network device class.
    ===================================== ============
    Media Independent Interface           ``mii``
    Reduced Media Independent Interface   ``rmii``
-   Gigabit Media Independent Interface   ``rgmii``
+   Gigabit Media Independent Interface   ``gmii``
    Reduced Gigabit Media Independent     ``rgmii``
    rgmii with internal delay             ``rgmii-id``
    rgmii with internal delay on TX only  ``rgmii-txid``
