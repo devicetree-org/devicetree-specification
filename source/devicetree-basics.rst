@@ -836,6 +836,7 @@ sits in the logical interrupt tree.
    subgraph cluster_devices {
       label = "Devicetree"
       graph [ style = dotted ]
+      "soc" [ ]
       "device1" [ label = "device1 | interrupt-parent=\<&open-pic\>" ]
       "device2" [ label = "device2 | interrupt-parent=\<&gpioctrl\>" ]
       "pci-host" [ label = "pci-host | interrupt-parent=\<&open-pic\>" ]
@@ -845,6 +846,7 @@ sits in the logical interrupt tree.
       "gpioctrl" [ label = "gpioctrl | interrupt-parent=\<&open-pic\>" ]
       "device3" [ label = "device3 | interrupt-parent=\<&gpioctrl\>" ]
 
+      edge [dir=back color=blue]
       "soc":e -> "device1":w
       "soc":e -> "device2":w
       "soc":e -> "open-pic":w
@@ -869,18 +871,18 @@ sits in the logical interrupt tree.
       "i-slot0" [ label = "slot0" ]
       "i-slot1" [ label = "slot1" ]
 
-      edge [dir=back color=blue]
-      "i-open-pic" -> "i-device1"
-      "i-open-pic" -> "i-pci-host"
-      "i-open-pic" -> "i-gpioctrl"
-      "i-pci-host" -> "i-slot0"
-      "i-pci-host" -> "i-slot1"
-      "i-gpioctrl" -> "i-device2"
-      "i-gpioctrl" -> "i-device3"
+      edge [dir=back color=green]
+      "i-open-pic":e -> "i-device1":w
+      "i-open-pic":e -> "i-pci-host":w
+      "i-open-pic":e -> "i-gpioctrl":w
+      "i-pci-host":e -> "i-slot0":w
+      "i-pci-host":e -> "i-slot1":w
+      "i-gpioctrl":e -> "i-device2":w
+      "i-gpioctrl":e -> "i-device3":w
    }
 
    subgraph {
-      edge [color="red", constraint=false, dir=forward]
+      edge [color=red, style=dotted, constraint=false]
       "open-pic" -> "i-open-pic"
       "gpioctrl":w -> "i-gpioctrl"
       "pci-host" -> "i-pci-host"
