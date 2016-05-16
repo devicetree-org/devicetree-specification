@@ -113,6 +113,8 @@ todo_include_todos = False
 
 numfig = True
 
+highlight_language = 'none'
+
 
 # -- Options for HTML output ----------------------------------------------
 
