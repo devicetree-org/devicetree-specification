@@ -48,7 +48,7 @@ may include:
 
 * Chapter :ref:`chapter-introduction` introduces the architecture being
   specified by |spec|.
-* Chapter :ref:`chapter-devicetree` introduces the device tree concept
+* Chapter :ref:`chapter-devicetree` introduces the devicetree concept
   and describes its logical structure and standard properties.
 * Chapter :ref:`chapter-device-node-requirements` specifies the
   definition of a base set of device nodes required by |spec|-compliant

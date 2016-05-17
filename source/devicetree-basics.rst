@@ -381,9 +381,9 @@ Standard Properties
 
 |spec| specifies a set of standard properties for device nodes. These
 properties are described in detail in this section. Device nodes defined
-by |spec| (see Chapter 3, :ref:`chapter-device-node-requirements`) may specify
+by |spec| (see Chapter :ref:`chapter-device-node-requirements`) may specify
 additional requirements or constraints regarding the use of the standard
-properties. :ref:`chapter-device-bindings` that describe the representation
+properties. Chapter :ref:`chapter-device-bindings` describes the representation
 of specific devices may also specify additional requirements.
 
 .. note:: All examples of devicetree nodes in this document use the
@@ -539,9 +539,9 @@ Description:
    The *#address-cells* and *#size-cells* properties may be used in any
    device node that has children in the devicetree hierarchy and describes
    how child device nodes should be addressed. The *#address-cells*
-   property defines the number of <u32> cells used to encode the address
-   field in a child node’s *reg* property. The *#size-cells* property
-   defines the number of <u32> cells used to encode the size field in a
+   property defines the number of ``<u32>`` cells used to encode the address
+   field in a child node's *reg* property. The *#size-cells* property
+   defines the number of ``<u32>`` cells used to encode the size field in a
    child node’s *reg* property.
 
    The *#address-cells* and *#size-cells* properties are not inherited from
@@ -676,7 +676,7 @@ Address Translation Example:
        soc {
           compatible = "simple-bus";
           #address-cells = <1>;
-          #size-cells_ = <1>;
+          #size-cells = <1>;
           ranges = <0x0 0xe0000000 0x00100000>;
 
           serial {
@@ -735,8 +735,8 @@ Description:
      from the *#size-cells* of this node (the node in which the dma-ranges
      property appears).
 
-name
-~~~~
+name (deprecated)
+~~~~~~~~~~~~~~~~~
 
 Property name: ``name``
 
@@ -786,9 +786,9 @@ interrupt controller. If an interrupt-generating device does not have an
 devicetree parent.
 
 Each interrupt generating device contains an *interrupts* property with
-a value describing one or more interrupt sources for that device—each
-source represented with information called an *interrupt specifier*. The
-format and meaning of an *interrupt specifier* is interrupt domain
+a value describing one or more interrupt sources for that device. Each
+source is represented with information called an *interrupt specifier*.
+The format and meaning of an *interrupt specifier* is interrupt domain
 specific, i.e., it is dependent on properties on the node at the root of
 its interrupt domain. The *#interrupt-cells* property is used by the
 root of an interrupt domain to define the number of ``<u32>`` values
@@ -898,9 +898,11 @@ In the example shown in :numref:`example-interrupt-tree`:
 * The ``open-pic`` interrupt controller is the root of the interrupt tree.
 * The interrupt tree root has three children—devices that route their
   interrupts directly to the ``open-pic``
+
   * device1
   * PCI host controller
   * GPIO Controller
+
 * Three interrupt domains exist; one rooted at the ``open-pic`` node,
   one at the ``PCI host bridge`` node, and one at the
   ``GPIO Controller`` node.
@@ -1129,7 +1131,8 @@ node with a specified parent unit address and interrupt specifier.
   | child unit address: ``0x8800 0 0``
   | child interrupt specifier: ``1``
   | interrupt parent: ``&open-pic``
-  | parent unit address: (empty because ``#address-cells = \<0\>`` in the open-pic node)
+  | parent unit address: (empty because ``#address-cells = <0>`` in the
+    open-pic node)
   | parent interrupt specifier: ``2 1``
 
   * The child unit address is ``<0x8800 0 0>``. This value is encoded
@@ -1150,9 +1153,9 @@ node with a specified parent unit address and interrupt specifier.
     interrupt parent of the slot, the Open PIC interrupt controller.
 
   * The parent has no unit address because the parent interrupt domain
-    (the open-pic node) has an *#address-cells* value of 0.
+    (the open-pic node) has an *#address-cells* value of ``<0>``.
 
-  * The parent interrupt specifier is <2 1>. The number of cells to
+  * The parent interrupt specifier is ``<2 1>``. The number of cells to
     represent the interrupt specifier (two cells) is determined by the
     *#interrupt-cells* property on the interrupt parent, the open-pic
     node.
@@ -1161,11 +1164,11 @@ node with a specified parent unit address and interrupt specifier.
       the Open PIC interrupt controller (see section
       :ref:`sect-bindings-simple-bus`). The value ``<2>`` specifies the
       physical interrupt source number on the interrupt controller to
-      which INTA is wired. The value <1> specifies the level/sense
+      which INTA is wired. The value ``<1>`` specifies the level/sense
       encoding.
 
-In this example, the interrupt-map-mask property has a value of <0xf800
-0 0 7>. This mask is applied to a child unit interrupt specifier before
+In this example, the interrupt-map-mask property has a value of ``<0xf800
+0 0 7>``. This mask is applied to a child unit interrupt specifier before
 performing a lookup in the interruptmap table.
 
 To perform a lookup of the open-pic interrupt source number for INTB for

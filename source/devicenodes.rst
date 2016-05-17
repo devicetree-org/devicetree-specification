@@ -124,9 +124,10 @@ taking any action associated with a change in storage attributes, the
 client program can safely access all memory (including memory covered by
 memory reservations) as WIMG = 0b001x. That is:
 
--  not Write Through Required not Caching Inhibited Memory Coherence
-
--  Required either not Guarded or Guarded (i.e., WIMG = 0b001x)
+* not Write Through Required
+* not Caching Inhibited
+* Memory Coherence
+* Required either not Guarded or Guarded
 
 If the VLE storage attribute is supported, with VLE=0.
 
@@ -155,16 +156,15 @@ If the VLE storage attribute is supported, with VLE=0.
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-**Example**
+**Examples**
 
 Given a 64-bit Power system with the following physical memory layout:
 
--  RAM: starting address 0x0, length 0x80000000 (2GB)
+* RAM: starting address 0x0, length 0x80000000 (2GB)
+* RAM: starting address 0x100000000, length 0x100000000 (4GB)
 
--  RAM: starting address 0x100000000, length 0x100000000 (4GB)
-
-Memory nodes could be defined as follows, assuming an ``#address-cells`` == 2
-and ``#size-cells`` == 2:
+Memory nodes could be defined as follows, assuming ``#address-cells = <2>``
+and ``#size-cells = <2>``.
 
 **Example #1**
 
@@ -201,8 +201,6 @@ address and length for the ``reg`` property of the memory node.
 The ``/chosen`` node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.
-
-The node name (see :ref:`sect-node-names`) shall be ``/chosen``.
 
 .. tabularcolumns:: | l c l J |
 .. table:: ``/chosen`` Node Properties
@@ -255,8 +253,6 @@ A cpus node is required for all device trees. It does not represent a
 real device in the system, but acts as a container for child cpu nodes
 which represent the systems CPUs.
 
-The node name (see :ref:`sect-node-names`) shall be cpus.
-
 .. tabularcolumns:: | l c l J |
 .. table:: ``/cpus`` Node Properties
 
@@ -305,8 +301,7 @@ CPU node, but if an expected property is not found then it should look
 at the parent cpus node. This results in a less verbose representation
 of properties which are identical across all CPUs.
 
-The node name for every cpu node (see :ref:`sect-node-names`) should be
-cpu.
+The node name for every cpu node should be ``cpu``.
 
 General Properties of ``/cpus/cpu*`` nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -315,7 +310,7 @@ The following table describes the general properties of CPU nodes. Some
 of the properties described in :numref:`table-cpu-node-props` are select
 standard properties with specific applicable detail.
 
-.. tabularcolumns:: | p{2.5cm} p{1cm} p{2cm} p{8.5cm} |
+.. tabularcolumns:: | p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |
 .. _table-cpu-node-props:
 .. table:: ``/cpus/cpu*`` Node General Properties
    :class: longtable
@@ -323,65 +318,67 @@ standard properties with specific applicable detail.
    ============================ ===== ================ ===============================================
    Property Name                Usage Value Type       Definition
    ============================ ===== ================ ===============================================
-   ``device_type``              R     ``<string>``     Value shall be "cpu".
-   ``reg``                      R     array            The value of ``reg`` is a ``<prop-encoded-array>``
+   ``device_type``              | R   | ``<string>``   Value shall be ``"cpu"``.
+   ``reg``                      R     array            The value of *reg* is a ``<prop-encoded-array>``
                                                        that defines a unique CPU/thread id for the
                                                        CPU/threads represented by the CPU node.
 
                                                        If a CPU supports more than one thread (i.e.
-                                                       multiple streams of execution) the ``reg``
+                                                       multiple streams of execution) the *reg*
                                                        property is an array with 1 element per
-                                                       thread. The ``#address-cells`` on the ``/cpus`` node
+                                                       thread. The *#address-cells* on the ``/cpus`` node
                                                        specifies how many cells each element of the
                                                        array takes. Software can determine the number
-                                                       of threads by dividing the size of ``reg`` by
-                                                       the parent node’s ``#address-cells``.
+                                                       of threads by dividing the size of *reg* by
+                                                       the parent node's *#address-cells*.
 
                                                        If a CPU/thread can be the target of an
-                                                       external interrupt the "reg" property value
+                                                       external interrupt the *reg* property value
                                                        must be a unique CPU/thread id that is
                                                        addressable by the interrupt controller.
 
                                                        If a CPU/thread cannot be the target of an
-                                                       external interrupt, then "reg" must be unique
+                                                       external interrupt, then *reg* must be unique
                                                        and out of bounds of the range addressed by
                                                        the interrupt controller
 
-                                                       If a CPU/thread’s PIR is modifiable, a client
-                                                       program should modify PIR to match the "reg"
+                                                       If a CPU/thread's PIR is modifiable, a client
+                                                       program should modify PIR to match the *reg*
                                                        property value. If PIR cannot be modified and
                                                        the PIR value is distinct from the interrupt
                                                        controller numberspace, the CPUs binding may
                                                        define a binding-specific representation of
                                                        PIR values if desired.
-   ``clock-frequency``          |     array            Specifies the current clock speed of the CPU
-                                | R                    in Hertz. The value is a <prop-encoded-array>
+   ``clock-frequency``          | R   | array          Specifies the current clock speed of the CPU
+                                                       in Hertz. The value is a ``<prop-encoded-array>``
                                                        in one of two forms:
 
-                                                       A 32-bit integer consisting of one ``<u32>``
-                                                       specifying the frequency.
+                                                       * A 32-bit integer consisting of one ``<u32>``
+                                                         specifying the frequency.
+                                                       * A 64-bit integer represented as a ``<u64>``
+                                                         specifying the frequency.
 
-                                                       A 64-bit integer represented as a ``<u64>``
-                                                       specifying the frequency.
-   ``timebase-frequency``       |     array            Specifies the current frequency at which the
-                                | R                    timebase and decrementer registers are updated
+   ``timebase-frequency``       | R   | array          Specifies the current frequency at which the
+                                                       timebase and decrementer registers are updated
                                                        (in Hertz). The value is a
                                                        <prop-encoded-array> in one of two forms:
 
-                                                       A 32-bit integer consisting of one ``<u32>``
-                                                       specifying the frequency.
+                                                       * A 32-bit integer consisting of one ``<u32>``
+                                                         specifying the frequency.
+                                                       * A 64-bit integer represented as a ``<u64>``.
 
-                                                       A 64-bit integer represented as a ``<u64>``.
    ``status``                   SD    ``<string>``     A standard property describing the state of a
                                                        CPU. This property shall be present for nodes
                                                        representing CPUs in a symmetric
                                                        multiprocessing (SMP) configuration. For a CPU
-                                                       node the meaning of the “okay” and “disabled”
-                                                       values are as follows:
+                                                       node the meaning of the ``"okay"`` and
+                                                       ``"disabled"`` values are as follows:
 
-                                                       ``"okay"``. The CPU is running.
+                                                       ``"okay"`` :
+                                                          The CPU is running.
 
-                                                       ``"disabled"``. The CPU is in a quiescent state.
+                                                       ``"disabled"`` :
+                                                          The CPU is in a quiescent state.
 
                                                        A quiescent CPU is in a state where it cannot
                                                        interfere with the normal operation of other
@@ -399,34 +396,35 @@ standard properties with specific applicable detail.
                                                        loop, held in reset, and electrically isolated
                                                        from the system bus or in another
                                                        implementation dependent state.
-   ``enable-method``            SD    ``<stringlist>`` Describes the method by which a CPU in a
+   ``enable-method``            | SD  ``<stringlist>`` Describes the method by which a CPU in a
                                                        disabled state is enabled. This property is
                                                        required for CPUs with a status property with
-                                                       a value of “disabled”. The value consists of
+                                                       a value of ``"disabled"``. The value consists of
                                                        one or more strings that define the method to
                                                        release this CPU. If a client program
                                                        recognizes any of the methods, it may use it.
                                                        The value shall be one of the following:
 
-                                                       "spin-table" The CPU is enabled with the
-                                                       spin table method defined in the |spec|.
+                                                       ``"spin-table"`` :
+                                                          The CPU is enabled with the
+                                                          spin table method defined in the |spec|.
 
-                                                       ``"[vendor],[method]"`` An
-                                                       implementation-dependent string that
-                                                       describes the method by which a CPU is
-                                                       released from a "disabled" state. The
-                                                       required format is: "vendor,method" where
-                                                       vendor is a string describing the name of
-                                                       the manufacturer and method is a string
-                                                       describing the vendorspecific mechanism.
+                                                       ``"[vendor],[method]"`` :
+                                                          Implementation dependent string that
+                                                          describes the method by which a CPU is
+                                                          released from a ``"disabled"`` state. The
+                                                          required format is: ``"[vendor],[method]"``,
+                                                          where vendor is a string describing the name of
+                                                          the manufacturer and method is a string
+                                                          describing the vendorspecific mechanism.
 
                                                        Example: ``"fsl,MPC8572DS"``
 
-                                                       Note: Other methods may be added to later
-                                                       revisions of the |spec| specification.
-   ``cpu-release-addr``         |     ``<u64>``        The cpu-release-addr property is required for
-                                | SD                   cpu nodes that have an enable-method property
-                                                       value of "spin-table". The value specifies the
+                                                       .. note:: Other methods may be added to later
+                                                          revisions of the |spec| specification.
+   ``cpu-release-addr``         | SD  | ``<u64>``      The cpu-release-addr property is required for
+                                                       cpu nodes that have an enable-method property
+                                                       value of ``"spin-table"``. The value specifies the
                                                        physical address of a spin table entry that
                                                        releases a secondary CPU from its spin loop.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
@@ -436,19 +434,19 @@ standard properties with specific applicable detail.
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-.. tabularcolumns:: | p{2.5cm} p{1cm} p{2cm} p{9.5cm} |
+.. tabularcolumns:: | p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |
 .. table:: ``/cpus/cpu*`` Node Power ISA Properties
    :class: longtable
 
    ============================ ===== ====================== ===============================================
    Property Name                Usage Value Type             Definition
    ============================ ===== ====================== ===============================================
-   ``power-isa-version``        |     ``<string>``           A string that specifies the numerical portion
-                                | O                          of the Power ISA version string. For example,
+   ``power-isa-version``        | O   | ``<string>``         A string that specifies the numerical portion
+                                                             of the Power ISA version string. For example,
                                                              for an implementation complying with Power ISA
                                                              Version 2.06, the value of this property would
                                                              be "2.06".
-   ``power-isa-*``              O     ``<empty>``            If the power-isa-version property exists, then
+   ``power-isa-*``              | O   | ``<empty>``          If the power-isa-version property exists, then
                                                              for each category from the Categories section
                                                              of Book I of the Power ISA version indicated,
                                                              the existence of a property named
@@ -464,25 +462,25 @@ standard properties with specific applicable detail.
                                                              implementation supports
                                                              [Category:Embedded.Hypervisor] as defined in
                                                              Power ISA Version 2.06.
-   ``cache-op-block-size``      |     ``<u32>``              Specifies the block size in bytes upon which
-                                | SD                         cache block instructions operate (e.g., dcbz).
+   ``cache-op-block-size``      | SD  | ``<u32>``            Specifies the block size in bytes upon which
+                                                             cache block instructions operate (e.g., dcbz).
                                                              Required if different than the L1 cache block
                                                              size.
-   ``reservation-granule-size`` |     |                      Specifies the reservation granule size
-                                | SD  | ``<u32>``            supported by this processor in bytes.
+   ``reservation-granule-size`` | SD  | ``<u32>``            Specifies the reservation granule size
+                                                             supported by this processor in bytes.
    ``mmu-type``                 O     ``<string>``           Specifies the CPU’s MMU type.
 
                                                              Valid values are shown below:
 
-                                                             "mpc8xx"
-                                                             "ppc40x"
-                                                             "ppc440"
-                                                             "ppc476"
-                                                             "power-embedded"
-                                                             "powerpc-classic"
-                                                             "power-server-stab"
-                                                             "power-server-slb"
-                                                             "none"
+                                                             * ``"mpc8xx"``
+                                                             * ``"ppc40x"``
+                                                             * ``"ppc440"``
+                                                             * ``"ppc476"``
+                                                             * ``"power-embedded"``
+                                                             * ``"powerpc-classic"``
+                                                             * ``"power-server-stab"``
+                                                             * ``"power-server-slb"``
+                                                             * ``"none"``
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =========================================================================================================
 
