@@ -3,6 +3,32 @@ a flexible markup language with lots of options for laying out text. To keep
 thinks simple, this file describes the conventions used by this project. As
 much as possible, use these methods for markup.
 
+Source Text Style
+=================
+The reStructuredText marking is very human-friendly and readable as is,
+but most people will read the pdf or html output instead of the source files.
+To make changes to the content easier to find,
+use "semantic linefeeds" when writing as described by Brian Kernighan:
+
+   Hints for Preparing Documents
+
+   Most documents go through several versions (always more than you expected)
+   before they are finally finished.
+   Accordingly, you should do whatever possible to make the job of changing them easy.
+
+   First, when you do the purely mechanical operations of typing,
+   type so subsequent editing will be easy.
+   Start each sentence on a new line.
+   Make lines short, and break lines at natural places,
+   such as after commas and semicolons, rather than randomly.
+   Since most people change documents by rewriting phrases and adding,
+   deleting and rearranging sentences,
+   these precautions simplify any editing you have to do later.
+
+   Brian W. Kernighan, 1974
+
+Source : http://rhodesmill.org/brandon/2012/one-sentence-per-line/
+
 Tables
 ======
 Use the simplified markup for tables as shown below. Use the tabularcolumns
