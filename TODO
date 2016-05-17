@@ -18,6 +18,12 @@ Other
   - CPU
   - GIC
   - SMMU
+  - PSCI & spin-table
+  - Idle states
 Appendix A - Source Format
   - Add include directive
 
+Note: When copying in bindings documented in the Linux kernel tree,
+you *must* contact the original authors,
+and get permission for relicensing to Apache v2.
+Patches for those bindings must have "Acked-by"s from the original author(s).
