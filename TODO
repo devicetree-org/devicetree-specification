@@ -1,0 +1,23 @@
+TODO requirements for release v1.0:
+
+Section 2 - The Devicetree
+- Expand on generic names
+- Add interrupts-extended
+- Add note on not using underscore for prop names
+Section 3 - Device nodes
+- Add reserved-memory bindings
+- Expand on aliases node
+Section 6 - Device Bindings
+- Add GPIO bindings
+- Add I2C bindings
+- Add SPI bindings
+- Add clock bindings
+- Add regulator bindings
+Other
+- Add ARM bindings
+  - CPU
+  - GIC
+  - SMMU
+Appendix A - Source Format
+  - Add include directive
+
