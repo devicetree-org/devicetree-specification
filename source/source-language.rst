@@ -1,18 +1,18 @@
 .. _chapter-devicetree-source-format:
 
-Device Tree Source Format (version 1)
+Devicetree Source Format (version 1)
 ================================================
 
-The Device Tree Source (DTS) format is a textual representation of a
-device tree in a form that can be processed by dtc into a binary device
-tree in the form expected by the kernel. The following description is
+The Devicetree Source (DTS) format is a textual representation of a
+devicetree in a form that can be processed by dtc into a binary
+devicetree in the form expected by the kernel. The following description is
 not a formal syntax definition of DTS, but describes the basic
-constructs used to represent device trees.
+constructs used to represent devicetrees.
 
 Node and property definitions
 -----------------------------
 
-Device tree nodes are defined with a node name and unit address with
+Devicetree nodes are defined with a node name and unit address with
 braces marking the start and end of the node definition. They may be
 preceded by a label.
 
@@ -135,10 +135,10 @@ The /dts-v1/; shall be present to identify the file as a version 1 DTS
 obsolete version 0, which uses a different format for integers in
 addition to other small but incompatible changes).
 
-Memory reservations define an entry for the device tree blob’s memory
+Memory reservations define an entry for the devicetree blob’s memory
 reservation table. They have the form: e.g., /memreserve/ <address>
 <length>; Where <address> and <length> are 64-bit C-style integers.
 
-*  The / { }; section defines the root node of the device tree.
+*  The / { }; section defines the root node of the devicetree.
 
 *  C style (/* ... \*/) and C++ style (//) comments are supported.

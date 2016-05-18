@@ -14,5 +14,4 @@ the Open Firmware Working Group which developed bindings for IEEE-1275.
 We would like to acknowledge their contributions.
 
 We would also like to acknowledge the contribution of the PowerPC and ARM Linux
-communities that developed and implemented the flattened device
-tree concept.
+communities that developed and implemented the flattened devicetree concept.

@@ -337,7 +337,7 @@ sufficiently descriptive.
                                   address+6  77
                                   address+7  88
    ``<string>``             Strings are printable and null-terminated. Example: the string
-                            “hello” would be represented in memory as:
+                            "hello" would be represented in memory as:
 
                                ::
 
@@ -409,14 +409,14 @@ Description:
    express its compatibility with a family of similar devices, potentially
    allowing a single device driver to match against several devices.
 
-   The recommended format is ``“manufacturer,model”``, where
+   The recommended format is ``"manufacturer,model"``, where
    ``manufacturer`` is a string describing the name of the manufacturer
    (such as a stock ticker symbol), and ``model`` specifies the model
    number.
 
 Example:
 
-   ``compatible = “fsl,mpc8641-uart”, “ns16550";``
+   ``compatible = "fsl,mpc8641-uart", "ns16550";``
 
    In this example, an operating system would first try to locate a device
    driver that supported fsl,mpc8641-uart. If a driver was not found, it
@@ -441,7 +441,7 @@ Description:
 
 Example:
 
-   ``model = “fsl,MPC8349EMITX”;``
+   ``model = "fsl,MPC8349EMITX";``
 
 .. _sect-standard-properties-phandle:
 

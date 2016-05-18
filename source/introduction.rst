@@ -52,11 +52,11 @@ may include:
   and describes its logical structure and standard properties.
 * Chapter :ref:`chapter-device-node-requirements` specifies the
   definition of a base set of device nodes required by |spec|-compliant
-  device trees.
+  devicetrees.
 * Chapter :ref:`chapter-device-bindings` describes device bindings for
   certain classes of devices and specific device types.
 * Chapter :ref:`chapter-fdt-structure` specifies the physical structure
-  of device trees.
+  of devicetrees.
 
 **Conventions Used in this Document**
 
@@ -74,7 +74,7 @@ recommended that*).
 The word *may* is used to indicate a course of action permissible within
 the limits of the standard (*may* equals *is permitted*).
 
-Examples of device tree constructs are frequently shown in *Device Tree
+Examples of devicetree constructs are frequently shown in *Devicetree
 Syntax* form. See section :ref:`chapter-devicetree-source-format` for
 an overview of this syntax.
 
@@ -101,7 +101,7 @@ IEEE 1275 specification that are omitted from the |spec| include:
 * FCode debugging
 * Operating system debugging
 
-What is retained from IEEE-1275 are concepts from the device tree
+What is retained from IEEE-1275 are concepts from the devicetree
 architecture by which a boot program can describe and communicate system
 hardware information to client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
@@ -156,15 +156,15 @@ Definition of Terms
        Direct memory access
 
    DTB
-       Device tree blob. Compact binary representation of the device tree.
+       Devicetree blob. Compact binary representation of the devicetree.
 
    DTC
-       Device tree compiler. An open source tool used to create DTB files
+       Devicetree compiler. An open source tool used to create DTB files
        from DTS files.
 
    DTS
-       Device tree syntax. A textual representation of a device tree
-       consumed by the DTC. See Appendix A Device Tree Source Format
+       Devicetree syntax. A textual representation of a devicetree
+       consumed by the DTC. See Appendix A Devicetree Source Format
        (version 1).
 
    effective address

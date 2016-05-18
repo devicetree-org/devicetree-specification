@@ -7,10 +7,10 @@ Base Device Node Types
 ----------------------
 
 The sections that follow specify the requirements for the base set of
-device nodes required in an |spec|-compliant device tree.
+device nodes required in an |spec|-compliant devicetree.
 
-All device trees shall have a root node and the following nodes shall be
-present at the root of all device trees:
+All devicetrees shall have a root node and the following nodes shall be
+present at the root of all devicetrees:
 
 *  One ``/cpus`` node
 
@@ -19,7 +19,7 @@ present at the root of all device trees:
 Root node
 ---------
 
-The device tree has a single root node of which all other device nodes
+The devicetree has a single root node of which all other device nodes
 are descendants. The full path to the root node is ``/``.
 
 .. tabularcolumns:: | l c l J |
@@ -58,13 +58,13 @@ are descendants. The full path to the root node is ``/``.
 ``/aliases`` node
 -----------------
 
-A device tree may have an aliases node (``/aliases``) that defines one or
-more alias properties. The alias node shall be at the root of the device
-tree and have the node name ``/aliases``.
+A devicetree may have an aliases node (``/aliases``) that defines one or
+more alias properties. The alias node shall be at the root of the devicetree
+and have the node name ``/aliases``.
 
 Each property of the ``/aliases`` node defines an alias. The property name
 specifies the alias name. The property value specifies the full path to
-a node in the device tree. For example, the property serial0 =
+a node in the devicetree. For example, the property serial0 =
 ``"/simple-bus@fe000000/serial@llc500"`` defines the alias serial0.
 
 Alias names shall be a lowercase text strings of 1 to 31 characters from
@@ -105,7 +105,7 @@ and determine the alias refers to the device path
 ``/memory`` node
 ----------------
 
-A memory device node is required for all device trees and describes the
+A memory device node is required for all devicetrees and describes the
 physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the *reg* property of a single memory node.
@@ -240,7 +240,7 @@ time. It shall be a child of the root node.
         bootargs = "root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200";
     };
 
-Older versions of device trees may be encountered that contain a
+Older versions of devicetrees may be encountered that contain a
 deprecated form of the stdout-path property called linux,stdout-path.
 For compatibility, a client program might want to support
 linux,stdout-path if a stdout-path property is not present. The meaning
@@ -249,7 +249,7 @@ and use of the two properties is identical.
 ``/cpus`` Node Properties
 -------------------------
 
-A cpus node is required for all device trees. It does not represent a
+A cpus node is required for all devicetrees. It does not represent a
 real device in the system, but acts as a container for child cpu nodes
 which represent the systems CPUs.
 
@@ -315,120 +315,120 @@ standard properties with specific applicable detail.
 .. table:: ``/cpus/cpu*`` Node General Properties
    :class: longtable
 
-   ============================ ===== ================ ===============================================
-   Property Name                Usage Value Type       Definition
-   ============================ ===== ================ ===============================================
-   ``device_type``              | R   | ``<string>``   Value shall be ``"cpu"``.
-   ``reg``                      R     array            The value of *reg* is a ``<prop-encoded-array>``
-                                                       that defines a unique CPU/thread id for the
-                                                       CPU/threads represented by the CPU node.
+   ====================== ===== ================== ===============================================
+   Property Name          Usage Value Type         Definition
+   ====================== ===== ================== ===============================================
+   ``device_type``        | R   | ``<string>``     Value shall be ``"cpu"``.
+   ``reg``                R     array              The value of *reg* is a ``<prop-encoded-array>``
+                                                   that defines a unique CPU/thread id for the
+                                                   CPU/threads represented by the CPU node.
 
-                                                       If a CPU supports more than one thread (i.e.
-                                                       multiple streams of execution) the *reg*
-                                                       property is an array with 1 element per
-                                                       thread. The *#address-cells* on the ``/cpus`` node
-                                                       specifies how many cells each element of the
-                                                       array takes. Software can determine the number
-                                                       of threads by dividing the size of *reg* by
-                                                       the parent node's *#address-cells*.
+                                                   If a CPU supports more than one thread (i.e.
+                                                   multiple streams of execution) the *reg*
+                                                   property is an array with 1 element per
+                                                   thread. The *#address-cells* on the ``/cpus`` node
+                                                   specifies how many cells each element of the
+                                                   array takes. Software can determine the number
+                                                   of threads by dividing the size of *reg* by
+                                                   the parent node's *#address-cells*.
 
-                                                       If a CPU/thread can be the target of an
-                                                       external interrupt the *reg* property value
-                                                       must be a unique CPU/thread id that is
-                                                       addressable by the interrupt controller.
+                                                   If a CPU/thread can be the target of an
+                                                   external interrupt the *reg* property value
+                                                   must be a unique CPU/thread id that is
+                                                   addressable by the interrupt controller.
 
-                                                       If a CPU/thread cannot be the target of an
-                                                       external interrupt, then *reg* must be unique
-                                                       and out of bounds of the range addressed by
-                                                       the interrupt controller
+                                                   If a CPU/thread cannot be the target of an
+                                                   external interrupt, then *reg* must be unique
+                                                   and out of bounds of the range addressed by
+                                                   the interrupt controller
 
-                                                       If a CPU/thread's PIR is modifiable, a client
-                                                       program should modify PIR to match the *reg*
-                                                       property value. If PIR cannot be modified and
-                                                       the PIR value is distinct from the interrupt
-                                                       controller numberspace, the CPUs binding may
-                                                       define a binding-specific representation of
-                                                       PIR values if desired.
-   ``clock-frequency``          | R   | array          Specifies the current clock speed of the CPU
-                                                       in Hertz. The value is a ``<prop-encoded-array>``
-                                                       in one of two forms:
+                                                   If a CPU/thread's PIR is modifiable, a client
+                                                   program should modify PIR to match the *reg*
+                                                   property value. If PIR cannot be modified and
+                                                   the PIR value is distinct from the interrupt
+                                                   controller numberspace, the CPUs binding may
+                                                   define a binding-specific representation of
+                                                   PIR values if desired.
+   ``clock-frequency``    | R   | array            Specifies the current clock speed of the CPU
+                                                   in Hertz. The value is a ``<prop-encoded-array>``
+                                                   in one of two forms:
 
-                                                       * A 32-bit integer consisting of one ``<u32>``
-                                                         specifying the frequency.
-                                                       * A 64-bit integer represented as a ``<u64>``
-                                                         specifying the frequency.
+                                                   * A 32-bit integer consisting of one ``<u32>``
+                                                     specifying the frequency.
+                                                   * A 64-bit integer represented as a ``<u64>``
+                                                     specifying the frequency.
 
-   ``timebase-frequency``       | R   | array          Specifies the current frequency at which the
-                                                       timebase and decrementer registers are updated
-                                                       (in Hertz). The value is a
-                                                       <prop-encoded-array> in one of two forms:
+   ``timebase-frequency`` | R   | array            Specifies the current frequency at which the
+                                                   timebase and decrementer registers are updated
+                                                   (in Hertz). The value is a
+                                                   <prop-encoded-array> in one of two forms:
 
-                                                       * A 32-bit integer consisting of one ``<u32>``
-                                                         specifying the frequency.
-                                                       * A 64-bit integer represented as a ``<u64>``.
+                                                   * A 32-bit integer consisting of one ``<u32>``
+                                                     specifying the frequency.
+                                                   * A 64-bit integer represented as a ``<u64>``.
 
-   ``status``                   SD    ``<string>``     A standard property describing the state of a
-                                                       CPU. This property shall be present for nodes
-                                                       representing CPUs in a symmetric
-                                                       multiprocessing (SMP) configuration. For a CPU
-                                                       node the meaning of the ``"okay"`` and
-                                                       ``"disabled"`` values are as follows:
+   ``status``             SD    ``<string>``       A standard property describing the state of a
+                                                   CPU. This property shall be present for nodes
+                                                   representing CPUs in a symmetric
+                                                   multiprocessing (SMP) configuration. For a CPU
+                                                   node the meaning of the ``"okay"`` and
+                                                   ``"disabled"`` values are as follows:
 
-                                                       ``"okay"`` :
-                                                          The CPU is running.
+                                                   ``"okay"`` :
+                                                      The CPU is running.
 
-                                                       ``"disabled"`` :
-                                                          The CPU is in a quiescent state.
+                                                   ``"disabled"`` :
+                                                      The CPU is in a quiescent state.
 
-                                                       A quiescent CPU is in a state where it cannot
-                                                       interfere with the normal operation of other
-                                                       CPUs, nor can its state be affected by the
-                                                       normal operation of other running CPUs, except
-                                                       by an explicit method for enabling or
-                                                       reenabling the quiescent CPU (see the
-                                                       enable-method property).
+                                                   A quiescent CPU is in a state where it cannot
+                                                   interfere with the normal operation of other
+                                                   CPUs, nor can its state be affected by the
+                                                   normal operation of other running CPUs, except
+                                                   by an explicit method for enabling or
+                                                   reenabling the quiescent CPU (see the
+                                                   enable-method property).
 
-                                                       In particular, a running CPU shall be able to
-                                                       issue broadcast TLB invalidates without
-                                                       affecting a quiescent CPU.
+                                                   In particular, a running CPU shall be able to
+                                                   issue broadcast TLB invalidates without
+                                                   affecting a quiescent CPU.
 
-                                                       Examples: A quiescent CPU could be in a spin
-                                                       loop, held in reset, and electrically isolated
-                                                       from the system bus or in another
-                                                       implementation dependent state.
-   ``enable-method``            | SD  ``<stringlist>`` Describes the method by which a CPU in a
-                                                       disabled state is enabled. This property is
-                                                       required for CPUs with a status property with
-                                                       a value of ``"disabled"``. The value consists of
-                                                       one or more strings that define the method to
-                                                       release this CPU. If a client program
-                                                       recognizes any of the methods, it may use it.
-                                                       The value shall be one of the following:
+                                                   Examples: A quiescent CPU could be in a spin
+                                                   loop, held in reset, and electrically isolated
+                                                   from the system bus or in another
+                                                   implementation dependent state.
+   ``enable-method``      | SD  | ``<stringlist>`` Describes the method by which a CPU in a
+                                                   disabled state is enabled. This property is
+                                                   required for CPUs with a status property with
+                                                   a value of ``"disabled"``. The value consists of
+                                                   one or more strings that define the method to
+                                                   release this CPU. If a client program
+                                                   recognizes any of the methods, it may use it.
+                                                   The value shall be one of the following:
 
-                                                       ``"spin-table"`` :
-                                                          The CPU is enabled with the
-                                                          spin table method defined in the |spec|.
+                                                   ``"spin-table"`` :
+                                                      The CPU is enabled with the
+                                                      spin table method defined in the |spec|.
 
-                                                       ``"[vendor],[method]"`` :
-                                                          Implementation dependent string that
-                                                          describes the method by which a CPU is
-                                                          released from a ``"disabled"`` state. The
-                                                          required format is: ``"[vendor],[method]"``,
-                                                          where vendor is a string describing the name of
-                                                          the manufacturer and method is a string
-                                                          describing the vendorspecific mechanism.
+                                                   ``"[vendor],[method]"`` :
+                                                      Implementation dependent string that
+                                                      describes the method by which a CPU is
+                                                      released from a ``"disabled"`` state. The
+                                                      required format is: ``"[vendor],[method]"``,
+                                                      where vendor is a string describing the name of
+                                                      the manufacturer and method is a string
+                                                      describing the vendorspecific mechanism.
 
-                                                       Example: ``"fsl,MPC8572DS"``
+                                                   Example: ``"fsl,MPC8572DS"``
 
-                                                       .. note:: Other methods may be added to later
-                                                          revisions of the |spec| specification.
-   ``cpu-release-addr``         | SD  | ``<u64>``      The cpu-release-addr property is required for
-                                                       cpu nodes that have an enable-method property
-                                                       value of ``"spin-table"``. The value specifies the
-                                                       physical address of a spin table entry that
-                                                       releases a secondary CPU from its spin loop.
+                                                   .. note:: Other methods may be added to later
+                                                      revisions of the |spec| specification.
+   ``cpu-release-addr``   | SD  | ``<u64>``        The cpu-release-addr property is required for
+                                                   cpu nodes that have an enable-method property
+                                                   value of ``"spin-table"``. The value specifies the
+                                                   physical address of a spin table entry that
+                                                   releases a secondary CPU from its spin loop.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-   ===================================================================================================
+   ===============================================================================================
 
 .. note:: All other standard properties (section
    :ref:`sect-standard-properties`) are allowed but are optional.
@@ -438,57 +438,57 @@ standard properties with specific applicable detail.
 .. table:: ``/cpus/cpu*`` Node Power ISA Properties
    :class: longtable
 
-   ============================ ===== ====================== ===============================================
-   Property Name                Usage Value Type             Definition
-   ============================ ===== ====================== ===============================================
-   ``power-isa-version``        | O   | ``<string>``         A string that specifies the numerical portion
-                                                             of the Power ISA version string. For example,
-                                                             for an implementation complying with Power ISA
-                                                             Version 2.06, the value of this property would
-                                                             be "2.06".
-   ``power-isa-*``              | O   | ``<empty>``          If the power-isa-version property exists, then
-                                                             for each category from the Categories section
-                                                             of Book I of the Power ISA version indicated,
-                                                             the existence of a property named
-                                                             power-isa-[CAT], where [CAT] is the
-                                                             abbreviated category name with all uppercase
-                                                             letters converted to lowercase, indicates that
-                                                             the category is supported by the
-                                                             implementation.
+   ============================ ===== ============== ===============================================
+   Property Name                Usage Value Type     Definition
+   ============================ ===== ============== ===============================================
+   ``power-isa-version``        | O   | ``<string>`` A string that specifies the numerical portion
+                                                     of the Power ISA version string. For example,
+                                                     for an implementation complying with Power ISA
+                                                     Version 2.06, the value of this property would
+                                                     be ``"2.06"``.
+   ``power-isa-*``              | O   | ``<empty>``  If the ``power-isa-version`` property exists, then
+                                                     for each category from the Categories section
+                                                     of Book I of the Power ISA version indicated,
+                                                     the existence of a property named
+                                                     ``power-isa-[CAT]``, where ``[CAT]`` is the
+                                                     abbreviated category name with all uppercase
+                                                     letters converted to lowercase, indicates that
+                                                     the category is supported by the
+                                                     implementation.
 
-                                                             For example, if the power-isa-version property
-                                                             exists and its value is "2.06" and the
-                                                             power-isa-e.hv property exists, then the
-                                                             implementation supports
-                                                             [Category:Embedded.Hypervisor] as defined in
-                                                             Power ISA Version 2.06.
-   ``cache-op-block-size``      | SD  | ``<u32>``            Specifies the block size in bytes upon which
-                                                             cache block instructions operate (e.g., dcbz).
-                                                             Required if different than the L1 cache block
-                                                             size.
-   ``reservation-granule-size`` | SD  | ``<u32>``            Specifies the reservation granule size
-                                                             supported by this processor in bytes.
-   ``mmu-type``                 O     ``<string>``           Specifies the CPU’s MMU type.
+                                                     For example, if the power-isa-version property
+                                                     exists and its value is ``"2.06"`` and the
+                                                     power-isa-e.hv property exists, then the
+                                                     implementation supports
+                                                     [Category:Embedded.Hypervisor] as defined in
+                                                     Power ISA Version 2.06.
+   ``cache-op-block-size``      | SD  | ``<u32>``    Specifies the block size in bytes upon which
+                                                     cache block instructions operate (e.g., dcbz).
+                                                     Required if different than the L1 cache block
+                                                     size.
+   ``reservation-granule-size`` | SD  | ``<u32>``    Specifies the reservation granule size
+                                                     supported by this processor in bytes.
+   ``mmu-type``                 O     ``<string>``   Specifies the CPU’s MMU type.
 
-                                                             Valid values are shown below:
+                                                     Valid values are shown below:
 
-                                                             * ``"mpc8xx"``
-                                                             * ``"ppc40x"``
-                                                             * ``"ppc440"``
-                                                             * ``"ppc476"``
-                                                             * ``"power-embedded"``
-                                                             * ``"powerpc-classic"``
-                                                             * ``"power-server-stab"``
-                                                             * ``"power-server-slb"``
-                                                             * ``"none"``
+                                                     * ``"mpc8xx"``
+                                                     * ``"ppc40x"``
+                                                     * ``"ppc440"``
+                                                     * ``"ppc476"``
+                                                     * ``"power-embedded"``
+                                                     * ``"powerpc-classic"``
+                                                     * ``"power-server-stab"``
+                                                     * ``"power-server-slb"``
+                                                     * ``"none"``
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-   =========================================================================================================
+   =================================================================================================
 
 .. note:: All other standard properties (section
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-Older versions of device trees may be encountered that contain a
+Older versions of devicetree may be encountered that contain a
 bus-frequency property on CPU nodes. For compatibility, a client-program
 might want to support bus-frequency. The format of the value is
 identical to that of clock-frequency. The recommended practice is to
@@ -505,35 +505,35 @@ buffer in the processor’s MMU.
 .. tabularcolumns:: | l c l J |
 .. table:: ``/cpu/cpu*`` Node Power ISA TLB Properties
 
-   ======================= ===== ===================== ===============================================
-   Property Name           Usage Value Type            Definition
-   ======================= ===== ===================== ===============================================
-   ``tlb-split``           SD    ``<empty>``           If present specifies that the TLB has a split
-                                                       configuration, with separate TLBs for
-                                                       instructions and data. If absent, specifies
-                                                       that the TLB has a unified configuration.
-                                                       Required for a CPU with a TLB in a split
-                                                       configuration.
-   ``tlb-size``            SD    ``<u32>``             Specifies the number of entries in the TLB.
-                                                       Required for a CPU with a unified TLB for
-                                                       instruction and data addresses.
-   ``tlb-sets``            SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       the TLB. Required for a CPU with a unified TLB
-                                                       for instruction and data addresses.
-   ``d-tlb-size``          SD    ``<u32>``             Specifies the number of entries in the data
-                                                       TLB. Required for a CPU with a split TLB
-                                                       configuration.
-   ``d-tlb-sets``          SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       the data TLB. Required for a CPU with a split
-                                                       TLB configuration.
-   ``i-tlb-size``          SD    ``<u32>``             Specifies the number of entries in the
-                                                       instruction TLB. Required for a CPU with a
-                                                       split TLB configuration.
-   ``i-tlb-sets``          SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       the instruction TLB. Required for a CPU with a
-                                                       split TLB configuration.
+   ============== ===== =========== ===============================================
+   Property Name  Usage Value Type  Definition
+   ============== ===== =========== ===============================================
+   ``tlb-split``  SD    ``<empty>`` If present specifies that the TLB has a split
+                                    configuration, with separate TLBs for
+                                    instructions and data. If absent, specifies
+                                    that the TLB has a unified configuration.
+                                    Required for a CPU with a TLB in a split
+                                    configuration.
+   ``tlb-size``   SD    ``<u32>``   Specifies the number of entries in the TLB.
+                                    Required for a CPU with a unified TLB for
+                                    instruction and data addresses.
+   ``tlb-sets``   SD    ``<u32>``   Specifies the number of associativity sets in
+                                    the TLB. Required for a CPU with a unified TLB
+                                    for instruction and data addresses.
+   ``d-tlb-size`` SD    ``<u32>``   Specifies the number of entries in the data
+                                    TLB. Required for a CPU with a split TLB
+                                    configuration.
+   ``d-tlb-sets`` SD    ``<u32>``   Specifies the number of associativity sets in
+                                    the data TLB. Required for a CPU with a split
+                                    TLB configuration.
+   ``i-tlb-size`` SD    ``<u32>``   Specifies the number of entries in the
+                                    instruction TLB. Required for a CPU with a
+                                    split TLB configuration.
+   ``i-tlb-sets`` SD    ``<u32>``   Specifies the number of associativity sets in
+                                    the instruction TLB. Required for a CPU with a
+                                    split TLB configuration.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-   ===================================================================================================
+   ================================================================================
 
 .. note:: All other standard properties (section
    :ref:`sect-standard-properties`) are allowed but are optional.
@@ -548,75 +548,75 @@ The following properties of a cpu node describe the processor’s internal
 .. tabularcolumns:: | l c l J |
 .. table:: ``/cpu/cpu*`` Node Power ISA Cache Properties
 
-   ======================= ===== ===================== ===============================================
-   Property Name           Usage Value Type            Definition
-   ======================= ===== ===================== ===============================================
-   ``cache-unified``       SD    ``<empty>``           If present, specifies the cache has a unified
-                                                       organization. If not present, specifies that
-                                                       the cache has a Harvard architecture ``with``
-                                                       separate caches for instructions and data.
-   ``cache-size``          SD    ``<u32>``             Specifies the size in bytes of a unified
-                                                       cache. Required if the cache is ``unified``
-                                                       (combined instructions and data).
-   ``cache-sets``          SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       a unified cache. Required if the cache ``is``
-                                                       unified (combined instructions and data)
-   ``cache-block-size``    SD    ``<u32>``             Specifies the block size in bytes of a unified
-                                                       cache. Required if the processor has a unified
-                                                       cache (combined instructions and data)
-   ``cache-line-size``     SD    ``<u32>``             Specifies the line size in bytes of a unified
-                                                       cache, if different than the cache block size
-                                                       Required if the processor has a unified cache
-                                                       (combined instructions and data).
-   ``i-cache-size``        SD    ``<u32>``             Specifies the size in bytes of the instruction
-                                                       cache. Required if the cpu has a ``separate``
-                                                       cache for instructions.
-   ``i-cache-sets``        SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       the instruction cache. Required if the cpu has
-                                                       a separate cache for instructions.
-   ``i-cache-block-size``  SD    ``<u32>``             Specifies the block size in bytes of the
-                                                       instruction cache. Required if the cpu has a
-                                                       separate cache for instructions.
-   ``i-cache-line-size``   SD    ``<u32>``             Specifies the line size in bytes of the
-                                                       instruction cache, if different than the cache
-                                                       block size. Required if the cpu has a separate
-                                                       cache for instructions.
-   ``d-cache-size``        SD    ``<u32>``             Specifies the size in bytes of the data cache.
-                                                       Required if the cpu has a separate cache for
-                                                       data.
-   ``d-cache-sets``        SD    ``<u32>``             Specifies the number of associativity sets in
-                                                       the data cache. Required if the cpu has ``a``
-                                                       separate cache for data.
-   ``d-cache-block-size``  SD    ``<u32>``             Specifies the block size in bytes of the data
-                                                       cache. Required if the cpu has a ``separate``
-                                                       cache for data.
-   ``d-cache-line-size``   SD    ``<u32>``             Specifies the line size in bytes of the data
-                                                       cache, if different than the cache block size.
-                                                       Required if the cpu has a separate cache for
-                                                       data.
-   ``next-level-cache``    SD    ``<phandle>``         If present, indicates that another level of
-                                                       cache exists. The value is the phandle of the
-                                                       next level of cache. The phandle value type is
-                                                       fully described in section :ref:`sect-standard-properties-phandle`.
+   ======================= ===== ============= ===============================================
+   Property Name           Usage Value Type    Definition
+   ======================= ===== ============= ===============================================
+   ``cache-unified``       SD    ``<empty>``   If present, specifies the cache has a unified
+                                               organization. If not present, specifies that
+                                               the cache has a Harvard architecture with
+                                               separate caches for instructions and data.
+   ``cache-size``          SD    ``<u32>``     Specifies the size in bytes of a unified
+                                               cache. Required if the cache is unified
+                                               (combined instructions and data).
+   ``cache-sets``          SD    ``<u32>``     Specifies the number of associativity sets in
+                                               a unified cache. Required if the cache is
+                                               unified (combined instructions and data)
+   ``cache-block-size``    SD    ``<u32>``     Specifies the block size in bytes of a unified
+                                               cache. Required if the processor has a unified
+                                               cache (combined instructions and data)
+   ``cache-line-size``     SD    ``<u32>``     Specifies the line size in bytes of a unified
+                                               cache, if different than the cache block size
+                                               Required if the processor has a unified cache
+                                               (combined instructions and data).
+   ``i-cache-size``        SD    ``<u32>``     Specifies the size in bytes of the instruction
+                                               cache. Required if the cpu has a separate
+                                               cache for instructions.
+   ``i-cache-sets``        SD    ``<u32>``     Specifies the number of associativity sets in
+                                               the instruction cache. Required if the cpu has
+                                               a separate cache for instructions.
+   ``i-cache-block-size``  SD    ``<u32>``     Specifies the block size in bytes of the
+                                               instruction cache. Required if the cpu has a
+                                               separate cache for instructions.
+   ``i-cache-line-size``   SD    ``<u32>``     Specifies the line size in bytes of the
+                                               instruction cache, if different than the cache
+                                               block size. Required if the cpu has a separate
+                                               cache for instructions.
+   ``d-cache-size``        SD    ``<u32>``     Specifies the size in bytes of the data cache.
+                                               Required if the cpu has a separate cache for
+                                               data.
+   ``d-cache-sets``        SD    ``<u32>``     Specifies the number of associativity sets in
+                                               the data cache. Required if the cpu has a
+                                               separate cache for data.
+   ``d-cache-block-size``  SD    ``<u32>``     Specifies the block size in bytes of the data
+                                               cache. Required if the cpu has a separate
+                                               cache for data.
+   ``d-cache-line-size``   SD    ``<u32>``     Specifies the line size in bytes of the data
+                                               cache, if different than the cache block size.
+                                               Required if the cpu has a separate cache for
+                                               data.
+   ``next-level-cache``    SD    ``<phandle>`` If present, indicates that another level of
+                                               cache exists. The value is the phandle of the
+                                               next level of cache. The phandle value type is
+                                               fully described in section :ref:`sect-standard-properties-phandle`.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-   ===================================================================================================
+   ===========================================================================================
 
 .. note:: All other standard properties (section
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-Older versions of device trees may be encountered that contain a
-deprecated form of the next-level-cache property called l2-cache. For
-compatibility, a client-program may wish to support l2-cache if a
-next-level-cache property is not present. The meaning and use of the two
-properties is identical.
+Older versions of devicetrees may be encountered that contain a
+deprecated form of the next-level-cache property called ``l2-cache``.
+For compatibility, a client-program may wish to support ``l2-cache``
+if a next-level-cache property is not present.
+The meaning and use of the two properties is identical.
 
 .. _sect-cpu-node-example:
 
 Example
 ~~~~~~~
 
-Here is an example of a cpus node with one child cpu node:
+Here is an example of a ``/cpus`` node with one child cpu node:
 
 ::
 
@@ -638,12 +638,12 @@ Here is an example of a cpus node with one child cpu node:
 Multi-level and Shared Cache Nodes (``/cpus/cpu*/l?-cache``)
 ------------------------------------------------------------
 
-Processors and systems may implement additional levels of cache
-hierarchy—for example, secondlevel (L2) or third-level (L3) caches.
+Processors and systems may implement additional levels of cache hierarchy.
+For example, second-level (L2) or third-level (L3) caches.
 These caches can potentially be tightly integrated to the CPU or
 possibly shared between multiple CPUs.
 
-A device node with a compatible value of "cache" describes these types
+A device node with a compatible value of ``"cache"`` describes these types
 of caches.
 
 The cache node shall define a phandle property, and all cpu nodes or
@@ -652,7 +652,7 @@ contain a next-level-cache property that specifies the phandle to the
 cache node.
 
 A cache node may be represented under a CPU node or any other
-appropriate location in the device tree.
+appropriate location in the devicetree.
 
 Multiple-level and shared caches are represented with the properties in
 Table 3-9. The L1 cache properties are described in Table 3-8.
@@ -660,16 +660,15 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
 .. tabularcolumns:: | l c l J |
 .. table:: ``/cpu/cpu*/l?-cache`` Node Power ISA Multiple-level and Shared Cache Properties
 
-   ======================= ===== ===================== ===============================================
-   Property Name           Usage Value Type            Definition
-   ======================= ===== ===================== ===============================================
-   ``compatible``          R     ``<string>``          A standard property. The value shall include
-                                                       the string ``"cache"``.
-   ``cache-level``         R     ``<u32>``             Specifies the level in the cache hierarchy.
-                                                       For example, a level 2 cache has a value of
-                                                       2.
+   =============== ===== ============ ===============================================
+   Property Name   Usage Value Type   Definition
+   =============== ===== ============ ===============================================
+   ``compatible``  R     ``<string>`` A standard property. The value shall include
+                                      the string ``"cache"``.
+   ``cache-level`` R     ``<u32>``    Specifies the level in the cache hierarchy.
+                                      For example, a level 2 cache has a value of 2.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
-   ===================================================================================================
+   ==================================================================================
 
 .. note:: All other standard properties (section
    :ref:`sect-standard-properties`) are allowed but are optional.
@@ -678,7 +677,7 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
 Example
 ~~~~~~~
 
-See the following example of a device tree representation of two CPUs,
+See the following example of a devicetree representation of two CPUs,
 each with their own on-chip L2 and a shared L3.
 
 ::
@@ -696,7 +695,7 @@ each with their own on-chip L2 and a shared L3.
             next-level-cache = <&L2_0>; // phandle to L2
 
             L2_0:l2-cache {
-                compatible = “cache”;
+                compatible = "cache";
                 cache-unified;
                 cache-size = <0x40000>; // 256 KB
 
@@ -706,7 +705,7 @@ each with their own on-chip L2 and a shared L3.
                 next-level-cache = <&L3>; // phandle to L3
 
                 L3:l3-cache {
-                    compatible = “cache”;
+                    compatible = "cache";
                     cache-unified;
                     cache-size = <0x40000>; // 256 KB
                     cache-sets = <0x400>; // 1024
@@ -727,7 +726,7 @@ each with their own on-chip L2 and a shared L3.
             cache-level = <2>;
             next-level-cache = <&L2_1>; // phandle to L2
             L2_1:l2-cache {
-                compatible = “cache”;
+                compatible = "cache";
                 cache-unified;
                 cache-size = <0x40000>; // 256 KB
                 cache-sets = <0x400>; // 1024

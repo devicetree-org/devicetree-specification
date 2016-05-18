@@ -3,7 +3,7 @@
 
 .. [IEEE1275] *Boot (Initialization Configuration) Firmware: Core Requirements
    and Practices*, 1994, This is the core standard (also known as IEEE
-   1275) that defines the device tree concept adopted by the |spec| and
+   1275) that defines the devicetree concept adopted by the |spec| and
    |epapr|. It is available from Global Engineering (http://global.ihs.com/).
 
 .. [b3] *PowerPC Processor Binding to IEEE 1275-1994 Standard for Boot
@@ -15,11 +15,11 @@
 
 .. [b4] *booting-without-of.txt*, Ben Herrenschmidt, Becky Bruce, et
    al., From the Linux kernel source tree (http://www.kernel.org/),
-   Describes the device tree as used by the Linux kernel.
+   Describes the devicetree as used by the Linux kernel.
 
 .. [b5] *Device Trees Everywhere*, David Gibson and Ben Herrenschmidt
    (http://ozlabs.org/~dgibson/home/papers/dtc-paper.pdf), An overview
-   of the concept of the device tree and device tree compiler.
+   of the concept of the devicetree and devicetree compiler.
 
 .. [b6] *PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
    (Initialization Configuration) Firmware*, Revision 2.1, Open Firmware

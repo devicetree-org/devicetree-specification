@@ -1,20 +1,21 @@
 .. _chapter-fdt-structure:
 
-Flat Device Tree Physical Structure
-===================================
+Flat Devicetree Physical Structure
+==================================
 
 With the exception of platforms using IEEE1275 Open Firmware [IEEE1275], the
 devicetree data is contained within a single single, linear, pointerless data
-structure known as the flattened device tree or device tree blob.
+structure known as the flattened devicetree or devicetree blob.
 
-This data structure consists of a small header (see
-:ref:`sect-fdt-header`), followed by three variable sized sections: the
-memory reservation block (see :ref:`sect-fdt-memory-reservation-block`),
-the structure block (see :ref:`sect-fdt-structure-block`) and the
-strings block (see :ref:`sect-fdt-strings-block`). These should be
-present in the flattened device tree in that order. Thus, the device
-tree structure as a whole, when loaded into memory at address, will
-resemble the diagram in Figure :numref:`figure_device_tree_structure`
+This data structure consists of a small header
+(see section :ref:`sect-fdt-header`),
+followed by three variable sized sections:
+the memory reservation block (see section :ref:`sect-fdt-memory-reservation-block`),
+the structure block (see secton :ref:`sect-fdt-structure-block`),
+and the strings block (see section :ref:`sect-fdt-strings-block`).
+These should be present in the flattened devicetree in that order.
+Thus, the devicetree structure as a whole, when loaded into memory at address,
+will resemble the diagram in :numref:`figure_device_tree_structure`
 (lower addresses are at the top of the diagram).
 
 .. _figure_device_tree_structure:
@@ -37,22 +38,22 @@ resemble the diagram in Figure :numref:`figure_device_tree_structure`
 
 The (free space) sections may not be present, though in some cases they
 might be required to satisfy the alignment constraints of the individual
-blocks (see :ref:`sect-fdt-alignment`).
+blocks (see section :ref:`sect-fdt-alignment`).
 
 .. _sect-fdt-versioning:
 
 Versioning
 ----------
 
-Several versions of the flattened device tree structure have been defined since
+Several versions of the flattened devicetree structure have been defined since
 the original definition of the format. Fields in the header give the version,
-so that the client program can determine if the device tree is encoded in a
+so that the client program can determine if the devicetree is encoded in a
 compatible format.
 
 This document describes only version 17 of the format. |spec| compliant boot
-programs shall provide a device tree of version 17 or later, and should provide
-a device tree of a version that is backwards compatible with version 16.
-|spec| compliant client programs shall accept device trees of any version
+programs shall provide a devicetree of version 17 or later, and should provide
+a devicetree of a version that is backwards compatible with version 16.
+|spec| compliant client programs shall accept devicetrees of any version
 backwards compatible with version 17 and may accept other versions as well.
 
 .. note:: The version is with respect to the binary structure of the device
@@ -63,11 +64,11 @@ backwards compatible with version 17 and may accept other versions as well.
 Header
 ------
 
-The layout of the header for the device tree is defined by the following
+The layout of the header for the devicetree is defined by the following
 C structure. All the header fields are 32-bit integers, stored in
 big-endian format.
 
-**Flattened Device Tree Header Fields**
+**Flattened Devicetree Header Fields**
 
 ::
 
@@ -88,7 +89,7 @@ big-endian format.
     This field shall contain the value 0xd00dfeed (big-endian).
 
 ``totalsize``
-    This field shall contain the total size of the device tree data
+    This field shall contain the total size of the devicetree data
     structure. This size shall encompass all sections of the structure:
     the header, the memory reservation block, structure block and
     strings block, as well as any free space gaps between the blocks or
@@ -96,47 +97,47 @@ big-endian format.
 
 ``off_dt_struct``
     This field shall contain the offset in bytes of the structure block
-    (see :ref:`sect-fdt-structure-block`) from the beginning of the header.
+    (see section :ref:`sect-fdt-structure-block`) from the beginning of the header.
 
 ``off_dt_strings``
     This field shall contain the offset in bytes of the strings block
-    (see :ref:`sect-fdt-strings-block`) from the beginning of the header.
+    (see section :ref:`sect-fdt-strings-block`) from the beginning of the header.
 
 ``off_mem_rsvmap``
     This field shall contain the offset in bytes of the memory
-    reservation block (see :ref:`sect-fdt-memory-reservation-block`)
+    reservation block (see section :ref:`sect-fdt-memory-reservation-block`)
     from the beginning of the header.
 
 ``version``
-    This field shall contain the version of the device tree data
+    This field shall contain the version of the devicetree data
     structure. The version is 17 if using the structure as defined in
-    this document. An |spec| boot program may provide the device tree of
+    this document. An |spec| boot program may provide the devicetree of
     a later version, in which case this field shall contain the version
     number defined in whichever later document gives the details of that
     version.
 
 ``last_comp_version``
-    This field shall contain the lowest version of the device tree data
+    This field shall contain the lowest version of the devicetree data
     structure with which the version used is backwards compatible. So,
     for the structure as defined in this document (version 17), this
     field shall contain 16 because version 17 is backwards compatible
     with version 16, but not earlier versions. As per section
     :ref:`sect-fdt-versioning`, a |spec| boot program should provide a
-    device tree in a format which is backwards compatible with version
+    devicetree in a format which is backwards compatible with version
     16, and thus this field shall always contain 16.
 
 ``boot_cpuid_phys``
     This field shall contain the physical ID of the system’s boot CPU.
     It shall be identical to the physical ID given in the ``reg`` property
-    of that CPU node within the device tree.
+    of that CPU node within the devicetree.
 
 ``size_dt_strings``
     This field shall contain the length in bytes of the strings block
-    section of the device tree blob.
+    section of the devicetree blob.
 
 ``size_dt_struct``
     This field shall contain the length in bytes of the structure block
-    section of the device tree blob.
+    section of the devicetree blob.
 
 
 .. FIXME: Add reserved memory node
@@ -170,7 +171,7 @@ program specific uses for reserved memory may appear in this document,
 in optional extensions to it, or in platform-specific documentation.
 
 The reserved regions supplied by a boot program may, but are not
-required to, encompass the device tree blob itself. The client program
+required to, encompass the devicetree blob itself. The client program
 shall ensure that it does not overwrite this data structure before it is
 used, whether or not it is in the reserved areas.
 
@@ -222,7 +223,7 @@ size are equal to 0. Note that the address and size values are always
 
 Each uint64_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
-offset from the beginning of the device tree blob (see
+offset from the beginning of the devicetree blob (see section
 :ref:`sect-fdt-alignment`).
 
 .. _sect-fdt-structure-block:
@@ -230,14 +231,14 @@ offset from the beginning of the device tree blob (see
 Structure Block
 ---------------
 
-The structure block describes the structure and contents of the device
-tree itself. It is composed of a sequence of tokens with data, as
+The structure block describes the structure and contents of the devicetree
+itself. It is composed of a sequence of tokens with data, as
 described in 0. These are organized into a linear tree structure, as
 described in 0.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
-device tree blob (see :ref:`sect-fdt-alignment`).
+devicetree blob (see :ref:`sect-fdt-alignment`).
 
 .. _sect-fdt-lexical-structure:
 
@@ -257,8 +258,8 @@ The five token types are as follows:
     The FDT_BEGIN_NODE token marks the beginning of a node’s
     representation. It shall be followed by the node’s unit name as
     extra data. The name is stored as a null-terminated string, and
-    shall include the unit address (see :ref:`sect-node-names`), if any. The
-    node name is followed by zeroed padding bytes, if necessary for
+    shall include the unit address (see section :ref:`sect-node-names`), if any.
+    The node name is followed by zeroed padding bytes, if necessary for
     alignment, and then the next token, which may be any token except
     FDT_END.
 
@@ -269,7 +270,7 @@ The five token types are as follows:
 
 ``FDT_PROP`` (0x00000003)
    The FDT_PROP token marks the beginning of the representation of one
-   property in the device tree. It shall be followed by extra data
+   property in the devicetree. It shall be followed by extra data
    describing the property. This data consists first of the property’s
    length and name represented as the following C structure:
 
@@ -283,9 +284,10 @@ The five token types are as follows:
    Both the fields in this structure are 32-bit big-endian integers.
 
    * len gives the length of the property’s value in bytes (which may be
-     zero, indicating an empty property, see :ref:`sect-property-values`).
+     zero, indicating an empty property, see section :ref:`sect-property-values`).
 
-   * nameoff gives an offset into the strings block (see :ref:`sect-fdt-strings-block`)
+   * nameoff gives an offset into the strings block
+     (see section :ref:`sect-fdt-strings-block`)
      at which the property’s name is stored as a null-terminated string.
 
    After this structure, the property’s value is given as a byte string of
@@ -299,7 +301,7 @@ The five token types are as follows:
     the next token, which can be any valid token. A property or node
     definition in the tree can be overwritten with FDT_NOP tokens to
     remove it from the tree without needing to move other sections of
-    the tree’s representation in the device tree blob.
+    the tree’s representation in the devicetree blob.
 
 ``FDT_END`` (0x00000009)
     The FDT_END token marks the end of the structure block. There shall
@@ -312,7 +314,7 @@ The five token types are as follows:
 Tree structure
 ~~~~~~~~~~~~~~
 
-The device tree structure is represented as a linear tree: the
+The devicetree structure is represented as a linear tree: the
 representation of each node begins with an FDT_BEGIN_NODE token and
 ends with an FDT_END_NODE token. The node’s properties and subnodes
 (if any) are represented before the FDT_END_NODE, so that the
@@ -334,7 +336,7 @@ components:
 *  For each property of the node:
  *  (optionally) any number of FDT_NOP tokens
  *  FDT_PROP token
-  *  property information as given in :ref:`sect-fdt-lexical-structure`
+  *  property information as given in section :ref:`sect-fdt-lexical-structure`
   *  [zeroed padding bytes to align to a 4-byte boundary]
 *  Representations of all child nodes in this format
 *  (optionally) any number of FDT_NOP tokens
@@ -357,7 +359,7 @@ together in this section, and referred to from the structure block by an
 offset into the strings block.
 
 The strings block has no alignment constraints and may appear at any
-offset from the beginning of the device tree blob.
+offset from the beginning of the devicetree blob.
 
 .. _sect-fdt-alignment:
 
@@ -370,16 +372,16 @@ memory addresses. Specifically, the memory reservation block shall be
 aligned to an 8-byte boundary and the structure block to a 4-byte
 boundary.
 
-Furthermore, the device tree blob as a whole can be relocated without
+Furthermore, the devicetree blob as a whole can be relocated without
 destroying the alignment of the subblocks.
 
 As described in the previous sections, the structure and strings blocks
-shall have aligned offsets from the beginning of the device tree blob.
+shall have aligned offsets from the beginning of the devicetree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
-ensure that the device tree as a whole is loaded at an address aligned
+ensure that the devicetree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
 boundary. A |spec| compliant boot
-program shall load the device tree blob at such an aligned address
+program shall load the devicetree blob at such an aligned address
 before passing it to the client program. If an |spec| client program
-relocates the device tree blob in memory, it should only do so to
+relocates the devicetree blob in memory, it should only do so to
 another 8-byte aligned address.

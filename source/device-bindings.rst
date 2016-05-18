@@ -4,7 +4,7 @@ Device Bindings
 ===============
 
 This chapter contains requirements, known as bindings, for how specific
-types and classes of devices are represented in the device tree. The
+types and classes of devices are represented in the devicetree. The
 compatible property of a device node describes the specific binding (or
 bindings) to which the node complies.
 
@@ -20,7 +20,7 @@ Binding Guidelines
 General Principles
 ~~~~~~~~~~~~~~~~~~
 
-When creating a new device tree representation for a device, a binding
+When creating a new devicetree representation for a device, a binding
 should be created that fully describes the required properties and value
 of the device. This set of properties shall be sufficiently descriptive
 to provide device drivers with needed attributes of the device.
@@ -33,7 +33,7 @@ Some recommended practices include:
 2. Use the standard properties (defined in sections
    :ref:`sect-standard-properties` and :ref:`sect-interrupts`) as
    applicable for the new device. This usage typically includes the
-   ``reg`` and interrupts properties at a minimum.
+   ``reg`` and ``interrupts`` properties at a minimum.
 
 3. Use the conventions specified in section :ref:`chapter-device-bindings`
    (Device Bindings) if the new device fits into one the |spec| defined
@@ -93,7 +93,7 @@ here to facilitate standardization of names and usage.
                number of bytes between registers. The ``reg-shift`` property
                specifies in bytes how far the discrete device registers are
                separated from each other. The individual register location
-               is calculated by using following formula: “registers address”
+               is calculated by using following formula: "registers address"
                << reg-shift. If unspecified, the default value is 0.
 
                For example, in a system where 16540 UART registers are
@@ -168,7 +168,7 @@ National Semiconductor 16450/16550 Compatible UART Requirements
 
 Serial devices compatible to the National Semiconductor 16450/16550 UART
 (Universal Asynchronous Receiver Transmitter) should be represented in
-the device tree using following properties.
+the devicetree using following properties.
 
 .. tabularcolumns:: l c l J
 .. table:: ns16550 UART Properties
@@ -176,7 +176,7 @@ the device tree using following properties.
    ======================= ===== ===================== ===============================================
    Property Name           Usage Value Type            Definition
    ======================= ===== ===================== ===============================================
-   ``compatible``          R     <string list>         Value shall include “ns16550”.
+   ``compatible``          R     <string list>         Value shall include "ns16550".
    ``clock-frequency``     R     ``<u32>``             Specifies the frequency (in Hz) of the baud
                                                        rate generator’s input clock
    ``current-speed``       OR    ``<u32>``             Specifies current serial device speed in bits
@@ -289,8 +289,8 @@ Ethernet specific considerations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Network devices based on the IEEE 802.3 collections of LAN standards
-(collectively referred to as Ethernet) may be represented in the device
-tree using following properties, in addition to properties specified of
+(collectively referred to as Ethernet) may be represented in the devicetree
+using following properties, in addition to properties specified of
 the network device class.
 
 The properties listed in this section augment the properties listed in
@@ -326,7 +326,7 @@ the network device class.
                specific to the implementation.
 
                Recommended values are shown in the following table.
-   Example     ``phy-connection-type = “mii”;``
+   Example     ``phy-connection-type = "mii";``
    =========== ==============================================================
 
 .. tabularcolumns:: | l J |
@@ -372,13 +372,13 @@ the network device class.
 Power ISA Open PIC Interrupt Controllers
 ----------------------------------------
 
-This section specifies the requirements for representing open PIC
-compatible interrupt controllers. An open PIC interrupt controller
-implements the open PIC architecture (developed jointly by AMD and
+This section specifies the requirements for representing Open PIC
+compatible interrupt controllers. An Open PIC interrupt controller
+implements the Open PIC architecture (developed jointly by AMD and
 Cyrix) and specified in The Open Programmable Interrupt Controller (PIC)
-Register Interface Specification Revision 1.2 ?.
+Register Interface Specification Revision 1.2 [b18]_.
 
-Interrupt specifiers in an open PIC interrupt domain are encoded with
+Interrupt specifiers in an Open PIC interrupt domain are encoded with
 two cells. The first cell defines the interrupt number. The second cell
 defines the sense and level information.
 
@@ -420,7 +420,7 @@ specifiers:
 System-on-a-chip processors may have an internal I/O bus that cannot be
 probed for devices. The devices on the bus can be accessed directly
 without additional configuration required. This type of bus is
-represented as a node with a compatible value of “simple-bus”.
+represented as a node with a compatible value of "simple-bus".
 
 .. tabularcolumns:: | l c l J |
 .. table:: ``simple-bus`` Compatible Node Properties
