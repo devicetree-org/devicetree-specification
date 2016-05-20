@@ -18,27 +18,53 @@ Requirements:
 
 On Ubuntu:
 
-```
-# apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
-                  texlive-humanities texlive-generic-recommended graphviz
-```
+>```
+># apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
+>                  texlive-humanities texlive-generic-recommended graphviz
+>```
+>
+>If the version of python-sphinx installed is too old, then an additional
+>new version can be installed with the Python package installer:
+>
+>```
+>$ apt-get install python-pip
+>$ pip install --user --upgrade Sphinx
+>$ export SPHINXBUILD=~/.local/bin/sphinx-build
+>```
+>
+>Export SPHINXBUILD (see above) if Sphinx was installed with pip --user, then follow Make commands below
 
-If the version of python-spinx installed is too old, then an additional
-new version can be installed with the Python package installer:
+On Mac OS X:
 
-```
-$ apt-get install python-pip
-$ pip install --user --upgrade Sphinx
-$ export SPHINXBUILD=~/.local/bin/sphinx-build
-```
+> Install [MacTeX](http://tug.org/mactex/)
+>
+> Install pip if you don't have it:
+>```
+>$ sudo easy_install pip
+>```
+>Install Sphinx
+>```
+>pip install --user --upgrade Sphinx
+>Or
+>sudo pip install --upgrade Sphinx
+>```
+>
+>If your are using [brew](http://brew.sh) then you can install graphviz like this:
+>```
+brew install graphviz
+>```
+>If you are using [macports](https://www.macports.org/) then you can install graphviz like this:
+>```
+>$ sudo port install graphviz
+>```
 
-Export SPHINXBUILD (see above) if Sphinx was installed with pip --user, then:
+Make commands:
 
-```
-$ make latexpdf # For generating pdf
-$ make html # For generating a hierarchy of html pages
-$ make singlehtml # For generating a single html page
-```
+>```
+>$ make latexpdf # For generating pdf
+>$ make html # For generating a hierarchy of html pages
+>$ make singlehtml # For generating a single html page
+>```
 
 Output goes in ./build subdirectory.
 
