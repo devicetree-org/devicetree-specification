@@ -25,11 +25,11 @@
 \addto\extrasenglish{\def\pageautorefname{page}}
 
 \setcounter{tocdepth}{2}
-\usepackage{draftwatermark}\SetWatermarkScale{.45}\SetWatermarkText{DRAFT v0.1-pre1-20160524}
+
 
 \title{Devicetree Specification}
 \date{24 May 2016}
-\release{0.1-pre1-20160524}
+\release{0.1}
 \author{devicetree.org}
 \newcommand{\sphinxlogo}{\includegraphics{devicetree-logo.png}\par}
 \renewcommand{\releasename}{Release}
@@ -143,10 +143,10 @@
 \textbf{Copyright}
 
 \begin{DUlineblock}{0em}
-\item[] Copyright 2016 Linaro, Ltd.
 \item[] Copyright 2008,2011 Power.org, Inc.
 \item[] Copyright 2008,2011 Freescale Semiconductor, Inc.
 \item[] Copyright 2008,2011 International Business Machines Corporation.
+\item[] Copyright 2016 Linaro, Ltd.
 \item[] Copyright 2016 ARM Ltd.
 \end{DUlineblock}
 
@@ -168,7 +168,7 @@ Members are not, and shall not be held, responsible in any manner for
 identifying or failing to identify any or all such third party
 intellectual property rights.
 
-THIS SPECIFICATION PROVIDED “AS IS” AND WITHOUT ANY WARRANTY
+THIS SPECIFICATION PROVIDED ``AS IS'' AND WITHOUT ANY WARRANTY
 OF ANY KIND, INCLUDING, WITHOUT LIMITATION, ANY EXPRESS OR IMPLIED
 WARRANTY OF NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A
 PARTICULAR PURPOSE. IN NO EVENT SHALL LINARO OR ANY MEMBER OF
@@ -203,141 +203,26 @@ limitations under the License.
 \newpage
 \textbf{Acknowledgements}
 
-The power.org Platform Architecture Technical Subcommittee would like
+The devicetree.org Technical Steering Committee would like
 thank the many individuals and companies that contributed to the
 development this specification through writing, technical discussions
 and reviews.
 
-\textbf{Individuals}
-\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item {} 
-Hollis Blanchard
-
-\item {} 
-Dan Bouvier
-
-\item {} 
-Josh Boyer
-
-\item {} 
-Becky Bruce
-
-\item {} 
-Dale Farnsworth
-
-\item {} 
-Kumar Gala
-
-\item {} 
-Charles Garcia-Tobin
-
-\item {} 
-David Gibson
-
-\item {} 
-Ben Herrenschmidt
-
-\item {} 
-Rob Herring
-
-\item {} 
-Dan Hettena
-
-\item {} 
-Olof Johansson
-
-\item {} 
-Ashish Kalra
-
-\item {} 
-Grant Likely
-
-\item {} 
-Jon Loeliger
-
-\item {} 
-Hartmut Penner
-
-\item {} 
-Mark Rutland
-
-\item {} 
-Tim Radzykewycz
-
-\item {} 
-Heiko Schick
-
-\item {} 
-Jeff Scheel
-
-\item {} 
-Timur Tabi
-
-\item {} 
-John Traill
-
-\item {} 
-John True
-
-\item {} 
-Matt Tyrlik
-
-\item {} 
-Kanta Vekaria
-
-\item {} 
-Dave Willoughby
-
-\item {} 
-Scott Wood
-
-\item {} 
-Jimi Xenidis
-
-\item {} 
-Stuart Yoder
-
-\end{itemize}
-
-\textbf{Companies}
-\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-\item {} 
-ARM
-
-\item {} 
-Green Hills Software
-
-\item {} 
-IBM
-
-\item {} 
-Linaro
-
-\item {} 
-Montavista
-
-\item {} 
-NXP Semiconductor
-
-\item {} 
-Wind River
-
-\end{itemize}
-
-\textbf{Other Acknowledgements}
+We want to thank the power.org Platform Architecture Technical Subcommittee who
+developed and published ePAPR. The text of ePAPR was used as the starting
+point for this document.
 
 Significant aspects of the Devicetree Specification are based on work done by
 the Open Firmware Working Group which developed bindings for IEEE-1275.
 We would like to acknowledge their contributions.
 
 We would also like to acknowledge the contribution of the PowerPC and ARM Linux
-communities that developed and implemented the flattened device
-tree concept.
-\newpage\phantomsection\label{license:revision-history}
+communities that developed and implemented the flattened devicetree concept.
+\phantomsection\label{revhistory:revision-history}
 
 \begin{threeparttable}
-\capstart\caption{Revision History}\label{license:id1}
-\begin{tabulary}{\linewidth}{l l J}
+\capstart\caption{Revision History}\label{revhistory:id1}
+\begin{tabulary}{\linewidth}{| l l J |}
 \hline
 \textsf{\relax 
 Revision
@@ -347,29 +232,14 @@ Date
 Description
 }\\
 \hline
-ePAPR 1.0
- & 
-7/23/2008
- & 
-Initial Version
-\\
-\hline
-ePAPR 1.1
- & 
-3/7/2011
- & 
-Updates include: virtualization chapter, consolidated
-representation of cpu nodes, stdin/stdout properties
-on /chosen, label property, representation of hardware
-threads on cpu nodes, representation of Power ISA
-categories on cpu nodes, mmu type property, removal of
-some bindings, additional cpu entry requirements for
-threaded cpus, miscellaneous cleanup and
-clarifications.
-\\
-\hline
 DTSpec 0.1
- &  & \\
+ & 
+2016-MAY-24
+ & 
+Initial prerelease version. Imported ePAPR text
+into reStructured Text format and removed Power ISA
+specific elements.
+\\
 \hline\end{tabulary}
 
 \end{threeparttable}
@@ -438,13 +308,13 @@ Chapter {\hyperref[introduction:chapter\string-introduction]{\crossref{\DUrole{s
 specified by DTSpec.
 
 \item {} 
-Chapter {\hyperref[devicetree\string-basics:chapter\string-devicetree]{\crossref{\DUrole{std,std-ref}{2}}}} introduces the device tree concept
+Chapter {\hyperref[devicetree\string-basics:chapter\string-devicetree]{\crossref{\DUrole{std,std-ref}{2}}}} introduces the devicetree concept
 and describes its logical structure and standard properties.
 
 \item {} 
 Chapter {\hyperref[devicenodes:chapter\string-device\string-node\string-requirements]{\crossref{\DUrole{std,std-ref}{3}}}} specifies the
 definition of a base set of device nodes required by DTSpec-compliant
-device trees.
+devicetrees.
 
 \item {} 
 Chapter {\hyperref[device\string-bindings:chapter\string-device\string-bindings]{\crossref{\DUrole{std,std-ref}{4}}}} describes device bindings for
@@ -452,7 +322,7 @@ certain classes of devices and specific device types.
 
 \item {} 
 Chapter {\hyperref[flattened\string-format:chapter\string-fdt\string-structure]{\crossref{\DUrole{std,std-ref}{5}}}} specifies the physical structure
-of device trees.
+of devicetrees.
 
 \end{itemize}
 
@@ -472,7 +342,7 @@ recommended that}).
 The word \emph{may} is used to indicate a course of action permissible within
 the limits of the standard (\emph{may} equals \emph{is permitted}).
 
-Examples of device tree constructs are frequently shown in \emph{Device Tree
+Examples of devicetree constructs are frequently shown in \emph{Devicetree
 Syntax} form. See section {\hyperref[source\string-language:chapter\string-devicetree\string-source\string-format]{\crossref{\DUrole{std,std-ref}{6}}}} for
 an overview of this syntax.
 
@@ -510,7 +380,7 @@ Operating system debugging
 
 \end{itemize}
 
-What is retained from IEEE-1275 are concepts from the device tree
+What is retained from IEEE-1275 are concepts from the devicetree
 architecture by which a boot program can describe and communicate system
 hardware information to client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
@@ -562,15 +432,15 @@ A unit of information consisting of 32 bits.
 Direct memory access
 
 \item[{DTB\index{DTB|textbf}}] \leavevmode\phantomsection\label{introduction:term-dtb}
-Device tree blob. Compact binary representation of the device tree.
+Devicetree blob. Compact binary representation of the devicetree.
 
 \item[{DTC\index{DTC|textbf}}] \leavevmode\phantomsection\label{introduction:term-dtc}
-Device tree compiler. An open source tool used to create DTB files
+Devicetree compiler. An open source tool used to create DTB files
 from DTS files.
 
 \item[{DTS\index{DTS|textbf}}] \leavevmode\phantomsection\label{introduction:term-dts}
-Device tree syntax. A textual representation of a device tree
-consumed by the DTC. See Appendix A Device Tree Source Format
+Devicetree syntax. A textual representation of a devicetree
+consumed by the DTC. See Appendix A Devicetree Source Format
 (version 1).
 
 \item[{effective address\index{effective address|textbf}}] \leavevmode\phantomsection\label{introduction:term-effective-address}
@@ -682,7 +552,7 @@ of characters in \hyperref[devicetree-basics:node-name-characters]{Table \ref{de
 
 \begin{threeparttable}
 \capstart\caption{Valid characters for node names}\label{devicetree-basics:node-name-characters}\label{devicetree-basics:id4}
-\begin{tabulary}{\linewidth}{c p{8cm}}
+\begin{tabulary}{\linewidth}{| c p{8cm} |}
 \hline
 \textsf{\relax 
 Character
@@ -934,7 +804,7 @@ Property names are strings of 1 to 31 characters from the characters show in
 
 \begin{threeparttable}
 \capstart\caption{Valid characters for property names}\label{devicetree-basics:property-name-characters}\label{devicetree-basics:id6}
-\begin{tabulary}{\linewidth}{c p{8cm}}
+\begin{tabulary}{\linewidth}{| c p{8cm} |}
 \hline
 \textsf{\relax 
 Character
@@ -1015,7 +885,7 @@ sufficiently descriptive.
 
 \hyperref[devicetree-basics:property-values-table]{Table \ref{devicetree-basics:property-values-table}} describes the set of basic value types defined by the DTSpec.
 
-\begin{longtable}{p{4cm} p{12cm}}
+\begin{longtable}{| p{4cm} p{12cm} |}
 \caption{Property values}\label{devicetree-basics:property-values-table}\\
 \hline
 \textsf{\relax 
@@ -1055,10 +925,10 @@ A 32-bit integer in big-endian format. Example: the 32-bit value
 \begin{quote}
 
 \begin{OriginalVerbatim}[commandchars=\\\{\}]
-\PYG{n}{address}    \PYG{l+m+mi}{11}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{1}  \PYG{l+m+mi}{22}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{2}  \PYG{l+m+mi}{33}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{3}  \PYG{l+m+mi}{44}
+address    11
+address+1  22
+address+2  33
+address+3  44
 \end{OriginalVerbatim}
 \end{quote}
 \\
@@ -1077,14 +947,14 @@ The value would be represented in memory as:
 \begin{quote}
 
 \begin{OriginalVerbatim}[commandchars=\\\{\}]
-  \PYG{n}{address}  \PYG{l+m+mi}{11}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{1}  \PYG{l+m+mi}{22}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{2}  \PYG{l+m+mi}{33}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{3}  \PYG{l+m+mi}{44}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{4}  \PYG{l+m+mi}{55}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{5}  \PYG{l+m+mi}{66}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{6}  \PYG{l+m+mi}{77}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{7}  \PYG{l+m+mi}{88}
+  address  11
+address+1  22
+address+2  33
+address+3  44
+address+4  55
+address+5  66
+address+6  77
+address+7  88
 \end{OriginalVerbatim}
 \end{quote}
 \\
@@ -1092,16 +962,16 @@ The value would be represented in memory as:
 \code{\textless{}string\textgreater{}}
  & 
 Strings are printable and null-terminated. Example: the string
-“hello” would be represented in memory as:
+``hello'' would be represented in memory as:
 \begin{quote}
 
 \begin{OriginalVerbatim}[commandchars=\\\{\}]
-  \PYG{n}{address}  \PYG{l+m+mi}{68}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{h}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{1}  \PYG{l+m+mi}{65}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{e}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{2}  \PYG{l+m+mi}{6}\PYG{n}{C}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{l}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{3}  \PYG{l+m+mi}{6}\PYG{n}{C}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{l}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{4}  \PYG{l+m+mi}{6}\PYG{n}{F}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{o}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{5}  \PYG{l+m+mi}{00}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}0}\PYG{l+s+s1}{\PYGZsq{}}
+  address  68  \PYGZsq{}h\PYGZsq{}
+address+1  65  \PYGZsq{}e\PYGZsq{}
+address+2  6C  \PYGZsq{}l\PYGZsq{}
+address+3  6C  \PYGZsq{}l\PYGZsq{}
+address+4  6F  \PYGZsq{}o\PYGZsq{}
+address+5  00  \PYGZsq{}\PYGZbs{}0\PYGZsq{}
 \end{OriginalVerbatim}
 \end{quote}
 \\
@@ -1129,18 +999,18 @@ memory as:
 \begin{quote}
 
 \begin{OriginalVerbatim}[commandchars=\\\{\}]
-   \PYG{n}{address}  \PYG{l+m+mi}{68}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{h}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{1}  \PYG{l+m+mi}{65}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{e}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{2}  \PYG{l+m+mi}{6}\PYG{n}{C}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{l}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{3}  \PYG{l+m+mi}{6}\PYG{n}{C}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{l}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{4}  \PYG{l+m+mi}{6}\PYG{n}{F}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{o}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{5}  \PYG{l+m+mi}{00}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}0}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{6}  \PYG{l+m+mi}{77}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{7}  \PYG{l+m+mi}{6}\PYG{n}{f}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{o}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{8}  \PYG{l+m+mi}{72}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{r}\PYG{l+s+s1}{\PYGZsq{}}
- \PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{9}  \PYG{l+m+mi}{6}\PYG{n}{C}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{l}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{10}  \PYG{l+m+mi}{64}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{d}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{n}{address}\PYG{o}{+}\PYG{l+m+mi}{11}  \PYG{l+m+mi}{00}  \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}0}\PYG{l+s+s1}{\PYGZsq{}}
+   address  68  \PYGZsq{}h\PYGZsq{}
+ address+1  65  \PYGZsq{}e\PYGZsq{}
+ address+2  6C  \PYGZsq{}l\PYGZsq{}
+ address+3  6C  \PYGZsq{}l\PYGZsq{}
+ address+4  6F  \PYGZsq{}o\PYGZsq{}
+ address+5  00  \PYGZsq{}\PYGZbs{}0\PYGZsq{}
+ address+6  77  \PYGZsq{}w\PYGZsq{}
+ address+7  6f  \PYGZsq{}o\PYGZsq{}
+ address+8  72  \PYGZsq{}r\PYGZsq{}
+ address+9  6C  \PYGZsq{}l\PYGZsq{}
+address+10  64  \PYGZsq{}d\PYGZsq{}
+address+11  00  \PYGZsq{}\PYGZbs{}0\PYGZsq{}
 \end{OriginalVerbatim}
 \end{quote}
 \\
@@ -1152,9 +1022,9 @@ memory as:
 \label{devicetree-basics:standard-properties}\label{devicetree-basics:sect-standard-properties}
 DTSpec specifies a set of standard properties for device nodes. These
 properties are described in detail in this section. Device nodes defined
-by DTSpec (see Chapter 3, {\hyperref[devicenodes:chapter\string-device\string-node\string-requirements]{\crossref{\DUrole{std,std-ref}{3}}}}) may specify
+by DTSpec (see Chapter {\hyperref[devicenodes:chapter\string-device\string-node\string-requirements]{\crossref{\DUrole{std,std-ref}{3}}}}) may specify
 additional requirements or constraints regarding the use of the standard
-properties. {\hyperref[device\string-bindings:chapter\string-device\string-bindings]{\crossref{\DUrole{std,std-ref}{4}}}} that describe the representation
+properties. Chapter {\hyperref[device\string-bindings:chapter\string-device\string-bindings]{\crossref{\DUrole{std,std-ref}{4}}}} describes the representation
 of specific devices may also specify additional requirements.
 
 \begin{notice}{note}{Note:}
@@ -1180,7 +1050,7 @@ strings, from most specific to most general. They allow a device to
 express its compatibility with a family of similar devices, potentially
 allowing a single device driver to match against several devices.
 
-The recommended format is \code{“manufacturer,model”}, where
+The recommended format is \code{"manufacturer,model"}, where
 \code{manufacturer} is a string describing the name of the manufacturer
 (such as a stock ticker symbol), and \code{model} specifies the model
 number.
@@ -1189,7 +1059,7 @@ number.
 Example:
 \begin{quote}
 
-\code{compatible = “fsl,mpc8641-uart”, “ns16550";}
+\code{compatible = "fsl,mpc8641-uart", "ns16550";}
 
 In this example, an operating system would first try to locate a device
 driver that supported fsl,mpc8641-uart. If a driver was not found, it
@@ -1218,7 +1088,7 @@ The recommended format is: \code{"manufacturer,model"}, where
 Example:
 \begin{quote}
 
-\code{model = “fsl,MPC8349EMITX”;}
+\code{model = "fsl,MPC8349EMITX";}
 \end{quote}
 
 
@@ -1243,17 +1113,17 @@ Example:
 See the following devicetree excerpt:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{pic}\PYG{n+nd}{@10000000} \PYG{p}{\PYGZob{}}
-   \PYG{n}{phandle} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-   \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{controller}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+pic@10000000 \PYGZob{}
+   phandle = \PYGZlt{}1\PYGZgt{};
+   interrupt\PYGZhy{}controller;
+\PYGZcb{};
 \end{Verbatim}
 
 A \emph{phandle} value of 1 is defined. Another device node could reference
 the pic node with a phandle value of 1:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{parent} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{1}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+interrupt\PYGZhy{}parent = \PYGZlt{}1\PYGZgt{};
 \end{Verbatim}
 \end{quote}
 
@@ -1282,13 +1152,14 @@ Value type: \code{\textless{}string\textgreater{}}
 Description:
 \begin{quote}
 
-The \emph{status} property indicates the operational status of a device.
-Valid values are listed and defined in the following table.
+The \code{status} property indicates the operational status of a device.
+Valid values are listed and defined in \hyperref[devicetree-basics:table-prop-status-values]{Table \ref{devicetree-basics:table-prop-status-values}}.
+\end{quote}
 
 
 \begin{threeparttable}
-\capstart\caption{Values for status property}\label{devicetree-basics:id8}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{Values for status property}\label{devicetree-basics:table-prop-status-values}\label{devicetree-basics:id8}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Value
@@ -1330,7 +1201,6 @@ detected.
 
 \end{threeparttable}
 
-\end{quote}
 
 
 \subsection{\#address-cells and \#size-cells}
@@ -1345,9 +1215,9 @@ Description:
 The \emph{\#address-cells} and \emph{\#size-cells} properties may be used in any
 device node that has children in the devicetree hierarchy and describes
 how child device nodes should be addressed. The \emph{\#address-cells}
-property defines the number of \textless{}u32\textgreater{} cells used to encode the address
-field in a child node’s \emph{reg} property. The \emph{\#size-cells} property
-defines the number of \textless{}u32\textgreater{} cells used to encode the size field in a
+property defines the number of \code{\textless{}u32\textgreater{}} cells used to encode the address
+field in a child node's \emph{reg} property. The \emph{\#size-cells} property
+defines the number of \code{\textless{}u32\textgreater{}} cells used to encode the size field in a
 child node’s \emph{reg} property.
 
 The \emph{\#address-cells} and \emph{\#size-cells} properties are not inherited from
@@ -1366,18 +1236,18 @@ Example:
 See the following devicetree excerpt:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{soc} \PYG{p}{\PYGZob{}}
-   \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
-   \PYG{c+c1}{\PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
+soc \PYGZob{}
+   \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+   \PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
 
-   \PYG{n}{serial} \PYG{p}{\PYGZob{}}
-      \PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ns16550}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-      \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x4600} \PYG{l+m+mh}{0x100}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{clock}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupts} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0xA} \PYG{l+m+mh}{0x8}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{parent} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZam{}}\PYG{n}{ipic}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+   serial \PYGZob{}
+      compatible = \PYGZdq{}ns16550\PYGZdq{};
+      reg = \PYGZlt{}0x4600 0x100\PYGZgt{};
+      clock\PYGZhy{}frequency = \PYGZlt{}0\PYGZgt{};
+      interrupts = \PYGZlt{}0xA 0x8\PYGZgt{};
+      interrupt\PYGZhy{}parent = \PYGZlt{}\PYGZam{}ipic\PYGZgt{};
+   \PYGZcb{};
+\PYGZcb{};
 \end{Verbatim}
 
 In this example, the \emph{\#address-cells} and \emph{\#size-cells} properties of the soc node
@@ -1495,21 +1365,21 @@ Address Translation Example:
 \begin{quote}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{soc} \PYG{p}{\PYGZob{}}
-   \PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{simple\PYGZhy{}bus}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-   \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
-   \PYG{c+c1}{\PYGZsh{}size\PYGZhy{}cells\PYGZus{} = \PYGZlt{}1\PYGZgt{};}
-   \PYG{n}{ranges} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x0} \PYG{l+m+mh}{0xe0000000} \PYG{l+m+mh}{0x00100000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+soc \PYGZob{}
+   compatible = \PYGZdq{}simple\PYGZhy{}bus\PYGZdq{};
+   \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+   \PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+   ranges = \PYGZlt{}0x0 0xe0000000 0x00100000\PYGZgt{};
 
-   \PYG{n}{serial} \PYG{p}{\PYGZob{}}
-      \PYG{n}{device\PYGZus{}type} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{serial}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-      \PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ns16550}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-      \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x4600} \PYG{l+m+mh}{0x100}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{clock}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupts} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0xA} \PYG{l+m+mh}{0x8}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{parent} \PYG{o}{=} \PYG{o}{\PYGZlt{}} \PYG{o}{\PYGZam{}}\PYG{n}{ipic} \PYG{o}{\PYGZgt{}}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+   serial \PYGZob{}
+      device\PYGZus{}type = \PYGZdq{}serial\PYGZdq{};
+      compatible = \PYGZdq{}ns16550\PYGZdq{};
+      reg = \PYGZlt{}0x4600 0x100\PYGZgt{};
+      clock\PYGZhy{}frequency = \PYGZlt{}0\PYGZgt{};
+      interrupts = \PYGZlt{}0xA 0x8\PYGZgt{};
+      interrupt\PYGZhy{}parent = \PYGZlt{} \PYGZam{}ipic \PYGZgt{};
+   \PYGZcb{};
+\PYGZcb{};
 \end{Verbatim}
 
 The \code{soc} node specifies a \emph{ranges} property of
@@ -1571,8 +1441,8 @@ property appears).
 \end{quote}
 
 
-\subsection{name}
-\label{devicetree-basics:name}
+\subsection{name (deprecated)}
+\label{devicetree-basics:name-deprecated}
 Property name: \code{name}
 
 Value type: \code{\textless{}string\textgreater{}}
@@ -1623,9 +1493,9 @@ interrupt controller. If an interrupt-generating device does not have an
 devicetree parent.
 
 Each interrupt generating device contains an \emph{interrupts} property with
-a value describing one or more interrupt sources for that device—each
-source represented with information called an \emph{interrupt specifier}. The
-format and meaning of an \emph{interrupt specifier} is interrupt domain
+a value describing one or more interrupt sources for that device. Each
+source is represented with information called an \emph{interrupt specifier}.
+The format and meaning of an \emph{interrupt specifier} is interrupt domain
 specific, i.e., it is dependent on properties on the node at the root of
 its interrupt domain. The \emph{\#interrupt-cells} property is used by the
 root of an interrupt domain to define the number of \code{\textless{}u32\textgreater{}} values
@@ -1668,7 +1538,7 @@ sits in the logical interrupt tree.
 \centering
 \capstart
 
-\includegraphics{graphviz-e39cfc76de6d5a4bb03961061381981f96280330.pdf}
+\includegraphics{graphviz-1d3954672eca688030b49a13a35b6714d9abdcd5.pdf}
 \caption{Example of the interrupt tree}\label{devicetree-basics:example-interrupt-tree}\label{devicetree-basics:id9}\end{figure}
 
 In the example shown in \hyperref[devicetree-basics:example-interrupt-tree]{Fig. \ref{devicetree-basics:example-interrupt-tree}}:
@@ -1679,9 +1549,17 @@ The \code{open-pic} interrupt controller is the root of the interrupt tree.
 \item {} 
 The interrupt tree root has three children—devices that route their
 interrupts directly to the \code{open-pic}
-* device1
-* PCI host controller
-* GPIO Controller
+\begin{itemize}
+\item {} 
+device1
+
+\item {} 
+PCI host controller
+
+\item {} 
+GPIO Controller
+
+\end{itemize}
 
 \item {} 
 Three interrupt domains exist; one rooted at the \code{open-pic} node,
@@ -1889,37 +1767,37 @@ interrupt controller.
 \phantomsection\label{devicetree-basics:example-interrupt-mapping}
 \def\SphinxLiteralBlockLabel{\label{devicetree-basics:example-interrupt-mapping}}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{soc} \PYG{p}{\PYGZob{}}
-   \PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{simple\PYGZhy{}bus}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-   \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
-   \PYG{c+c1}{\PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
+soc \PYGZob{}
+   compatible = \PYGZdq{}simple\PYGZhy{}bus\PYGZdq{};
+   \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+   \PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
 
-   \PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{p}{\PYGZob{}}
-      \PYG{n}{clock}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{controller}\PYG{p}{;}
-      \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}0\PYGZgt{};}
-      \PYG{c+c1}{\PYGZsh{}interrupt\PYGZhy{}cells = \PYGZlt{}2\PYGZgt{};}
-   \PYG{p}{\PYGZcb{}}\PYG{p}{;}
+   open\PYGZhy{}pic \PYGZob{}
+      clock\PYGZhy{}frequency = \PYGZlt{}0\PYGZgt{};
+      interrupt\PYGZhy{}controller;
+      \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}0\PYGZgt{};
+      \PYGZsh{}interrupt\PYGZhy{}cells = \PYGZlt{}2\PYGZgt{};
+   \PYGZcb{};
 
-   \PYG{n}{pci} \PYG{p}{\PYGZob{}}
-      \PYG{c+c1}{\PYGZsh{}interrupt\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
-      \PYG{c+c1}{\PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}2\PYGZgt{};}
-      \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}3\PYGZgt{};}
-      \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{map}\PYG{o}{\PYGZhy{}}\PYG{n}{mask} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0xf800} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{7}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-      \PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{map} \PYG{o}{=} \PYG{o}{\PYGZlt{}}
-         \PYG{o}{/}\PYG{o}{*} \PYG{n}{IDSEL} \PYG{l+m+mh}{0x11} \PYG{o}{\PYGZhy{}} \PYG{n}{PCI} \PYG{n}{slot} \PYG{l+m+mi}{1} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x8800} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{2} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTA} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x8800} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{2} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{3} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTB} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x8800} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{3} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{4} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTC} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x8800} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{4} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{1} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTD} \PYG{o}{*}\PYG{o}{/}
-         \PYG{o}{/}\PYG{o}{*} \PYG{n}{IDSEL} \PYG{l+m+mh}{0x12} \PYG{o}{\PYGZhy{}} \PYG{n}{PCI} \PYG{n}{slot} \PYG{l+m+mi}{2} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x9000} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{3} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTA} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x9000} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{2} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{4} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTB} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x9000} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{3} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{1} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTC} \PYG{o}{*}\PYG{o}{/}
-         \PYG{l+m+mh}{0x9000} \PYG{l+m+mi}{0} \PYG{l+m+mi}{0} \PYG{l+m+mi}{4} \PYG{o}{\PYGZam{}}\PYG{n+nb}{open}\PYG{o}{\PYGZhy{}}\PYG{n}{pic} \PYG{l+m+mi}{2} \PYG{l+m+mi}{1} \PYG{o}{/}\PYG{o}{*} \PYG{n}{INTD} \PYG{o}{*}\PYG{o}{/}
-      \PYG{o}{\PYGZgt{}}\PYG{p}{;}
-   \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+   pci \PYGZob{}
+      \PYGZsh{}interrupt\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+      \PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}2\PYGZgt{};
+      \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}3\PYGZgt{};
+      interrupt\PYGZhy{}map\PYGZhy{}mask = \PYGZlt{}0xf800 0 0 7\PYGZgt{};
+      interrupt\PYGZhy{}map = \PYGZlt{}
+         /* IDSEL 0x11 \PYGZhy{} PCI slot 1 */
+         0x8800 0 0 1 \PYGZam{}open\PYGZhy{}pic 2 1 /* INTA */
+         0x8800 0 0 2 \PYGZam{}open\PYGZhy{}pic 3 1 /* INTB */
+         0x8800 0 0 3 \PYGZam{}open\PYGZhy{}pic 4 1 /* INTC */
+         0x8800 0 0 4 \PYGZam{}open\PYGZhy{}pic 1 1 /* INTD */
+         /* IDSEL 0x12 \PYGZhy{} PCI slot 2 */
+         0x9000 0 0 1 \PYGZam{}open\PYGZhy{}pic 3 1 /* INTA */
+         0x9000 0 0 2 \PYGZam{}open\PYGZhy{}pic 4 1 /* INTB */
+         0x9000 0 0 3 \PYGZam{}open\PYGZhy{}pic 1 1 /* INTC */
+         0x9000 0 0 4 \PYGZam{}open\PYGZhy{}pic 2 1 /* INTD */
+      \PYGZgt{};
+   \PYGZcb{};
+\PYGZcb{};
 \end{Verbatim}
 \let\SphinxLiteralBlockLabel\empty
 
@@ -1938,7 +1816,8 @@ mapping for INTA of slot 1. The components of that row are shown here
 \item[] child unit address: \code{0x8800 0 0}
 \item[] child interrupt specifier: \code{1}
 \item[] interrupt parent: \code{\&open-pic}
-\item[] parent unit address: (empty because \code{\#address-cells = \textbackslash{}\textless{}0\textbackslash{}\textgreater{}} in the open-pic node)
+\item[] parent unit address: (empty because \code{\#address-cells = \textless{}0\textgreater{}} in the
+open-pic node)
 \item[] parent interrupt specifier: \code{2 1}
 \end{DUlineblock}
 \begin{itemize}
@@ -1967,10 +1846,10 @@ interrupt parent of the slot, the Open PIC interrupt controller.
 
 \item {} 
 The parent has no unit address because the parent interrupt domain
-(the open-pic node) has an \emph{\#address-cells} value of 0.
+(the open-pic node) has an \emph{\#address-cells} value of \code{\textless{}0\textgreater{}}.
 
 \item {} 
-The parent interrupt specifier is \textless{}2 1\textgreater{}. The number of cells to
+The parent interrupt specifier is \code{\textless{}2 1\textgreater{}}. The number of cells to
 represent the interrupt specifier (two cells) is determined by the
 \emph{\#interrupt-cells} property on the interrupt parent, the open-pic
 node.
@@ -1980,7 +1859,7 @@ The value \code{\textless{}2 1\textgreater{}} is a value specified by the device
 the Open PIC interrupt controller (see section
 {\hyperref[device\string-bindings:sect\string-bindings\string-simple\string-bus]{\crossref{\DUrole{std,std-ref}{4.5}}}}). The value \code{\textless{}2\textgreater{}} specifies the
 physical interrupt source number on the interrupt controller to
-which INTA is wired. The value \textless{}1\textgreater{} specifies the level/sense
+which INTA is wired. The value \code{\textless{}1\textgreater{}} specifies the level/sense
 encoding.
 
 \end{itemize}
@@ -1989,8 +1868,8 @@ encoding.
 
 \end{itemize}
 
-In this example, the interrupt-map-mask property has a value of \textless{}0xf800
-0 0 7\textgreater{}. This mask is applied to a child unit interrupt specifier before
+In this example, the interrupt-map-mask property has a value of \code{\textless{}0xf800
+0 0 7\textgreater{}}. This mask is applied to a child unit interrupt specifier before
 performing a lookup in the interruptmap table.
 
 To perform a lookup of the open-pic interrupt source number for INTB for
@@ -2028,10 +1907,10 @@ the parent interrupt specifier \code{\textless{}4 1\textgreater{}}.
 \section{Base Device Node Types}
 \label{devicenodes:base-device-node-types}
 The sections that follow specify the requirements for the base set of
-device nodes required in an DTSpec-compliant device tree.
+device nodes required in an DTSpec-compliant devicetree.
 
-All device trees shall have a root node and the following nodes shall be
-present at the root of all device trees:
+All devicetrees shall have a root node and the following nodes shall be
+present at the root of all devicetrees:
 \begin{itemize}
 \item {} 
 One \code{/cpus} node
@@ -2044,13 +1923,13 @@ At least one \code{memory} node
 
 \section{Root node}
 \label{devicenodes:root-node}
-The device tree has a single root node of which all other device nodes
+The devicetree has a single root node of which all other device nodes
 are descendants. The full path to the root node is \code{/}.
 
 
 \begin{threeparttable}
 \capstart\caption{Root Node Properties}\label{devicenodes:id2}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -2129,13 +2008,13 @@ All other standard properties (section
 
 \section{\texttt{/aliases} node}
 \label{devicenodes:aliases-node}
-A device tree may have an aliases node (\code{/aliases}) that defines one or
-more alias properties. The alias node shall be at the root of the device
-tree and have the node name \code{/aliases}.
+A devicetree may have an aliases node (\code{/aliases}) that defines one or
+more alias properties. The alias node shall be at the root of the devicetree
+and have the node name \code{/aliases}.
 
 Each property of the \code{/aliases} node defines an alias. The property name
 specifies the alias name. The property value specifies the full path to
-a node in the device tree. For example, the property serial0 =
+a node in the devicetree. For example, the property serial0 =
 \code{"/simple-bus@fe000000/serial@llc500"} defines the alias serial0.
 
 Alias names shall be a lowercase text strings of 1 to 31 characters from
@@ -2144,7 +2023,7 @@ the following set of characters.
 
 \begin{threeparttable}
 \capstart\caption{Valid characters for alias names}\label{devicenodes:id3}
-\begin{tabulary}{\linewidth}{c p{8cm}}
+\begin{tabulary}{\linewidth}{| c p{8cm} |}
 \hline
 \textsf{\relax 
 Character
@@ -2182,10 +2061,10 @@ considering a string as a device path, shall detect and use the alias.
 \textbf{Example}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{aliases} \PYG{p}{\PYGZob{}}
-    \PYG{n}{serial0} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/simple\PYGZhy{}bus@fe000000/serial@llc500}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-    \PYG{n}{ethernet0} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/simple\PYGZhy{}bus@fe000000/ethernet@31c000}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
+aliases \PYGZob{}
+    serial0 = \PYGZdq{}/simple\PYGZhy{}bus@fe000000/serial@llc500\PYGZdq{};
+    ethernet0 = \PYGZdq{}/simple\PYGZhy{}bus@fe000000/ethernet@31c000\PYGZdq{};
+\PYGZcb{}
 \end{Verbatim}
 
 Given the alias serial0, a client program can look at the aliases node
@@ -2195,7 +2074,7 @@ and determine the alias refers to the device path
 
 \section{\texttt{/memory} node}
 \label{devicenodes:memory-node}
-A memory device node is required for all device trees and describes the
+A memory device node is required for all devicetrees and describes the
 physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the \emph{reg} property of a single memory node.
@@ -2215,10 +2094,16 @@ client program can safely access all memory (including memory covered by
 memory reservations) as WIMG = 0b001x. That is:
 \begin{itemize}
 \item {} 
-not Write Through Required not Caching Inhibited Memory Coherence
+not Write Through Required
 
 \item {} 
-Required either not Guarded or Guarded (i.e., WIMG = 0b001x)
+not Caching Inhibited
+
+\item {} 
+Memory Coherence
+
+\item {} 
+Required either not Guarded or Guarded
 
 \end{itemize}
 
@@ -2227,7 +2112,7 @@ If the VLE storage attribute is supported, with VLE=0.
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/memory} Node Properties}\label{devicenodes:id4}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -2287,7 +2172,7 @@ All other standard properties (section
 {\hyperref[devicetree\string-basics:sect\string-standard\string-properties]{\crossref{\DUrole{std,std-ref}{2.3}}}}) are allowed but are optional.
 \end{notice}
 
-\textbf{Example}
+\textbf{Examples}
 
 Given a 64-bit Power system with the following physical memory layout:
 \begin{itemize}
@@ -2299,30 +2184,30 @@ RAM: starting address 0x100000000, length 0x100000000 (4GB)
 
 \end{itemize}
 
-Memory nodes could be defined as follows, assuming an \code{\#address-cells} == 2
-and \code{\#size-cells} == 2:
+Memory nodes could be defined as follows, assuming \code{\#address-cells = \textless{}2\textgreater{}}
+and \code{\#size-cells = \textless{}2\textgreater{}}.
 
 \textbf{Example \#1}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{memory}\PYG{n+nd}{@0} \PYG{p}{\PYGZob{}}
-    \PYG{n}{device\PYGZus{}type} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{memory}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-    \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x000000000} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x80000000}
-           \PYG{l+m+mh}{0x000000001} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x00000001} \PYG{l+m+mh}{0x00000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+memory@0 \PYGZob{}
+    device\PYGZus{}type = \PYGZdq{}memory\PYGZdq{};
+    reg = \PYGZlt{}0x000000000 0x00000000 0x00000000 0x80000000
+           0x000000001 0x00000000 0x00000001 0x00000000\PYGZgt{};
+\PYGZcb{};
 \end{Verbatim}
 
 \textbf{Example \#2}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{memory}\PYG{n+nd}{@0} \PYG{p}{\PYGZob{}}
-    \PYG{n}{device\PYGZus{}type} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{memory}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-    \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x000000000} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x80000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYG{n}{memory}\PYG{n+nd}{@100000000} \PYG{p}{\PYGZob{}}
-    \PYG{n}{device\PYGZus{}type} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{memory}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-    \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x000000001} \PYG{l+m+mh}{0x00000000} \PYG{l+m+mh}{0x00000001} \PYG{l+m+mh}{0x00000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+memory@0 \PYGZob{}
+    device\PYGZus{}type = \PYGZdq{}memory\PYGZdq{};
+    reg = \PYGZlt{}0x000000000 0x00000000 0x00000000 0x80000000\PYGZgt{};
+\PYGZcb{};
+memory@100000000 \PYGZob{}
+    device\PYGZus{}type = \PYGZdq{}memory\PYGZdq{};
+    reg = \PYGZlt{}0x000000001 0x00000000 0x00000001 0x00000000\PYGZgt{};
+\PYGZcb{};
 \end{Verbatim}
 
 The \code{reg} property is used to define the address and size of the two
@@ -2338,12 +2223,10 @@ The \code{/chosen} node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.
 
-The node name (see {\hyperref[devicetree\string-basics:sect\string-node\string-names]{\crossref{\DUrole{std,std-ref}{2.2.1}}}}) shall be \code{/chosen}.
-
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/chosen} Node Properties}\label{devicenodes:id5}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -2411,12 +2294,12 @@ All other standard properties (section
 \textbf{Example}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{chosen} \PYG{p}{\PYGZob{}}
-    \PYG{n}{bootargs} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+chosen \PYGZob{}
+    bootargs = \PYGZdq{}root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200\PYGZdq{};
+\PYGZcb{};
 \end{Verbatim}
 
-Older versions of device trees may be encountered that contain a
+Older versions of devicetrees may be encountered that contain a
 deprecated form of the stdout-path property called linux,stdout-path.
 For compatibility, a client program might want to support
 linux,stdout-path if a stdout-path property is not present. The meaning
@@ -2425,16 +2308,14 @@ and use of the two properties is identical.
 
 \section{\texttt{/cpus} Node Properties}
 \label{devicenodes:cpus-node-properties}
-A cpus node is required for all device trees. It does not represent a
+A cpus node is required for all devicetrees. It does not represent a
 real device in the system, but acts as a container for child cpu nodes
 which represent the systems CPUs.
-
-The node name (see {\hyperref[devicetree\string-basics:sect\string-node\string-names]{\crossref{\DUrole{std,std-ref}{2.2.1}}}}) shall be cpus.
 
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/cpus} Node Properties}\label{devicenodes:id6}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -2507,8 +2388,7 @@ CPU node, but if an expected property is not found then it should look
 at the parent cpus node. This results in a less verbose representation
 of properties which are identical across all CPUs.
 
-The node name for every cpu node (see {\hyperref[devicetree\string-basics:sect\string-node\string-names]{\crossref{\DUrole{std,std-ref}{2.2.1}}}}) should be
-cpu.
+The node name for every cpu node should be \code{cpu}.
 
 
 \subsection{General Properties of \texttt{/cpus/cpu*} nodes}
@@ -2517,7 +2397,7 @@ The following table describes the general properties of CPU nodes. Some
 of the properties described in \hyperref[devicenodes:table-cpu-node-props]{Table \ref{devicenodes:table-cpu-node-props}} are select
 standard properties with specific applicable detail.
 
-\begin{longtable}{p{2.5cm} p{1cm} p{2cm} p{9.5cm}}
+\begin{longtable}{| p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |}
 \caption{\texttt{/cpus/cpu*} Node General Properties}\label{devicenodes:table-cpu-node-props}\\
 \hline
 \textsf{\relax 
@@ -2553,11 +2433,15 @@ Definition
 
 \code{device\_type}
  & 
-R
+\begin{DUlineblock}{0em}
+\item[] R
+\end{DUlineblock}
  & 
-\code{\textless{}string\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}string\textgreater{}}
+\end{DUlineblock}
  & 
-Value shall be ``cpu''.
+Value shall be \code{"cpu"}.
 \\
 \hline
 \code{reg}
@@ -2566,31 +2450,31 @@ R
  & 
 array
  & 
-The value of \code{reg} is a \code{\textless{}prop-encoded-array\textgreater{}}
+The value of \emph{reg} is a \code{\textless{}prop-encoded-array\textgreater{}}
 that defines a unique CPU/thread id for the
 CPU/threads represented by the CPU node.
 
 If a CPU supports more than one thread (i.e.
-multiple streams of execution) the \code{reg}
+multiple streams of execution) the \emph{reg}
 property is an array with 1 element per
-thread. The \code{\#address-cells} on the \code{/cpus} node
+thread. The \emph{\#address-cells} on the \code{/cpus} node
 specifies how many cells each element of the
 array takes. Software can determine the number
-of threads by dividing the size of \code{reg} by
-the parent node’s \code{\#address-cells}.
+of threads by dividing the size of \emph{reg} by
+the parent node's \emph{\#address-cells}.
 
 If a CPU/thread can be the target of an
-external interrupt the ``reg'' property value
+external interrupt the \emph{reg} property value
 must be a unique CPU/thread id that is
 addressable by the interrupt controller.
 
 If a CPU/thread cannot be the target of an
-external interrupt, then ``reg'' must be unique
+external interrupt, then \emph{reg} must be unique
 and out of bounds of the range addressed by
 the interrupt controller
 
-If a CPU/thread’s PIR is modifiable, a client
-program should modify PIR to match the ``reg''
+If a CPU/thread's PIR is modifiable, a client
+program should modify PIR to match the \emph{reg}
 property value. If PIR cannot be modified and
 the PIR value is distinct from the interrupt
 controller numberspace, the CPUs binding may
@@ -2601,41 +2485,51 @@ PIR values if desired.
 \code{clock-frequency}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] R
 \end{DUlineblock}
  & 
-array
+\begin{DUlineblock}{0em}
+\item[] array
+\end{DUlineblock}
  & 
 Specifies the current clock speed of the CPU
-in Hertz. The value is a \textless{}prop-encoded-array\textgreater{}
+in Hertz. The value is a \code{\textless{}prop-encoded-array\textgreater{}}
 in one of two forms:
-
+\begin{itemize}
+\item {} 
 A 32-bit integer consisting of one \code{\textless{}u32\textgreater{}}
 specifying the frequency.
 
+\item {} 
 A 64-bit integer represented as a \code{\textless{}u64\textgreater{}}
 specifying the frequency.
+
+\end{itemize}
 \\
 \hline
 \code{timebase-frequency}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] R
 \end{DUlineblock}
  & 
-array
+\begin{DUlineblock}{0em}
+\item[] array
+\end{DUlineblock}
  & 
 Specifies the current frequency at which the
 timebase and decrementer registers are updated
 (in Hertz). The value is a
 \textless{}prop-encoded-array\textgreater{} in one of two forms:
-
+\begin{itemize}
+\item {} 
 A 32-bit integer consisting of one \code{\textless{}u32\textgreater{}}
 specifying the frequency.
 
+\item {} 
 A 64-bit integer represented as a \code{\textless{}u64\textgreater{}}.
+
+\end{itemize}
 \\
 \hline
 \code{status}
@@ -2648,12 +2542,16 @@ A standard property describing the state of a
 CPU. This property shall be present for nodes
 representing CPUs in a symmetric
 multiprocessing (SMP) configuration. For a CPU
-node the meaning of the “okay” and “disabled”
-values are as follows:
+node the meaning of the \code{"okay"} and
+\code{"disabled"} values are as follows:
+\begin{description}
+\item[{\code{"okay"} :}] \leavevmode
+The CPU is running.
 
-\code{"okay"}. The CPU is running.
+\item[{\code{"disabled"} :}] \leavevmode
+The CPU is in a quiescent state.
 
-\code{"disabled"}. The CPU is in a quiescent state.
+\end{description}
 
 A quiescent CPU is in a state where it cannot
 interfere with the normal operation of other
@@ -2675,49 +2573,59 @@ implementation dependent state.
 \hline
 \code{enable-method}
  & 
-SD
+\begin{DUlineblock}{0em}
+\item[] SD
+\end{DUlineblock}
  & 
-\code{\textless{}stringlist\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}stringlist\textgreater{}}
+\end{DUlineblock}
  & 
 Describes the method by which a CPU in a
 disabled state is enabled. This property is
 required for CPUs with a status property with
-a value of “disabled”. The value consists of
+a value of \code{"disabled"}. The value consists of
 one or more strings that define the method to
 release this CPU. If a client program
 recognizes any of the methods, it may use it.
 The value shall be one of the following:
-
-``spin-table'' The CPU is enabled with the
+\begin{description}
+\item[{\code{"spin-table"} :}] \leavevmode
+The CPU is enabled with the
 spin table method defined in the DTSpec.
 
-\code{"{[}vendor{]},{[}method{]}"} An
-implementation-dependent string that
+\item[{\code{"{[}vendor{]},{[}method{]}"} :}] \leavevmode
+Implementation dependent string that
 describes the method by which a CPU is
-released from a ``disabled'' state. The
-required format is: ``vendor,method'' where
-vendor is a string describing the name of
+released from a \code{"disabled"} state. The
+required format is: \code{"{[}vendor{]},{[}method{]}"},
+where vendor is a string describing the name of
 the manufacturer and method is a string
 describing the vendorspecific mechanism.
 
+\end{description}
+
 Example: \code{"fsl,MPC8572DS"}
 
-Note: Other methods may be added to later
+\begin{notice}{note}{Note:}
+Other methods may be added to later
 revisions of the DTSpec specification.
+\end{notice}
 \\
 \hline
 \code{cpu-release-addr}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] SD
 \end{DUlineblock}
  & 
-\code{\textless{}u64\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}u64\textgreater{}}
+\end{DUlineblock}
  & 
 The cpu-release-addr property is required for
 cpu nodes that have an enable-method property
-value of ``spin-table''. The value specifies the
+value of \code{"spin-table"}. The value specifies the
 physical address of a spin table entry that
 releases a secondary CPU from its spin loop.
 \\
@@ -2732,7 +2640,7 @@ All other standard properties (section
 {\hyperref[devicetree\string-basics:sect\string-standard\string-properties]{\crossref{\DUrole{std,std-ref}{2.3}}}}) are allowed but are optional.
 \end{notice}
 
-\begin{longtable}{p{2.5cm} p{1cm} p{2cm} p{9.5cm}}
+\begin{longtable}{| p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |}
 \caption{\texttt{/cpus/cpu*} Node Power ISA Properties}\\
 \hline
 \textsf{\relax 
@@ -2769,37 +2677,42 @@ Definition
 \code{power-isa-version}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] O
 \end{DUlineblock}
  & 
-\code{\textless{}string\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}string\textgreater{}}
+\end{DUlineblock}
  & 
 A string that specifies the numerical portion
 of the Power ISA version string. For example,
 for an implementation complying with Power ISA
 Version 2.06, the value of this property would
-be ``2.06''.
+be \code{"2.06"}.
 \\
 \hline
 \code{power-isa-*}
  & 
-O
+\begin{DUlineblock}{0em}
+\item[] O
+\end{DUlineblock}
  & 
-\code{\textless{}empty\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}empty\textgreater{}}
+\end{DUlineblock}
  & 
-If the power-isa-version property exists, then
+If the \code{power-isa-version} property exists, then
 for each category from the Categories section
 of Book I of the Power ISA version indicated,
 the existence of a property named
-power-isa-{[}CAT{]}, where {[}CAT{]} is the
+\code{power-isa-{[}CAT{]}}, where \code{{[}CAT{]}} is the
 abbreviated category name with all uppercase
 letters converted to lowercase, indicates that
 the category is supported by the
 implementation.
 
 For example, if the power-isa-version property
-exists and its value is ``2.06'' and the
+exists and its value is \code{"2.06"} and the
 power-isa-e.hv property exists, then the
 implementation supports
 {[}Category:Embedded.Hypervisor{]} as defined in
@@ -2809,11 +2722,12 @@ Power ISA Version 2.06.
 \code{cache-op-block-size}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] SD
 \end{DUlineblock}
  & 
-\code{\textless{}u32\textgreater{}}
+\begin{DUlineblock}{0em}
+\item[] \code{\textless{}u32\textgreater{}}
+\end{DUlineblock}
  & 
 Specifies the block size in bytes upon which
 cache block instructions operate (e.g., dcbz).
@@ -2824,12 +2738,10 @@ size.
 \code{reservation-granule-size}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] SD
 \end{DUlineblock}
  & 
 \begin{DUlineblock}{0em}
-\item[] 
 \item[] \code{\textless{}u32\textgreater{}}
 \end{DUlineblock}
  & 
@@ -2846,16 +2758,35 @@ O
 Specifies the CPU’s MMU type.
 
 Valid values are shown below:
+\begin{itemize}
+\item {} 
+\code{"mpc8xx"}
 
-``mpc8xx''
-``ppc40x''
-``ppc440''
-``ppc476''
-``power-embedded''
-``powerpc-classic''
-``power-server-stab''
-``power-server-slb''
-``none''
+\item {} 
+\code{"ppc40x"}
+
+\item {} 
+\code{"ppc440"}
+
+\item {} 
+\code{"ppc476"}
+
+\item {} 
+\code{"power-embedded"}
+
+\item {} 
+\code{"powerpc-classic"}
+
+\item {} 
+\code{"power-server-stab"}
+
+\item {} 
+\code{"power-server-slb"}
+
+\item {} 
+\code{"none"}
+
+\end{itemize}
 \\
 \hline \multicolumn{4}{|l|}{
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
@@ -2868,7 +2799,7 @@ All other standard properties (section
 {\hyperref[devicetree\string-basics:sect\string-standard\string-properties]{\crossref{\DUrole{std,std-ref}{2.3}}}}) are allowed but are optional.
 \end{notice}
 
-Older versions of device trees may be encountered that contain a
+Older versions of devicetree may be encountered that contain a
 bus-frequency property on CPU nodes. For compatibility, a client-program
 might want to support bus-frequency. The format of the value is
 identical to that of clock-frequency. The recommended practice is to
@@ -2884,7 +2815,7 @@ buffer in the processor’s MMU.
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/cpu/cpu*} Node Power ISA TLB Properties}\label{devicenodes:id9}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -2997,7 +2928,7 @@ The following properties of a cpu node describe the processor’s internal
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/cpu/cpu*} Node Power ISA Cache Properties}\label{devicenodes:id10}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -3017,7 +2948,7 @@ SD
  & 
 If present, specifies the cache has a unified
 organization. If not present, specifies that
-the cache has a Harvard architecture \code{with}
+the cache has a Harvard architecture with
 separate caches for instructions and data.
 \\
 \hline
@@ -3028,7 +2959,7 @@ SD
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the size in bytes of a unified
-cache. Required if the cache is \code{unified}
+cache. Required if the cache is unified
 (combined instructions and data).
 \\
 \hline
@@ -3039,7 +2970,7 @@ SD
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the number of associativity sets in
-a unified cache. Required if the cache \code{is}
+a unified cache. Required if the cache is
 unified (combined instructions and data)
 \\
 \hline
@@ -3073,7 +3004,7 @@ SD
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the size in bytes of the instruction
-cache. Required if the cpu has a \code{separate}
+cache. Required if the cpu has a separate
 cache for instructions.
 \\
 \hline
@@ -3129,7 +3060,7 @@ SD
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the number of associativity sets in
-the data cache. Required if the cpu has \code{a}
+the data cache. Required if the cpu has a
 separate cache for data.
 \\
 \hline
@@ -3140,7 +3071,7 @@ SD
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the block size in bytes of the data
-cache. Required if the cpu has a \code{separate}
+cache. Required if the cpu has a separate
 cache for data.
 \\
 \hline
@@ -3180,43 +3111,43 @@ All other standard properties (section
 {\hyperref[devicetree\string-basics:sect\string-standard\string-properties]{\crossref{\DUrole{std,std-ref}{2.3}}}}) are allowed but are optional.
 \end{notice}
 
-Older versions of device trees may be encountered that contain a
-deprecated form of the next-level-cache property called l2-cache. For
-compatibility, a client-program may wish to support l2-cache if a
-next-level-cache property is not present. The meaning and use of the two
-properties is identical.
+Older versions of devicetrees may be encountered that contain a
+deprecated form of the next-level-cache property called \code{l2-cache}.
+For compatibility, a client-program may wish to support \code{l2-cache}
+if a next-level-cache property is not present.
+The meaning and use of the two properties is identical.
 
 
 \subsection{Example}
 \label{devicenodes:sect-cpu-node-example}\label{devicenodes:example}
-Here is an example of a cpus node with one child cpu node:
+Here is an example of a \code{/cpus} node with one child cpu node:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{cpus} \PYG{p}{\PYGZob{}}
-    \PYG{c+c1}{\PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};}
-    \PYG{c+c1}{\PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}0\PYGZgt{};}
-    \PYG{n}{cpu}\PYG{n+nd}{@0} \PYG{p}{\PYGZob{}}
-        \PYG{n}{device\PYGZus{}type} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{cpu}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-        \PYG{n}{reg} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-        \PYG{n}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{cache}\PYG{o}{\PYGZhy{}}\PYG{n}{block}\PYG{o}{\PYGZhy{}}\PYG{n}{size} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{32}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{L1} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{32} \PYG{n+nb}{bytes}
-        \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{cache}\PYG{o}{\PYGZhy{}}\PYG{n}{block}\PYG{o}{\PYGZhy{}}\PYG{n}{size} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{32}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{L1} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{32} \PYG{n+nb}{bytes}
-        \PYG{n}{d}\PYG{o}{\PYGZhy{}}\PYG{n}{cache}\PYG{o}{\PYGZhy{}}\PYG{n}{size} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x8000}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{L1}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{n}{K}
-        \PYG{n}{i}\PYG{o}{\PYGZhy{}}\PYG{n}{cache}\PYG{o}{\PYGZhy{}}\PYG{n}{size} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x8000}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{n}{L1}\PYG{p}{,} \PYG{l+m+mi}{32}\PYG{n}{K}
-        \PYG{n}{timebase}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{82500000}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+m+mf}{82.5} \PYG{n}{MHz}
-        \PYG{n}{clock}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{825000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;} \PYG{o}{/}\PYG{o}{/} \PYG{l+m+mi}{825} \PYG{n}{MHz}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+cpus \PYGZob{}
+    \PYGZsh{}address\PYGZhy{}cells = \PYGZlt{}1\PYGZgt{};
+    \PYGZsh{}size\PYGZhy{}cells = \PYGZlt{}0\PYGZgt{};
+    cpu@0 \PYGZob{}
+        device\PYGZus{}type = \PYGZdq{}cpu\PYGZdq{};
+        reg = \PYGZlt{}0\PYGZgt{};
+        d\PYGZhy{}cache\PYGZhy{}block\PYGZhy{}size = \PYGZlt{}32\PYGZgt{}; // L1 \PYGZhy{} 32 bytes
+        i\PYGZhy{}cache\PYGZhy{}block\PYGZhy{}size = \PYGZlt{}32\PYGZgt{}; // L1 \PYGZhy{} 32 bytes
+        d\PYGZhy{}cache\PYGZhy{}size = \PYGZlt{}0x8000\PYGZgt{}; // L1, 32K
+        i\PYGZhy{}cache\PYGZhy{}size = \PYGZlt{}0x8000\PYGZgt{}; // L1, 32K
+        timebase\PYGZhy{}frequency = \PYGZlt{}82500000\PYGZgt{}; // 82.5 MHz
+        clock\PYGZhy{}frequency = \PYGZlt{}825000000\PYGZgt{}; // 825 MHz
+    \PYGZcb{};
+\PYGZcb{};
 \end{Verbatim}
 
 
 \section{Multi-level and Shared Cache Nodes (\texttt{/cpus/cpu*/l?-cache})}
 \label{devicenodes:multi-level-and-shared-cache-nodes-cpus-cpu-l-cache}
-Processors and systems may implement additional levels of cache
-hierarchy—for example, secondlevel (L2) or third-level (L3) caches.
+Processors and systems may implement additional levels of cache hierarchy.
+For example, second-level (L2) or third-level (L3) caches.
 These caches can potentially be tightly integrated to the CPU or
 possibly shared between multiple CPUs.
 
-A device node with a compatible value of ``cache'' describes these types
+A device node with a compatible value of \code{"cache"} describes these types
 of caches.
 
 The cache node shall define a phandle property, and all cpu nodes or
@@ -3225,7 +3156,7 @@ contain a next-level-cache property that specifies the phandle to the
 cache node.
 
 A cache node may be represented under a CPU node or any other
-appropriate location in the device tree.
+appropriate location in the devicetree.
 
 Multiple-level and shared caches are represented with the properties in
 Table 3-9. The L1 cache properties are described in Table 3-8.
@@ -3233,7 +3164,7 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
 
 \begin{threeparttable}
 \capstart\caption{\texttt{/cpu/cpu*/l?-cache} Node Power ISA Multiple-level and Shared Cache Properties}\label{devicenodes:id11}
-\begin{tabulary}{\linewidth}{l c l J}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -3262,8 +3193,7 @@ R
 \code{\textless{}u32\textgreater{}}
  & 
 Specifies the level in the cache hierarchy.
-For example, a level 2 cache has a value of
-2.
+For example, a level 2 cache has a value of 2.
 \\
 \hline \multicolumn{4}{|l|}{
 Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
@@ -3281,7 +3211,7 @@ All other standard properties (section
 
 \subsection{Example}
 \label{devicenodes:id1}
-See the following example of a device tree representation of two CPUs,
+See the following example of a devicetree representation of two CPUs,
 each with their own on-chip L2 and a shared L3.
 
 \begin{Verbatim}[commandchars=\\\{\}]
@@ -3298,7 +3228,7 @@ cpus \PYGZob{}
         next\PYGZhy{}level\PYGZhy{}cache = \PYGZlt{}\PYGZam{}L2\PYGZus{}0\PYGZgt{}; // phandle to L2
 
         L2\PYGZus{}0:l2\PYGZhy{}cache \PYGZob{}
-            compatible = “cache”;
+            compatible = \PYGZdq{}cache\PYGZdq{};
             cache\PYGZhy{}unified;
             cache\PYGZhy{}size = \PYGZlt{}0x40000\PYGZgt{}; // 256 KB
 
@@ -3308,7 +3238,7 @@ cpus \PYGZob{}
             next\PYGZhy{}level\PYGZhy{}cache = \PYGZlt{}\PYGZam{}L3\PYGZgt{}; // phandle to L3
 
             L3:l3\PYGZhy{}cache \PYGZob{}
-                compatible = “cache”;
+                compatible = \PYGZdq{}cache\PYGZdq{};
                 cache\PYGZhy{}unified;
                 cache\PYGZhy{}size = \PYGZlt{}0x40000\PYGZgt{}; // 256 KB
                 cache\PYGZhy{}sets = \PYGZlt{}0x400\PYGZgt{}; // 1024
@@ -3329,7 +3259,7 @@ cpus \PYGZob{}
         cache\PYGZhy{}level = \PYGZlt{}2\PYGZgt{};
         next\PYGZhy{}level\PYGZhy{}cache = \PYGZlt{}\PYGZam{}L2\PYGZus{}1\PYGZgt{}; // phandle to L2
         L2\PYGZus{}1:l2\PYGZhy{}cache \PYGZob{}
-            compatible = “cache”;
+            compatible = \PYGZdq{}cache\PYGZdq{};
             cache\PYGZhy{}unified;
             cache\PYGZhy{}size = \PYGZlt{}0x40000\PYGZgt{}; // 256 KB
             cache\PYGZhy{}sets = \PYGZlt{}0x400\PYGZgt{}; // 1024
@@ -3344,7 +3274,7 @@ cpus \PYGZob{}
 \chapter{Device Bindings}
 \label{device-bindings::doc}\label{device-bindings:device-bindings}\label{device-bindings:chapter-device-bindings}
 This chapter contains requirements, known as bindings, for how specific
-types and classes of devices are represented in the device tree. The
+types and classes of devices are represented in the devicetree. The
 compatible property of a device node describes the specific binding (or
 bindings) to which the node complies.
 
@@ -3360,7 +3290,7 @@ section {\hyperref[devicetree\string-basics:sect\string-standard\string-properti
 
 \subsection{General Principles}
 \label{device-bindings:general-principles}
-When creating a new device tree representation for a device, a binding
+When creating a new devicetree representation for a device, a binding
 should be created that fully describes the required properties and value
 of the device. This set of properties shall be sufficiently descriptive
 to provide device drivers with needed attributes of the device.
@@ -3375,7 +3305,7 @@ Define a compatible string using the conventions described in section
 Use the standard properties (defined in sections
 {\hyperref[devicetree\string-basics:sect\string-standard\string-properties]{\crossref{\DUrole{std,std-ref}{2.3}}}} and {\hyperref[devicetree\string-basics:sect\string-interrupts]{\crossref{\DUrole{std,std-ref}{2.4}}}}) as
 applicable for the new device. This usage typically includes the
-\code{reg} and interrupts properties at a minimum.
+\code{reg} and \code{interrupts} properties at a minimum.
 
 \item {} 
 Use the conventions specified in section {\hyperref[device\string-bindings:chapter\string-device\string-bindings]{\crossref{\DUrole{std,std-ref}{4}}}}
@@ -3408,8 +3338,8 @@ here to facilitate standardization of names and usage.
 \label{device-bindings:clock-frequency-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{clock-frequency} Property}\label{device-bindings:id2}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{clock-frequency} Property}\label{device-bindings:id3}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3443,8 +3373,8 @@ frequency
 \label{device-bindings:reg-shift-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{reg-shift} Property}\label{device-bindings:id3}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{reg-shift} Property}\label{device-bindings:id4}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3464,7 +3394,7 @@ devices that are identical in most respects except for the
 number of bytes between registers. The \code{reg-shift} property
 specifies in bytes how far the discrete device registers are
 separated from each other. The individual register location
-is calculated by using following formula: “registers address”
+is calculated by using following formula: ``registers address''
 \textless{}\textless{} reg-shift. If unspecified, the default value is 0.
 
 For example, in a system where 16540 UART registers are
@@ -3482,8 +3412,8 @@ property would be used to specify register locations.
 \label{device-bindings:label-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{label} Property}\label{device-bindings:id4}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{label} Property}\label{device-bindings:id5}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3527,8 +3457,8 @@ specific representation.
 \label{device-bindings:id1}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{clock-frequecy} Property}\label{device-bindings:id5}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{clock-frequecy} Property}\label{device-bindings:id6}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3561,7 +3491,7 @@ Example
 \label{device-bindings:current-speed-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{current-speed} Property}\label{device-bindings:id6}
+\capstart\caption{\texttt{current-speed} Property}\label{device-bindings:id7}
 \begin{tabulary}{\linewidth}{l J}
 \hline
 \textsf{\relax 
@@ -3596,11 +3526,11 @@ Example
 \label{device-bindings:national-semiconductor-16450-16550-compatible-uart-requirements}
 Serial devices compatible to the National Semiconductor 16450/16550 UART
 (Universal Asynchronous Receiver Transmitter) should be represented in
-the device tree using following properties.
+the devicetree using following properties.
 
 
 \begin{threeparttable}
-\capstart\caption{ns16550 UART Properties}\label{device-bindings:id7}
+\capstart\caption{ns16550 UART Properties}\label{device-bindings:id8}
 \begin{tabulary}{\linewidth}{l c l J}
 \hline
 \textsf{\relax 
@@ -3619,7 +3549,7 @@ R
  & 
 \textless{}string list\textgreater{}
  & 
-Value shall include “ns16550”.
+Value shall include ``ns16550''.
 \\
 \hline
 \code{clock-frequency}
@@ -3727,8 +3657,8 @@ Token-Ring.
 \label{device-bindings:address-bits-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{address-bits} Property}\label{device-bindings:id8}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{address-bits} Property}\label{device-bindings:id9}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3762,8 +3692,8 @@ Example
 \label{device-bindings:local-mac-address-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{local-mac-address} Property}\label{device-bindings:id9}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{local-mac-address} Property}\label{device-bindings:id10}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3796,8 +3726,8 @@ Example
 \label{device-bindings:mac-address-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{mac-address} Property}\label{device-bindings:id10}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{mac-address} Property}\label{device-bindings:id11}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3834,8 +3764,8 @@ Example
 \label{device-bindings:max-frame-size-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{max-frame-size} Property}\label{device-bindings:id11}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{max-frame-size} Property}\label{device-bindings:id12}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3867,8 +3797,8 @@ Example
 \subsection{Ethernet specific considerations}
 \label{device-bindings:ethernet-specific-considerations}
 Network devices based on the IEEE 802.3 collections of LAN standards
-(collectively referred to as Ethernet) may be represented in the device
-tree using following properties, in addition to properties specified of
+(collectively referred to as Ethernet) may be represented in the devicetree
+using following properties, in addition to properties specified of
 the network device class.
 
 The properties listed in this section augment the properties listed in
@@ -3879,8 +3809,8 @@ the network device class.
 \label{device-bindings:max-speed-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{max-speed} Property}\label{device-bindings:id12}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{max-speed} Property}\label{device-bindings:id13}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -3913,13 +3843,13 @@ Example
 \label{device-bindings:phy-connection-type-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{max-speed} Property}\label{device-bindings:id13}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{phy-connection-type} Property}\label{device-bindings:id14}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
 } & \textsf{\relax 
-\code{max-speed}
+\code{phy-connection-type}
 }\\
 \hline
 Value type
@@ -3938,7 +3868,7 @@ Recommended values are shown in the following table.
 \hline
 Example
  & 
-\code{phy-connection-type = “mii”;}
+\code{phy-connection-type = "mii";}
 \\
 \hline\end{tabulary}
 
@@ -3947,8 +3877,8 @@ Example
 
 
 \begin{threeparttable}
-\capstart\caption{Defined values for the \texttt{max-speed} Property}\label{device-bindings:id14}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{Defined values for the \texttt{phy-connection-type} Property}\label{device-bindings:id15}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Connection type
@@ -3968,7 +3898,7 @@ Reduced Media Independent Interface
 \hline
 Gigabit Media Independent Interface
  & 
-\code{rgmii}
+\code{gmii}
 \\
 \hline
 Reduced Gigabit Media Independent
@@ -4005,6 +3935,31 @@ Serial Media Independent Interface
  & 
 \code{smii}
 \\
+\hline
+Serial Gigabit Media Independent Interface
+ & 
+\code{sgmii}
+\\
+\hline
+Reverse Media Independent Interface
+ & 
+\code{rev-mii}
+\\
+\hline
+10 Gigabits Media Independent Interface
+ & 
+\code{xgmii}
+\\
+\hline
+Multimedia over Coaxial
+ & 
+\code{moca}
+\\
+\hline
+Quad Serial Gigabit Media Independent Interface
+ & 
+\code{qsgmii}
+\\
 \hline\end{tabulary}
 
 \end{threeparttable}
@@ -4015,8 +3970,8 @@ Serial Media Independent Interface
 \label{device-bindings:phy-handle-property}
 
 \begin{threeparttable}
-\capstart\caption{\texttt{phy-handle} Property}\label{device-bindings:id15}
-\begin{tabulary}{\linewidth}{l J}
+\capstart\caption{\texttt{phy-handle} Property}\label{device-bindings:id16}
+\begin{tabulary}{\linewidth}{| l J |}
 \hline
 \textsf{\relax 
 Property
@@ -4049,13 +4004,13 @@ Example
 
 \section{Power ISA Open PIC Interrupt Controllers}
 \label{device-bindings:power-isa-open-pic-interrupt-controllers}
-This section specifies the requirements for representing open PIC
-compatible interrupt controllers. An open PIC interrupt controller
-implements the open PIC architecture (developed jointly by AMD and
+This section specifies the requirements for representing Open PIC
+compatible interrupt controllers. An Open PIC interrupt controller
+implements the Open PIC architecture (developed jointly by AMD and
 Cyrix) and specified in The Open Programmable Interrupt Controller (PIC)
-Register Interface Specification Revision 1.2 ?.
+Register Interface Specification Revision 1.2 \phantomsection\label{device-bindings:id2}{\hyperref[references:b18]{\crossref{{[}b18{]}}}}.
 
-Interrupt specifiers in an open PIC interrupt domain are encoded with
+Interrupt specifiers in an Open PIC interrupt domain are encoded with
 two cells. The first cell defines the interrupt number. The second cell
 defines the sense and level information.
 
@@ -4064,17 +4019,17 @@ specifiers:
 \begin{quote}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{l+m+mi}{0} \PYG{o}{=} \PYG{n}{low} \PYG{n}{to} \PYG{n}{high} \PYG{n}{edge} \PYG{n}{sensitive} \PYG{n+nb}{type} \PYG{n}{enabled}
-\PYG{l+m+mi}{1} \PYG{o}{=} \PYG{n}{active} \PYG{n}{low} \PYG{n}{level} \PYG{n}{sensitive} \PYG{n+nb}{type} \PYG{n}{enabled}
-\PYG{l+m+mi}{2} \PYG{o}{=} \PYG{n}{active} \PYG{n}{high} \PYG{n}{level} \PYG{n}{sensitive} \PYG{n+nb}{type} \PYG{n}{enabled}
-\PYG{l+m+mi}{3} \PYG{o}{=} \PYG{n}{high} \PYG{n}{to} \PYG{n}{low} \PYG{n}{edge} \PYG{n}{sensitive} \PYG{n+nb}{type} \PYG{n}{enabled}
+0 = low to high edge sensitive type enabled
+1 = active low level sensitive type enabled
+2 = active high level sensitive type enabled
+3 = high to low edge sensitive type enabled
 \end{Verbatim}
 \end{quote}
 
 
 \begin{threeparttable}
-\capstart\caption{Open-PIC properties}\label{device-bindings:id16}
-\begin{tabulary}{\linewidth}{l c l J}
+\capstart\caption{Open-PIC properties}\label{device-bindings:id17}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -4152,12 +4107,12 @@ All other standard properties (section
 System-on-a-chip processors may have an internal I/O bus that cannot be
 probed for devices. The devices on the bus can be accessed directly
 without additional configuration required. This type of bus is
-represented as a node with a compatible value of “simple-bus”.
+represented as a node with a compatible value of ``simple-bus''.
 
 
 \begin{threeparttable}
-\capstart\caption{\texttt{simple-bus} Compatible Node Properties}\label{device-bindings:id17}
-\begin{tabulary}{\linewidth}{l c l J}
+\capstart\caption{\texttt{simple-bus} Compatible Node Properties}\label{device-bindings:id18}
+\begin{tabulary}{\linewidth}{| l c l J |}
 \hline
 \textsf{\relax 
 Property Name
@@ -4199,20 +4154,21 @@ Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Defini
 
 
 
-\chapter{Flat Device Tree Physical Structure}
-\label{flattened-format::doc}\label{flattened-format:flat-device-tree-physical-structure}\label{flattened-format:chapter-fdt-structure}
+\chapter{Flat Devicetree Physical Structure}
+\label{flattened-format:flat-devicetree-physical-structure}\label{flattened-format::doc}\label{flattened-format:chapter-fdt-structure}
 With the exception of platforms using IEEE1275 Open Firmware {[}IEEE1275{]}, the
 devicetree data is contained within a single single, linear, pointerless data
-structure known as the flattened device tree or device tree blob.
+structure known as the flattened devicetree or devicetree blob.
 
-This data structure consists of a small header (see
-{\hyperref[flattened\string-format:sect\string-fdt\string-header]{\crossref{\DUrole{std,std-ref}{5.2}}}}), followed by three variable sized sections: the
-memory reservation block (see {\hyperref[flattened\string-format:sect\string-fdt\string-memory\string-reservation\string-block]{\crossref{\DUrole{std,std-ref}{5.3}}}}),
-the structure block (see {\hyperref[flattened\string-format:sect\string-fdt\string-structure\string-block]{\crossref{\DUrole{std,std-ref}{5.4}}}}) and the
-strings block (see {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}}). These should be
-present in the flattened device tree in that order. Thus, the device
-tree structure as a whole, when loaded into memory at address, will
-resemble the diagram in Figure \hyperref[flattened-format:figure-device-tree-structure]{Fig. \ref{flattened-format:figure-device-tree-structure}}
+This data structure consists of a small header
+(see section {\hyperref[flattened\string-format:sect\string-fdt\string-header]{\crossref{\DUrole{std,std-ref}{5.2}}}}),
+followed by three variable sized sections:
+the memory reservation block (see section {\hyperref[flattened\string-format:sect\string-fdt\string-memory\string-reservation\string-block]{\crossref{\DUrole{std,std-ref}{5.3}}}}),
+the structure block (see secton {\hyperref[flattened\string-format:sect\string-fdt\string-structure\string-block]{\crossref{\DUrole{std,std-ref}{5.4}}}}),
+and the strings block (see section {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}}).
+These should be present in the flattened devicetree in that order.
+Thus, the devicetree structure as a whole, when loaded into memory at address,
+will resemble the diagram in \hyperref[flattened-format:figure-device-tree-structure]{Fig. \ref{flattened-format:figure-device-tree-structure}}
 (lower addresses are at the top of the diagram).
 \begin{figure}[htbp]
 \centering
@@ -4223,20 +4179,20 @@ resemble the diagram in Figure \hyperref[flattened-format:figure-device-tree-str
 
 The (free space) sections may not be present, though in some cases they
 might be required to satisfy the alignment constraints of the individual
-blocks (see {\hyperref[flattened\string-format:sect\string-fdt\string-alignment]{\crossref{\DUrole{std,std-ref}{5.6}}}}).
+blocks (see section {\hyperref[flattened\string-format:sect\string-fdt\string-alignment]{\crossref{\DUrole{std,std-ref}{5.6}}}}).
 
 
 \section{Versioning}
 \label{flattened-format:sect-fdt-versioning}\label{flattened-format:versioning}
-Several versions of the flattened device tree structure have been defined since
+Several versions of the flattened devicetree structure have been defined since
 the original definition of the format. Fields in the header give the version,
-so that the client program can determine if the device tree is encoded in a
+so that the client program can determine if the devicetree is encoded in a
 compatible format.
 
 This document describes only version 17 of the format. DTSpec compliant boot
-programs shall provide a device tree of version 17 or later, and should provide
-a device tree of a version that is backwards compatible with version 16.
-DTSpec compliant client programs shall accept device trees of any version
+programs shall provide a devicetree of version 17 or later, and should provide
+a devicetree of a version that is backwards compatible with version 16.
+DTSpec compliant client programs shall accept devicetrees of any version
 backwards compatible with version 17 and may accept other versions as well.
 
 \begin{notice}{note}{Note:}
@@ -4247,32 +4203,32 @@ tree, not its content.
 
 \section{Header}
 \label{flattened-format:sect-fdt-header}\label{flattened-format:header}
-The layout of the header for the device tree is defined by the following
+The layout of the header for the devicetree is defined by the following
 C structure. All the header fields are 32-bit integers, stored in
 big-endian format.
 
-\textbf{Flattened Device Tree Header Fields}
+\textbf{Flattened Devicetree Header Fields}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{struct} \PYG{n}{fdt\PYGZus{}header} \PYG{p}{\PYGZob{}}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{magic}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{totalsize}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{off\PYGZus{}dt\PYGZus{}struct}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{off\PYGZus{}dt\PYGZus{}strings}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{off\PYGZus{}mem\PYGZus{}rsvmap}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{version}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{last\PYGZus{}comp\PYGZus{}version}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{boot\PYGZus{}cpuid\PYGZus{}phys}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{size\PYGZus{}dt\PYGZus{}strings}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{size\PYGZus{}dt\PYGZus{}struct}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+struct fdt\PYGZus{}header \PYGZob{}
+    uint32\PYGZus{}t magic;
+    uint32\PYGZus{}t totalsize;
+    uint32\PYGZus{}t off\PYGZus{}dt\PYGZus{}struct;
+    uint32\PYGZus{}t off\PYGZus{}dt\PYGZus{}strings;
+    uint32\PYGZus{}t off\PYGZus{}mem\PYGZus{}rsvmap;
+    uint32\PYGZus{}t version;
+    uint32\PYGZus{}t last\PYGZus{}comp\PYGZus{}version;
+    uint32\PYGZus{}t boot\PYGZus{}cpuid\PYGZus{}phys;
+    uint32\PYGZus{}t size\PYGZus{}dt\PYGZus{}strings;
+    uint32\PYGZus{}t size\PYGZus{}dt\PYGZus{}struct;
+\PYGZcb{};
 \end{Verbatim}
 \begin{description}
 \item[{\code{magic}}] \leavevmode
 This field shall contain the value 0xd00dfeed (big-endian).
 
 \item[{\code{totalsize}}] \leavevmode
-This field shall contain the total size of the device tree data
+This field shall contain the total size of the devicetree data
 structure. This size shall encompass all sections of the structure:
 the header, the memory reservation block, structure block and
 strings block, as well as any free space gaps between the blocks or
@@ -4280,47 +4236,47 @@ after the final block.
 
 \item[{\code{off\_dt\_struct}}] \leavevmode
 This field shall contain the offset in bytes of the structure block
-(see {\hyperref[flattened\string-format:sect\string-fdt\string-structure\string-block]{\crossref{\DUrole{std,std-ref}{5.4}}}}) from the beginning of the header.
+(see section {\hyperref[flattened\string-format:sect\string-fdt\string-structure\string-block]{\crossref{\DUrole{std,std-ref}{5.4}}}}) from the beginning of the header.
 
 \item[{\code{off\_dt\_strings}}] \leavevmode
 This field shall contain the offset in bytes of the strings block
-(see {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}}) from the beginning of the header.
+(see section {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}}) from the beginning of the header.
 
 \item[{\code{off\_mem\_rsvmap}}] \leavevmode
 This field shall contain the offset in bytes of the memory
-reservation block (see {\hyperref[flattened\string-format:sect\string-fdt\string-memory\string-reservation\string-block]{\crossref{\DUrole{std,std-ref}{5.3}}}})
+reservation block (see section {\hyperref[flattened\string-format:sect\string-fdt\string-memory\string-reservation\string-block]{\crossref{\DUrole{std,std-ref}{5.3}}}})
 from the beginning of the header.
 
 \item[{\code{version}}] \leavevmode
-This field shall contain the version of the device tree data
+This field shall contain the version of the devicetree data
 structure. The version is 17 if using the structure as defined in
-this document. An DTSpec boot program may provide the device tree of
+this document. An DTSpec boot program may provide the devicetree of
 a later version, in which case this field shall contain the version
 number defined in whichever later document gives the details of that
 version.
 
 \item[{\code{last\_comp\_version}}] \leavevmode
-This field shall contain the lowest version of the device tree data
+This field shall contain the lowest version of the devicetree data
 structure with which the version used is backwards compatible. So,
 for the structure as defined in this document (version 17), this
 field shall contain 16 because version 17 is backwards compatible
 with version 16, but not earlier versions. As per section
 {\hyperref[flattened\string-format:sect\string-fdt\string-versioning]{\crossref{\DUrole{std,std-ref}{5.1}}}}, a DTSpec boot program should provide a
-device tree in a format which is backwards compatible with version
+devicetree in a format which is backwards compatible with version
 16, and thus this field shall always contain 16.
 
 \item[{\code{boot\_cpuid\_phys}}] \leavevmode
 This field shall contain the physical ID of the system’s boot CPU.
 It shall be identical to the physical ID given in the \code{reg} property
-of that CPU node within the device tree.
+of that CPU node within the devicetree.
 
 \item[{\code{size\_dt\_strings}}] \leavevmode
 This field shall contain the length in bytes of the strings block
-section of the device tree blob.
+section of the devicetree blob.
 
 \item[{\code{size\_dt\_struct}}] \leavevmode
 This field shall contain the length in bytes of the structure block
-section of the device tree blob.
+section of the devicetree blob.
 
 \end{description}
 
@@ -4351,7 +4307,7 @@ program specific uses for reserved memory may appear in this document,
 in optional extensions to it, or in platform-specific documentation.
 
 The reserved regions supplied by a boot program may, but are not
-required to, encompass the device tree blob itself. The client program
+required to, encompass the devicetree blob itself. The client program
 shall ensure that it does not overwrite this data structure before it is
 used, whether or not it is in the reserved areas.
 
@@ -4387,10 +4343,10 @@ big-endian integers, each pair being represented by the following C
 structure.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{struct} \PYG{n}{fdt\PYGZus{}reserve\PYGZus{}entry} \PYG{p}{\PYGZob{}}
-    \PYG{n}{uint64\PYGZus{}t} \PYG{n}{address}\PYG{p}{;}
-    \PYG{n}{uint64\PYGZus{}t} \PYG{n}{size}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+struct fdt\PYGZus{}reserve\PYGZus{}entry \PYGZob{}
+    uint64\PYGZus{}t address;
+    uint64\PYGZus{}t size;
+\PYGZcb{};
 \end{Verbatim}
 
 Each pair gives the physical address and size of a reserved memory
@@ -4401,20 +4357,20 @@ size are equal to 0. Note that the address and size values are always
 
 Each uint64\_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
-offset from the beginning of the device tree blob (see
+offset from the beginning of the devicetree blob (see section
 {\hyperref[flattened\string-format:sect\string-fdt\string-alignment]{\crossref{\DUrole{std,std-ref}{5.6}}}}).
 
 
 \section{Structure Block}
 \label{flattened-format:sect-fdt-structure-block}\label{flattened-format:structure-block}
-The structure block describes the structure and contents of the device
-tree itself. It is composed of a sequence of tokens with data, as
+The structure block describes the structure and contents of the devicetree
+itself. It is composed of a sequence of tokens with data, as
 described in 0. These are organized into a linear tree structure, as
 described in 0.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
-device tree blob (see {\hyperref[flattened\string-format:sect\string-fdt\string-alignment]{\crossref{\DUrole{std,std-ref}{5.6}}}}).
+devicetree blob (see {\hyperref[flattened\string-format:sect\string-fdt\string-alignment]{\crossref{\DUrole{std,std-ref}{5.6}}}}).
 
 
 \subsection{Lexical structure}
@@ -4432,8 +4388,8 @@ The five token types are as follows:
 The FDT\_BEGIN\_NODE token marks the beginning of a node’s
 representation. It shall be followed by the node’s unit name as
 extra data. The name is stored as a null-terminated string, and
-shall include the unit address (see {\hyperref[devicetree\string-basics:sect\string-node\string-names]{\crossref{\DUrole{std,std-ref}{2.2.1}}}}), if any. The
-node name is followed by zeroed padding bytes, if necessary for
+shall include the unit address (see section {\hyperref[devicetree\string-basics:sect\string-node\string-names]{\crossref{\DUrole{std,std-ref}{2.2.1}}}}), if any.
+The node name is followed by zeroed padding bytes, if necessary for
 alignment, and then the next token, which may be any token except
 FDT\_END.
 
@@ -4444,25 +4400,26 @@ next token, which may be any token except FDT\_PROP.
 
 \item[{\code{FDT\_PROP} (0x00000003)}] \leavevmode
 The FDT\_PROP token marks the beginning of the representation of one
-property in the device tree. It shall be followed by extra data
+property in the devicetree. It shall be followed by extra data
 describing the property. This data consists first of the property’s
 length and name represented as the following C structure:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{struct} \PYG{p}{\PYGZob{}}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n+nb}{len}\PYG{p}{;}
-    \PYG{n}{uint32\PYGZus{}t} \PYG{n}{nameoff}\PYG{p}{;}
-\PYG{p}{\PYGZcb{}}
+struct \PYGZob{}
+    uint32\PYGZus{}t len;
+    uint32\PYGZus{}t nameoff;
+\PYGZcb{}
 \end{Verbatim}
 
 Both the fields in this structure are 32-bit big-endian integers.
 \begin{itemize}
 \item {} 
 len gives the length of the property’s value in bytes (which may be
-zero, indicating an empty property, see {\hyperref[devicetree\string-basics:sect\string-property\string-values]{\crossref{\DUrole{std,std-ref}{2.2.4.2}}}}).
+zero, indicating an empty property, see section {\hyperref[devicetree\string-basics:sect\string-property\string-values]{\crossref{\DUrole{std,std-ref}{2.2.4.2}}}}).
 
 \item {} 
-nameoff gives an offset into the strings block (see {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}})
+nameoff gives an offset into the strings block
+(see section {\hyperref[flattened\string-format:sect\string-fdt\string-strings\string-block]{\crossref{\DUrole{std,std-ref}{5.5}}}})
 at which the property’s name is stored as a null-terminated string.
 
 \end{itemize}
@@ -4478,7 +4435,7 @@ tree. This token has no extra data; so it is followed immediately by
 the next token, which can be any valid token. A property or node
 definition in the tree can be overwritten with FDT\_NOP tokens to
 remove it from the tree without needing to move other sections of
-the tree’s representation in the device tree blob.
+the tree’s representation in the devicetree blob.
 
 \item[{\code{FDT\_END} (0x00000009)}] \leavevmode
 The FDT\_END token marks the end of the structure block. There shall
@@ -4493,7 +4450,7 @@ tree blob header.
 
 \subsection{Tree structure}
 \label{flattened-format:tree-structure}
-The device tree structure is represented as a linear tree: the
+The devicetree structure is represented as a linear tree: the
 representation of each node begins with an FDT\_BEGIN\_NODE token and
 ends with an FDT\_END\_NODE token. The node’s properties and subnodes
 (if any) are represented before the FDT\_END\_NODE, so that the
@@ -4513,8 +4470,6 @@ components:
 
 \item {} 
 FDT\_BEGIN\_NODE token
-
-\end{itemize}
 \begin{itemize}
 \item {} 
 The node’s name as a null-terminated string
@@ -4523,30 +4478,26 @@ The node’s name as a null-terminated string
 {[}zeroed padding bytes to align to a 4-byte boundary{]}
 
 \end{itemize}
-\begin{itemize}
+
 \item {} 
 For each property of the node:
-
-\end{itemize}
-\begin{quote}
 \begin{itemize}
 \item {} 
 (optionally) any number of FDT\_NOP tokens
 
 \item {} 
 FDT\_PROP token
-
-\end{itemize}
 \begin{itemize}
 \item {} 
-property information as given in {\hyperref[flattened\string-format:sect\string-fdt\string-lexical\string-structure]{\crossref{\DUrole{std,std-ref}{5.4.1}}}}
+property information as given in section {\hyperref[flattened\string-format:sect\string-fdt\string-lexical\string-structure]{\crossref{\DUrole{std,std-ref}{5.4.1}}}}
 
 \item {} 
 {[}zeroed padding bytes to align to a 4-byte boundary{]}
 
 \end{itemize}
-\end{quote}
-\begin{itemize}
+
+\end{itemize}
+
 \item {} 
 Representations of all child nodes in this format
 
@@ -4573,7 +4524,7 @@ together in this section, and referred to from the structure block by an
 offset into the strings block.
 
 The strings block has no alignment constraints and may appear at any
-offset from the beginning of the device tree blob.
+offset from the beginning of the devicetree blob.
 
 
 \section{Alignment}
@@ -4584,41 +4535,41 @@ memory addresses. Specifically, the memory reservation block shall be
 aligned to an 8-byte boundary and the structure block to a 4-byte
 boundary.
 
-Furthermore, the device tree blob as a whole can be relocated without
+Furthermore, the devicetree blob as a whole can be relocated without
 destroying the alignment of the subblocks.
 
 As described in the previous sections, the structure and strings blocks
-shall have aligned offsets from the beginning of the device tree blob.
+shall have aligned offsets from the beginning of the devicetree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
-ensure that the device tree as a whole is loaded at an address aligned
+ensure that the devicetree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
 boundary. A DTSpec compliant boot
-program shall load the device tree blob at such an aligned address
+program shall load the devicetree blob at such an aligned address
 before passing it to the client program. If an DTSpec client program
-relocates the device tree blob in memory, it should only do so to
+relocates the devicetree blob in memory, it should only do so to
 another 8-byte aligned address.
 
 
-\chapter{Device Tree Source Format (version 1)}
-\label{source-language:chapter-devicetree-source-format}\label{source-language:device-tree-source-format-version-1}\label{source-language::doc}
-The Device Tree Source (DTS) format is a textual representation of a
-device tree in a form that can be processed by dtc into a binary device
-tree in the form expected by the kernel. The following description is
+\chapter{Devicetree Source Format (version 1)}
+\label{source-language:chapter-devicetree-source-format}\label{source-language:devicetree-source-format-version-1}\label{source-language::doc}
+The Devicetree Source (DTS) format is a textual representation of a
+devicetree in a form that can be processed by dtc into a binary
+devicetree in the form expected by the kernel. The following description is
 not a formal syntax definition of DTS, but describes the basic
-constructs used to represent device trees.
+constructs used to represent devicetrees.
 
 
 \section{Node and property definitions}
 \label{source-language:node-and-property-definitions}
-Device tree nodes are defined with a node name and unit address with
+Devicetree nodes are defined with a node name and unit address with
 braces marking the start and end of the node definition. They may be
 preceded by a label.
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{[}\PYG{n}{label}\PYG{p}{:}\PYG{p}{]} \PYG{n}{node}\PYG{o}{\PYGZhy{}}\PYG{n}{name}\PYG{p}{[}\PYG{n+nd}{@unit}\PYG{o}{\PYGZhy{}}\PYG{n}{address}\PYG{p}{]} \PYG{p}{\PYGZob{}}
-    \PYG{p}{[}\PYG{n}{properties} \PYG{n}{definitions}\PYG{p}{]}
-    \PYG{p}{[}\PYG{n}{child} \PYG{n}{nodes}\PYG{p}{]}
-\PYG{p}{\PYGZcb{}}
+[label:] node\PYGZhy{}name[@unit\PYGZhy{}address] \PYGZob{}
+    [properties definitions]
+    [child nodes]
+\PYGZcb{}
 \end{Verbatim}
 
 Nodes may contain property definitions and/or child node definitions. If
@@ -4627,14 +4578,14 @@ both are present, properties shall come before child nodes.
 Property definitions are name value pairs in the form:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{[}\PYG{n}{label}\PYG{p}{:}\PYG{p}{]} \PYG{n+nb}{property}\PYG{o}{\PYGZhy{}}\PYG{n}{name} \PYG{o}{=} \PYG{n}{value}\PYG{p}{;}
+[label:] property\PYGZhy{}name = value;
 \end{Verbatim}
 
 except for properties with empty (zero length) value which have the
 form:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{p}{[}\PYG{n}{label}\PYG{p}{:}\PYG{p}{]} \PYG{n+nb}{property}\PYG{o}{\PYGZhy{}}\PYG{n}{name}\PYG{p}{;}
+[label:] property\PYGZhy{}name;
 \end{Verbatim}
 
 Property values may be defined as an array of 32-bit integer cells, as
@@ -4647,7 +4598,7 @@ separated list of C-style integers. Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{interrupts} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{17} \PYG{l+m+mh}{0xc}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+interrupts = \PYGZlt{}17 0xc\PYGZgt{};
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4656,7 +4607,7 @@ A 64-bit value is represented with two 32-bit cells. Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{clock}\PYG{o}{\PYGZhy{}}\PYG{n}{frequency} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0x00000001} \PYG{l+m+mh}{0x00000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
+clock\PYGZhy{}frequency = \PYGZlt{}0x00000001 0x00000000\PYGZgt{};
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4667,7 +4618,7 @@ character). Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{simple\PYGZhy{}bus}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+compatible = \PYGZdq{}simple\PYGZhy{}bus\PYGZdq{};
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4678,13 +4629,13 @@ optional. Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{local}\PYG{o}{\PYGZhy{}}\PYG{n}{mac}\PYG{o}{\PYGZhy{}}\PYG{n}{address} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{00} \PYG{l+m+mi}{00} \PYG{l+m+mi}{12} \PYG{l+m+mi}{34} \PYG{l+m+mi}{56} \PYG{l+m+mi}{78}\PYG{p}{]}\PYG{p}{;}
+local\PYGZhy{}mac\PYGZhy{}address = [00 00 12 34 56 78];
 \end{Verbatim}
 
 or equivalently:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{local}\PYG{o}{\PYGZhy{}}\PYG{n}{mac}\PYG{o}{\PYGZhy{}}\PYG{n}{address} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mi}{000012345678}\PYG{p}{]}\PYG{p}{;}
+local\PYGZhy{}mac\PYGZhy{}address = [000012345678];
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4694,8 +4645,8 @@ concatenated together. Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{compatible} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ns16550}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ns8250}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
-\PYG{n}{example} \PYG{o}{=} \PYG{o}{\PYGZlt{}}\PYG{l+m+mh}{0xf00f0000} \PYG{l+m+mi}{19}\PYG{o}{\PYGZgt{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{a strange property format}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+compatible = \PYGZdq{}ns16550\PYGZdq{}, \PYGZdq{}ns8250\PYGZdq{};
+example = \PYGZlt{}0xf00f0000 19\PYGZgt{}, \PYGZdq{}a strange property format\PYGZdq{};
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4706,13 +4657,13 @@ Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{parent} \PYG{o}{=} \PYG{o}{\PYGZlt{}} \PYG{o}{\PYGZam{}}\PYG{n}{mpic} \PYG{o}{\PYGZgt{}}\PYG{p}{;}
+interrupt\PYGZhy{}parent = \PYGZlt{} \PYGZam{}mpic \PYGZgt{};
 \end{Verbatim}
 
 or they may be \& followed by a node’s full path in braces. Example:
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{parent} \PYG{o}{=} \PYG{o}{\PYGZlt{}} \PYG{o}{\PYGZam{}}\PYG{p}{\PYGZob{}}\PYG{o}{/}\PYG{n}{soc}\PYG{o}{/}\PYG{n}{interrupt}\PYG{o}{\PYGZhy{}}\PYG{n}{controller}\PYG{n+nd}{@40000}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZgt{}}\PYG{p}{;}
+interrupt\PYGZhy{}parent = \PYGZlt{} \PYGZam{}\PYGZob{}/soc/interrupt\PYGZhy{}controller@40000\PYGZcb{} \PYGZgt{};
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4722,7 +4673,7 @@ that node’s full path. Example:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{ethernet0} \PYG{o}{=} \PYG{o}{\PYGZam{}}\PYG{n}{EMAC0}\PYG{p}{;}
+ethernet0 = \PYGZam{}EMAC0;
 \end{Verbatim}
 \begin{itemize}
 \item {} 
@@ -4733,9 +4684,9 @@ bytestring. Examples:
 \end{itemize}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{reg} \PYG{o}{=} \PYG{n}{reglabel}\PYG{p}{:} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0} \PYG{n}{sizelabel}\PYG{p}{:} \PYG{l+m+mh}{0x1000000}\PYG{o}{\PYGZgt{}}\PYG{p}{;}
-\PYG{n}{prop} \PYG{o}{=} \PYG{p}{[}\PYG{n}{ab} \PYG{n}{cd} \PYG{n}{ef} \PYG{n}{byte4}\PYG{p}{:} \PYG{l+m+mi}{00} \PYG{n}{ff} \PYG{n}{fe}\PYG{p}{]}\PYG{p}{;}
-\PYG{n+nb}{str} \PYG{o}{=} \PYG{n}{start}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{string value}\PYG{l+s+s2}{\PYGZdq{}} \PYG{n}{end}\PYG{p}{:} \PYG{p}{;}
+reg = reglabel: \PYGZlt{}0 sizelabel: 0x1000000\PYGZgt{};
+prop = [ab cd ef byte4: 00 ff fe];
+str = start: \PYGZdq{}string value\PYGZdq{} end: ;
 \end{Verbatim}
 
 
@@ -4744,12 +4695,12 @@ bytestring. Examples:
 \textbf{Version 1 DTS files have the overall layout:}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{n}{dts}\PYG{o}{\PYGZhy{}}\PYG{n}{v1}\PYG{o}{/}\PYG{p}{;}
-\PYG{p}{[}\PYG{n}{memory} \PYG{n}{reservations}\PYG{p}{]}
-    \PYG{o}{/} \PYG{p}{\PYGZob{}}
-        \PYG{p}{[}\PYG{n+nb}{property} \PYG{n}{definitions}\PYG{p}{]}
-        \PYG{p}{[}\PYG{n}{child} \PYG{n}{nodes}\PYG{p}{]}
-    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
+/dts\PYGZhy{}v1/;
+[memory reservations]
+    / \PYGZob{}
+        [property definitions]
+        [child nodes]
+    \PYGZcb{};
 \end{Verbatim}
 
 The /dts-v1/; shall be present to identify the file as a version 1 DTS
@@ -4757,29 +4708,15 @@ The /dts-v1/; shall be present to identify the file as a version 1 DTS
 obsolete version 0, which uses a different format for integers in
 addition to other small but incompatible changes).
 
-Memory reservations define an entry for the device tree blob’s memory
+Memory reservations define an entry for the devicetree blob’s memory
 reservation table. They have the form: e.g., /memreserve/ \textless{}address\textgreater{}
 \textless{}length\textgreater{}; Where \textless{}address\textgreater{} and \textless{}length\textgreater{} are 64-bit C-style integers.
 \begin{itemize}
 \item {} 
-The / \{ \}; section defines the root node of the device tree.
+The / \{ \}; section defines the root node of the devicetree.
 
 \item {} 
 C style (/* ... */) and C++ style (//) comments are supported.
-
-\end{itemize}
-
-
-\chapter{Indices and tables}
-\label{index:indices-and-tables}\label{index::doc}\begin{itemize}
-\item {} 
-\DUrole{xref,std,std-ref}{genindex}
-
-\item {} 
-\DUrole{xref,std,std-ref}{modindex}
-
-\item {} 
-\DUrole{xref,std,std-ref}{search}
 
 \end{itemize}
 
@@ -4791,7 +4728,7 @@ available from power.org (\url{http://power.org})
 \bibitem[IEEE1275]{IEEE1275}{\phantomsection\label{references:ieee1275} 
 \emph{Boot (Initialization Configuration) Firmware: Core Requirements
 and Practices}, 1994, This is the core standard (also known as IEEE
-1275) that defines the device tree concept adopted by the DTSpec and
+1275) that defines the devicetree concept adopted by the DTSpec and
 ePAPR. It is available from Global Engineering (\url{http://global.ihs.com/}).
 }
 \bibitem[b3]{b3}{\phantomsection\label{references:b3} 
@@ -4805,12 +4742,12 @@ to the base standard.
 \bibitem[b4]{b4}{\phantomsection\label{references:b4} 
 \emph{booting-without-of.txt}, Ben Herrenschmidt, Becky Bruce, et
 al., From the Linux kernel source tree (\url{http://www.kernel.org/}),
-Describes the device tree as used by the Linux kernel.
+Describes the devicetree as used by the Linux kernel.
 }
 \bibitem[b5]{b5}{\phantomsection\label{references:b5} 
 \emph{Device Trees Everywhere}, David Gibson and Ben Herrenschmidt
 (\url{http://ozlabs.org/~dgibson/home/papers/dtc-paper.pdf}), An overview
-of the concept of the device tree and device tree compiler.
+of the concept of the devicetree and devicetree compiler.
 }
 \bibitem[b6]{b6}{\phantomsection\label{references:b6} 
 \emph{PCI Bus Binding to: IEEE Std 1275-1994 Standard for Boot
