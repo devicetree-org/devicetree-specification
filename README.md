@@ -75,7 +75,8 @@ in the LICENSE and NOTICE file or online at:
 http://www.apache.org/licenses/LICENSE-2.0
 
 ## Contributions ##
-Contributions to the Devicetree Specification are managed by the gatekeepers, whose contact email is grant.likely[at]linaro[.]org
+Contributions to the Devicetree Specification are managed by the gatekeepers,
+Grant Likely <grant.likely@secretlab.ca> and Rob Herring <rob.herring@linaro.org>
 
 Anyone can contribute to the Devicetree Specification. Contributions to this project should conform 
 to the `Developer Certificate of Origin` as defined at http://elinux.org/Developer_Certificate_Of_Origin. 
