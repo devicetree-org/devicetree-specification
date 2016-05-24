@@ -329,18 +329,23 @@ a whole.
 More precisely, each node’s representation consists of the following
 components:
 
-*  (optionally) any number of FDT_NOP tokens
-*  FDT_BEGIN_NODE token
- *  The node’s name as a null-terminated string
- *  [zeroed padding bytes to align to a 4-byte boundary]
-*  For each property of the node:
- *  (optionally) any number of FDT_NOP tokens
- *  FDT_PROP token
-  *  property information as given in section :ref:`sect-fdt-lexical-structure`
-  *  [zeroed padding bytes to align to a 4-byte boundary]
-*  Representations of all child nodes in this format
-*  (optionally) any number of FDT_NOP tokens
-*  FDT_END_NODE token
+* (optionally) any number of FDT_NOP tokens
+* FDT_BEGIN_NODE token
+
+   * The node’s name as a null-terminated string
+   * [zeroed padding bytes to align to a 4-byte boundary]
+
+* For each property of the node:
+
+   * (optionally) any number of FDT_NOP tokens
+   * FDT_PROP token
+
+      * property information as given in section :ref:`sect-fdt-lexical-structure`
+      * [zeroed padding bytes to align to a 4-byte boundary]
+
+* Representations of all child nodes in this format
+* (optionally) any number of FDT_NOP tokens
+* FDT_END_NODE token
 
 Note that this process requires that all property definitions for a
 particular node precede any subnode definitions for that node. Although

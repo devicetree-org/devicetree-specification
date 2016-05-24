@@ -79,7 +79,7 @@ Syntax* form. See section :ref:`chapter-devicetree-source-format` for
 an overview of this syntax.
 
 Relationship to IEEE™ 1275 and |epapr|
-------------------------------------
+--------------------------------------
 
 |spec| is loosely related to the IEEE 1275 Open Firmware
 standard—\ *IEEE Standard for Boot (Initialization Configuration)

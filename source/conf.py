@@ -81,7 +81,7 @@ today_fmt = '%d %B %Y'
 exclude_patterns = []
 
 # Include at the beginning of every source file that is read
-with open('prolog.rst', 'rb') as pr:
+with open('rst_prolog', 'rb') as pr:
     rst_prolog = pr.read().decode('utf-8')
 
 # The reST default role (used for this markup: `text`) to use for all
