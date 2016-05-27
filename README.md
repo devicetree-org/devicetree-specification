@@ -1,4 +1,4 @@
-# Document master project for the Devicetree Specification hosted at http://devicetree.org/ #
+# Document master project for the Devicetree Specification #
 
 The latest release of the specification can be found at http://devicetree.org/ or https://github.com/devicetree-org/devicetree-specification-released
 
@@ -38,7 +38,7 @@ On Mac OS X:
 
 > Install [MacTeX](http://tug.org/mactex/)
 >
-> Install pip if you don't have it:
+> Install pip if you do not have it:
 >```
 >$ sudo easy_install pip
 >```
@@ -49,7 +49,7 @@ On Mac OS X:
 >sudo pip install --upgrade Sphinx
 >```
 >
->If your are using [brew](http://brew.sh) then you can install graphviz like this:
+>If you are using [brew](http://brew.sh) then you can install graphviz like this:
 >```
 brew install graphviz
 >```
