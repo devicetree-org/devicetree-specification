@@ -9,6 +9,19 @@ devicetree in the form expected by the kernel. The following description is
 not a formal syntax definition of DTS, but describes the basic
 constructs used to represent devicetrees.
 
+The name of DTS files should end with ".dts".
+
+Compiler directives
+-------------------
+
+Other source files can be included from a DTS file.  The name of include
+files should end with ".dtsi".  Included files can in turn include
+additional files.
+
+::
+
+    /include/ "FILE"
+
 Node and property definitions
 -----------------------------
 
@@ -21,10 +34,17 @@ preceded by a label.
     [label:] node-name[@unit-address] {
         [properties definitions]
         [child nodes]
-    }
+    };
 
 Nodes may contain property definitions and/or child node definitions. If
 both are present, properties shall come before child nodes.
+
+Previously defined nodes may be deleted.
+
+::
+
+    /delete-node/ node-name;
+    /delete-node/ &label;
 
 Property definitions are name value pairs in the form:
 
@@ -39,6 +59,12 @@ form:
 
         [label:] property-name;
 
+Previously defined properties may be deleted.
+
+::
+
+    /delete-property/ property-name;
+
 Property values may be defined as an array of 32-bit integer cells, as
 null-terminated strings, as bytestrings or a combination of these.
 
@@ -48,6 +74,53 @@ null-terminated strings, as bytestrings or a combination of these.
 ::
 
         interrupts = <17 0xc>;
+-  values may be represented as arithmetic, bitwise, or logical expressions
+   within parenthesis.
+
+::
+
+    Arithmetic operators
+
+    +   add
+    -   subtract
+    *   multiply
+    /   divide
+
+::
+
+    Bitwise operators
+
+    &    and
+    |    or
+    ^    exclusive or
+    ~    not
+    <<  left shift
+    >>  right shift
+
+::
+
+    Logical operators
+
+    &&   and
+    ||   or
+    !    not
+
+::
+
+    Relational operators
+
+    <    less than
+    >    greater than
+    <=   less than or equal
+    >=   greater than or equal
+    ==   equal
+    !=   not equal
+
+::
+
+    Ternary operators
+
+    ?:   (condition ? value_if_true : value_if_false)
 
 -  A 64-bit value is represented with two 32-bit cells. Example:
 
