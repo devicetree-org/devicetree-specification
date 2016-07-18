@@ -586,7 +586,7 @@ reg
 
 Property name: ``reg``
 
-Property value: ``<prop-encoded-array>`` encoded as an arbitraty number of (*address*, *length*) pairs.
+Property value: ``<prop-encoded-array>`` encoded as an arbitrary number of (*address*, *length*) pairs.
 
 Description:
 
