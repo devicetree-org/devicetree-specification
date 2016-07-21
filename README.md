@@ -2,11 +2,11 @@
 
 The latest release of the specification can be found at http://devicetree.org/ or https://github.com/devicetree-org/devicetree-specification-released
 
-Mailing list:
-   devicetree-spec@vger.kernel.org
-   http://vger.kernel.org/vger-lists.html#devicetree-spec
-
 This [repository](https://github.com/devicetree-org/devicetree-specification) holds the source for the generation of the Devicetree Specification using Sphinx and LaTeX. 
+
+## Mailing list: devicetree-spec@vger.kernel.org ##
+   * Use this mailing list for submitting patches, questions and general discussion
+   * Sign up to the mailing list at http://vger.kernel.org/vger-lists.html#devicetree-spec
 
 ## Build Instructions ##
 
@@ -75,6 +75,7 @@ in the LICENSE and NOTICE file or online at:
 http://www.apache.org/licenses/LICENSE-2.0
 
 ## Contributions ##
+Please submit all patches to the mailing list devicetree-spec@vger.kernel.org.
 Contributions to the Devicetree Specification are managed by the gatekeepers,
 Grant Likely <grant.likely@secretlab.ca> and Rob Herring <rob.herring@linaro.org>
 
