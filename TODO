@@ -20,8 +20,6 @@ Other
   - SMMU
   - PSCI & spin-table
   - Idle states
-Appendix A - Source Format
-  - Add include directive
 
 Note: When copying in bindings documented in the Linux kernel tree,
 you *must* contact the original authors,
