@@ -16,7 +16,7 @@ Requirements:
 * LaTeX (and pdflatex, and various LaTeX packages)
 * Graphviz (in particular, "dot"): http://www.graphviz.org/
 
-On Ubuntu:
+On Debian and Ubuntu:
 
 >```
 ># apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
