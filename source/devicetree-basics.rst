@@ -160,15 +160,15 @@ identified by a forward slash (/).
    "cpus":e -> "cpu@1":w
    "/":e    -> "memory@0":w
    "/":e    -> "uart@fe001000":w
-   "/":e    -> "ethernet@fe001000":w
    "/":e    -> "ethernet@fe002000":w
+   "/":e    -> "ethernet@fe003000":w
 
 In :numref:`example-nodenames`:
 
 * The nodes with the name cpu are distinguished by their unit-address
   values of 0 and 1.
 * The nodes with the name Ethernet are distinguished by their
-  unit-address values of FE001000 and FE002000.
+  unit-address values of FE002000 and FE003000.
 
 Generic Names Recommendation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
