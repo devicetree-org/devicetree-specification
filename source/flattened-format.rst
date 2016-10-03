@@ -4,8 +4,8 @@ Flat Devicetree Physical Structure
 ==================================
 
 With the exception of platforms using IEEE1275 Open Firmware [IEEE1275], the
-devicetree data is contained within a single single, linear, pointerless data
-structure known as the flattened devicetree or devicetree blob.
+devicetree data is contained within a single, linear, pointerless data structure
+known as the flattened devicetree or devicetree blob.
 
 This data structure consists of a small header
 (see section :ref:`sect-fdt-header`),
