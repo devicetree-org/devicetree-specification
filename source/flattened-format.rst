@@ -232,9 +232,8 @@ Structure Block
 ---------------
 
 The structure block describes the structure and contents of the devicetree
-itself. It is composed of a sequence of tokens with data, as
-described in 0. These are organized into a linear tree structure, as
-described in 0.
+itself. It is composed of a sequence of tokens with data, as described below.
+These are organized into a linear tree structure, as described below.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
