@@ -23,6 +23,12 @@ import time
 
 sys.path.append(os.path.abspath('extensions'))
 
+from DtsLexer import DtsLexer
+
+def setup(app):
+    from sphinx.highlighting import lexers
+    lexers['dts'] = DtsLexer()
+
 
 # -- General configuration ------------------------------------------------
 
