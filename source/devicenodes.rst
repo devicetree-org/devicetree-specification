@@ -91,12 +91,12 @@ considering a string as a device path, shall detect and use the alias.
 
 **Example**
 
-::
+.. code-block:: dts
 
     aliases {
         serial0 = "/simple-bus@fe000000/serial@llc500";
         ethernet0 = "/simple-bus@fe000000/ethernet@31c000";
-    }
+    };
 
 Given the alias serial0, a client program can look at the aliases node
 and determine the alias refers to the device path
@@ -168,7 +168,7 @@ and ``#size-cells = <2>``.
 
 **Example #1**
 
-::
+.. code-block:: dts
 
     memory@0 {
         device_type = "memory";
@@ -178,7 +178,7 @@ and ``#size-cells = <2>``.
 
 **Example #2**
 
-::
+.. code-block:: dts
 
     memory@0 {
         device_type = "memory";
@@ -234,7 +234,7 @@ time. It shall be a child of the root node.
 
 **Example**
 
-::
+.. code-block:: dts
 
     chosen {
         bootargs = "root=/dev/nfs rw nfsroot=192.168.1.1 console=ttyS0,115200";
@@ -618,7 +618,7 @@ Example
 
 Here is an example of a ``/cpus`` node with one child cpu node:
 
-::
+.. code-block:: dts
 
     cpus {
         #address-cells = <1>;
@@ -680,7 +680,7 @@ Example
 See the following example of a devicetree representation of two CPUs,
 each with their own on-chip L2 and a shared L3.
 
-::
+.. code-block:: dts
 
     cpus {
         #address-cells = <1>;
@@ -709,7 +709,7 @@ each with their own on-chip L2 and a shared L3.
                     cache-unified;
                     cache-size = <0x40000>; // 256 KB
                     cache-sets = <0x400>; // 1024
-                    cache-block-size =
+                    cache-block-size = <32>;
                     cache-level = <3>;
                 };
             };
@@ -730,7 +730,7 @@ each with their own on-chip L2 and a shared L3.
                 cache-unified;
                 cache-size = <0x40000>; // 256 KB
                 cache-sets = <0x400>; // 1024
-                cache-line-size = <32> // 32 bytes
+                cache-line-size = <32>; // 32 bytes
                 next-level-cache = <&L3>; // phandle to L3
             };
         };

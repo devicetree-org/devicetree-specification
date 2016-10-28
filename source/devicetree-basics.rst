@@ -463,7 +463,7 @@ Example:
 
    See the following devicetree excerpt:
 
-   ::
+   .. code-block:: dts
 
       pic@10000000 {
          phandle = <1>;
@@ -473,9 +473,11 @@ Example:
    A *phandle* value of 1 is defined. Another device node could reference
    the pic node with a phandle value of 1:
 
-   ::
+   .. code-block:: dts
 
-      interrupt-parent = <1>;
+      another-device-node {
+        interrupt-parent = <1>;
+      };
 
 .. note:: Older versions of devicetrees may be encountered that contain a
    deprecated form of this property called ``linux,phandle``. For
@@ -557,7 +559,7 @@ Example:
 
    See the following devicetree excerpt:
 
-   ::
+   .. code-block:: dts
 
       soc {
          #address-cells = <1>;
@@ -671,7 +673,7 @@ Description:
 
 Address Translation Example:
 
-   ::
+   .. code-block:: dts
 
        soc {
           compatible = "simple-bus";
@@ -1084,7 +1086,7 @@ interrupt controller.
 
 .. _example-interrupt-mapping:
 
-::
+.. code-block:: dts
 
    soc {
       compatible = "simple-bus";

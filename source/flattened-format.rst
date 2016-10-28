@@ -70,7 +70,7 @@ big-endian format.
 
 **Flattened Devicetree Header Fields**
 
-::
+.. code-block:: c
 
         struct fdt_header {
             uint32_t magic;
@@ -208,7 +208,7 @@ The memory reservation block consists of a list of pairs of 64-bit
 big-endian integers, each pair being represented by the following C
 structure.
 
-::
+.. code-block:: c
 
     struct fdt_reserve_entry {
         uint64_t address;
@@ -273,7 +273,7 @@ The five token types are as follows:
    describing the property. This data consists first of the property’s
    length and name represented as the following C structure:
 
-   ::
+   .. code-block:: c
 
       struct {
           uint32_t len;
