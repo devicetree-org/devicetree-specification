@@ -20,7 +20,8 @@ On Ubuntu:
 
 >```
 ># apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
->                  texlive-humanities texlive-generic-recommended graphviz
+>                  texlive-humanities texlive-generic-recommended graphviz \
+>                  texlive-generic-extra
 >```
 >
 >If the version of python-sphinx installed is too old, then an additional
