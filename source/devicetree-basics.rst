@@ -182,44 +182,95 @@ name should be one of the following choices:
 .. hlist::
    :columns: 3
 
+   * adc
+   * accelerometer
    * atm
+   * audio-codec
+   * audio-controller
+   * backlight
+   * bluetooth
+   * bus
    * cache-controller
+   * camera
+   * can
+   * charger
+   * clock
+   * clock-controller
    * compact-flash
    * can
    * cpu
+   * cpus
    * crypto
    * disk
    * display
    * dma-controller
+   * dsp
+   * eeprom
+   * efuse
+   * endpoint
    * ethernet
    * ethernet-phy
    * fdc
    * flash
    * gpio
+   * gpu
+   * gyrometer
+   * hdmi
    * i2c
    * ide
    * interrupt-controller
    * isa
    * keyboard
+   * key
+   * keys
+   * lcd-controller
+   * led
+   * leds
+   * led-controller
+   * light-sensor
+   * magnetometer
+   * mailbox
    * mdio
    * memory
    * memory-controller
+   * mmc
+   * mmc-slot
    * mouse
+   * nand-controller
    * nvram
+   * oscillator
    * parallel
    * pc-card
    * pci
    * pcie
+   * phy
+   * pinctrl
+   * pmic
+   * pmu
+   * port
+   * ports
+   * pwm
+   * regulator
+   * reset-controller
    * rtc
    * sata
    * scsi
    * serial
    * sound
    * spi
+   * sram-controller
+   * ssi-controller
+   * syscon
+   * temperature-sensor
    * timer
+   * touchscreen
    * usb
+   * usb-hub
+   * usb-phy
+   * video-codec
    * vme
    * watchdog
+   * wifi
 
 Path Names
 ~~~~~~~~~~
