@@ -8,7 +8,7 @@ This [repository](https://github.com/devicetree-org/devicetree-specification) ho
    * Use this mailing list for submitting patches, questions and general discussion
    * Sign up to the mailing list at http://vger.kernel.org/vger-lists.html#devicetree-spec
 
-## Build Instructions ##
+## Build Instructions [![Build Status](https://travis-ci.org/devicetree-org/devicetree-specification.svg)](https://travis-ci.org/devicetree-org/devicetree-specification) ##
 
 Requirements:
 * Sphinx: http://sphinx-doc.org/contents.html

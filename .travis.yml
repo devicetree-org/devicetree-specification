@@ -1,0 +1,32 @@
+sudo: false
+dist: trusty
+
+cache:
+  apt: true
+
+env:
+  global:
+      - SPHINXBUILD=~/.local/bin/sphinx-build
+
+addons:
+  apt:
+    packages:
+      - python-pip
+      - latexmk
+      - latexdiff
+      - texlive
+      - texlive-latex-extra
+      - texlive-humanities
+      - texlive-generic-recommended
+      - graphviz
+      - texlive-generic-extra
+
+install:
+  - pip install --user mako
+  - pip install --user Sphinx
+
+script:
+  - make latexpdf
+  - make html
+  - make singlehtml
+
