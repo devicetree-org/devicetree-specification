@@ -1120,8 +1120,8 @@ Description:
    parent interrupt specifier
        The interrupt specifier in the parent domain. The number of 32-bit
        cells required to specify this component is described by the
-       *#interrupt-cells* property of this node—the nexus node containing
-       the *interrupt-map* property.
+       *#interrupt-cells* property of the node pointed to by the
+       interrupt-parent field.
 
    Lookups are performed on the interrupt mapping table by matching a
    unit-address/interrupt specifier pair against the child components in
