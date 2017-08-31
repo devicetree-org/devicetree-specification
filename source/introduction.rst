@@ -13,10 +13,10 @@ hardware before passing control to software such as an operating system,
 bootloader, or hypervisor. Bootloaders and hypervisors can, in turn,
 load and transfer control to operating systems. Standard, consistent
 interfaces and conventions facilitate the interactions between these
-software components.  In this document the term boot program is used to
+software components.  In this document the term *boot program* is used to
 generically refer to a software component that initializes the system
 state and executes another software component referred to as a *client
-program*. Examples of a boot programs include: firmware, bootloaders, and
+program*. Examples of a boot program include: firmware, bootloaders, and
 hypervisors. Examples of a client program include: bootloaders,
 hypervisors, operating systems, and special purpose programs. A piece of
 software may be both a client program and a boot program  (e.g. a hypervisor).
@@ -101,14 +101,14 @@ IEEE 1275 specification that are omitted from the |spec| include:
 * FCode debugging
 * Operating system debugging
 
-What is retained from IEEE-1275 are concepts from the devicetree
+What is retained from IEEE 1275 are concepts from the devicetree
 architecture by which a boot program can describe and communicate system
 hardware information to client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
 
 This specification partially supersedes the |epapr| [EPAPR] specification.
-|epapr| documents how devicetree is used by the PowerISA, and covers both
-general concepts, as well as PowerISA specific bindings.
+|epapr| documents how devicetree is used by the Power ISA, and covers both
+general concepts, as well as Power ISA specific bindings.
 The text of this document was derived from |epapr|, but either removes architecture specific bindings, or moves them into an appendix.
 
 32-bit and 64-bit Support
@@ -141,7 +141,7 @@ Definition of Terms
    boot program
        Used to generically refer to a software component that initializes
        the system state and executes another software component referred to
-       as a client program. Examples of a boot programs include: firmware,
+       as a client program. Examples of a boot program include: firmware,
        bootloaders, and hypervisors.
 
    client program
