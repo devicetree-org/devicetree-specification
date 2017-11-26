@@ -718,7 +718,7 @@ each with their own on-chip L2 and a shared L3.
 
         cpu@1 {
             device_type = "cpu";
-            reg = <0>;
+            reg = <1>;
             cache-unified;
             cache-block-size = <32>;
             cache-size = <0x8000>; // L1, 32KB
