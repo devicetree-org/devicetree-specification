@@ -30,3 +30,13 @@ script:
   - make html
   - make singlehtml
 
+deploy:
+  provider: releases
+  prerelease: true
+  api_key:
+    secure: rCGuVHqLSaKZoHAVsWcNySliJ7QullLFanTQA5hYUIzxXBRCA+NinHJHhDNGNaT9cID2swI4bOIaXIYz0muG2ikHU9DWGh95Qj7pzGKRW1g1qiS2UbpErRzTg3A+x1misA6LpIqFuxexI8nUEowqWbzgjrLwjA3CcKKtLhn/jo20WmEMectQXEhlYz5Iv0LOPe88VtEEukFrgNGYgikQkT465fp4EgCN1uiWcJsjO3z7AGTRBEs3f7HW87gO8j0rvr3OE+WkV5jpOZeezWNDm3VlttGks7saToMM94Zz3GpUFr0ngZ8oJARC1JqtK8l5AzL01AA0JD8n4HXFVvfRW2jbHSxVzH8vKTj+sWJOJVsFixaqRKTlSVrCU6VSZgTcoaCXiXL0/hWNnaYaPWygPbI0o/+d7ut4XC2BxR8Fs5GQCNX+JqhaFAWRZe/tfBIMfLynxHWkI6gXTXvLliDS5jshGdXuJcCYhFK15C8u4P+RnxyjRBA38MQtTMr0CL6wXoqS8QGvjH57kY5OMenRiVPrc5i22EejeMb0ggGVsvxczCnJsJ2qgSTJ0EDQ1d+M2cSRVwFkcLfO72bpsrgiqDsXBLdf3qApZHJUIyo5CiJEpduoXd1tzJxNWRmXmHYBl74YcteOD30RYeTeKjdGZR7TLw1igobPJQhCQBx4v6A=
+  file: "build/latex/devicetree-specification.pdf"
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
