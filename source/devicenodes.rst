@@ -22,7 +22,7 @@ Root node
 The devicetree has a single root node of which all other device nodes
 are descendants. The full path to the root node is ``/``.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: Root Node Properties
 
    =================== ===== ================= ===============================================
@@ -131,7 +131,7 @@ memory reservations) as WIMG = 0b001x. That is:
 
 If the VLE storage attribute is supported, with VLE=0.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/memory`` Node Properties
 
    ======================= ===== ========================= ===============================================
@@ -202,7 +202,7 @@ The ``/chosen`` node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/chosen`` Node Properties
 
    ======================= ===== ===================== ===============================================
@@ -253,7 +253,7 @@ A ``/cpus`` node is required for all devicetrees. It does not represent a
 real device in the system, but acts as a container for child ``cpu`` nodes
 which represent the systems CPUs.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/cpus`` Node Properties
 
    ======================= ===== ===================== ===============================================
@@ -310,7 +310,7 @@ The following table describes the general properties of ``cpu`` nodes. Some
 of the properties described in :numref:`table-cpu-node-props` are select
 standard properties with specific applicable detail.
 
-.. tabularcolumns:: | p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. _table-cpu-node-props:
 .. table:: ``/cpus/cpu*`` Node General Properties
    :class: longtable
@@ -435,7 +435,7 @@ standard properties with specific applicable detail.
    :ref:`sect-standard-properties`) are allowed but are optional.
 
 
-.. tabularcolumns:: | p{1.5cm} p{1cm} p{2.5cm} p{9.0cm} |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/cpus/cpu*`` Node Power ISA Properties
    :class: longtable
 
@@ -503,7 +503,7 @@ The following properties of a cpu node describe the translate look-aside
 buffer in the processor’s MMU.
 
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/cpu/cpu*`` Node Power ISA TLB Properties
 
    ============== ===== =========== ===============================================
@@ -546,7 +546,7 @@ Internal (L1) Cache Properties
 The following properties of a cpu node describe the processor’s internal
 (L1) cache.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/cpu/cpu*`` Node Power ISA Cache Properties
 
    ======================= ===== ============= ===============================================
@@ -658,7 +658,7 @@ appropriate location in the devicetree.
 Multiple-level and shared caches are represented with the properties in
 Table 3-9. The L1 cache properties are described in Table 3-8.
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``/cpu/cpu*/l?-cache`` Node Power ISA Multiple-level and Shared Cache Properties
 
    =============== ===== ============ ===============================================

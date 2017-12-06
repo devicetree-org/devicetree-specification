@@ -150,7 +150,7 @@ specific representation.
 ``current-speed`` Property
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. tabularcolumns:: l J
+.. tabularcolumns:: | l J |
 .. table:: ``current-speed`` Property
 
    =========== ==============================================================
@@ -170,7 +170,7 @@ Serial devices compatible to the National Semiconductor 16450/16550 UART
 (Universal Asynchronous Receiver Transmitter) should be represented in
 the devicetree using following properties.
 
-.. tabularcolumns:: l c l J
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ns16550 UART Properties
 
    ======================= ===== ===================== ===============================================
@@ -393,7 +393,7 @@ specifiers:
         2 = active high level sensitive type enabled
         3 = high to low edge sensitive type enabled
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: Open-PIC properties
 
    ======================== ===== ===================== ===============================================
@@ -423,7 +423,7 @@ probed for devices. The devices on the bus can be accessed directly
 without additional configuration required. This type of bus is
 represented as a node with a compatible value of "simple-bus".
 
-.. tabularcolumns:: | l c l J |
+.. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
 .. table:: ``simple-bus`` Compatible Node Properties
 
    ======================== ===== ===================== ===============================================
