@@ -24,6 +24,7 @@ will resemble the diagram in :numref:`figure_device_tree_structure`
 
    rankdir = LR
    ranksep = "1.5"
+   size = "6,8"
    edge [ dir="none" ]
    node [ shape="Mrecord" width="2.5" ]
 

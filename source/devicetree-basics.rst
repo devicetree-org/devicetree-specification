@@ -47,6 +47,7 @@ with properties and values inside each node.
 
    rankdir = LR;
    ranksep = equally;
+   size = "6,8"
    node [ shape="Mrecord"; width="3.5"; fontname = Courier; ];
 
    "/" [ label = "\N |
@@ -153,6 +154,7 @@ identified by a forward slash (/).
 
    rankdir = LR;
    ranksep = equally;
+   size = "6,8"
    node [ shape="Mrecord"; width="2.5"; fontname = Courier; ];
 
    "/":e    -> "cpus":w
@@ -883,6 +885,7 @@ sits in the logical interrupt tree.
 
    rankdir = LR
    ranksep = "1.5"
+   size = "6,8"
    edge [ dir="none" ]
    node [ shape="Mrecord" width="2.5" ]
 
