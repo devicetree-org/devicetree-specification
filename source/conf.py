@@ -248,7 +248,7 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Latex figure (float) alignment
-#'figure_align': 'htbp',
+  'figure_align': 'H',
 }
 
 # Release numbers with a qualifier (ex. '-rc', '-pre') get a watermark.
