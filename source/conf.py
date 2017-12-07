@@ -57,7 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Devicetree Specification'
-copyright = u'2016, devicetree.org'
+copyright = u'2016,2017, devicetree.org'
 author = u'devicetree.org'
 
 # The version info for the project you're documenting, acts as replacement for
