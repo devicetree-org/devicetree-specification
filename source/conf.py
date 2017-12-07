@@ -64,7 +64,7 @@ author = u'devicetree.org'
 # built documents.
 #
 # The short X.Y version.
-version = u'0.1'
+version = u'0.2-pre2'
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -143,7 +143,7 @@ html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = u'Devicetree Specification v0.1'
+#html_title = u'Devicetree Specification v0.2-pre2'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
