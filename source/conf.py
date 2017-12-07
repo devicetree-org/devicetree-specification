@@ -15,6 +15,7 @@
 import sys
 import os
 import time
+import subprocess
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -64,7 +65,10 @@ author = u'devicetree.org'
 # built documents.
 #
 # The short X.Y version.
-version = u'0.2-pre2'
+try:
+    version = subprocess.check_output(["git", "describe", "--dirty"]).strip()
+except:
+    version = "unknown-rev"
 # The full version, including alpha/beta/rc tags.
 release = version
 
@@ -79,7 +83,7 @@ language = None
 # non-false value, then it is used:
 #today = ''
 # Else, today_fmt is used as the format for a strftime call.
-today_fmt = '%d %B %Y'
+today_fmt = '%d %b %Y'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -253,7 +257,7 @@ latex_elements = {
 
 # Release numbers with a qualifier (ex. '-rc', '-pre') get a watermark.
 if '-' in release:
-    latex_elements['preamble'] = '\\usepackage{draftwatermark}\\SetWatermarkScale{.45}\\SetWatermarkText{DRAFT v%s %s}' % (release, time.strftime(today_fmt))
+    latex_elements['preamble'] = '\\usepackage{draftwatermark}\\SetWatermarkScale{.45}\\SetWatermarkText{%s}' % (release)
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
