@@ -74,6 +74,7 @@ null-terminated strings, as bytestrings or a combination of these.
 ::
 
         interrupts = <17 0xc>;
+
 -  values may be represented as arithmetic, bitwise, or logical expressions
    within parenthesis.
 
