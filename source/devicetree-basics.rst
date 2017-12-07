@@ -481,7 +481,7 @@ model
 
 Property name: ``model``
 
-Value type: ``<stringlist>``
+Value type: ``<string>``
 
 Description:
 
