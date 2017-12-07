@@ -280,7 +280,7 @@ Network Class Binding
    Property    ``max-frame-size``
    =========== ==============================================================
    Value type  ``<u32>``
-   Descriptio  Specifies maximum packet length in bytes that the physical
+   Description Specifies maximum packet length in bytes that the physical
                interface can send and receive.
    Example     ``max-frame-size = <1518>;``
    =========== ==============================================================

@@ -246,7 +246,7 @@ Lexical structure
 ~~~~~~~~~~~~~~~~~
 
 The structure block is composed of a sequence of pieces, each beginning
-with a token, that is, a bigendian 32-bit integer. Some tokens are
+with a token, that is, a big-endian 32-bit integer. Some tokens are
 followed by extra data, the format of which is determined by the token
 value. All tokens shall be aligned on a 32-bit boundary, which may
 require padding bytes (with a value of 0x0) to be inserted after the
@@ -359,7 +359,7 @@ Strings Block
 -------------
 
 The strings block contains strings representing all the property names
-used in the tree. These nullterminated strings are simply concatenated
+used in the tree. These null terminated strings are simply concatenated
 together in this section, and referred to from the structure block by an
 offset into the strings block.
 

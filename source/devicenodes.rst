@@ -347,7 +347,7 @@ standard properties with specific applicable detail.
                                                    program should modify PIR to match the *reg*
                                                    property value. If PIR cannot be modified and
                                                    the PIR value is distinct from the interrupt
-                                                   controller numberspace, the CPUs binding may
+                                                   controller number space, the CPUs binding may
                                                    define a binding-specific representation of
                                                    PIR values if desired.
    ``clock-frequency``    | R   | array            Specifies the current clock speed of the CPU
@@ -386,7 +386,7 @@ standard properties with specific applicable detail.
                                                    CPUs, nor can its state be affected by the
                                                    normal operation of other running CPUs, except
                                                    by an explicit method for enabling or
-                                                   reenabling the quiescent CPU (see the
+                                                   re-enabling the quiescent CPU (see the
                                                    enable-method property).
 
                                                    In particular, a running CPU shall be able to
@@ -417,7 +417,7 @@ standard properties with specific applicable detail.
                                                       required format is: ``"[vendor],[method]"``,
                                                       where vendor is a string describing the name of
                                                       the manufacturer and method is a string
-                                                      describing the vendorspecific mechanism.
+                                                      describing the vendor specific mechanism.
 
                                                    Example: ``"fsl,MPC8572DS"``
 

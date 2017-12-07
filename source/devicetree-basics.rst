@@ -1262,7 +1262,7 @@ node with a specified parent unit address and interrupt specifier.
 
 In this example, the interrupt-map-mask property has a value of ``<0xf800
 0 0 7>``. This mask is applied to a child unit interrupt specifier before
-performing a lookup in the interruptmap table.
+performing a lookup in the *interrupt-map* table.
 
 To perform a lookup of the open-pic interrupt source number for INTB for
 IDSEL 0x12 (slot 2), function 0x3, the following steps would be
