@@ -5,7 +5,6 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-RELEASEDIR    = release
 BUILDDIR      = build
 LATEXDIFF     = latexdiff
 
@@ -145,7 +144,7 @@ latex:
 latexdiff:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Generating LaTeX changebars..."
-	$(LATEXDIFF) --type=CULINECHBAR $(RELEASEDIR)/latex/devicetree-specification.tex $(BUILDDIR)/latex/devicetree-specification.tex > $(BUILDDIR)/latex/devicetree-specification-changebars.tex
+	$(LATEXDIFF) --type=CULINECHBAR $(BUILDDIR)/latex-previous/devicetree-specification.tex $(BUILDDIR)/latex/devicetree-specification.tex > $(BUILDDIR)/latex/devicetree-specification-changebars.tex
 	@echo "Running LaTeX files through pdflatex..."
 	$(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo
