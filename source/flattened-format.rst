@@ -90,8 +90,8 @@ big-endian format.
     This field shall contain the value 0xd00dfeed (big-endian).
 
 ``totalsize``
-    This field shall contain the total size of the devicetree data
-    structure. This size shall encompass all sections of the structure:
+    This field shall contain the total size in bytes of the devicetree data structure.
+    This size shall encompass all sections of the structure:
     the header, the memory reservation block, structure block and
     strings block, as well as any free space gaps between the blocks or
     after the final block.
@@ -216,8 +216,8 @@ structure.
         uint64_t size;
     };
 
-Each pair gives the physical address and size of a reserved memory
-region. These given regions shall not overlap each other. The list of
+Each pair gives the physical address and size in bytes of a reserved memory region.
+These given regions shall not overlap each other. The list of
 reserved blocks shall be terminated with an entry where both address and
 size are equal to 0. Note that the address and size values are always
 64-bit. On 32-bit CPUs the upper 32-bits of the value are ignored.
