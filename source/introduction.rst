@@ -55,8 +55,8 @@ may include:
   devicetrees.
 * Chapter :ref:`chapter-device-bindings` describes device bindings for
   certain classes of devices and specific device types.
-* Chapter :ref:`chapter-fdt-structure` specifies the physical structure
-  of devicetrees.
+* Chapter :ref:`chapter-fdt-structure` specifies the DTB encoding of devicetrees.
+* Chapter :ref:`chapter-devicetree-source-format` specifies the DTS source language.
 
 **Conventions Used in this Document**
 

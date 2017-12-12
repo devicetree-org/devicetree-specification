@@ -1,13 +1,20 @@
 .. _chapter-fdt-structure:
 
-Flat Devicetree Physical Structure
+Flattened Devicetree (DTB) Format
 ==================================
 
-With the exception of platforms using IEEE1275 Open Firmware [IEEE1275], the
-devicetree data is contained within a single, linear, pointerless data structure
-known as the flattened devicetree or devicetree blob.
+The Devicetree Blob (DTB) format is a flat binary encoding of devicetree data.
+It used to exchange devicetree data between software programs.
+For example, when booting an operating system, firmware will pass a DTB to the OS kernel.
 
-This data structure consists of a small header
+.. note::
+
+   IEEE1275 Open Firmware [IEEE1275] does not define the DTB format.
+   On most Open Firmware compliant platforms the devicetree is extracted by calling firmware methods
+   to walk through the tree structure.
+
+The DTB format encodes the devicetree data within a single, linear, pointerless data structure.
+It consists of a small header
 (see section :ref:`sect-fdt-header`),
 followed by three variable sized sections:
 the memory reservation block (see section :ref:`sect-fdt-memory-reservation-block`),

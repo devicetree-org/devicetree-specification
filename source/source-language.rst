@@ -1,6 +1,6 @@
 .. _chapter-devicetree-source-format:
 
-Devicetree Source Format (version 1)
+Devicetree Source (DTS) Format (version 1)
 ================================================
 
 The Devicetree Source (DTS) format is a textual representation of a
