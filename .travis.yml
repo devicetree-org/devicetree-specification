@@ -7,13 +7,17 @@ cache:
 env:
   global:
       - SPHINXBUILD=~/.local/bin/sphinx-build
+      - DIFF_COMMIT=v0.1
+
+git:
+  depth: false
 
 addons:
   apt:
     packages:
       - python-pip
       - latexmk
-      - latexdiff
+      - libalgorithm-diff-perl
       - texlive
       - texlive-latex-extra
       - texlive-humanities
@@ -25,8 +29,18 @@ install:
   - pip install --user mako
   - pip install --user Sphinx
 
+before_script:
+  - wget https://github.com/ftilmann/latexdiff/releases/download/1.2.1/latexdiff-1.2.1.tar.gz
+  - tar xvf latexdiff-1.2.1.tar.gz
+  - export PATH=$PWD/latexdiff-1.2.1/:$PATH
+
 script:
+  - git checkout $DIFF_COMMIT
   - make latexpdf
+  - mv build/latex build/latex-previous
+  - git checkout $TRAVIS_COMMIT
+  - make latexpdf
+  - make latexdiff
   - make html
   - make singlehtml
 
@@ -36,7 +50,9 @@ deploy:
     api_key:
       secure: sUwxm3Vbv9p8Uvn/BedgpSbPwnqRJvg0k7ezicEWcJlOF3X6dewX8Qk2x9k9PQ2A8v8GPsf+66D4CABBgz2hIUs68GV7r5ngPHbYQDejI5TjOnYyAuOz8AaCt9+K1nfblqyvg2/4TXKRpHJh9MPzq3WlVB4fvYleGDp1P08xLGCUwrrpyVlA3FQlR3rjPl430GRVCsj/6gEtBs6jHe3/9YhJYUkdgnj8VJI0ISqsSia/wxQyyf1QoydaEhwXVwsapFFCGSX60uo72fs/HBZtBpJOPnkw4g6sZw6lory1k6ZpWxtgRANlDvYXpvnTddiViNprGGJdxvRaKn2uyg/vU4wnrxZsg34uCuvYIyudwDeLkmvsB6NEaRTmqozPH35CLjEkOSrrnTVawYbGVsCX3mtMtVM4ocuxkZSD5CeSX4CNixWMqRMcAtvyh2jtu+gGuuxESgnaWCUoKsPWik8zkBAdCvraN5N7SdwNRRgOiJKMqTAQMFeUklXXPVQt5tm4H79Qjz9vylboeYNDHEaj07/AXX9QSXxXSIXLEvF+haPDPMeoamhCuA1SGlKyBWKT7Uq/BpjpnfpPwvZv0tyW3roq6GN8CqfRQYdj6zKOsIJnU69pVgq8cXCTMTSrjLnlis7hp1gp9hS7kJts58J21v2Qw20+YwhBH3s/OCL4gvg=
     file_glob: true
-    file: "build/latex/devicetree-specification.pdf"
+    file:
+      - "build/latex/devicetree-specification.pdf"
+      - "build/latex/devicetree-specification-changebars.pdf"
     skip_cleanup: true
     on:
       tags: true

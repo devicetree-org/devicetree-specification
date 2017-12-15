@@ -19,7 +19,7 @@ Requirements:
 On Debian and Ubuntu:
 
 >```
-># apt-get install python-sphinx latexdiff texlive texlive-latex-extra \
+># apt-get install python-sphinx texlive texlive-latex-extra libalgorithm-diff-perl \
 >                  texlive-humanities texlive-generic-recommended graphviz \
 >                  texlive-generic-extra
 >```
@@ -31,6 +31,16 @@ On Debian and Ubuntu:
 >$ apt-get install python-pip
 >$ pip install --user --upgrade Sphinx
 >$ export SPHINXBUILD=~/.local/bin/sphinx-build
+>```
+>
+>You will need latexdiff v1.2.1 or later to create the changebars PDF version
+>of the document.
+>Until distributions catch up with the latest release you will need to install
+>it directly from the github repo.
+>
+>```
+>$ git clone https://github.com/ftilmann/latexdiff
+>$ export PATH=$PWD/latexdiff/:$PATH
 >```
 >
 >Export SPHINXBUILD (see above) if Sphinx was installed with pip --user, then follow Make commands below
