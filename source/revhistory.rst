@@ -8,13 +8,14 @@
    0.1       2016-MAY-24 Initial prerelease version. Imported |epapr| text
                          into reStructured Text format and removed Power ISA
                          specific elements.
-   0.2-pre3  2017-DEC-12 Third prerelease version.
+   0.2-pre4  2017-DEC-18 Fourth prerelease version.
 
                          * Added more recommended generic node names
                          * Added interrupts-extended
                          * Additional phy times
                          * Filled out detail in source language chapter
                          * Editorial changes
+                         * Added changebar version to release documents
 
    ========= =========== ====================================================
 
