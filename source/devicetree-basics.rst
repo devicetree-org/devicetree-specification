@@ -469,10 +469,10 @@ Description:
 
 Example:
 
-   ``compatible = "fsl,ns16550", "ns16550";``
+   ``compatible = "fsl,mpc8641", "ns16550";``
 
    In this example, an operating system would first try to locate a device
-   driver that supported fsl,ns16550. If a driver was not found, it
+   driver that supported fsl,mpc8641. If a driver was not found, it
    would then try to locate a driver that supported the more general
    ns16550 device type.
 
