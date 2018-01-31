@@ -325,6 +325,7 @@ Property names are strings of 1 to 31 characters from the characters show in
    ``+``     plus sign
    ``?``     question mark
    ``#``     hash
+   ``-``     dash
    ========= ================
 
 Nonstandard property names should specify a unique string prefix, such
