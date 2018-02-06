@@ -252,6 +252,7 @@ name should be one of the following choices:
    * pmu
    * port
    * ports
+   * power-monitor
    * pwm
    * regulator
    * reset-controller
