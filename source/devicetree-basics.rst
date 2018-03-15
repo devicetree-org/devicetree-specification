@@ -199,7 +199,6 @@ name should be one of the following choices:
    * clock
    * clock-controller
    * compact-flash
-   * can
    * cpu
    * cpus
    * crypto
