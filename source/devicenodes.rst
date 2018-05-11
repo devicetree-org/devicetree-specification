@@ -110,7 +110,7 @@ physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the *reg* property of a single memory node.
 
-The *unit-name* component of the node name (see section :ref:`sect-node-names`)
+The *node-name* component of the node name (see section :ref:`sect-node-names`)
 shall be ``memory``.
 
 The client program may access memory not covered by any memory
