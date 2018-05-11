@@ -218,6 +218,7 @@ name should be one of the following choices:
    * gyrometer
    * hdmi
    * i2c
+   * i2c-mux
    * ide
    * interrupt-controller
    * isa
@@ -250,6 +251,7 @@ name should be one of the following choices:
    * pmu
    * port
    * ports
+   * power-monitor
    * pwm
    * regulator
    * reset-controller
