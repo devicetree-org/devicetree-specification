@@ -573,6 +573,10 @@ Description:
                   Refer to the device binding for details on what disabled means
                   for a given device.
    -------------- --------------------------------------------------------------
+   ``"reserved"`` Indicates that the device is operational, but should not be
+                  used. Typically this is used for devices that are controlled
+                  by another software component, such as platform firmware.
+   -------------- --------------------------------------------------------------
    ``"fail"``     Indicates that the device is not operational. A serious error
                   was detected in the device, and it is unlikely to become
                   operational without repair.
