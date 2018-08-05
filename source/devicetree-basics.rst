@@ -16,9 +16,10 @@ This chapter describes the logical structure of the devicetree and
 specifies a base set of properties for use in describing device nodes.
 Chapter :ref:`chapter-device-node-requirements` specifies certain device nodes
 required by a |spec|-compliant
-devicetree. Chapter 6 describes the |spec|-defined device bindings—the
-requirements for representing certain device types or classes of devices.
-Chapter 8 describes the in-memory encoding of the devicetree.
+devicetree. Chapter :ref:`chapter-device-bindings` describes the
+|spec|-defined device bindings -- the requirements for representing
+certain device types or classes of devices.
+Chapter :ref:`chapter-fdt-structure` describes the in-memory encoding of the devicetree.
 
 A devicetree is a tree data structure with nodes that describe the
 devices in a system. Each node has property/value pairs that describe
