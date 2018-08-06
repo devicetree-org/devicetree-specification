@@ -103,10 +103,10 @@ IEEE 1275 specification that are omitted from the |spec| include:
 
 What is retained from IEEE 1275 are concepts from the devicetree
 architecture by which a boot program can describe and communicate system
-hardware information to client program, thus eliminating the need for
+hardware information to a client program, thus eliminating the need for
 the client program to have hard-coded descriptions of system hardware.
 
-This specification partially supersedes the |epapr| [EPAPR] specification.
+This specification partially supersedes the |epapr| [EPAPR]_ specification.
 |epapr| documents how devicetree is used by the Power ISA, and covers both
 general concepts, as well as Power ISA specific bindings.
 The text of this document was derived from |epapr|, but either removes architecture specific bindings, or moves them into an appendix.
@@ -127,7 +127,7 @@ Definition of Terms
    AMP
        Asymmetric Multiprocessing. Computer available CPUs are partitioned into
        groups, each running a distinct operating system image. The CPUs
-       may or not may not identical.
+       may or may not be identical.
 
    boot CPU
        The first CPU which a boot program directs to a client program’s
@@ -205,4 +205,3 @@ Definition of Terms
        normal operation of other CPUs, nor can its state be affected by the
        normal operation of other running CPUs, except by an explicit method
        for enabling or re-enabling the quiescent CPU.
-
