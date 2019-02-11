@@ -214,6 +214,7 @@ name should be one of the following choices:
    * ethernet-phy
    * fdc
    * flash
+   * gnss
    * gpio
    * gpu
    * gyrometer
