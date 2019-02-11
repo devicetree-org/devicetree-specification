@@ -160,8 +160,8 @@ If the VLE storage attribute is supported, with VLE=0.
 
 Given a 64-bit Power system with the following physical memory layout:
 
-* RAM: starting address 0x0, length 0x80000000 (2GB)
-* RAM: starting address 0x100000000, length 0x100000000 (4GB)
+* RAM: starting address 0x0, length 0x80000000 (2 GB)
+* RAM: starting address 0x100000000, length 0x100000000 (4 GB)
 
 Memory nodes could be defined as follows, assuming ``#address-cells = <2>``
 and ``#size-cells = <2>``.
@@ -690,7 +690,7 @@ each with their own on-chip L2 and a shared L3.
             device_type = "cpu";
             reg = <0>;
             cache-unified;
-            cache-size = <0x8000>; // L1, 32KB
+            cache-size = <0x8000>; // L1, 32 KB
             cache-block-size = <32>;
             timebase-frequency = <82500000>; // 82.5 MHz
             next-level-cache = <&L2_0>; // phandle to L2
@@ -721,7 +721,7 @@ each with their own on-chip L2 and a shared L3.
             reg = <1>;
             cache-unified;
             cache-block-size = <32>;
-            cache-size = <0x8000>; // L1, 32KB
+            cache-size = <0x8000>; // L1, 32 KB
             timebase-frequency = <82500000>; // 82.5 MHz
             clock-frequency = <825000000>; // 825 MHz
             cache-level = <2>;

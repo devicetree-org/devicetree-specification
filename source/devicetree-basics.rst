@@ -751,7 +751,7 @@ Address Translation Example:
 
       ``<0x0 0xe0000000 0x00100000>;``
 
-   This property value specifies that for an 1024KB range of address space,
+   This property value specifies that for a 1024 KB range of address space,
    a child node addressed at physical 0x0 maps to a parent address of
    physical 0xe0000000. With this mapping, the ``serial`` device node can
    be addressed by a load or store at address 0xe0004600, an offset of
