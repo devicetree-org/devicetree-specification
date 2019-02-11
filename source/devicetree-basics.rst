@@ -621,7 +621,7 @@ Example:
          #address-cells = <1>;
          #size-cells = <1>;
 
-         serial {
+         serial@4600 {
             compatible = "ns16550";
             reg = <0x4600 0x100>;
             clock-frequency = <0>;
@@ -737,7 +737,7 @@ Address Translation Example:
           #size-cells = <1>;
           ranges = <0x0 0xe0000000 0x00100000>;
 
-          serial {
+          serial@4600 {
              device_type = "serial";
              compatible = "ns16550";
              reg = <0x4600 0x100>;
