@@ -248,7 +248,7 @@ Network Class Binding
    Value type  ``<prop-encoded-array>`` encoded as an array of hex numbers
    Description Specifies MAC address that was assigned to the network device
                described by the node containing this property.
-   Example     ``local-mac-address = [ 0x00 0x00 0x12 0x34 0x56 0x78];``
+   Example     ``local-mac-address = [ 00 00 12 34 56 78 ];``
    =========== ==============================================================
 
 ``mac-address`` Property
@@ -267,7 +267,7 @@ Network Class Binding
                different from the local-mac-address property. This property
                shall be used only if the value differs from
                local-mac-address property value.
-   Example     ``mac-address = [ 0x01 0x02 0x03 0x04 0x05 0x06 ];``
+   Example     ``mac-address = [ 01 02 03 04 05 06 ];``
    =========== ==============================================================
 
 ``max-frame-size`` Property
