@@ -362,7 +362,7 @@ sufficiently descriptive.
    Value                    Description
    ======================== ==================================================================
    ``<empty>``              Value is empty. Used for conveying true-false information, when
-                            the presence of absence of the property itself is sufficiently
+                            the presence or absence of the property itself is sufficiently
                             descriptive.
    ``<u32>``                A 32-bit integer in big-endian format. Example: the 32-bit value
                             0x11223344 would be represented in memory as:
