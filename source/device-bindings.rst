@@ -112,7 +112,7 @@ here to facilitate standardization of names and usage.
    Property    ``label``
    =========== ==============================================================
    Value type  ``<string>``
-   Descriptio  The label property defines a human readable string describing
+   Description The label property defines a human readable string describing
                a device. The binding for a given device specifies the exact
                meaning of the property for that device.
    =========== ==============================================================
