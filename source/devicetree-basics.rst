@@ -1446,7 +1446,7 @@ node with a parent specifier.
   * The child specifier is ``<0 0>``, which specifies GPIO 0 in the connector
     with a *flags* field of ``0``. This takes two 32-bit cells as specified
     by the *#gpio-cells* property of the connector node, which is the
-    child specifier domian.
+    child specifier domain.
 
   * The specifier parent is specified by a phandle which points to the
     specifier parent of the connector, the first GPIO controller in the SoC.
