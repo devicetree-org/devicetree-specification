@@ -24,11 +24,11 @@ addons:
       - texlive-generic-recommended
       - graphviz
       - texlive-generic-extra
-      - codespell
 
 install:
   - pip install --user mako
   - pip install --user Sphinx
+  - pip install --user codespell
 
 before_script:
   - wget https://github.com/ftilmann/latexdiff/releases/download/1.2.1/latexdiff-1.2.1.tar.gz
