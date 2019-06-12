@@ -28,6 +28,7 @@ addons:
 install:
   - pip install --user mako
   - pip install --user Sphinx
+  - pip install --user codespell
 
 before_script:
   - wget https://github.com/ftilmann/latexdiff/releases/download/1.2.1/latexdiff-1.2.1.tar.gz
@@ -35,6 +36,7 @@ before_script:
   - export PATH=$PWD/latexdiff-1.2.1/:$PATH
 
 script:
+  - make check
   - git checkout $DIFF_COMMIT
   - make latexpdf
   - mv build/latex build/latex-previous
@@ -69,4 +71,3 @@ deploy:
     skip_cleanup: true
     on:
       branch: master
-

@@ -54,6 +54,10 @@ help:
 clean:
 	rm -rf $(BUILDDIR)/*
 
+.PHONY: check
+check:
+	codespell source/*.rst
+
 .PHONY: html
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
