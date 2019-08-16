@@ -206,6 +206,7 @@ name should be one of the following choices:
    * disk
    * display
    * dma-controller
+   * dsi
    * dsp
    * eeprom
    * efuse
