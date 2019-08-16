@@ -114,6 +114,7 @@ null-terminated strings, as bytestrings or a combination of these.
     -   subtract
     *   multiply
     /   divide
+    %   modulo
 
 ::
 
