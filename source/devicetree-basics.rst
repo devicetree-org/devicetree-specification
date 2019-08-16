@@ -258,6 +258,7 @@ name should be one of the following choices:
    * pwm
    * regulator
    * reset-controller
+   * rng
    * rtc
    * sata
    * scsi
