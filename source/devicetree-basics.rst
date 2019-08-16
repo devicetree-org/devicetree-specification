@@ -223,6 +223,7 @@ name should be one of the following choices:
    * i2c-mux
    * ide
    * interrupt-controller
+   * iommu
    * isa
    * keyboard
    * key
