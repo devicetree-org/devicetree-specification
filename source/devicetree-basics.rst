@@ -220,6 +220,7 @@ name should be one of the following choices:
    * gpu
    * gyrometer
    * hdmi
+   * hwlock
    * i2c
    * i2c-mux
    * ide
