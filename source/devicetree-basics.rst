@@ -271,6 +271,7 @@ name should be one of the following choices:
    * temperature-sensor
    * timer
    * touchscreen
+   * tpm
    * usb
    * usb-hub
    * usb-phy
