@@ -35,7 +35,7 @@ will resemble the diagram in :numref:`figure_device_tree_structure`
    edge [ dir="none" ]
    node [ shape="Mrecord" width="2.5" ]
 
-   "node" [ label = "struct ftd_header |
+   "node" [ label = "struct fdt_header |
       (free space) |
       memory reservation block |
       (free space) |
