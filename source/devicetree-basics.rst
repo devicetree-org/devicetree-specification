@@ -187,6 +187,7 @@ name should be one of the following choices:
 
    * adc
    * accelerometer
+   * air-pollution-sensor
    * atm
    * audio-codec
    * audio-controller
