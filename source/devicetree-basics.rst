@@ -869,7 +869,7 @@ An interrupt domain is the context in which an interrupt specifier is
 interpreted. The root of the domain is either (1) an interrupt
 controller or (2) an interrupt nexus.
 
-#. An *interrupt controller* is physical device and will need a driver
+#. An *interrupt controller* is a physical device and will need a driver
    to handle interrupts routed through it. It may also cascade into
    another interrupt domain. An interrupt controller is specified by the
    presence of an *interrupt-controller* property on that node in the
