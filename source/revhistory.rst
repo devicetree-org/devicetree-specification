@@ -14,5 +14,8 @@
                          * Filled out detail in source language chapter
                          * Editorial changes
                          * Added changebar version to release documents
+   0.3       2020-FEB-13 * Added more recommended generic node names
+                         * Document generic nexus binding
+                         * codespell support and spelling fixes
    ========= =========== ====================================================
 
