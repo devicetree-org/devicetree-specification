@@ -530,6 +530,7 @@ Example:
       pic@10000000 {
          phandle = <1>;
          interrupt-controller;
+         reg = <0x10000000 0x100>;
       };
 
    A *phandle* value of 1 is defined. Another device node could reference
