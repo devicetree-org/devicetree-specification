@@ -1164,7 +1164,7 @@ Value type: ``<prop-encoded-array>`` encoded as a bit mask
 Description:
 
    An *interrupt-map-mask* property is specified for a nexus node in the
-   interrupt tree. This property specifies a mask that is applied to the
+   interrupt tree. This property specifies a mask that is ANDed with the
    incoming unit interrupt specifier being looked up in the table specified
    in the *interrupt-map* property.
 
@@ -1367,7 +1367,7 @@ Value type: ``<prop-encoded-array>`` encoded as a bit mask
 Description:
 
    A *<specifier>-map-mask* property may be specified for a nexus node.
-   This property specifies a mask that is applied to the child unit
+   This property specifies a mask that is ANDed with the child unit
    specifier being looked up in the table specified in the *<specifier>-map*
    property. If this property is not specified, the mask is assumed to be
    a mask with all bits set.
