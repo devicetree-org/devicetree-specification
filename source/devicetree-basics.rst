@@ -1407,7 +1407,7 @@ Specifier Mapping Example
 The following shows the representation of a fragment of a devicetree with
 two GPIO controllers and a sample specifier map for describing the
 GPIO routing of a few gpios on both of the controllers through a connector
-on a board to a device. The expansion device node is one one side of the
+on a board to a device. The expansion device node is on one side of the
 connector node and the SoC with the two GPIO controllers is on the other
 side of the connector.
 
