@@ -76,7 +76,7 @@ class DtsLexer(RegexLexer):
         'value': [
             include('integers'),
             include('comments'),
-            (r'(\&)([a-zA-Z0-9_-]+)', bygroups(Operator, Text)),
+            (r'(\&)?([a-zA-Z0-9_-]+)', bygroups(Operator, Text)),
             (r'<', Punctuation, '#push'),
             (r'>', Punctuation, '#pop'),
             (r'\[', Punctuation, '#push'),
