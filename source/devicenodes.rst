@@ -151,6 +151,9 @@ If the VLE storage attribute is supported, with VLE=0.
                                                            address, size). The effective and physical
                                                            address shall each be 64-bit (``<u64>`` value),
                                                            and the size shall be 32-bits (``<u32>`` value).
+   ``hotpluggable``        O      ``<empty>``              Specifies an explicit hint to the operating
+                                                           system that this memory may potentially be
+                                                           removed later.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =======================================================================================================
 
@@ -738,4 +741,3 @@ each with their own on-chip L2 and a shared L3.
             };
         };
     };
-
