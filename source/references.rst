@@ -6,11 +6,11 @@
 
 .. [b7] *Open Firmware Recommended Practice: Interrupt Mapping*, Version
    0.9, Open Firmware Working Group, 1996
-   (http://playground.sun.com/1275/practice/imap/imap0_9d.pdf)
+   (http://devicetree.org/open-firmware/practice/imap/imap0_9d.pdf)
 
 .. [CHRP] *PowerPC Microprocessor Common Hardware Reference Platform
    (CHRP) Binding*, Version 1.8, Open Firmware Working Group, 1998
-   (http://playground.sun.com/1275/bindings/chrp/chrp1_8a.ps). This
+   (http://devicetree.org/open-firmware/bindings/chrp/chrp1_8a.ps). This
    document specifies the properties for Open PIC-compatible interrupt
    controllers.
 
