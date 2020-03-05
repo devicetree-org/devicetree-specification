@@ -48,6 +48,8 @@ are descendants. The full path to the root node is ``/``.
                                                For example:
 
                                                ``compatible = "fsl,mpc8572ds"``
+   ``serial-number``   O     ``<string>``      Specifies a string representing the device's
+                                               serial number.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
