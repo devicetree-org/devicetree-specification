@@ -66,7 +66,7 @@ author = u'devicetree.org'
 #
 # The short X.Y version.
 try:
-    version = subprocess.check_output(["git", "describe", "--dirty"]).strip()
+    version = subprocess.check_output(["git", "describe", "--dirty"]).strip().encode()
 except:
     version = "unknown-rev"
 # The full version, including alpha/beta/rc tags.
