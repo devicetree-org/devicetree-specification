@@ -235,6 +235,7 @@ name should be one of the following choices:
    * leds
    * led-controller
    * light-sensor
+   * lora
    * magnetometer
    * mailbox
    * mdio
