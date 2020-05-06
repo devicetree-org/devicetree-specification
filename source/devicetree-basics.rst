@@ -564,7 +564,9 @@ Value type: ``<string>``
 
 Description:
 
-   The ``status`` property indicates the operational status of a device.
+   The ``status`` property indicates the operational status of a device.  The
+   lack of a ``status`` property should be treated as if the property existed
+   with the value of ``"okay"``.
    Valid values are listed and defined in :numref:`table-prop-status-values`.
 
 .. tabularcolumns:: | l J |
