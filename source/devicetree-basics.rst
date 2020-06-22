@@ -200,6 +200,7 @@ name should be one of the following choices:
    * charger
    * clock
    * clock-controller
+   * co2-sensor
    * compact-flash
    * cpu
    * cpus
