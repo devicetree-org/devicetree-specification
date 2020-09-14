@@ -13,12 +13,12 @@ Welcome to Devicetree Specification's documentation!
    license
    acknowledgements
    revhistory
-   introduction
-   devicetree-basics
-   devicenodes
-   device-bindings
-   flattened-format
-   source-language
+   chapter1-introduction
+   chapter2-devicetree-basics
+   chapter3-devicenodes
+   chapter4-device-bindings
+   chapter5-flattened-format
+   chapter6-source-language
    references
 
 ..
