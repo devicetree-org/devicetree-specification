@@ -1,5 +1,5 @@
 sudo: false
-dist: trusty
+dist: focal
 
 cache:
   apt: true
@@ -15,20 +15,19 @@ git:
 addons:
   apt:
     packages:
-      - python-pip
+      - python3-pip
       - latexmk
       - libalgorithm-diff-perl
       - texlive
       - texlive-latex-extra
       - texlive-humanities
-      - texlive-generic-recommended
       - graphviz
-      - texlive-generic-extra
 
 install:
-  - pip install --user mako
-  - pip install --user Sphinx
-  - pip install --user codespell
+  - pip3 install --user mako
+  - pip3 install --user typing
+  - pip3 install --user Sphinx
+  - pip3 install --user codespell
 
 before_script:
   - wget https://github.com/ftilmann/latexdiff/releases/download/1.2.1/latexdiff-1.2.1.tar.gz
@@ -36,19 +35,18 @@ before_script:
   - export PATH=$PWD/latexdiff-1.2.1/:$PATH
 
 script:
-  - make check
-  - git checkout $DIFF_COMMIT
+  #- git checkout $DIFF_COMMIT
+  #- make latexpdf
+  #- mv build/latex build/latex-previous
+  #- git checkout $TRAVIS_COMMIT
   - make latexpdf
-  - mv build/latex build/latex-previous
-  - git checkout $TRAVIS_COMMIT
-  - make latexpdf
-  - make latexdiff
+  #- make latexdiff
   - make html
   - make singlehtml
 
 before_deploy:
   - cp build/latex/devicetree-specification.pdf build/devicetree-specification-$TRAVIS_TAG.pdf
-  - cp build/latex/devicetree-specification-changebars.pdf build/devicetree-specification-changebars-$TRAVIS_TAG.pdf
+  #- cp build/latex/devicetree-specification-changebars.pdf build/devicetree-specification-changebars-$TRAVIS_TAG.pdf
 
 deploy:
   - provider: releases
