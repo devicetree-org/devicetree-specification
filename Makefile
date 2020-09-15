@@ -8,12 +8,14 @@ SOURCEDIR     = source
 BUILDDIR      = build
 LATEXDIFF     = latexdiff
 
+all: latexpdf html
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	@echo "  latexdiff   to make LaTeX files including changebars against previous release"
 
-.PHONY: help latexdiff Makefile
+.PHONY: all help latexdiff Makefile
 
 latexdiff: latex
 	@echo "Generating LaTeX changebars..."
