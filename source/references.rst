@@ -23,3 +23,7 @@
 .. [EPAPR] *Power.org Standard for Embedded Power Architecture
    Platform Requirements*, power.org, 2011,
    https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/
+
+.. [UEFI] `Unified Extensable Firmware Interface Specification v2.8 Errata A
+   <https://uefi.org/sites/default/files/resources/UEFI_Spec_2_8_A_Feb14.pdf>`_,
+   February 2020, `UEFI Forum <http://www.uefi.org>`_

@@ -234,6 +234,16 @@ reservation block as a whole, shall be located at an 8-byte aligned
 offset from the beginning of the devicetree blob (see
 :numref:`sect-fdt-alignment`).
 
+Memory Reservation Block and UEFI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As with the ``/reserved-memory`` node (:numref:`sect-reserved-memory-uefi`),
+when booting via [UEFI]_ entries in the Memory Reservation Block must also be
+listed in the system memory map obtained via the GetMemoryMap() to protect against
+allocations by UEFI applications.
+The memory reservation block entries should be listed with type
+``EfiReservedMemoryType``.
+
 .. _sect-fdt-structure-block:
 
 Structure Block

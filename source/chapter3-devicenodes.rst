@@ -160,6 +160,12 @@ If the VLE storage attribute is supported, with VLE=0.
 .. note:: All other standard properties
    (:numref:`sect-standard-properties`) are allowed but are optional.
 
+``/memory`` node and UEFI
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When booting via [UEFI]_, the system memory map is obtained via the
+GetMemoryMap() UEFI boot time service as defined in [UEFI]_ § 7.2,
+and if present, the OS must ignore any ``/memory`` nodes.
 
 ``/memory`` Examples
 ~~~~~~~~~~~~~~~~~~~~
@@ -205,8 +211,8 @@ address and length for the ``reg`` property of the memory node.
 -------------------------
 
 Reserved memory is specified as a node under the ``/reserved-memory`` node.
-The operating system shall exclude reserved memory from normal usage
-one can create child nodes describing particular reserved (excluded from
+The operating system shall exclude reserved memory from normal usage.
+One can create child nodes describing particular reserved (excluded from
 normal use) memory regions.
 Such memory regions are usually designed for the special usage by various
 device drivers.
@@ -341,13 +347,30 @@ nodes by adding a ``memory-region`` property to the device node.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =======================================================================================================
 
+.. _sect-reserved-memory-uefi:
+
+``/reserved-memory`` and UEFI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+When booting via [UEFI]_, static ``/reserved-memory`` regions must
+also be listed in the system memory map obtained via the GetMemoryMap()
+UEFI boot time service as defined in [UEFI]_ § 7.2.
+The reserved memory regions need to be included in the UEFI memory map to
+protect against allocations by UEFI applications.
+
+Reserved regions with the ``no-map`` property must be listed in the memory
+map with type ``EfiReservedMemoryType``.
+All other reserved regions must be listed with type ``EfiBootServicesData``.
+
+Dynamic reserved memory regions must not be listed in the [UEFI]_ memory map
+because they are allocated by the OS after exiting firmware boot services.
+
 ``/reserved-memory`` Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This example defines 3 contiguous regions are defined for Linux kernel:
-one default of all device drivers (named ``linux,cma@72000000`` and 64MiB in size),
+one default of all device drivers (named ``linux,cma`` and 64MiB in size),
 one dedicated to the framebuffer device (named ``framebuffer@78000000``, 8MiB), and
-one for multimedia processing (named ``multimedia-memory@77000000``, 64MiB).
+one for multimedia processing (named ``multimedia@77000000``, 64MiB).
 
 .. code-block:: dts
 
