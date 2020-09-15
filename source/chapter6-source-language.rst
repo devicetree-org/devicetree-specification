@@ -233,15 +233,24 @@ File layout
             [child nodes]
         };
 
-The /dts-v1/; shall be present to identify the file as a version 1 DTS
+``/dts-v1/;`` shall be present to identify the file as a version 1 DTS
 (dts files without this tag will be treated by dtc as being in the
 obsolete version 0, which uses a different format for integers in
 addition to other small but incompatible changes).
 
-Memory reservations define an entry for the devicetree blob’s memory
-reservation table. They have the form: e.g., /memreserve/ <address>
-<length>; Where <address> and <length> are 64-bit C-style integers.
+Memory reservations (see :numref:`sect-fdt-memory-reservation-block`)
+are represented by lines in the form::
 
-*  The / { }; section defines the root node of the devicetree.
+   /memreserve/ <address> <length>;
 
-*  C style (/* ... \*/) and C++ style (//) comments are supported.
+Where ``<address>`` and ``<length>`` are 64-bit C-style integers, e.g.,
+
+.. code-block:: dts
+
+   /* Reserve memory region 0x10000000..0x10003fff */
+   /memreserve/ 0x10000000 0x4000;
+
+The ``/ { ... };`` section defines the root node of the devicetree, and
+all the device tree data is contained within it.
+
+C style (``/* ... \*/``) and C++ style (``//``) comments are supported.
