@@ -15,11 +15,11 @@ For example, when booting an operating system, firmware will pass a DTB to the O
 
 The DTB format encodes the devicetree data within a single, linear, pointerless data structure.
 It consists of a small header
-(see section :ref:`sect-fdt-header`),
+(see :numref:`sect-fdt-header`),
 followed by three variable sized sections:
-the memory reservation block (see section :ref:`sect-fdt-memory-reservation-block`),
-the structure block (see secton :ref:`sect-fdt-structure-block`),
-and the strings block (see section :ref:`sect-fdt-strings-block`).
+the memory reservation block (see :numref:`sect-fdt-memory-reservation-block`),
+the structure block (see :numref:`sect-fdt-structure-block`),
+and the strings block (see :numref:`sect-fdt-strings-block`).
 These should be present in the flattened devicetree in that order.
 Thus, the devicetree structure as a whole, when loaded into memory at address,
 will resemble the diagram in :numref:`figure_device_tree_structure`
@@ -46,7 +46,7 @@ will resemble the diagram in :numref:`figure_device_tree_structure`
 
 The (free space) sections may not be present, though in some cases they
 might be required to satisfy the alignment constraints of the individual
-blocks (see section :ref:`sect-fdt-alignment`).
+blocks (see :numref:`sect-fdt-alignment`).
 
 .. _sect-fdt-versioning:
 
@@ -105,15 +105,15 @@ big-endian format.
 
 ``off_dt_struct``
     This field shall contain the offset in bytes of the structure block
-    (see section :ref:`sect-fdt-structure-block`) from the beginning of the header.
+    (see :numref:`sect-fdt-structure-block`) from the beginning of the header.
 
 ``off_dt_strings``
     This field shall contain the offset in bytes of the strings block
-    (see section :ref:`sect-fdt-strings-block`) from the beginning of the header.
+    (see :numref:`sect-fdt-strings-block`) from the beginning of the header.
 
 ``off_mem_rsvmap``
     This field shall contain the offset in bytes of the memory
-    reservation block (see section :ref:`sect-fdt-memory-reservation-block`)
+    reservation block (see :numref:`sect-fdt-memory-reservation-block`)
     from the beginning of the header.
 
 ``version``
@@ -129,8 +129,8 @@ big-endian format.
     structure with which the version used is backwards compatible. So,
     for the structure as defined in this document (version 17), this
     field shall contain 16 because version 17 is backwards compatible
-    with version 16, but not earlier versions. As per section
-    :ref:`sect-fdt-versioning`, a |spec| boot program should provide a
+    with version 16, but not earlier versions. As per
+    :numref:`sect-fdt-versioning`, a |spec| boot program should provide a
     devicetree in a format which is backwards compatible with version
     16, and thus this field shall always contain 16.
 
@@ -231,8 +231,8 @@ size are equal to 0. Note that the address and size values are always
 
 Each uint64_t in the memory reservation block, and thus the memory
 reservation block as a whole, shall be located at an 8-byte aligned
-offset from the beginning of the devicetree blob (see section
-:ref:`sect-fdt-alignment`).
+offset from the beginning of the devicetree blob (see
+:numref:`sect-fdt-alignment`).
 
 .. _sect-fdt-structure-block:
 
@@ -245,7 +245,7 @@ These are organized into a linear tree structure, as described below.
 
 Each token in the structure block, and thus the structure block itself,
 shall be located at a 4-byte aligned offset from the beginning of the
-devicetree blob (see :ref:`sect-fdt-alignment`).
+devicetree blob (see :numref:`sect-fdt-alignment`).
 
 .. _sect-fdt-lexical-structure:
 
@@ -265,7 +265,7 @@ The five token types are as follows:
     The FDT_BEGIN_NODE token marks the beginning of a node’s
     representation. It shall be followed by the node’s unit name as
     extra data. The name is stored as a null-terminated string, and
-    shall include the unit address (see section :ref:`sect-node-names`), if any.
+    shall include the unit address (see :numref:`sect-node-names`), if any.
     The node name is followed by zeroed padding bytes, if necessary for
     alignment, and then the next token, which may be any token except
     FDT_END.
@@ -291,10 +291,10 @@ The five token types are as follows:
    Both the fields in this structure are 32-bit big-endian integers.
 
    * len gives the length of the property’s value in bytes (which may be
-     zero, indicating an empty property, see section :ref:`sect-property-values`).
+     zero, indicating an empty property, see :numref:`sect-property-values`).
 
    * nameoff gives an offset into the strings block
-     (see section :ref:`sect-fdt-strings-block`)
+     (see :numref:`sect-fdt-strings-block`)
      at which the property’s name is stored as a null-terminated string.
 
    After this structure, the property’s value is given as a byte string of
@@ -347,7 +347,7 @@ components:
    * (optionally) any number of FDT_NOP tokens
    * FDT_PROP token
 
-      * property information as given in section :ref:`sect-fdt-lexical-structure`
+      * property information as given in :numref:`sect-fdt-lexical-structure`
       * [zeroed padding bytes to align to a 4-byte boundary]
 
 * Representations of all child nodes in this format

@@ -52,8 +52,7 @@ needs_sphinx = '1.2.3'
 # ones.
 extensions = [
     'sphinx.ext.todo',
-    'sphinx.ext.graphviz',
-    'numsec'
+    'sphinx.ext.graphviz'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

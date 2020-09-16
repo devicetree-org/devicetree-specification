@@ -46,17 +46,17 @@ may include:
 
 **Organization of this Document**
 
-* Chapter :ref:`chapter-introduction` introduces the architecture being
+* :numref:`Chapter %s <chapter-introduction>` introduces the architecture being
   specified by |spec|.
-* Chapter :ref:`chapter-devicetree` introduces the devicetree concept
+* :numref:`Chapter %s <chapter-devicetree>` introduces the devicetree concept
   and describes its logical structure and standard properties.
-* Chapter :ref:`chapter-device-node-requirements` specifies the
+* :numref:`Chapter %s <chapter-device-node-requirements>` specifies the
   definition of a base set of device nodes required by |spec|-compliant
   devicetrees.
-* Chapter :ref:`chapter-device-bindings` describes device bindings for
+* :numref:`Chapter %s <chapter-device-bindings>` describes device bindings for
   certain classes of devices and specific device types.
-* Chapter :ref:`chapter-fdt-structure` specifies the DTB encoding of devicetrees.
-* Chapter :ref:`chapter-devicetree-source-format` specifies the DTS source language.
+* :numref:`Chapter %s <chapter-fdt-structure>` specifies the DTB encoding of devicetrees.
+* :numref:`Chapter %s <chapter-devicetree-source-format>` specifies the DTS source language.
 
 **Conventions Used in this Document**
 
@@ -75,7 +75,7 @@ The word *may* is used to indicate a course of action permissible within
 the limits of the standard (*may* equals *is permitted*).
 
 Examples of devicetree constructs are frequently shown in *Devicetree
-Syntax* form. See section :ref:`chapter-devicetree-source-format` for
+Syntax* form. See :numref:`chapter-devicetree-source-format` for
 an overview of this syntax.
 
 Relationship to IEEE™ 1275 and |epapr|

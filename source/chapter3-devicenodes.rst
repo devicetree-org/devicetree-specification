@@ -53,9 +53,8 @@ are descendants. The full path to the root node is ``/``.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
-
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 ``/aliases`` node
 -----------------
@@ -112,11 +111,12 @@ physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
 specified in the *reg* property of a single memory node.
 
-The *unit-name* component of the node name (see section :ref:`sect-node-names`)
+The *unit-name* component of the node name
+(see :numref:`sect-node-names`)
 shall be ``memory``.
 
 The client program may access memory not covered by any memory
-reservations (see section :ref:`sect-fdt-memory-reservation-block`)
+reservations (see :numref:`sect-fdt-memory-reservation-block`)
 using any storage attributes it chooses. However, before changing the
 storage attributes used to access a real page, the client program is
 responsible for performing actions required by the architecture and
@@ -157,8 +157,8 @@ If the VLE storage attribute is supported, with VLE=0.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =======================================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 **Examples**
@@ -233,8 +233,8 @@ time. It shall be a child of the root node.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 **Example**
@@ -273,14 +273,14 @@ which represent the systems CPUs.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===================================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 The ``/cpus`` node may contain properties that are common across ``cpu`` nodes.
-See section :ref:`sect-cpus-cpu-node-properties` for details.
+See :numref:`sect-cpus-cpu-node-properties` for details.
 
-For an example, see section :ref:`sect-cpu-node-example`.
+For an example, see :numref:`sect-cpu-node-example`.
 
 .. _sect-cpus-cpu-node-properties:
 
@@ -436,8 +436,8 @@ standard properties with specific applicable detail.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===============================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 .. tabularcolumns:: | p{4cm} p{0.75cm} p{4cm} p{6.5cm} |
@@ -490,8 +490,8 @@ standard properties with specific applicable detail.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    =================================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 Older versions of devicetree may be encountered that contain a
@@ -541,8 +541,8 @@ buffer in the processor’s MMU.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 Internal (L1) Cache Properties
@@ -603,12 +603,12 @@ The following properties of a cpu node describe the processor’s internal
    ``next-level-cache``    SD    ``<phandle>`` If present, indicates that another level of
                                                cache exists. The value is the phandle of the
                                                next level of cache. The phandle value type is
-                                               fully described in section :ref:`sect-standard-properties-phandle`.
+                                               fully described in :numref:`sect-standard-properties-phandle`.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 Older versions of devicetrees may be encountered that contain a
@@ -676,8 +676,8 @@ Table 3-9. The L1 cache properties are described in Table 3-8.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ==================================================================================
 
-.. note:: All other standard properties (section
-   :ref:`sect-standard-properties`) are allowed but are optional.
+.. note:: All other standard properties
+   (:numref:`sect-standard-properties`) are allowed but are optional.
 
 
 Example

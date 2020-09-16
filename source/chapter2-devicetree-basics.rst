@@ -14,12 +14,12 @@ program’s memory and passes a pointer to the devicetree to the client.
 
 This chapter describes the logical structure of the devicetree and
 specifies a base set of properties for use in describing device nodes.
-Chapter :ref:`chapter-device-node-requirements` specifies certain device nodes
+:numref:`Chapter %s <chapter-device-node-requirements>` specifies certain device nodes
 required by a |spec|-compliant
-devicetree. Chapter :ref:`chapter-device-bindings` describes the
+devicetree. :numref:`Chapter %s <chapter-device-bindings>` describes the
 |spec|-defined device bindings -- the requirements for representing
 certain device types or classes of devices.
-Chapter :ref:`chapter-fdt-structure` describes the in-memory encoding of the devicetree.
+:numref:`Chapter %s <chapter-fdt-structure>` describes the in-memory encoding of the devicetree.
 
 A devicetree is a tree data structure with nodes that describe the
 devices in a system. Each node has property/value pairs that describe
@@ -445,10 +445,12 @@ Standard Properties
 -------------------
 
 |spec| specifies a set of standard properties for device nodes. These
-properties are described in detail in this section. Device nodes defined
-by |spec| (see Chapter :ref:`chapter-device-node-requirements`) may specify
+properties are described in detail in this section.
+Device nodes defined by |spec|
+(see :numref:`Chapter %s <chapter-device-node-requirements>`) may specify
 additional requirements or constraints regarding the use of the standard
-properties. Chapter :ref:`chapter-device-bindings` describes the representation
+properties.
+:numref:`Chapter %s <chapter-device-bindings>` describes the representation
 of specific devices and may also specify additional requirements.
 
 .. note:: All examples of devicetree nodes in this document use the
@@ -835,7 +837,7 @@ Description:
    property is deprecated, and its use is not recommended. However, it
    might be used in older non-|spec|-compliant devicetrees. Operating
    system should determine a node’s name based on the *node-name* component of
-   the node name (see section :ref:`sect-node-names`).
+   the node name (see :numref:`sect-node-names`).
 
 device_type (deprecated)
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1162,8 +1164,8 @@ Description:
    unit-address/interrupt specifier pair against the child components in
    the interrupt-map. Because some fields in the unit interrupt specifier
    may not be relevant, a mask is applied before the lookup is done. This
-   mask is defined in the *interrupt-map-mask* property (see section
-   :ref:`sect-interrupt-map-mask`).
+   mask is defined in the *interrupt-map-mask* property
+   (see :numref:`sect-interrupt-map-mask`).
 
    .. note:: Both the child node and the interrupt parent node are required to
       have *#address-cells* and *#interrupt-cells* properties defined. If a
@@ -1286,8 +1288,9 @@ node with a specified parent unit address and interrupt specifier.
     node.
 
     * The value ``<2 1>`` is a value specified by the device binding for
-      the Open PIC interrupt controller (see section
-      :ref:`sect-bindings-simple-bus`). The value ``<2>`` specifies the
+      the Open PIC interrupt controller
+      (see :numref:`sect-bindings-simple-bus`).
+      The value ``<2>`` specifies the
       physical interrupt source number on the interrupt controller to
       which INTA is wired. The value ``<1>`` specifies the level/sense
       encoding.
@@ -1363,13 +1366,13 @@ Description:
    Lookups are performed on the mapping table by matching a specifier against
    the child specifier in the map. Because some fields in the specifier may
    not be relevant or need to be modified, a mask is applied before the lookup
-   is done. This mask is defined in the *<specifier>-map-mask* property (see
-   section :ref:`sect-specifier-map-mask`).
+   is done. This mask is defined in the *<specifier>-map-mask* property
+   (see :numref:`sect-specifier-map-mask`).
 
    Similarly, when the specifier is mapped, some fields in the unit specifier
    may need to be kept unmodified and passed through from the child node to the
-   parent node. In this case, a *<specifier>-map-pass-thru* property (see
-   section :ref:`sect-specifier-map-pass-thru`) may be specified to apply
+   parent node. In this case, a *<specifier>-map-pass-thru* property
+   (see :numref:`sect-specifier-map-pass-thru`) may be specified to apply
    a mask to the child specifier and copy any bits that match to the parent
    unit specifier.
 
