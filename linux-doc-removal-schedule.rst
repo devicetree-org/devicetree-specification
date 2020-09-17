@@ -8,3 +8,5 @@ The content of the following files have been imported into the spec from the Lin
          bindings/
             reserved-memory/
                reserved-memory.txt     # Added commit 841c0878
+
+.. SPDX-License-Identifier: Apache-2.0

@@ -43,3 +43,5 @@ only and not with Linaro membership.
 The membership proceeds go towards the defraying of Linaro’s costs for hosting devicetree.org.
 
 If you have useful FAQs you would like to see here, please contact us through the mailing list
+
+<!-- SPDX-License-Identifier: Apache-2.0 -->

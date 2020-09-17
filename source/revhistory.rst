@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: Apache-2.0
+
 .. _revision-history:
 .. tabularcolumns:: | p{1.5cm} p{2.25cm} p{11.50cm} |
 .. table:: Revision History

@@ -1,3 +1,4 @@
+.. SPDX-License-Identifier: Apache-2.0
 
 .. [IEEE1275] *Boot (Initialization Configuration) Firmware: Core Requirements
    and Practices*, 1994, This is the core standard (also known as IEEE

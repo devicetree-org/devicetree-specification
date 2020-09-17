@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: Apache-2.0
+
 This document uses the Sphinx implementation of reStructured Text (RST). RST is
 a flexible markup language with lots of options for laying out text. To keep
 thinks simple, this file describes the conventions used by this project. As

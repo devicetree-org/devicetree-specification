@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
 # -*- coding: utf-8 -*-
 #
 # Devicetree Specification documentation build configuration file, created by

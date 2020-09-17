@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: Apache-2.0
+
 .. _chapter-device-node-requirements:
 
 Device Node Requirements

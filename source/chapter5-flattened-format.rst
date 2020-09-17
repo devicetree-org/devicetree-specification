@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: Apache-2.0
+
 .. _chapter-fdt-structure:
 
 Flattened Devicetree (DTB) Format

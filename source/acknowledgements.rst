@@ -1,3 +1,5 @@
+.. SPDX-License-Identifier: Apache-2.0
+
 **Acknowledgements**
 
 The devicetree.org Technical Steering Committee would like to
