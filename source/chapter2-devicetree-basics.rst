@@ -129,6 +129,8 @@ of characters in :numref:`node-name-characters`.
    ``.``     period
    ``_``     underscore
    ``+``     plus sign
+   ``?``     question mark
+   ``#``     hash
    ``-``     dash
    ========= ================
 
