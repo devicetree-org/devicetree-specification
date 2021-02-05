@@ -146,6 +146,9 @@ level in the tree. The binding for a particular bus may specify
 additional, more specific requirements for the format of *reg* and the
 *unit-address*.
 
+In the case of *node-name* without an *@unit-address* the *node-name* shall
+be unique from any property names at the same level in the tree.
+
 The root node does not have a node-name or unit-address. It is
 identified by a forward slash (/).
 
