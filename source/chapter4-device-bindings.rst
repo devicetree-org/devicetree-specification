@@ -437,5 +437,8 @@ represented as a node with a compatible value of "simple-bus".
                                   array>``              parent address to child address spaces (see
                                                         :numref:`sect-standard-properties-ranges`,
                                                         ranges).
+   ``nonposted-mmio``       O     ``<empty>``           Specifies that direct children of this bus
+                                                        should use non-posted memory accesses (i.e. a
+                                                        non-posted mapping mode) for MMIO ranges.
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ====================================================================================================
