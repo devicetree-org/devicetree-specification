@@ -62,7 +62,7 @@ On Mac OS X:
 >
 >If you are using [brew](http://brew.sh) then you can install graphviz like this:
 >```
-brew install graphviz
+>brew install graphviz
 >```
 >If you are using [macports](https://www.macports.org/) then you can install graphviz like this:
 >```
