@@ -484,6 +484,10 @@ Description:
    (such as a stock ticker symbol), and ``model`` specifies the model
    number.
 
+   The compatible string should consist only of lowercase letters, digits
+   and dashes. A single comma is typically only used following a vendor
+   prefix. Underscores should not be used.
+
 Example:
 
    ``compatible = "fsl,mpc8641", "ns16550";``
