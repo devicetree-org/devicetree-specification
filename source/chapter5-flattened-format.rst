@@ -390,6 +390,10 @@ offset from the beginning of the devicetree blob.
 Alignment
 ---------
 
+The devicetree blob shall be located at an 8-byte-aligned address. To maintain
+backwards compatibilty for 32-bit machines, 4-byte alignment is supported by
+some software, but this is not |spec|-compliant.
+
 For the data in the memory reservation and structure blocks to be used
 without unaligned memory accesses, they shall lie at suitably aligned
 memory addresses. Specifically, the memory reservation block shall be
