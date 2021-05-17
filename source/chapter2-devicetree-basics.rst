@@ -484,9 +484,9 @@ Description:
    (such as a stock ticker symbol), and ``model`` specifies the model
    number.
 
-   The compatible string should consist only of lowercase letters, digits
-   and dashes. A single comma is typically only used following a vendor
-   prefix. Underscores should not be used.
+   The compatible string should consist only of lowercase letters, digits and
+   dashes, and should start with a letter. A single comma is typically only
+   used following a vendor prefix. Underscores should not be used.
 
 Example:
 
