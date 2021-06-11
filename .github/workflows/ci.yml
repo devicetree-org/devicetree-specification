@@ -24,6 +24,7 @@ jobs:
     - name: build pdf
       run: |
         make latexpdf
+        git fetch --tags --force # Needed to make git-describe work
         mv build/latex/devicetree-specification.pdf build/latex/devicetree-specification-$(git describe).pdf
     - name: build html
       run: make html
