@@ -2,9 +2,9 @@ name: Github Action CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, gh-actions ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, gh-actions ]
 
   workflow_dispatch:
   
