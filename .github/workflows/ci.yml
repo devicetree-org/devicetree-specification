@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [ master, gh-actions ]
 
-  workflow_dispatch:
-  
 jobs:
   build:
 
@@ -29,3 +27,16 @@ jobs:
       run: make html
     - name: build singlehtml
       run: make singlehtml
+    - name: upload
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifacts
+        path: |
+          build/*.pdf
+    - name: release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: build/*.pdf
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
