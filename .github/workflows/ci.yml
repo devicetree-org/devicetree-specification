@@ -1,0 +1,31 @@
+name: Github Action CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch
+  
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install
+      run: |
+        sudo apt-get update
+        sudo apt-get install latexmk libalgorithm-diff-perl texlive texlive-latex-extra texlive-humanities graphviz
+        pip3 install --user mako
+        pip3 install --user typing
+        pip3 install --user Sphinx
+        pip3 install --user codespell     
+    - name: build pdf
+      run: make latexpdf
+    - name: build html
+      run: make html
+    - name: build singlehtml
+      run: make singlehtml
