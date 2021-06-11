@@ -22,7 +22,9 @@ jobs:
         pip3 install --user Sphinx
         pip3 install --user codespell     
     - name: build pdf
-      run: make latexpdf
+      run: |
+        make latexpdf
+        mv build/latex/devicetree-specification.pdf build/latex/devicetree-specification-$(git describe).pdf
     - name: build html
       run: make html
     - name: build singlehtml
@@ -32,11 +34,11 @@ jobs:
       with:
         name: artifacts
         path: |
-          build/*.pdf
+          build/latex/devicetree-specification-*.pdf
     - name: release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: build/*.pdf
+        files: build/latex/devicetree-specification-*.pdf
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
