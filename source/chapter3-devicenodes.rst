@@ -52,6 +52,17 @@ are descendants. The full path to the root node is ``/``.
                                                ``compatible = "fsl,mpc8572ds"``
    ``serial-number``   O     ``<string>``      Specifies a string representing the device's
                                                serial number.
+   ``chassis-type``    OR    ``<string>``      Specifies a string that identifies the form-factor
+                                               of the system. The property value can be one of:
+
+                                               * ``"desktop"``
+                                               * ``"laptop"``
+                                               * ``"convertible"``
+                                               * ``"server"``
+                                               * ``"tablet"``
+                                               * ``"handset"``
+                                               * ``"watch"``
+                                               * ``"embedded"``
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
