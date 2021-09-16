@@ -614,14 +614,17 @@ standard properties with specific applicable detail.
                                                    CPU. This property shall be present for nodes
                                                    representing CPUs in a symmetric
                                                    multiprocessing (SMP) configuration. For a CPU
-                                                   node the meaning of the ``"okay"`` and
-                                                   ``"disabled"`` values are as follows:
+                                                   node the meaning of the ``"okay"``, ``"disabled"``
+                                                   and ``"fail"`` values are as follows:
 
                                                    ``"okay"`` :
                                                       The CPU is running.
 
                                                    ``"disabled"`` :
                                                       The CPU is in a quiescent state.
+
+                                                   ``"fail"`` :
+                                                      The CPU is not operational or does not exist.
 
                                                    A quiescent CPU is in a state where it cannot
                                                    interfere with the normal operation of other
@@ -639,6 +642,11 @@ standard properties with specific applicable detail.
                                                    loop, held in reset, and electrically isolated
                                                    from the system bus or in another
                                                    implementation dependent state.
+
+                                                   A CPU with ``"fail"`` status does not affect the
+                                                   system in any way.
+                                                   The status is assigned to nodes for which no
+                                                   corresponding CPU exists.
    ``enable-method``      | SD  | ``<stringlist>`` Describes the method by which a CPU in a
                                                    disabled state is enabled. This property is
                                                    required for CPUs with a status property with
