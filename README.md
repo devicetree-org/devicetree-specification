@@ -1,6 +1,6 @@
 # Document master project for the Devicetree Specification #
 
-The latest release of the specification can be found at http://devicetree.org/ or https://github.com/devicetree-org/devicetree-specification-released
+The latest release of the specification can be found at http://devicetree.org/specifications/ or https://github.com/devicetree-org/devicetree-specification/releases
 
 This [repository](https://github.com/devicetree-org/devicetree-specification) holds the source for the generation of the Devicetree Specification using Sphinx and LaTeX. 
 
