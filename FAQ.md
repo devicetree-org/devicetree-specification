@@ -7,14 +7,12 @@
 You can always find the latest released, as well as all older releases,
 in our GitHub repository:
 
-[Devicetree Specification release repository](https://github.com/devicetree-org/devicetree-specification-released)
+[Devicetree Specification releases](https://github.com/devicetree-org/devicetree-specification)
 
 ### How often is a new specification released
 
-We're planning to make a v1.0 release by end of August, 2016,
-which will be up to date with current core DT bindings used by the Linux kernel.
-
-A second major release is planned for December 2016 to cover new features.
+The target is once a year or when there is a significant change to prompt a
+release.
 
 ## Governance
 
