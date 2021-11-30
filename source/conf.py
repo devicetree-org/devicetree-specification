@@ -90,6 +90,12 @@ exclude_patterns = []
 with open('rst_prolog', 'rb') as pr:
     rst_prolog = pr.read().decode('utf-8')
 
+rst_epilog = """
+.. |SpecVersion| replace:: {versionnum}
+""".format(
+versionnum = version,
+)
+
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 

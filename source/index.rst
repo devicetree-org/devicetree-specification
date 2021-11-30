@@ -5,8 +5,8 @@
 
    SPDX-License-Identifier: Apache-2.0
 
-Welcome to Devicetree Specification's documentation!
-====================================================
+|spec-fullname| |SpecVersion|
+======================================
 
 .. toctree::
    :numbered:
@@ -30,4 +30,3 @@ Welcome to Devicetree Specification's documentation!
    * :ref:`genindex`
    * :ref:`modindex`
    * :ref:`search`
-
