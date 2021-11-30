@@ -6,7 +6,7 @@
 | Copyright 2008,2011 Freescale Semiconductor, Inc.
 | Copyright 2008,2011 International Business Machines Corporation.
 | Copyright 2016,2017 Linaro, Ltd.
-| Copyright 2016,2017 Arm, Ltd.
+| Copyright 2016-2021 Arm, Ltd.
 
 The Linaro and devicetree.org word marks and the Linaro and
 devicetree.org logos and related marks are trademarks and service marks
