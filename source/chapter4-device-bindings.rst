@@ -270,7 +270,7 @@ Network Class Binding
                different from the local-mac-address property. This property
                shall be used only if the value differs from
                local-mac-address property value.
-   Example     ``mac-address = [ 01 02 03 04 05 06 ];``
+   Example     ``mac-address = [ 02 03 04 05 06 07 ];``
    =========== ==============================================================
 
 ``max-frame-size`` Property
