@@ -273,6 +273,7 @@ name should be one of the following choices:
    * serial
    * sound
    * spi
+   * spmi
    * sram-controller
    * ssi-controller
    * syscon
