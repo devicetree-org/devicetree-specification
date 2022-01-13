@@ -375,7 +375,7 @@ sufficiently descriptive.
    ======================== ==================================================================
    ``<empty>``              Value is empty. Used for conveying true-false information, when
                             the presence or absence of the property itself is sufficiently
-                            descriptive.
+                            descriptive. See also <u32>.
    ``<u32>``                A 32-bit integer in big-endian format. Example: the 32-bit value
                             0x11223344 would be represented in memory as:
 
@@ -385,6 +385,11 @@ sufficiently descriptive.
                                   address+1  22
                                   address+2  33
                                   address+3  44
+
+                            This can be used to convey boolean information, where 0 is false
+                            and any other value is true. This is useful since adding and
+                            removing a property to change a boolean value is inconvenient and
+                            can be obscure, since a missing property is obviously not visible.
    ``<u64>``                Represents a 64-bit integer in big-endian format. Consists of
                             two ``<u32>`` values where the first value contains the most
                             significant bits of the integer and the second value contains
