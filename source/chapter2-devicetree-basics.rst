@@ -986,7 +986,6 @@ sits in the logical interrupt tree.
       "pci-host" -> "i-pci-host"
       "slot0":e -> "i-slot0":e
       "slot1":e -> "i-slot1":e
-      "device1" -> "i-device1"
       "device2":e -> "i-device2":w
       "device3":e -> "i-device3":e
    }
