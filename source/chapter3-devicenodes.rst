@@ -974,11 +974,11 @@ each with their own on-chip L2 and a shared L3.
             cache-size = <0x8000>; // L1, 32 KB
             timebase-frequency = <82500000>; // 82.5 MHz
             clock-frequency = <825000000>; // 825 MHz
-            cache-level = <2>;
             next-level-cache = <&L2_1>; // phandle to L2
             L2_1:l2-cache {
                 compatible = "cache";
                 cache-unified;
+                cache-level = <2>;
                 cache-size = <0x40000>; // 256 KB
                 cache-sets = <0x400>; // 1024
                 cache-line-size = <32>; // 32 bytes
