@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Devicetree Specification v0.4-rc1-3-g3ff0688 documentation</title>
+    <title>Devicetree Specification v0.4-rc1-4-g321b1b4 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -34,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="spec-fullname-specversion">
-<h1>Devicetree Specification v0.4-rc1-3-g3ff0688<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this headline">¶</a></h1>
+<h1>Devicetree Specification v0.4-rc1-4-g321b1b4<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-license"></span><p><strong>Copyright</strong></p>
 <div class="line-block">
@@ -1242,7 +1242,73 @@ representation of a devicetree with interrupt parent relationships shown. It
 shows both the natural structure of the devicetree as well as where each node
 sits in the logical interrupt tree.</p>
 <figure class="align-default" id="id9">
-<span id="example-interrupt-tree"></span><figcaption>
+<span id="example-interrupt-tree"></span><div class="graphviz"><img src="_images/graphviz-fc24fbd07485841f1f2de0c235c8657e78224946.png" alt="digraph tree {
+rankdir = LR
+ranksep = &quot;1.5&quot;
+size = &quot;6,8&quot;
+edge [ dir=&quot;none&quot; ]
+node [ shape=&quot;Mrecord&quot; width=&quot;2.5&quot; ]
+
+subgraph cluster_devices {
+   label = &quot;Devicetree&quot;
+   graph [ style = dotted ]
+   &quot;soc&quot; [ ]
+   &quot;device1&quot; [ label = &quot;device1 | interrupt-parent=\&lt;&amp;open-pic\&gt;&quot; ]
+   &quot;device2&quot; [ label = &quot;device2 | interrupt-parent=\&lt;&amp;gpioctrl\&gt;&quot; ]
+   &quot;pci-host&quot; [ label = &quot;pci-host | interrupt-parent=\&lt;&amp;open-pic\&gt;&quot; ]
+   &quot;slot0&quot; [ label = &quot;slot0 | interrupt-parent=\&lt;&amp;pci-host\&gt;&quot; ]
+   &quot;slot1&quot; [ label = &quot;slot1 | interrupt-parent=\&lt;&amp;pci-host\&gt;&quot; ]
+   &quot;simple-bus&quot; [ label = &quot;simple-bus&quot; ]
+   &quot;gpioctrl&quot; [ label = &quot;gpioctrl | interrupt-parent=\&lt;&amp;open-pic\&gt;&quot; ]
+   &quot;device3&quot; [ label = &quot;device3 | interrupt-parent=\&lt;&amp;gpioctrl\&gt;&quot; ]
+
+   edge [dir=back color=blue]
+   &quot;soc&quot;:e -&gt; &quot;device1&quot;:w
+   &quot;soc&quot;:e -&gt; &quot;device2&quot;:w
+   &quot;soc&quot;:e -&gt; &quot;open-pic&quot;:w
+   &quot;soc&quot;:e -&gt; &quot;pci-host&quot;:w
+   &quot;soc&quot;:e -&gt; &quot;simple-bus&quot;:w
+   &quot;pci-host&quot;:e -&gt; &quot;slot0&quot;:w
+   &quot;pci-host&quot;:e -&gt; &quot;slot1&quot;:w
+   &quot;simple-bus&quot;:e -&gt; &quot;gpioctrl&quot;:w
+   &quot;simple-bus&quot;:e -&gt; &quot;device3&quot;:w
+}
+
+subgraph cluster_interrupts {
+   label = &quot;Interrupt tree&quot;
+   graph [ style = dotted ]
+
+   &quot;i-open-pic&quot; [ label = &quot;open-pic | Root of Interrupt tree&quot; ]
+   &quot;i-pci-host&quot; [ label = &quot;pci-host | Nexus Node&quot; ]
+   &quot;i-gpioctrl&quot; [ label = &quot;gpioctrl | Nexus Node&quot; ]
+   &quot;i-device1&quot; [ label = &quot;device1&quot; ]
+   &quot;i-device2&quot; [ label = &quot;device2&quot; ]
+   &quot;i-device3&quot; [ label = &quot;device3&quot; ]
+   &quot;i-slot0&quot; [ label = &quot;slot0&quot; ]
+   &quot;i-slot1&quot; [ label = &quot;slot1&quot; ]
+
+   edge [dir=back color=green]
+   &quot;i-open-pic&quot;:e -&gt; &quot;i-device1&quot;:w
+   &quot;i-open-pic&quot;:e -&gt; &quot;i-pci-host&quot;:w
+   &quot;i-open-pic&quot;:e -&gt; &quot;i-gpioctrl&quot;:w
+   &quot;i-pci-host&quot;:e -&gt; &quot;i-slot0&quot;:w
+   &quot;i-pci-host&quot;:e -&gt; &quot;i-slot1&quot;:w
+   &quot;i-gpioctrl&quot;:e -&gt; &quot;i-device2&quot;:w
+   &quot;i-gpioctrl&quot;:e -&gt; &quot;i-device3&quot;:w
+}
+
+subgraph {
+   edge [color=red, style=dotted, constraint=false]
+   &quot;open-pic&quot; -&gt; &quot;i-open-pic&quot;
+   &quot;gpioctrl&quot;:w -&gt; &quot;i-gpioctrl&quot;
+   &quot;pci-host&quot; -&gt; &quot;i-pci-host&quot;
+   &quot;slot0&quot;:e -&gt; &quot;i-slot0&quot;:e
+   &quot;slot1&quot;:e -&gt; &quot;i-slot1&quot;:e
+   &quot;device2&quot;:e -&gt; &quot;i-device2&quot;:w
+   &quot;device3&quot;:e -&gt; &quot;i-device3&quot;:e
+}
+}" class="graphviz" /></div>
+<figcaption>
 <p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Example of the interrupt tree</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
@@ -4495,7 +4561,7 @@ February 2020, <a class="reference external" href="http://www.uefi.org">UEFI For
       &copy;2016,2017, devicetree.org.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
