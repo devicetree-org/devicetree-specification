@@ -832,6 +832,19 @@ Description:
    coherent DMA operations. Some architectures have coherent DMA by default
    and this property is not applicable.
 
+dma-noncoherent
+~~~~~~~~~~~~
+
+Property name: ``dma-noncoherent``
+
+Value type: ``<empty>``
+
+Description:
+   For architectures which are by default coherent for I/O, the
+   *dma-noncoherent* property is used to indicate a device is not capable of
+   coherent DMA operations. Some architectures have non-coherent DMA by
+   default and this property is not applicable.
+
 name (deprecated)
 ~~~~~~~~~~~~~~~~~
 
