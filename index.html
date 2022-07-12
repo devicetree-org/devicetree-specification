@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Devicetree Specification v0.4-rc1-4-g321b1b4 documentation</title>
+    <title>Devicetree Specification v0.4-rc1-5-g639f3e9 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <link rel="shortcut icon" href="_static/devicetree-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -34,7 +35,7 @@
           <div class="body" role="main">
             
   <section id="spec-fullname-specversion">
-<h1>Devicetree Specification v0.4-rc1-4-g321b1b4<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this headline">¶</a></h1>
+<h1>Devicetree Specification v0.4-rc1-5-g639f3e9<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-license"></span><p><strong>Copyright</strong></p>
 <div class="line-block">
@@ -101,11 +102,6 @@ We would like to acknowledge their contributions.</p>
 communities that developed and implemented the flattened devicetree concept.</p>
 <span id="document-revhistory"></span><table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Revision History</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 15%" />
-<col style="width: 72%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Revision</p></th>
 <th class="head"><p>Date</p></th>
@@ -143,9 +139,9 @@ specific elements.</p></td>
 </tbody>
 </table>
 <span id="document-chapter1-introduction"></span><section id="introduction">
-<span id="chapter-introduction"></span><h2><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-introduction"></span><h2><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <section id="purpose-and-scope">
-<h3><span class="section-number">1.1. </span>Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.1. </span>Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permalink to this heading">¶</a></h3>
 <p>To initialize and boot a computer system, various software components
 interact. Firmware might perform low-level initialization of the system
 hardware before passing control to software such as an operating system,
@@ -212,7 +208,7 @@ Syntax</em> form. See <a class="reference internal" href="index.html#chapter-dev
 an overview of this syntax.</p>
 </section>
 <section id="relationship-to-ieee-1275-and-epapr">
-<h3><span class="section-number">1.2. </span>Relationship to IEEE™ 1275 and ePAPR<a class="headerlink" href="#relationship-to-ieee-1275-and-epapr" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.2. </span>Relationship to IEEE™ 1275 and ePAPR<a class="headerlink" href="#relationship-to-ieee-1275-and-epapr" title="Permalink to this heading">¶</a></h3>
 <p>DTSpec is loosely related to the IEEE 1275 Open Firmware
 standard—<em>IEEE Standard for Boot (Initialization Configuration)
 Firmware: Core Requirements and Practices</em> <a class="reference internal" href="index.html#ieee1275" id="id1"><span>[IEEE1275]</span></a>.</p>
@@ -241,14 +237,14 @@ general concepts, as well as Power ISA specific bindings.
 The text of this document was derived from ePAPR, but either removes architecture specific bindings, or moves them into an appendix.</p>
 </section>
 <section id="bit-and-64-bit-support">
-<h3><span class="section-number">1.3. </span>32-bit and 64-bit Support<a class="headerlink" href="#bit-and-64-bit-support" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.3. </span>32-bit and 64-bit Support<a class="headerlink" href="#bit-and-64-bit-support" title="Permalink to this heading">¶</a></h3>
 <p>The DTSpec supports CPUs with both 32-bit and 64-bit addressing
 capabilities. Where applicable, sections of the DTSpec describe any
 requirements or considerations for 32-bit and 64-bit addressing.</p>
 </section>
 <section id="definition-of-terms">
-<h3><span class="section-number">1.4. </span>Definition of Terms<a class="headerlink" href="#definition-of-terms" title="Permalink to this headline">¶</a></h3>
-<dl class="glossary simple">
+<h3><span class="section-number">1.4. </span>Definition of Terms<a class="headerlink" href="#definition-of-terms" title="Permalink to this heading">¶</a></h3>
+<dl class="simple glossary">
 <dt id="term-AMP">AMP<a class="headerlink" href="#term-AMP" title="Permalink to this term">¶</a></dt><dd><p>Asymmetric Multiprocessing. Computer available CPUs are partitioned into
 groups, each running a distinct operating system image. The CPUs
 may or may not be identical.</p>
@@ -316,9 +312,9 @@ for enabling or re-enabling the quiescent CPU.</p>
 </section>
 </section>
 <span id="document-chapter2-devicetree-basics"></span><section id="the-devicetree">
-<span id="chapter-devicetree"></span><h2><span class="section-number">2. </span>The Devicetree<a class="headerlink" href="#the-devicetree" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-devicetree"></span><h2><span class="section-number">2. </span>The Devicetree<a class="headerlink" href="#the-devicetree" title="Permalink to this heading">¶</a></h2>
 <section id="overview">
-<h3><span class="section-number">2.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h3>
 <p>DTSpec specifies a construct called a <em>devicetree</em> to describe
 system hardware. A boot program loads a devicetree into a client
 program’s memory and passes a pointer to the devicetree to the client.</p>
@@ -404,11 +400,11 @@ serial0=\&quot;/uart&#64;fe001000\&quot;\l&quot;]
 </figure>
 </section>
 <section id="devicetree-structure-and-conventions">
-<h3><span class="section-number">2.2. </span>Devicetree Structure and Conventions<a class="headerlink" href="#devicetree-structure-and-conventions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2. </span>Devicetree Structure and Conventions<a class="headerlink" href="#devicetree-structure-and-conventions" title="Permalink to this heading">¶</a></h3>
 <section id="node-names">
-<span id="sect-node-names"></span><h4><span class="section-number">2.2.1. </span>Node Names<a class="headerlink" href="#node-names" title="Permalink to this headline">¶</a></h4>
+<span id="sect-node-names"></span><h4><span class="section-number">2.2.1. </span>Node Names<a class="headerlink" href="#node-names" title="Permalink to this heading">¶</a></h4>
 <section id="node-name-requirements">
-<h5><span class="section-number">2.2.1.1. </span>Node Name Requirements<a class="headerlink" href="#node-name-requirements" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.1.1. </span>Node Name Requirements<a class="headerlink" href="#node-name-requirements" title="Permalink to this heading">¶</a></h5>
 <p>Each node in the devicetree is named according to the following
 convention:</p>
 <blockquote>
@@ -419,10 +415,6 @@ to 31 characters in length and consist solely of characters from the set
 of characters in <a class="reference internal" href="#node-name-characters"><span class="std std-numref">Table 2.1</span></a>.</p>
 <span id="node-name-characters"></span><table class="docutils align-default" id="id4">
 <caption><span class="caption-number">Table 2.1 </span><span class="caption-text">Valid characters for node names</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character</p></th>
 <th class="head"><p>Description</p></th>
@@ -500,7 +492,7 @@ unit-address values of <code class="docutils literal notranslate"><span class="p
 </section>
 </section>
 <section id="generic-names-recommendation">
-<h4><span class="section-number">2.2.2. </span>Generic Names Recommendation<a class="headerlink" href="#generic-names-recommendation" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.2. </span>Generic Names Recommendation<a class="headerlink" href="#generic-names-recommendation" title="Permalink to this heading">¶</a></h4>
 <p>The name of a node should be somewhat generic, reflecting the function
 of the device and not its precise programming model. If appropriate, the
 name should be one of the following choices:</p>
@@ -613,7 +605,7 @@ name should be one of the following choices:</p>
 </td></tr></table>
 </section>
 <section id="path-names">
-<h4><span class="section-number">2.2.3. </span>Path Names<a class="headerlink" href="#path-names" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.3. </span>Path Names<a class="headerlink" href="#path-names" title="Permalink to this heading">¶</a></h4>
 <p>A node in the devicetree can be uniquely identified by specifying the
 full path from the root node, through all descendant nodes, to the
 desired node.</p>
@@ -632,19 +624,15 @@ unambiguous.</p>
 undefined.</p>
 </section>
 <section id="properties">
-<h4><span class="section-number">2.2.4. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.4. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">¶</a></h4>
 <p>Each node in the devicetree has properties that describe the
 characteristics of the node. Properties consist of a name and a value.</p>
 <section id="property-names">
-<h5><span class="section-number">2.2.4.1. </span>Property Names<a class="headerlink" href="#property-names" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.4.1. </span>Property Names<a class="headerlink" href="#property-names" title="Permalink to this heading">¶</a></h5>
 <p>Property names are strings of 1 to 31 characters from the characters show in
 <a class="reference internal" href="#property-name-characters"><span class="std std-numref">Table 2.2</span></a></p>
 <span id="property-name-characters"></span><table class="docutils align-default" id="id6">
 <caption><span class="caption-number">Table 2.2 </span><span class="caption-text">Valid characters for property names</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character</p></th>
 <th class="head"><p>Description</p></th>
@@ -695,7 +683,7 @@ organization that defined the property. Examples:</p>
 </div></blockquote>
 </section>
 <section id="property-values">
-<span id="sect-property-values"></span><h5><span class="section-number">2.2.4.2. </span>Property Values<a class="headerlink" href="#property-values" title="Permalink to this headline">¶</a></h5>
+<span id="sect-property-values"></span><h5><span class="section-number">2.2.4.2. </span>Property Values<a class="headerlink" href="#property-values" title="Permalink to this heading">¶</a></h5>
 <p>A property value is an array of zero or more bytes that contain
 information associated with the property.</p>
 <p>Properties might have an empty value if conveying true-false
@@ -704,10 +692,6 @@ sufficiently descriptive.</p>
 <p><a class="reference internal" href="#property-values-table"><span class="std std-numref">Table 2.3</span></a> describes the set of basic value types defined by the DTSpec.</p>
 <span id="property-values-table"></span><table class="longtable docutils align-default" id="id7">
 <caption><span class="caption-number">Table 2.3 </span><span class="caption-text">Property values</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 27%" />
-<col style="width: 73%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -807,7 +791,7 @@ address+11  00  &#39;\0&#39;
 </section>
 </section>
 <section id="standard-properties">
-<span id="sect-standard-properties"></span><h3><span class="section-number">2.3. </span>Standard Properties<a class="headerlink" href="#standard-properties" title="Permalink to this headline">¶</a></h3>
+<span id="sect-standard-properties"></span><h3><span class="section-number">2.3. </span>Standard Properties<a class="headerlink" href="#standard-properties" title="Permalink to this heading">¶</a></h3>
 <p>DTSpec specifies a set of standard properties for device nodes. These
 properties are described in detail in this section.
 Device nodes defined by DTSpec
@@ -822,7 +806,7 @@ of specific devices and may also specify additional requirements.</p>
 <abbr title="Devicetree Source">DTS</abbr> format for specifying nodes and properties.</p>
 </div>
 <section id="compatible">
-<span id="sect-standard-properties-compatible"></span><h4><span class="section-number">2.3.1. </span>compatible<a class="headerlink" href="#compatible" title="Permalink to this headline">¶</a></h4>
+<span id="sect-standard-properties-compatible"></span><h4><span class="section-number">2.3.1. </span>compatible<a class="headerlink" href="#compatible" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">compatible</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;stringlist&gt;</span></code></p>
 <p>Description:</p>
@@ -852,7 +836,7 @@ ns16550 device type.</p>
 </div></blockquote>
 </section>
 <section id="model">
-<h4><span class="section-number">2.3.2. </span>model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.2. </span>model<a class="headerlink" href="#model" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">model</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p>
 <p>Description:</p>
@@ -869,7 +853,7 @@ model number of the device.</p>
 </div></blockquote>
 </section>
 <section id="phandle">
-<span id="sect-standard-properties-phandle"></span><h4><span class="section-number">2.3.3. </span>phandle<a class="headerlink" href="#phandle" title="Permalink to this headline">¶</a></h4>
+<span id="sect-standard-properties-phandle"></span><h4><span class="section-number">2.3.3. </span>phandle<a class="headerlink" href="#phandle" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">phandle</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -914,7 +898,7 @@ format.</p>
 </div>
 </section>
 <section id="status">
-<h4><span class="section-number">2.3.4. </span>status<a class="headerlink" href="#status" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.4. </span>status<a class="headerlink" href="#status" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">status</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p>
 <p>Description:</p>
@@ -926,10 +910,6 @@ Valid values are listed and defined in <a class="reference internal" href="#tabl
 </div></blockquote>
 <span id="table-prop-status-values"></span><table class="docutils align-default" id="id8">
 <caption><span class="caption-number">Table 2.4 </span><span class="caption-text">Values for status property</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 82%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -968,7 +948,7 @@ detected.</p></td>
 </table>
 </section>
 <section id="address-cells-and-size-cells">
-<h4><span class="section-number">2.3.5. </span>#address-cells and #size-cells<a class="headerlink" href="#address-cells-and-size-cells" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.5. </span>#address-cells and #size-cells<a class="headerlink" href="#address-cells-and-size-cells" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">#address-cells</span></code>, <code class="docutils literal notranslate"><span class="pre">#size-cells</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -1014,7 +994,7 @@ set in the parent (<code class="docutils literal notranslate"><span class="pre">
 </div></blockquote>
 </section>
 <section id="reg">
-<h4><span class="section-number">2.3.6. </span>reg<a class="headerlink" href="#reg" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.6. </span>reg<a class="headerlink" href="#reg" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">reg</span></code></p>
 <p>Property value: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an arbitrary number of (<em>address</em>, <em>length</em>) pairs.</p>
 <p>Description:</p>
@@ -1044,7 +1024,7 @@ of <em>reg</em> shall be omitted.</p>
 </div></blockquote>
 </section>
 <section id="virtual-reg">
-<span id="sect-standard-properties-virtual-reg"></span><h4><span class="section-number">2.3.7. </span>virtual-reg<a class="headerlink" href="#virtual-reg" title="Permalink to this headline">¶</a></h4>
+<span id="sect-standard-properties-virtual-reg"></span><h4><span class="section-number">2.3.7. </span>virtual-reg<a class="headerlink" href="#virtual-reg" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">virtual-reg</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -1056,7 +1036,7 @@ with virtual-to-physical mappings that have been set up.</p>
 </div></blockquote>
 </section>
 <section id="ranges">
-<span id="sect-standard-properties-ranges"></span><h4><span class="section-number">2.3.8. </span>ranges<a class="headerlink" href="#ranges" title="Permalink to this headline">¶</a></h4>
+<span id="sect-standard-properties-ranges"></span><h4><span class="section-number">2.3.8. </span>ranges<a class="headerlink" href="#ranges" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">ranges</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an arbitrary number of
 (<em>child-bus-address</em>, <em>parent-bus-address</em>, <em>length</em>) triplets.</p>
@@ -1120,7 +1100,7 @@ be addressed by a load or store at address 0xe0004600, an offset of
 </div></blockquote>
 </section>
 <section id="dma-ranges">
-<h4><span class="section-number">2.3.9. </span>dma-ranges<a class="headerlink" href="#dma-ranges" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.9. </span>dma-ranges<a class="headerlink" href="#dma-ranges" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">dma-ranges</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an arbitrary number of
 (<em>child-bus-address</em>, <em>parent-bus-address</em>, <em>length</em>) triplets.</p>
@@ -1153,7 +1133,7 @@ property appears).</p></li>
 </div></blockquote>
 </section>
 <section id="dma-coherent">
-<h4><span class="section-number">2.3.10. </span>dma-coherent<a class="headerlink" href="#dma-coherent" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.10. </span>dma-coherent<a class="headerlink" href="#dma-coherent" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">dma-coherent</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p>
 <dl class="simple">
@@ -1164,8 +1144,20 @@ and this property is not applicable.</p>
 </dd>
 </dl>
 </section>
+<section id="dma-noncoherent">
+<h4><span class="section-number">2.3.11. </span>dma-noncoherent<a class="headerlink" href="#dma-noncoherent" title="Permalink to this heading">¶</a></h4>
+<p>Property name: <code class="docutils literal notranslate"><span class="pre">dma-noncoherent</span></code></p>
+<p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p>
+<dl class="simple">
+<dt>Description:</dt><dd><p>For architectures which are by default coherent for I/O, the
+<em>dma-noncoherent</em> property is used to indicate a device is not capable of
+coherent DMA operations. Some architectures have non-coherent DMA by
+default and this property is not applicable.</p>
+</dd>
+</dl>
+</section>
 <section id="name-deprecated">
-<h4><span class="section-number">2.3.11. </span>name (deprecated)<a class="headerlink" href="#name-deprecated" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.12. </span>name (deprecated)<a class="headerlink" href="#name-deprecated" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">name</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p>
 <p>Description:</p>
@@ -1178,7 +1170,7 @@ the node name (see <a class="reference internal" href="#sect-node-names"><span c
 </div></blockquote>
 </section>
 <section id="device-type-deprecated">
-<h4><span class="section-number">2.3.12. </span>device_type (deprecated)<a class="headerlink" href="#device-type-deprecated" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.13. </span>device_type (deprecated)<a class="headerlink" href="#device-type-deprecated" title="Permalink to this heading">¶</a></h4>
 <p>Property name: <code class="docutils literal notranslate"><span class="pre">device_type</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p>
 <p>Description:</p>
@@ -1191,7 +1183,7 @@ and <code class="docutils literal notranslate"><span class="pre">memory</span></
 </section>
 </section>
 <section id="interrupts-and-interrupt-mapping">
-<span id="sect-interrupts"></span><h3><span class="section-number">2.4. </span>Interrupts and Interrupt Mapping<a class="headerlink" href="#interrupts-and-interrupt-mapping" title="Permalink to this headline">¶</a></h3>
+<span id="sect-interrupts"></span><h3><span class="section-number">2.4. </span>Interrupts and Interrupt Mapping<a class="headerlink" href="#interrupts-and-interrupt-mapping" title="Permalink to this heading">¶</a></h3>
 <p>DTSpec adopts the interrupt tree model of representing interrupts
 specified in <em>Open Firmware Recommended Practice: Interrupt Mapping,
 Version 0.9</em> <a class="reference internal" href="index.html#b7" id="id1"><span>[b7]</span></a>. Within the devicetree a logical interrupt tree exists
@@ -1330,9 +1322,9 @@ one at the <code class="docutils literal notranslate"><span class="pre">PCI</spa
 the <code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">controller</span></code>.</p></li>
 </ul>
 <section id="properties-for-interrupt-generating-devices">
-<h4><span class="section-number">2.4.1. </span>Properties for Interrupt Generating Devices<a class="headerlink" href="#properties-for-interrupt-generating-devices" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.4.1. </span>Properties for Interrupt Generating Devices<a class="headerlink" href="#properties-for-interrupt-generating-devices" title="Permalink to this heading">¶</a></h4>
 <section id="interrupts">
-<h5><span class="section-number">2.4.1.1. </span>interrupts<a class="headerlink" href="#interrupts" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.1.1. </span>interrupts<a class="headerlink" href="#interrupts" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupts</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as arbitrary number of
 interrupt specifiers</p>
@@ -1359,7 +1351,7 @@ level/sense encoding of 8.</p>
 </div></blockquote>
 </section>
 <section id="interrupt-parent">
-<h5><span class="section-number">2.4.1.2. </span>interrupt-parent<a class="headerlink" href="#interrupt-parent" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.1.2. </span>interrupt-parent<a class="headerlink" href="#interrupt-parent" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupt-parent</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;phandle&gt;</span></code></p>
 <p>Description:</p>
@@ -1372,7 +1364,7 @@ interrupt parent is assumed to be its devicetree parent.</p>
 </div></blockquote>
 </section>
 <section id="interrupts-extended">
-<h5><span class="section-number">2.4.1.3. </span>interrupts-extended<a class="headerlink" href="#interrupts-extended" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.1.3. </span>interrupts-extended<a class="headerlink" href="#interrupts-extended" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupts-extended</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;phandle&gt;</span> <span class="pre">&lt;prop-encoded-array&gt;</span></code></p>
 <p>Description:</p>
@@ -1404,9 +1396,9 @@ If both <em>interrupts-extended</em> and <em>interrupts</em> are present then
 </section>
 </section>
 <section id="properties-for-interrupt-controllers">
-<h4><span class="section-number">2.4.2. </span>Properties for Interrupt Controllers<a class="headerlink" href="#properties-for-interrupt-controllers" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.4.2. </span>Properties for Interrupt Controllers<a class="headerlink" href="#properties-for-interrupt-controllers" title="Permalink to this heading">¶</a></h4>
 <section id="interrupt-cells">
-<h5><span class="section-number">2.4.2.1. </span>#interrupt-cells<a class="headerlink" href="#interrupt-cells" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.2.1. </span>#interrupt-cells<a class="headerlink" href="#interrupt-cells" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">#interrupt-cells</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -1416,7 +1408,7 @@ encode an interrupt specifier for an interrupt domain.</p>
 </div></blockquote>
 </section>
 <section id="interrupt-controller">
-<h5><span class="section-number">2.4.2.2. </span>interrupt-controller<a class="headerlink" href="#interrupt-controller" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.2.2. </span>interrupt-controller<a class="headerlink" href="#interrupt-controller" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupt-controller</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p>
 <p>Description:</p>
@@ -1427,10 +1419,10 @@ interrupt controller node.</p>
 </section>
 </section>
 <section id="interrupt-nexus-properties">
-<h4><span class="section-number">2.4.3. </span>Interrupt Nexus Properties<a class="headerlink" href="#interrupt-nexus-properties" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.4.3. </span>Interrupt Nexus Properties<a class="headerlink" href="#interrupt-nexus-properties" title="Permalink to this heading">¶</a></h4>
 <p>An interrupt nexus node shall have an <em>#interrupt-cells</em> property.</p>
 <section id="interrupt-map">
-<h5><span class="section-number">2.4.3.1. </span>interrupt-map<a class="headerlink" href="#interrupt-map" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.3.1. </span>interrupt-map<a class="headerlink" href="#interrupt-map" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupt-map</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an arbitrary number of
 interrupt mapping entries.</p>
@@ -1485,7 +1477,7 @@ explicitly defined to be zero.</p>
 </div></blockquote>
 </section>
 <section id="interrupt-map-mask">
-<span id="sect-interrupt-map-mask"></span><h5><span class="section-number">2.4.3.2. </span>interrupt-map-mask<a class="headerlink" href="#interrupt-map-mask" title="Permalink to this headline">¶</a></h5>
+<span id="sect-interrupt-map-mask"></span><h5><span class="section-number">2.4.3.2. </span>interrupt-map-mask<a class="headerlink" href="#interrupt-map-mask" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">interrupt-map-mask</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as a bit mask</p>
 <p>Description:</p>
@@ -1497,7 +1489,7 @@ in the <em>interrupt-map</em> property.</p>
 </div></blockquote>
 </section>
 <section id="id2">
-<h5><span class="section-number">2.4.3.3. </span>#interrupt-cells<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.4.3.3. </span>#interrupt-cells<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">#interrupt-cells</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -1508,7 +1500,7 @@ encode an interrupt specifier for an interrupt domain.</p>
 </section>
 </section>
 <section id="interrupt-mapping-example">
-<h4><span class="section-number">2.4.4. </span>Interrupt Mapping Example<a class="headerlink" href="#interrupt-mapping-example" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.4.4. </span>Interrupt Mapping Example<a class="headerlink" href="#interrupt-mapping-example" title="Permalink to this heading">¶</a></h4>
 <p>The following shows the representation of a fragment of a devicetree with
 a PCI bus controller and a sample interrupt map for describing the
 interrupt routing for two PCI slots (IDSEL 0x11,0x12). The INTA, INTB,
@@ -1623,13 +1615,13 @@ the parent interrupt specifier <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="nexus-nodes-and-specifier-mapping">
-<span id="sect-nexus"></span><h3><span class="section-number">2.5. </span>Nexus Nodes and Specifier Mapping<a class="headerlink" href="#nexus-nodes-and-specifier-mapping" title="Permalink to this headline">¶</a></h3>
+<span id="sect-nexus"></span><h3><span class="section-number">2.5. </span>Nexus Nodes and Specifier Mapping<a class="headerlink" href="#nexus-nodes-and-specifier-mapping" title="Permalink to this heading">¶</a></h3>
 <section id="nexus-node-properties">
-<h4><span class="section-number">2.5.1. </span>Nexus Node Properties<a class="headerlink" href="#nexus-node-properties" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.5.1. </span>Nexus Node Properties<a class="headerlink" href="#nexus-node-properties" title="Permalink to this heading">¶</a></h4>
 <p>A nexus node shall have a <em>#&lt;specifier&gt;-cells</em> property, where &lt;specifier&gt; is
 some specifier space such as ‘gpio’, ‘clock’, ‘reset’, etc.</p>
 <section id="specifier-map">
-<h5><span class="section-number">2.5.1.1. </span>&lt;specifier&gt;-map<a class="headerlink" href="#specifier-map" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.5.1.1. </span>&lt;specifier&gt;-map<a class="headerlink" href="#specifier-map" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">&lt;specifier&gt;-map</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an arbitrary number of
 specifier mapping entries.</p>
@@ -1670,7 +1662,7 @@ unit specifier.</p>
 </div></blockquote>
 </section>
 <section id="specifier-map-mask">
-<span id="sect-specifier-map-mask"></span><h5><span class="section-number">2.5.1.2. </span>&lt;specifier&gt;-map-mask<a class="headerlink" href="#specifier-map-mask" title="Permalink to this headline">¶</a></h5>
+<span id="sect-specifier-map-mask"></span><h5><span class="section-number">2.5.1.2. </span>&lt;specifier&gt;-map-mask<a class="headerlink" href="#specifier-map-mask" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">&lt;specifier&gt;-map-mask</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as a bit mask</p>
 <p>Description:</p>
@@ -1683,7 +1675,7 @@ a mask with all bits set.</p>
 </div></blockquote>
 </section>
 <section id="specifier-map-pass-thru">
-<span id="sect-specifier-map-pass-thru"></span><h5><span class="section-number">2.5.1.3. </span>&lt;specifier&gt;-map-pass-thru<a class="headerlink" href="#specifier-map-pass-thru" title="Permalink to this headline">¶</a></h5>
+<span id="sect-specifier-map-pass-thru"></span><h5><span class="section-number">2.5.1.3. </span>&lt;specifier&gt;-map-pass-thru<a class="headerlink" href="#specifier-map-pass-thru" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">&lt;specifier&gt;-map-pass-thru</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as a bit mask</p>
 <p>Description:</p>
@@ -1697,7 +1689,7 @@ assumed to be a mask with no bits set.</p>
 </div></blockquote>
 </section>
 <section id="specifier-cells">
-<h5><span class="section-number">2.5.1.4. </span>#&lt;specifier&gt;-cells<a class="headerlink" href="#specifier-cells" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.5.1.4. </span>#&lt;specifier&gt;-cells<a class="headerlink" href="#specifier-cells" title="Permalink to this heading">¶</a></h5>
 <p>Property: <code class="docutils literal notranslate"><span class="pre">#&lt;specifier&gt;-cells</span></code></p>
 <p>Value type: <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p>
 <p>Description:</p>
@@ -1708,7 +1700,7 @@ encode a specifier for a domain.</p>
 </section>
 </section>
 <section id="specifier-mapping-example">
-<h4><span class="section-number">2.5.2. </span>Specifier Mapping Example<a class="headerlink" href="#specifier-mapping-example" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.5.2. </span>Specifier Mapping Example<a class="headerlink" href="#specifier-mapping-example" title="Permalink to this heading">¶</a></h4>
 <p>The following shows the representation of a fragment of a devicetree with
 two GPIO controllers and a sample specifier map for describing the
 GPIO routing of a few gpios on both of the controllers through a connector
@@ -1807,9 +1799,9 @@ The child specifier is ANDed with the <em>gpio-map-pass-thru</em> mask, forming
 </section>
 </section>
 <span id="document-chapter3-devicenodes"></span><section id="device-node-requirements">
-<span id="chapter-device-node-requirements"></span><h2><span class="section-number">3. </span>Device Node Requirements<a class="headerlink" href="#device-node-requirements" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-device-node-requirements"></span><h2><span class="section-number">3. </span>Device Node Requirements<a class="headerlink" href="#device-node-requirements" title="Permalink to this heading">¶</a></h2>
 <section id="base-device-node-types">
-<h3><span class="section-number">3.1. </span>Base Device Node Types<a class="headerlink" href="#base-device-node-types" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.1. </span>Base Device Node Types<a class="headerlink" href="#base-device-node-types" title="Permalink to this heading">¶</a></h3>
 <p>The sections that follow specify the requirements for the base set of
 device nodes required in a DTSpec-compliant devicetree.</p>
 <p>All devicetrees shall have a root node and the following nodes shall be
@@ -1820,17 +1812,11 @@ present at the root of all devicetrees:</p>
 </ul>
 </section>
 <section id="root-node">
-<h3><span class="section-number">3.2. </span>Root node<a class="headerlink" href="#root-node" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.2. </span>Root node<a class="headerlink" href="#root-node" title="Permalink to this heading">¶</a></h3>
 <p>The devicetree has a single root node of which all other device nodes
 are descendants. The full path to the root node is <code class="docutils literal notranslate"><span class="pre">/</span></code>.</p>
 <table class="docutils align-default" id="id7">
 <caption><span class="caption-number">Table 3.1 </span><span class="caption-text">Root Node Properties</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 5%" />
-<col style="width: 19%" />
-<col style="width: 55%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -1907,7 +1893,7 @@ of the system. The property value can be one of:</p>
 </div>
 </section>
 <section id="aliases-node">
-<h3><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">/aliases</span></code> node<a class="headerlink" href="#aliases-node" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.3. </span><code class="docutils literal notranslate"><span class="pre">/aliases</span></code> node<a class="headerlink" href="#aliases-node" title="Permalink to this heading">¶</a></h3>
 <p>A devicetree may have an aliases node (<code class="docutils literal notranslate"><span class="pre">/aliases</span></code>) that defines one or
 more alias properties. The alias node shall be at the root of the devicetree
 and have the node name <code class="docutils literal notranslate"><span class="pre">/aliases</span></code>.</p>
@@ -1919,10 +1905,6 @@ a node in the devicetree. For example, the property serial0 =
 the following set of characters.</p>
 <table class="docutils align-default" id="id8">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Valid characters for alias names</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character</p></th>
 <th class="head"><p>Description</p></th>
@@ -1958,7 +1940,7 @@ and determine the alias refers to the device path
 <code class="docutils literal notranslate"><span class="pre">/simple-bus&#64;fe000000/serial&#64;llc500</span></code>.</p>
 </section>
 <section id="memory-node">
-<h3><span class="section-number">3.4. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> node<a class="headerlink" href="#memory-node" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.4. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> node<a class="headerlink" href="#memory-node" title="Permalink to this heading">¶</a></h3>
 <p>A memory device node is required for all devicetrees and describes the
 physical memory layout for the system. If a system has multiple ranges
 of memory, multiple memory nodes can be created, or the ranges can be
@@ -1985,12 +1967,6 @@ memory reservations) as WIMG = 0b001x. That is:</p>
 <p>If the VLE storage attribute is supported, with VLE=0.</p>
 <table class="docutils align-default" id="id9">
 <caption><span class="caption-number">Table 3.3 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/memory</span></code> Node Properties</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 5%" />
-<col style="width: 25%" />
-<col style="width: 48%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2040,13 +2016,13 @@ removed later.</p></td>
 (<a class="reference internal" href="index.html#sect-standard-properties"><span class="std std-numref">Section 2.3</span></a>) are allowed but are optional.</p>
 </div>
 <section id="memory-node-and-uefi">
-<h4><span class="section-number">3.4.1. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> node and UEFI<a class="headerlink" href="#memory-node-and-uefi" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.4.1. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> node and UEFI<a class="headerlink" href="#memory-node-and-uefi" title="Permalink to this heading">¶</a></h4>
 <p>When booting via <a class="reference internal" href="index.html#uefi" id="id1"><span>[UEFI]</span></a>, the system memory map is obtained via the
 GetMemoryMap() UEFI boot time service as defined in <a class="reference internal" href="index.html#uefi" id="id2"><span>[UEFI]</span></a> § 7.2,
 and if present, the OS must ignore any <code class="docutils literal notranslate"><span class="pre">/memory</span></code> nodes.</p>
 </section>
 <section id="memory-examples">
-<h4><span class="section-number">3.4.2. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> Examples<a class="headerlink" href="#memory-examples" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.4.2. </span><code class="docutils literal notranslate"><span class="pre">/memory</span></code> Examples<a class="headerlink" href="#memory-examples" title="Permalink to this heading">¶</a></h4>
 <p>Given a 64-bit Power system with the following physical memory layout:</p>
 <ul class="simple">
 <li><p>RAM: starting address 0x0, length 0x80000000 (2 GB)</p></li>
@@ -2081,7 +2057,7 @@ address and length for the <code class="docutils literal notranslate"><span clas
 </section>
 </section>
 <section id="reserved-memory-node">
-<h3><span class="section-number">3.5. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> Node<a class="headerlink" href="#reserved-memory-node" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.5. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> Node<a class="headerlink" href="#reserved-memory-node" title="Permalink to this heading">¶</a></h3>
 <p>Reserved memory is specified as a node under the <code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> node.
 The operating system shall exclude reserved memory from normal usage.
 One can create child nodes describing particular reserved (excluded from
@@ -2091,15 +2067,9 @@ device drivers.</p>
 <p>Parameters for each memory region can be encoded into the device tree
 with the following nodes:</p>
 <section id="reserved-memory-parent-node">
-<h4><span class="section-number">3.5.1. </span>/reserved-memory parent node<a class="headerlink" href="#reserved-memory-parent-node" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.5.1. </span>/reserved-memory parent node<a class="headerlink" href="#reserved-memory-parent-node" title="Permalink to this heading">¶</a></h4>
 <table class="docutils align-default" id="id10">
 <caption><span class="caption-number">Table 3.4 </span><span class="caption-text">/reserved-memory Parent Node Properties</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 21%" />
-<col style="width: 6%" />
-<col style="width: 19%" />
-<col style="width: 54%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2139,7 +2109,7 @@ ranges).</p></td>
 and <code class="docutils literal notranslate"><span class="pre">ranges</span></code> should be empty so that address translation logic works correctly.</p>
 </section>
 <section id="reserved-memory-child-nodes">
-<h4><span class="section-number">3.5.2. </span>/reserved-memory/ child nodes<a class="headerlink" href="#reserved-memory-child-nodes" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.5.2. </span>/reserved-memory/ child nodes<a class="headerlink" href="#reserved-memory-child-nodes" title="Permalink to this heading">¶</a></h4>
 <p>Each child of the reserved-memory node specifies one or more regions of
 reserved memory. Each child node may either use a <code class="docutils literal notranslate"><span class="pre">reg</span></code> property to
 specify a specific range of reserved memory, or a <code class="docutils literal notranslate"><span class="pre">size</span></code> property with
@@ -2157,12 +2127,6 @@ static allocation with the <code class="docutils literal notranslate"><span clas
 is ignored.</p>
 <table class="docutils align-default" id="id11">
 <caption><span class="caption-number">Table 3.5 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/reserved-memory/</span></code> Child Node Properties</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 5%" />
-<col style="width: 25%" />
-<col style="width: 48%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2259,17 +2223,11 @@ region for the default pool of the consistent DMA allocator.</p></li>
 </ul>
 </section>
 <section id="device-node-references-to-reserved-memory">
-<h4><span class="section-number">3.5.3. </span>Device node references to reserved memory<a class="headerlink" href="#device-node-references-to-reserved-memory" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.5.3. </span>Device node references to reserved memory<a class="headerlink" href="#device-node-references-to-reserved-memory" title="Permalink to this heading">¶</a></h4>
 <p>Regions in the <code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> node may be referenced by other device
 nodes by adding a <code class="docutils literal notranslate"><span class="pre">memory-region</span></code> property to the device node.</p>
 <table class="docutils align-default" id="id12">
 <caption><span class="caption-number">Table 3.6 </span><span class="caption-text">Properties for referencing reserved-memory regions</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 5%" />
-<col style="width: 25%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2296,7 +2254,7 @@ entry in the <code class="docutils literal notranslate"><span class="pre">memory
 </table>
 </section>
 <section id="reserved-memory-and-uefi">
-<span id="sect-reserved-memory-uefi"></span><h4><span class="section-number">3.5.4. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> and UEFI<a class="headerlink" href="#reserved-memory-and-uefi" title="Permalink to this headline">¶</a></h4>
+<span id="sect-reserved-memory-uefi"></span><h4><span class="section-number">3.5.4. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> and UEFI<a class="headerlink" href="#reserved-memory-and-uefi" title="Permalink to this heading">¶</a></h4>
 <p>When booting via <a class="reference internal" href="index.html#uefi" id="id3"><span>[UEFI]</span></a>, static <code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> regions must
 also be listed in the system memory map obtained via the GetMemoryMap()
 UEFI boot time service as defined in <a class="reference internal" href="index.html#uefi" id="id4"><span>[UEFI]</span></a> § 7.2.
@@ -2309,7 +2267,7 @@ All other reserved regions must be listed with type <code class="docutils litera
 because they are allocated by the OS after exiting firmware boot services.</p>
 </section>
 <section id="reserved-memory-example">
-<h4><span class="section-number">3.5.5. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> Example<a class="headerlink" href="#reserved-memory-example" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.5.5. </span><code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> Example<a class="headerlink" href="#reserved-memory-example" title="Permalink to this heading">¶</a></h4>
 <p>This example defines 3 contiguous regions are defined for Linux kernel:
 one default of all device drivers (named <code class="docutils literal notranslate"><span class="pre">linux,cma</span></code> and 64MiB in size),
 one dedicated to the framebuffer device (named <code class="docutils literal notranslate"><span class="pre">framebuffer&#64;78000000</span></code>, 8MiB), and
@@ -2368,18 +2326,12 @@ one for multimedia processing (named <code class="docutils literal notranslate">
 </section>
 </section>
 <section id="chosen-node">
-<h3><span class="section-number">3.6. </span><code class="docutils literal notranslate"><span class="pre">/chosen</span></code> Node<a class="headerlink" href="#chosen-node" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.6. </span><code class="docutils literal notranslate"><span class="pre">/chosen</span></code> Node<a class="headerlink" href="#chosen-node" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">/chosen</span></code> node does not represent a real device in the system but
 describes parameters chosen or specified by the system firmware at run
 time. It shall be a child of the root node.</p>
 <table class="docutils align-default" id="id13">
 <caption><span class="caption-number">Table 3.7 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/chosen</span></code> Node Properties</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 5%" />
-<col style="width: 22%" />
-<col style="width: 49%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2439,18 +2391,12 @@ For compatibility, a client program might want to support
 and use of the two properties is identical.</p>
 </section>
 <section id="cpus-node-properties">
-<h3><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">/cpus</span></code> Node Properties<a class="headerlink" href="#cpus-node-properties" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">/cpus</span></code> Node Properties<a class="headerlink" href="#cpus-node-properties" title="Permalink to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">/cpus</span></code> node is required for all devicetrees. It does not represent a
 real device in the system, but acts as a container for child <code class="docutils literal notranslate"><span class="pre">cpu</span></code> nodes
 which represent the systems CPUs.</p>
 <table class="docutils align-default" id="id14">
 <caption><span class="caption-number">Table 3.8 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpus</span></code> Node Properties</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 5%" />
-<col style="width: 22%" />
-<col style="width: 49%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2487,7 +2433,7 @@ See <a class="reference internal" href="#sect-cpus-cpu-node-properties"><span cl
 <p>For an example, see <a class="reference internal" href="#sect-cpu-node-example"><span class="std std-numref">Section 3.8.4</span></a>.</p>
 </section>
 <section id="cpus-cpu-node-properties">
-<span id="sect-cpus-cpu-node-properties"></span><h3><span class="section-number">3.8. </span><code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> Node Properties<a class="headerlink" href="#cpus-cpu-node-properties" title="Permalink to this headline">¶</a></h3>
+<span id="sect-cpus-cpu-node-properties"></span><h3><span class="section-number">3.8. </span><code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> Node Properties<a class="headerlink" href="#cpus-cpu-node-properties" title="Permalink to this heading">¶</a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">cpu</span></code> node represents a hardware execution block that is sufficiently
 independent that it is capable of running an operating system without
 interfering with other CPUs possibly running other operating systems.</p>
@@ -2505,18 +2451,12 @@ at the parent <code class="docutils literal notranslate"><span class="pre">/cpus
 of properties which are identical across all CPUs.</p>
 <p>The node name for every CPU node should be <code class="docutils literal notranslate"><span class="pre">cpu</span></code>.</p>
 <section id="general-properties-of-cpus-cpu-nodes">
-<h4><span class="section-number">3.8.1. </span>General Properties of <code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> nodes<a class="headerlink" href="#general-properties-of-cpus-cpu-nodes" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.8.1. </span>General Properties of <code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> nodes<a class="headerlink" href="#general-properties-of-cpus-cpu-nodes" title="Permalink to this heading">¶</a></h4>
 <p>The following table describes the general properties of <code class="docutils literal notranslate"><span class="pre">cpu</span></code> nodes. Some
 of the properties described in <a class="reference internal" href="#table-cpu-node-props"><span class="std std-numref">Table 3.9</span></a> are select
 standard properties with specific applicable detail.</p>
 <span id="table-cpu-node-props"></span><table class="longtable docutils align-default" id="id15">
 <caption><span class="caption-number">Table 3.9 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> Node General Properties</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 5%" />
-<col style="width: 19%" />
-<col style="width: 53%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2709,12 +2649,6 @@ releases a secondary CPU from its spin loop.</p></td>
 </div>
 <table class="longtable docutils align-default" id="id16">
 <caption><span class="caption-number">Table 3.10 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpus/cpu*</span></code> Node Power ISA Properties</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 5%" />
-<col style="width: 14%" />
-<col style="width: 52%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2825,17 +2759,11 @@ represent the frequency of a bus on the bus node using a clock-frequency
 property.</p>
 </section>
 <section id="tlb-properties">
-<h4><span class="section-number">3.8.2. </span>TLB Properties<a class="headerlink" href="#tlb-properties" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.8.2. </span>TLB Properties<a class="headerlink" href="#tlb-properties" title="Permalink to this heading">¶</a></h4>
 <p>The following properties of a cpu node describe the translate look-aside
 buffer in the processor’s MMU.</p>
 <table class="docutils align-default" id="id17">
 <caption><span class="caption-number">Table 3.11 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpu/cpu*</span></code> Node Power ISA TLB Properties</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 6%" />
-<col style="width: 14%" />
-<col style="width: 63%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -2907,17 +2835,11 @@ split TLB configuration.</p></td>
 </div>
 </section>
 <section id="internal-l1-cache-properties">
-<h4><span class="section-number">3.8.3. </span>Internal (L1) Cache Properties<a class="headerlink" href="#internal-l1-cache-properties" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.8.3. </span>Internal (L1) Cache Properties<a class="headerlink" href="#internal-l1-cache-properties" title="Permalink to this heading">¶</a></h4>
 <p>The following properties of a cpu node describe the processor’s internal
 (L1) cache.</p>
 <table class="docutils align-default" id="id18">
 <caption><span class="caption-number">Table 3.12 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpu/cpu*</span></code> Node Power ISA Cache Properties</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 5%" />
-<col style="width: 13%" />
-<col style="width: 60%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -3045,7 +2967,7 @@ if a next-level-cache property is not present.
 The meaning and use of the two properties is identical.</p>
 </section>
 <section id="example">
-<span id="sect-cpu-node-example"></span><h4><span class="section-number">3.8.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<span id="sect-cpu-node-example"></span><h4><span class="section-number">3.8.4. </span>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h4>
 <p>Here is an example of a <code class="docutils literal notranslate"><span class="pre">/cpus</span></code> node with one child cpu node:</p>
 <div class="highlight-dts notranslate"><div class="highlight"><pre><span></span><span class="nc">cpus</span> <span class="p">{</span>
     <span class="nf">#address-cells</span> <span class="o">=</span> <span class="p">&lt;</span><span class="mi">1</span><span class="p">&gt;;</span>
@@ -3066,7 +2988,7 @@ The meaning and use of the two properties is identical.</p>
 </section>
 </section>
 <section id="multi-level-and-shared-cache-nodes-cpus-cpu-l-cache">
-<h3><span class="section-number">3.9. </span>Multi-level and Shared Cache Nodes (<code class="docutils literal notranslate"><span class="pre">/cpus/cpu*/l?-cache</span></code>)<a class="headerlink" href="#multi-level-and-shared-cache-nodes-cpus-cpu-l-cache" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.9. </span>Multi-level and Shared Cache Nodes (<code class="docutils literal notranslate"><span class="pre">/cpus/cpu*/l?-cache</span></code>)<a class="headerlink" href="#multi-level-and-shared-cache-nodes-cpus-cpu-l-cache" title="Permalink to this heading">¶</a></h3>
 <p>Processors and systems may implement additional levels of cache hierarchy.
 For example, second-level (L2) or third-level (L3) caches.
 These caches can potentially be tightly integrated to the CPU or
@@ -3083,12 +3005,6 @@ appropriate location in the devicetree.</p>
 Table 3-9. The L1 cache properties are described in Table 3-8.</p>
 <table class="docutils align-default" id="id19">
 <caption><span class="caption-number">Table 3.13 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">/cpu/cpu*/l?-cache</span></code> Node Power ISA Multiple-level and Shared Cache Properties</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 6%" />
-<col style="width: 15%" />
-<col style="width: 60%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -3119,7 +3035,7 @@ For example, a level 2 cache has a value of 2.</p></td>
 (<a class="reference internal" href="index.html#sect-standard-properties"><span class="std std-numref">Section 2.3</span></a>) are allowed but are optional.</p>
 </div>
 <section id="id6">
-<h4><span class="section-number">3.9.1. </span>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">3.9.1. </span>Example<a class="headerlink" href="#id6" title="Permalink to this heading">¶</a></h4>
 <p>See the following example of a devicetree representation of two CPUs,
 each with their own on-chip L2 and a shared L3.</p>
 <div class="highlight-dts notranslate"><div class="highlight"><pre><span></span><span class="nc">cpus</span> <span class="p">{</span>
@@ -3181,7 +3097,7 @@ each with their own on-chip L2 and a shared L3.</p>
 </section>
 </section>
 <span id="document-chapter4-device-bindings"></span><section id="device-bindings">
-<span id="chapter-device-bindings"></span><h2><span class="section-number">4. </span>Device Bindings<a class="headerlink" href="#device-bindings" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-device-bindings"></span><h2><span class="section-number">4. </span>Device Bindings<a class="headerlink" href="#device-bindings" title="Permalink to this heading">¶</a></h2>
 <p>This chapter contains requirements, known as bindings, for how specific
 types and classes of devices are represented in the devicetree. The
 compatible property of a device node describes the specific binding (or
@@ -3192,9 +3108,9 @@ this case, the compatible property would contain several strings
 identifying each binding—from the most specific to the most general (see
 <a class="reference internal" href="index.html#sect-standard-properties-compatible"><span class="std std-numref">Section 2.3.1</span></a>, compatible).</p>
 <section id="binding-guidelines">
-<h3><span class="section-number">4.1. </span>Binding Guidelines<a class="headerlink" href="#binding-guidelines" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.1. </span>Binding Guidelines<a class="headerlink" href="#binding-guidelines" title="Permalink to this heading">¶</a></h3>
 <section id="general-principles">
-<h4><span class="section-number">4.1.1. </span>General Principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.1.1. </span>General Principles<a class="headerlink" href="#general-principles" title="Permalink to this heading">¶</a></h4>
 <p>When creating a new devicetree representation for a device, a binding
 should be created that fully describes the required properties and value
 of the device. This set of properties shall be sufficiently descriptive
@@ -3222,18 +3138,14 @@ the creator of the binding.</p>
 </ol>
 </section>
 <section id="miscellaneous-properties">
-<span id="sect-misc-properties"></span><h4><span class="section-number">4.1.2. </span>Miscellaneous Properties<a class="headerlink" href="#miscellaneous-properties" title="Permalink to this headline">¶</a></h4>
+<span id="sect-misc-properties"></span><h4><span class="section-number">4.1.2. </span>Miscellaneous Properties<a class="headerlink" href="#miscellaneous-properties" title="Permalink to this heading">¶</a></h4>
 <p>This section defines a list of helpful properties that might be
 applicable to many types of devices and device classes. They are defined
 here to facilitate standardization of names and usage.</p>
 <section id="clock-frequency-property">
-<h5><span class="section-number">4.1.2.1. </span><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code> Property<a class="headerlink" href="#clock-frequency-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.1.2.1. </span><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code> Property<a class="headerlink" href="#clock-frequency-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 4.1 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code> Property</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code></p></th>
@@ -3256,13 +3168,9 @@ frequency</p>
 </table>
 </section>
 <section id="reg-shift-property">
-<h5><span class="section-number">4.1.2.2. </span><code class="docutils literal notranslate"><span class="pre">reg-shift</span></code> Property<a class="headerlink" href="#reg-shift-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.1.2.2. </span><code class="docutils literal notranslate"><span class="pre">reg-shift</span></code> Property<a class="headerlink" href="#reg-shift-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id4">
 <caption><span class="caption-number">Table 4.2 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">reg-shift</span></code> Property</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">reg-shift</span></code></p></th>
@@ -3290,13 +3198,9 @@ property would be used to specify register locations.</p>
 </table>
 </section>
 <section id="label-property">
-<h5><span class="section-number">4.1.2.3. </span><code class="docutils literal notranslate"><span class="pre">label</span></code> Property<a class="headerlink" href="#label-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.1.2.3. </span><code class="docutils literal notranslate"><span class="pre">label</span></code> Property<a class="headerlink" href="#label-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id5">
 <caption><span class="caption-number">Table 4.3 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">label</span></code> Property</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></th>
@@ -3317,9 +3221,9 @@ meaning of the property for that device.</p></td>
 </section>
 </section>
 <section id="serial-devices">
-<h3><span class="section-number">4.2. </span>Serial devices<a class="headerlink" href="#serial-devices" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2. </span>Serial devices<a class="headerlink" href="#serial-devices" title="Permalink to this heading">¶</a></h3>
 <section id="serial-class-binding">
-<h4><span class="section-number">4.2.1. </span>Serial Class Binding<a class="headerlink" href="#serial-class-binding" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.2.1. </span>Serial Class Binding<a class="headerlink" href="#serial-class-binding" title="Permalink to this heading">¶</a></h4>
 <p>The class of serial devices consists of various types of point to point
 serial line devices. Examples of serial line devices include the 8250
 UART, 16550 UART, HDLC device, and BISYNC device. In most cases hardware
@@ -3328,13 +3232,9 @@ compatible with the RS-232 standard fit into the serial device class.</p>
 be represented as serial port devices because they have their own
 specific representation.</p>
 <section id="id1">
-<h5><span class="section-number">4.2.1.1. </span><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code> Property<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.2.1.1. </span><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code> Property<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id6">
 <caption><span class="caption-number">Table 4.4 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">clock-frequecy</span></code> Property</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">clock-frequency</span></code></p></th>
@@ -3355,13 +3255,9 @@ input clock.</p></td>
 </table>
 </section>
 <section id="current-speed-property">
-<h5><span class="section-number">4.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">current-speed</span></code> Property<a class="headerlink" href="#current-speed-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.2.1.2. </span><code class="docutils literal notranslate"><span class="pre">current-speed</span></code> Property<a class="headerlink" href="#current-speed-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id7">
 <caption><span class="caption-number">Table 4.5 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">current-speed</span></code> Property</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">current-speed</span></code></p></th>
@@ -3384,18 +3280,12 @@ initialized the serial device.</p></td>
 </section>
 </section>
 <section id="national-semiconductor-16450-16550-compatible-uart-requirements">
-<h4><span class="section-number">4.2.2. </span>National Semiconductor 16450/16550 Compatible UART Requirements<a class="headerlink" href="#national-semiconductor-16450-16550-compatible-uart-requirements" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.2.2. </span>National Semiconductor 16450/16550 Compatible UART Requirements<a class="headerlink" href="#national-semiconductor-16450-16550-compatible-uart-requirements" title="Permalink to this heading">¶</a></h4>
 <p>Serial devices compatible to the National Semiconductor 16450/16550 UART
 (Universal Asynchronous Receiver Transmitter) should be represented in
 the devicetree using following properties.</p>
 <table class="docutils align-default" id="id8">
 <caption><span class="caption-number">Table 4.6 </span><span class="caption-text">ns16550 UART Properties</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 5%" />
-<col style="width: 21%" />
-<col style="width: 51%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -3473,22 +3363,18 @@ device node is the system’s console.</p></td>
 </section>
 </section>
 <section id="network-devices">
-<h3><span class="section-number">4.3. </span>Network devices<a class="headerlink" href="#network-devices" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3. </span>Network devices<a class="headerlink" href="#network-devices" title="Permalink to this heading">¶</a></h3>
 <p>Network devices are packet oriented communication devices. Devices in
 this class are assumed to implement the data link layer (layer 2) of the
 seven-layer OSI model and use Media Access Control (MAC) addresses.
 Examples of network devices include Ethernet, FDDI, 802.11, and
 Token-Ring.</p>
 <section id="network-class-binding">
-<h4><span class="section-number">4.3.1. </span>Network Class Binding<a class="headerlink" href="#network-class-binding" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.3.1. </span>Network Class Binding<a class="headerlink" href="#network-class-binding" title="Permalink to this heading">¶</a></h4>
 <section id="address-bits-property">
-<h5><span class="section-number">4.3.1.1. </span><code class="docutils literal notranslate"><span class="pre">address-bits</span></code> Property<a class="headerlink" href="#address-bits-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.1.1. </span><code class="docutils literal notranslate"><span class="pre">address-bits</span></code> Property<a class="headerlink" href="#address-bits-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id9">
 <caption><span class="caption-number">Table 4.7 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">address-bits</span></code> Property</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">address-bits</span></code></p></th>
@@ -3510,13 +3396,9 @@ of bits in MAC address. If unspecified, the default value is 48.</p></td>
 </table>
 </section>
 <section id="local-mac-address-property">
-<h5><span class="section-number">4.3.1.2. </span><code class="docutils literal notranslate"><span class="pre">local-mac-address</span></code> Property<a class="headerlink" href="#local-mac-address-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.1.2. </span><code class="docutils literal notranslate"><span class="pre">local-mac-address</span></code> Property<a class="headerlink" href="#local-mac-address-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id10">
 <caption><span class="caption-number">Table 4.8 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">local-mac-address</span></code> Property</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">local-mac-address</span></code></p></th>
@@ -3537,13 +3419,9 @@ described by the node containing this property.</p></td>
 </table>
 </section>
 <section id="mac-address-property">
-<h5><span class="section-number">4.3.1.3. </span><code class="docutils literal notranslate"><span class="pre">mac-address</span></code> Property<a class="headerlink" href="#mac-address-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.1.3. </span><code class="docutils literal notranslate"><span class="pre">mac-address</span></code> Property<a class="headerlink" href="#mac-address-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id11">
 <caption><span class="caption-number">Table 4.9 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mac-address</span></code> Property</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">mac-address</span></code></p></th>
@@ -3568,13 +3446,9 @@ local-mac-address property value.</p></td>
 </table>
 </section>
 <section id="max-frame-size-property">
-<h5><span class="section-number">4.3.1.4. </span><code class="docutils literal notranslate"><span class="pre">max-frame-size</span></code> Property<a class="headerlink" href="#max-frame-size-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.1.4. </span><code class="docutils literal notranslate"><span class="pre">max-frame-size</span></code> Property<a class="headerlink" href="#max-frame-size-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id12">
 <caption><span class="caption-number">Table 4.10 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">max-frame-size</span></code> Property</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">max-frame-size</span></code></p></th>
@@ -3596,7 +3470,7 @@ interface can send and receive.</p></td>
 </section>
 </section>
 <section id="ethernet-specific-considerations">
-<h4><span class="section-number">4.3.2. </span>Ethernet specific considerations<a class="headerlink" href="#ethernet-specific-considerations" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">4.3.2. </span>Ethernet specific considerations<a class="headerlink" href="#ethernet-specific-considerations" title="Permalink to this heading">¶</a></h4>
 <p>Network devices based on the IEEE 802.3 collections of LAN standards
 (collectively referred to as Ethernet) may be represented in the devicetree
 using following properties, in addition to properties specified of
@@ -3604,13 +3478,9 @@ the network device class.</p>
 <p>The properties listed in this section augment the properties listed in
 the network device class.</p>
 <section id="max-speed-property">
-<h5><span class="section-number">4.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">max-speed</span></code> Property<a class="headerlink" href="#max-speed-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">max-speed</span></code> Property<a class="headerlink" href="#max-speed-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id13">
 <caption><span class="caption-number">Table 4.11 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">max-speed</span></code> Property</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">max-speed</span></code></p></th>
@@ -3631,13 +3501,9 @@ supported the device.</p></td>
 </table>
 </section>
 <section id="phy-connection-type-property">
-<h5><span class="section-number">4.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">phy-connection-type</span></code> Property<a class="headerlink" href="#phy-connection-type-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">phy-connection-type</span></code> Property<a class="headerlink" href="#phy-connection-type-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id14">
 <caption><span class="caption-number">Table 4.12 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">phy-connection-type</span></code> Property</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">phy-connection-type</span></code></p></th>
@@ -3661,10 +3527,6 @@ specific to the implementation.</p>
 </table>
 <table class="docutils align-default" id="id15">
 <caption><span class="caption-number">Table 4.13 </span><span class="caption-text">Defined values for the <code class="docutils literal notranslate"><span class="pre">phy-connection-type</span></code> Property</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 78%" />
-<col style="width: 22%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Connection type</p></th>
 <th class="head"><p>Value</p></th>
@@ -3723,13 +3585,9 @@ specific to the implementation.</p>
 </table>
 </section>
 <section id="phy-handle-property">
-<h5><span class="section-number">4.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">phy-handle</span></code> Property<a class="headerlink" href="#phy-handle-property" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">4.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">phy-handle</span></code> Property<a class="headerlink" href="#phy-handle-property" title="Permalink to this heading">¶</a></h5>
 <table class="docutils align-default" id="id16">
 <caption><span class="caption-number">Table 4.14 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">phy-handle</span></code> Property</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 15%" />
-<col style="width: 85%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
 <th class="head"><p><code class="docutils literal notranslate"><span class="pre">phy-handle</span></code></p></th>
@@ -3754,7 +3612,7 @@ physical layer device.</p></td>
 </section>
 </section>
 <section id="power-isa-open-pic-interrupt-controllers">
-<h3><span class="section-number">4.4. </span>Power ISA Open PIC Interrupt Controllers<a class="headerlink" href="#power-isa-open-pic-interrupt-controllers" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.4. </span>Power ISA Open PIC Interrupt Controllers<a class="headerlink" href="#power-isa-open-pic-interrupt-controllers" title="Permalink to this heading">¶</a></h3>
 <p>This section specifies the requirements for representing Open PIC
 compatible interrupt controllers. An Open PIC interrupt controller
 implements the Open PIC architecture (developed jointly by AMD and
@@ -3775,12 +3633,6 @@ specifiers:</p>
 </div></blockquote>
 <table class="docutils align-default" id="id17">
 <caption><span class="caption-number">Table 4.15 </span><span class="caption-text">Open-PIC properties</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 5%" />
-<col style="width: 21%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -3828,19 +3680,13 @@ the parent bus</p></td>
 </div>
 </section>
 <section id="simple-bus-compatible-value">
-<span id="sect-bindings-simple-bus"></span><h3><span class="section-number">4.5. </span><code class="docutils literal notranslate"><span class="pre">simple-bus</span></code> Compatible Value<a class="headerlink" href="#simple-bus-compatible-value" title="Permalink to this headline">¶</a></h3>
+<span id="sect-bindings-simple-bus"></span><h3><span class="section-number">4.5. </span><code class="docutils literal notranslate"><span class="pre">simple-bus</span></code> Compatible Value<a class="headerlink" href="#simple-bus-compatible-value" title="Permalink to this heading">¶</a></h3>
 <p>System-on-a-chip processors may have an internal I/O bus that cannot be
 probed for devices. The devices on the bus can be accessed directly
 without additional configuration required. This type of bus is
 represented as a node with a compatible value of “simple-bus”.</p>
 <table class="docutils align-default" id="id18">
 <caption><span class="caption-number">Table 4.16 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">simple-bus</span></code> Compatible Node Properties</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 5%" />
-<col style="width: 22%" />
-<col style="width: 48%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Property Name</p></th>
 <th class="head"><p>Usage</p></th>
@@ -3877,7 +3723,7 @@ non-posted mapping mode) for MMIO ranges.</p></td>
 </section>
 </section>
 <span id="document-chapter5-flattened-format"></span><section id="flattened-devicetree-dtb-format">
-<span id="chapter-fdt-structure"></span><h2><span class="section-number">5. </span>Flattened Devicetree (DTB) Format<a class="headerlink" href="#flattened-devicetree-dtb-format" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-fdt-structure"></span><h2><span class="section-number">5. </span>Flattened Devicetree (DTB) Format<a class="headerlink" href="#flattened-devicetree-dtb-format" title="Permalink to this heading">¶</a></h2>
 <p>The Devicetree Blob (DTB) format is a flat binary encoding of devicetree data.
 It used to exchange devicetree data between software programs.
 For example, when booting an operating system, firmware will pass a DTB to the OS kernel.</p>
@@ -3923,7 +3769,7 @@ node [ shape=&quot;Mrecord&quot; width=&quot;2.5&quot; ]
 might be required to satisfy the alignment constraints of the individual
 blocks (see <a class="reference internal" href="#sect-fdt-alignment"><span class="std std-numref">Section 5.6</span></a>).</p>
 <section id="versioning">
-<span id="sect-fdt-versioning"></span><h3><span class="section-number">5.1. </span>Versioning<a class="headerlink" href="#versioning" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-versioning"></span><h3><span class="section-number">5.1. </span>Versioning<a class="headerlink" href="#versioning" title="Permalink to this heading">¶</a></h3>
 <p>Several versions of the flattened devicetree structure have been defined since
 the original definition of the format. Fields in the header give the version,
 so that the client program can determine if the devicetree is encoded in a
@@ -3940,7 +3786,7 @@ tree, not its content.</p>
 </div>
 </section>
 <section id="header">
-<span id="sect-fdt-header"></span><h3><span class="section-number">5.2. </span>Header<a class="headerlink" href="#header" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-header"></span><h3><span class="section-number">5.2. </span>Header<a class="headerlink" href="#header" title="Permalink to this heading">¶</a></h3>
 <p>The layout of the header for the devicetree is defined by the following
 C structure. All the header fields are 32-bit integers, stored in
 big-endian format.</p>
@@ -4007,9 +3853,9 @@ section of the devicetree blob.</p>
 </dl>
 </section>
 <section id="memory-reservation-block">
-<span id="sect-fdt-memory-reservation-block"></span><h3><span class="section-number">5.3. </span>Memory Reservation Block<a class="headerlink" href="#memory-reservation-block" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-memory-reservation-block"></span><h3><span class="section-number">5.3. </span>Memory Reservation Block<a class="headerlink" href="#memory-reservation-block" title="Permalink to this heading">¶</a></h3>
 <section id="purpose">
-<h4><span class="section-number">5.3.1. </span>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.3.1. </span>Purpose<a class="headerlink" href="#purpose" title="Permalink to this heading">¶</a></h4>
 <p>The <em>memory reservation block</em> provides the client program with a list
 of areas in physical memory which are <em>reserved</em>; that is, which shall
 not be used for general memory allocations. It is used to protect vital
@@ -4054,7 +3900,7 @@ accesses to reserved memory as Write Through Required where conflicting
 values for this storage attribute are architecturally permissible.</p>
 </section>
 <section id="format">
-<h4><span class="section-number">5.3.2. </span>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.3.2. </span>Format<a class="headerlink" href="#format" title="Permalink to this heading">¶</a></h4>
 <p>The memory reservation block consists of a list of pairs of 64-bit
 big-endian integers, each pair being represented by the following C
 structure.</p>
@@ -4075,7 +3921,7 @@ offset from the beginning of the devicetree blob (see
 <a class="reference internal" href="#sect-fdt-alignment"><span class="std std-numref">Section 5.6</span></a>).</p>
 </section>
 <section id="memory-reservation-block-and-uefi">
-<h4><span class="section-number">5.3.3. </span>Memory Reservation Block and UEFI<a class="headerlink" href="#memory-reservation-block-and-uefi" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.3.3. </span>Memory Reservation Block and UEFI<a class="headerlink" href="#memory-reservation-block-and-uefi" title="Permalink to this heading">¶</a></h4>
 <p>As with the <code class="docutils literal notranslate"><span class="pre">/reserved-memory</span></code> node (<a class="reference internal" href="index.html#sect-reserved-memory-uefi"><span class="std std-numref">Section 3.5.4</span></a>),
 when booting via <a class="reference internal" href="index.html#uefi" id="id1"><span>[UEFI]</span></a> entries in the Memory Reservation Block must also be
 listed in the system memory map obtained via the GetMemoryMap() to protect against
@@ -4085,7 +3931,7 @@ The memory reservation block entries should be listed with type
 </section>
 </section>
 <section id="structure-block">
-<span id="sect-fdt-structure-block"></span><h3><span class="section-number">5.4. </span>Structure Block<a class="headerlink" href="#structure-block" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-structure-block"></span><h3><span class="section-number">5.4. </span>Structure Block<a class="headerlink" href="#structure-block" title="Permalink to this heading">¶</a></h3>
 <p>The structure block describes the structure and contents of the devicetree
 itself. It is composed of a sequence of tokens with data, as described below.
 These are organized into a linear tree structure, as described below.</p>
@@ -4093,7 +3939,7 @@ These are organized into a linear tree structure, as described below.</p>
 shall be located at a 4-byte aligned offset from the beginning of the
 devicetree blob (see <a class="reference internal" href="#sect-fdt-alignment"><span class="std std-numref">Section 5.6</span></a>).</p>
 <section id="lexical-structure">
-<span id="sect-fdt-lexical-structure"></span><h4><span class="section-number">5.4.1. </span>Lexical structure<a class="headerlink" href="#lexical-structure" title="Permalink to this headline">¶</a></h4>
+<span id="sect-fdt-lexical-structure"></span><h4><span class="section-number">5.4.1. </span>Lexical structure<a class="headerlink" href="#lexical-structure" title="Permalink to this heading">¶</a></h4>
 <p>The structure block is composed of a sequence of pieces, each beginning
 with a token, that is, a big-endian 32-bit integer. Some tokens are
 followed by extra data, the format of which is determined by the token
@@ -4154,7 +4000,7 @@ tree blob header.</p>
 </dl>
 </section>
 <section id="tree-structure">
-<h4><span class="section-number">5.4.2. </span>Tree structure<a class="headerlink" href="#tree-structure" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">5.4.2. </span>Tree structure<a class="headerlink" href="#tree-structure" title="Permalink to this heading">¶</a></h4>
 <p>The devicetree structure is represented as a linear tree: the
 representation of each node begins with an FDT_BEGIN_NODE token and
 ends with an FDT_END_NODE token. The node’s properties and subnodes
@@ -4204,7 +4050,7 @@ this requirement.</p>
 </section>
 </section>
 <section id="strings-block">
-<span id="sect-fdt-strings-block"></span><h3><span class="section-number">5.5. </span>Strings Block<a class="headerlink" href="#strings-block" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-strings-block"></span><h3><span class="section-number">5.5. </span>Strings Block<a class="headerlink" href="#strings-block" title="Permalink to this heading">¶</a></h3>
 <p>The strings block contains strings representing all the property names
 used in the tree. These null terminated strings are simply concatenated
 together in this section, and referred to from the structure block by an
@@ -4213,7 +4059,7 @@ offset into the strings block.</p>
 offset from the beginning of the devicetree blob.</p>
 </section>
 <section id="alignment">
-<span id="sect-fdt-alignment"></span><h3><span class="section-number">5.6. </span>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h3>
+<span id="sect-fdt-alignment"></span><h3><span class="section-number">5.6. </span>Alignment<a class="headerlink" href="#alignment" title="Permalink to this heading">¶</a></h3>
 <p>The devicetree blob shall be located at an 8-byte-aligned address. To maintain
 backwards compatibilty for 32-bit machines, 4-byte alignment is supported by
 some software, but this is not DTSpec-compliant.</p>
@@ -4237,7 +4083,7 @@ another 8-byte aligned address.</p>
 </section>
 </section>
 <span id="document-chapter6-source-language"></span><section id="devicetree-source-dts-format-version-1">
-<span id="chapter-devicetree-source-format"></span><h2><span class="section-number">6. </span>Devicetree Source (DTS) Format (version 1)<a class="headerlink" href="#devicetree-source-dts-format-version-1" title="Permalink to this headline">¶</a></h2>
+<span id="chapter-devicetree-source-format"></span><h2><span class="section-number">6. </span>Devicetree Source (DTS) Format (version 1)<a class="headerlink" href="#devicetree-source-dts-format-version-1" title="Permalink to this heading">¶</a></h2>
 <p>The Devicetree Source (DTS) format is a textual representation of a
 devicetree in a form that can be processed by dtc into a binary
 devicetree in the form expected by the kernel. The following description is
@@ -4245,7 +4091,7 @@ not a formal syntax definition of DTS, but describes the basic
 constructs used to represent devicetrees.</p>
 <p>The name of DTS files should end with “.dts”.</p>
 <section id="compiler-directives">
-<h3><span class="section-number">6.1. </span>Compiler directives<a class="headerlink" href="#compiler-directives" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.1. </span>Compiler directives<a class="headerlink" href="#compiler-directives" title="Permalink to this heading">¶</a></h3>
 <p>Other source files can be included from a DTS file.  The name of include
 files should end with “.dtsi”.  Included files can in turn include
 additional files.</p>
@@ -4254,7 +4100,7 @@ additional files.</p>
 </div>
 </section>
 <section id="labels">
-<h3><span class="section-number">6.2. </span>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.2. </span>Labels<a class="headerlink" href="#labels" title="Permalink to this heading">¶</a></h3>
 <p>The source format allows labels to be attached to any node or property value in the devicetree.
 Phandle and path references can be automatically generated by referencing a label instead of
 explicitly specifying a phandle value or the full path to a node.
@@ -4266,10 +4112,6 @@ and must not start with a number.</p>
 References are created by prefixing the label name with an ampersand (’&amp;’).</p>
 <span id="label-characters"></span><table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Valid characters for DTS labels</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 64%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character</p></th>
 <th class="head"><p>Description</p></th>
@@ -4292,7 +4134,7 @@ References are created by prefixing the label name with an ampersand (’&amp;�
 </table>
 </section>
 <section id="node-and-property-definitions">
-<h3><span class="section-number">6.3. </span>Node and property definitions<a class="headerlink" href="#node-and-property-definitions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.3. </span>Node and property definitions<a class="headerlink" href="#node-and-property-definitions" title="Permalink to this heading">¶</a></h3>
 <p>Devicetree nodes are defined with a node name and unit address with
 braces marking the start and end of the node definition. They may be
 preceded by a label.</p>
@@ -4441,7 +4283,7 @@ str = start: &quot;string value&quot; end: ;
 </div>
 </section>
 <section id="file-layout">
-<h3><span class="section-number">6.4. </span>File layout<a class="headerlink" href="#file-layout" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.4. </span>File layout<a class="headerlink" href="#file-layout" title="Permalink to this heading">¶</a></h3>
 <p><strong>Version 1 DTS files have the overall layout:</strong></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/dts-v1/;
 [memory reservations]
@@ -4470,43 +4312,50 @@ all the device tree data is contained within it.</p>
 <p>C style (<code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">...</span> <span class="pre">\*/</span></code>) and C++ style (<code class="docutils literal notranslate"><span class="pre">//</span></code>) comments are supported.</p>
 </section>
 </section>
-<span id="document-references"></span><dl class="citation">
-<dt class="label" id="ieee1275"><span class="brackets">IEEE1275</span></dt>
-<dd><p><em>Boot (Initialization Configuration) Firmware: Core Requirements
+<span id="document-references"></span><div role="list" class="citation-list">
+<div class="citation" id="ieee1275" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IEEE1275<span class="fn-bracket">]</span></span>
+<p><em>Boot (Initialization Configuration) Firmware: Core Requirements
 and Practices</em>, 1994, This is the core standard (also known as IEEE
 1275) that defines the devicetree concept adopted by the DTSpec and
 ePAPR. It is available from Global Engineering (<a class="reference external" href="http://global.ihs.com/">http://global.ihs.com/</a>).</p>
-</dd>
-<dt class="label" id="b7"><span class="brackets">b7</span></dt>
-<dd><p><em>Open Firmware Recommended Practice: Interrupt Mapping</em>, Version
+</div>
+<div class="citation" id="b7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>b7<span class="fn-bracket">]</span></span>
+<p><em>Open Firmware Recommended Practice: Interrupt Mapping</em>, Version
 0.9, Open Firmware Working Group, 1996
 (<a class="reference external" href="http://devicetree.org/open-firmware/practice/imap/imap0_9d.pdf">http://devicetree.org/open-firmware/practice/imap/imap0_9d.pdf</a>)</p>
-</dd>
-<dt class="label" id="chrp"><span class="brackets">CHRP</span></dt>
-<dd><p><em>PowerPC Microprocessor Common Hardware Reference Platform
+</div>
+<div class="citation" id="chrp" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CHRP<span class="fn-bracket">]</span></span>
+<p><em>PowerPC Microprocessor Common Hardware Reference Platform
 (CHRP) Binding</em>, Version 1.8, Open Firmware Working Group, 1998
 (<a class="reference external" href="http://devicetree.org/open-firmware/bindings/chrp/chrp1_8a.ps">http://devicetree.org/open-firmware/bindings/chrp/chrp1_8a.ps</a>). This
 document specifies the properties for Open PIC-compatible interrupt
 controllers.</p>
-</dd>
-<dt class="label" id="papr"><span class="brackets">PAPR</span></dt>
-<dd><p><em>Power.org Standard for Power Architecture Platform
+</div>
+<div class="citation" id="papr" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PAPR<span class="fn-bracket">]</span></span>
+<p><em>Power.org Standard for Power Architecture Platform
 Requirements</em>, power.org</p>
-</dd>
-<dt class="label" id="b18"><span class="brackets">b18</span></dt>
-<dd><p><em>The Open Programmable Interrupt Controller (PIC) Register
+</div>
+<div class="citation" id="b18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>b18<span class="fn-bracket">]</span></span>
+<p><em>The Open Programmable Interrupt Controller (PIC) Register
 Interface Specification Revision 1.2</em>, AMD and Cyrix, October 1995</p>
-</dd>
-<dt class="label" id="epapr"><span class="brackets">EPAPR</span></dt>
-<dd><p><em>Power.org Standard for Embedded Power Architecture
+</div>
+<div class="citation" id="epapr" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>EPAPR<span class="fn-bracket">]</span></span>
+<p><em>Power.org Standard for Embedded Power Architecture
 Platform Requirements</em>, power.org, 2011,
 <a class="reference external" href="https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/">https://www.power.org/documentation/power-org-standard-for-embedded-power-architecture-platform-requirements-epapr-v1-1-2/</a></p>
-</dd>
-<dt class="label" id="uefi"><span class="brackets">UEFI</span></dt>
-<dd><p><a class="reference external" href="https://uefi.org/sites/default/files/resources/UEFI_Spec_2_8_A_Feb14.pdf">Unified Extensable Firmware Interface Specification v2.8 Errata A</a>,
+</div>
+<div class="citation" id="uefi" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UEFI<span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://uefi.org/sites/default/files/resources/UEFI_Spec_2_8_A_Feb14.pdf">Unified Extensable Firmware Interface Specification v2.8 Errata A</a>,
 February 2020, <a class="reference external" href="http://www.uefi.org">UEFI Forum</a></p>
-</dd>
-</dl>
+</div>
+</div>
 </div>
 </section>
 
@@ -4561,7 +4410,7 @@ February 2020, <a class="reference external" href="http://www.uefi.org">UEFI For
       &copy;2016,2017, devicetree.org.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
