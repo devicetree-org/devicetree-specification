@@ -26,13 +26,24 @@ devices in a system. Each node has property/value pairs that describe
 the characteristics of the device being represented. Each node has
 exactly one parent except for the root node, which has no parent.
 
-A |spec|-compliant devicetree describes device information in a system
-that cannot necessarily be dynamically detected by a client program. For
-example, the architecture of PCI enables a client to probe and detect
-attached devices, and thus devicetree nodes describing PCI devices
-might not be required. However, a device node is required to describe a
-PCI host bridge device in the system if it cannot be detected by
-probing.
+A device in this context may be an actual hardware device, such as a UART. It
+may be part of a hardware device, such as the random-number generator in a TPM.
+It may also be a device provided through virtualisation, such as a protocol
+providing access to an I2C device attached to a remote CPU. A device may include
+functions implemented by firmware running in higher privilege levels or remote
+processors. There is no requirement that nodes in a device tree be a physical
+hardware device, but generally they have some correlation to physical hardware
+devices. Nodes should not be designed for OS- or project- specific purposes.
+They should describe something which can be implemented by any OS or project.
+
+A devicetree is often used to describe devices which cannot necessarily be
+dynamically detected by a client program. For example, the architecture of PCI
+enables a client to probe and detect attached devices and thus devicetree nodes
+describing PCI devices might not be required. However, a device node is often
+used to describe a PCI host bridge device in the system. This node is required if
+the bridge cannot be detected by probing, but is otherwise optional. Also, a
+bootloader may do PCI probing and produce a device tree containing the results
+of its scan, for passing to the Operating System.
 
 **Example**
 
