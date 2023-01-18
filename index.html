@@ -4,18 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Devicetree Specification v0.4-rc1-5-g639f3e9 documentation</title>
+    <title>Devicetree Specification v0.4-rc1-6-g75b0399 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <link rel="shortcut icon" href="_static/devicetree-favicon.png"/>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="icon" href="_static/devicetree-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -35,7 +33,7 @@
           <div class="body" role="main">
             
   <section id="spec-fullname-specversion">
-<h1>Devicetree Specification v0.4-rc1-5-g639f3e9<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this heading">¶</a></h1>
+<h1>Devicetree Specification v0.4-rc1-6-g75b0399<a class="headerlink" href="#spec-fullname-specversion" title="Permalink to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-license"></span><p><strong>Copyright</strong></p>
 <div class="line-block">
@@ -330,13 +328,23 @@ certain device types or classes of devices.
 devices in a system. Each node has property/value pairs that describe
 the characteristics of the device being represented. Each node has
 exactly one parent except for the root node, which has no parent.</p>
-<p>A DTSpec-compliant devicetree describes device information in a system
-that cannot necessarily be dynamically detected by a client program. For
-example, the architecture of PCI enables a client to probe and detect
-attached devices, and thus devicetree nodes describing PCI devices
-might not be required. However, a device node is required to describe a
-PCI host bridge device in the system if it cannot be detected by
-probing.</p>
+<p>A device in this context may be an actual hardware device, such as a UART. It
+may be part of a hardware device, such as the random-number generator in a TPM.
+It may also be a device provided through virtualisation, such as a protocol
+providing access to an I2C device attached to a remote CPU. A device may include
+functions implemented by firmware running in higher privilege levels or remote
+processors. There is no requirement that nodes in a device tree be a physical
+hardware device, but generally they have some correlation to physical hardware
+devices. Nodes should not be designed for OS- or project- specific purposes.
+They should describe something which can be implemented by any OS or project.</p>
+<p>A devicetree is often used to describe devices which cannot necessarily be
+dynamically detected by a client program. For example, the architecture of PCI
+enables a client to probe and detect attached devices and thus devicetree nodes
+describing PCI devices might not be required. However, a device node is often
+used to describe a PCI host bridge device in the system. This node is required if
+the bridge cannot be detected by probing, but is otherwise optional. Also, a
+bootloader may do PCI probing and produce a device tree containing the results
+of its scan, for passing to the Operating System.</p>
 <p><strong>Example</strong></p>
 <p><a class="reference internal" href="#example-simple-devicetree"><span class="std std-numref">Fig. 2.1</span></a> shows an example representation of a
 simple devicetree that is nearly
@@ -3791,17 +3799,17 @@ tree, not its content.</p>
 C structure. All the header fields are 32-bit integers, stored in
 big-endian format.</p>
 <p><strong>Flattened Devicetree Header Fields</strong></p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">fdt_header</span> <span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">magic</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">totalsize</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">off_dt_struct</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">off_dt_strings</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">off_mem_rsvmap</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">version</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">last_comp_version</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">boot_cpuid_phys</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">size_dt_strings</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">size_dt_struct</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">fdt_header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">magic</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">totalsize</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">off_dt_struct</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">off_dt_strings</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">off_mem_rsvmap</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">version</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">last_comp_version</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">boot_cpuid_phys</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size_dt_strings</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">size_dt_struct</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -3904,9 +3912,9 @@ values for this storage attribute are architecturally permissible.</p>
 <p>The memory reservation block consists of a list of pairs of 64-bit
 big-endian integers, each pair being represented by the following C
 structure.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">fdt_reserve_entry</span> <span class="p">{</span>
-    <span class="kt">uint64_t</span> <span class="n">address</span><span class="p">;</span>
-    <span class="kt">uint64_t</span> <span class="n">size</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">fdt_reserve_entry</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">address</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">size</span><span class="p">;</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -3964,9 +3972,9 @@ next token, which may be any token except FDT_PROP.</p>
 property in the devicetree. It shall be followed by extra data
 describing the property. This data consists first of the property’s
 length and name represented as the following C structure:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="p">{</span>
-    <span class="kt">uint32_t</span> <span class="n">len</span><span class="p">;</span>
-    <span class="kt">uint32_t</span> <span class="n">nameoff</span><span class="p">;</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">len</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nameoff</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -4410,8 +4418,8 @@ February 2020, <a class="reference external" href="http://www.uefi.org">UEFI For
       &copy;2016,2017, devicetree.org.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 
