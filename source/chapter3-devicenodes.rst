@@ -592,16 +592,16 @@ standard properties with specific applicable detail.
                                                    controller number space, the CPUs binding may
                                                    define a binding-specific representation of
                                                    PIR values if desired.
-   ``clock-frequency``    | R   | array            Specifies the current clock speed of the CPU
-                                                   in Hertz. The value is a ``<prop-encoded-array>``
-                                                   in one of two forms:
+   ``clock-frequency``    | O   | array            Specifies the clock speed of the CPU in Hertz,
+                                                   if that is constant. The value is a
+                                                   ``<prop-encoded-array>`` in one of two forms:
 
                                                    * A 32-bit integer consisting of one ``<u32>``
                                                      specifying the frequency.
                                                    * A 64-bit integer represented as a ``<u64>``
                                                      specifying the frequency.
 
-   ``timebase-frequency`` | R   | array            Specifies the current frequency at which the
+   ``timebase-frequency`` | O   | array            Specifies the current frequency at which the
                                                    timebase and decrementer registers are updated
                                                    (in Hertz). The value is a
                                                    <prop-encoded-array> in one of two forms:
