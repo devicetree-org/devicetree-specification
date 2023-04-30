@@ -295,6 +295,7 @@ name should be one of the following choices:
    * usb
    * usb-hub
    * usb-phy
+   * vibrator
    * video-codec
    * vme
    * watchdog
