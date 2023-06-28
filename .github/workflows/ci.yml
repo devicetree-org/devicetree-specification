@@ -27,11 +27,11 @@ jobs:
         pip3 install --user typing
         pip3 install --user Sphinx
         pip3 install --user codespell
+        git fetch --tags --force # Needed to make git-describe work
 
     - name: build pdf
       run: |
         make latexpdf
-        git fetch --tags --force # Needed to make git-describe work
         mv build/latex/devicetree-specification.pdf build/latex/devicetree-specification-$(git describe).pdf
     - name: build html
       run: make html
