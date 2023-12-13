@@ -292,6 +292,7 @@ name should be one of the following choices:
    * timer
    * touchscreen
    * tpm
+   * ufshc
    * usb
    * usb-hub
    * usb-phy
