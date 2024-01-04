@@ -81,7 +81,7 @@ specifies the alias name. The property value specifies the full path to
 a node in the devicetree. For example, the property serial0 =
 ``"/simple-bus@fe000000/serial@llc500"`` defines the alias ``serial0``.
 
-Alias names shall be a lowercase text strings of 1 to 31 characters from
+Alias names shall be lowercase text strings of 1 to 31 characters from
 the following set of characters.
 
 .. tabularcolumns:: | c p{8cm} |
@@ -582,7 +582,7 @@ standard properties with specific applicable detail.
                                                    If a CPU/thread cannot be the target of an
                                                    external interrupt, then *reg* must be unique
                                                    and out of bounds of the range addressed by
-                                                   the interrupt controller
+                                                   the interrupt controller.
 
                                                    If a CPU/thread's PIR (pending interrupt register)
                                                    is modifiable, a client
@@ -811,12 +811,12 @@ The following properties of a cpu node describe the processor’s internal
                                                (combined instructions and data).
    ``cache-sets``          SD    ``<u32>``     Specifies the number of associativity sets in
                                                a unified cache. Required if the cache is
-                                               unified (combined instructions and data)
+                                               unified (combined instructions and data).
    ``cache-block-size``    SD    ``<u32>``     Specifies the block size in bytes of a unified
                                                cache. Required if the processor has a unified
-                                               cache (combined instructions and data)
+                                               cache (combined instructions and data).
    ``cache-line-size``     SD    ``<u32>``     Specifies the line size in bytes of a unified
-                                               cache, if different than the cache block size
+                                               cache, if different than the cache block size.
                                                Required if the processor has a unified cache
                                                (combined instructions and data).
    ``i-cache-size``        SD    ``<u32>``     Specifies the size in bytes of the instruction

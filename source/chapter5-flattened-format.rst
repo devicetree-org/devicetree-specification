@@ -6,7 +6,7 @@ Flattened Devicetree (DTB) Format
 ==================================
 
 The Devicetree Blob (DTB) format is a flat binary encoding of devicetree data.
-It used to exchange devicetree data between software programs.
+It is used to exchange devicetree data between software programs.
 For example, when booting an operating system, firmware will pass a DTB to the OS kernel.
 
 .. note::
@@ -60,10 +60,10 @@ the original definition of the format. Fields in the header give the version,
 so that the client program can determine if the devicetree is encoded in a
 compatible format.
 
-This document describes only version 17 of the format. |spec| compliant boot
+This document describes only version 17 of the format. |spec|-compliant boot
 programs shall provide a devicetree of version 17 or later, and should provide
 a devicetree of a version that is backwards compatible with version 16.
-|spec| compliant client programs shall accept devicetrees of any version
+|spec|-compliant client programs shall accept devicetrees of any version
 backwards compatible with version 17 and may accept other versions as well.
 
 .. note:: The version is with respect to the binary structure of the device
@@ -408,7 +408,7 @@ shall have aligned offsets from the beginning of the devicetree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
 ensure that the devicetree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
-boundary. A |spec| compliant boot
+boundary. A |spec|-compliant boot
 program shall load the devicetree blob at such an aligned address
 before passing it to the client program. If an |spec| client program
 relocates the devicetree blob in memory, it should only do so to
