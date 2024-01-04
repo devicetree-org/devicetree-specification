@@ -50,7 +50,7 @@ of its scan, for passing to the Operating System.
 :numref:`example-simple-devicetree` shows an example representation of a
 simple devicetree that is nearly
 complete enough to boot a simple operating system, with the platform
-type, CPU, memory and a single UART described. Device nodes are shown
+type, CPU, memory, and a single UART described. Device nodes are shown
 with properties and values inside each node.
 
 .. _example-simple-devicetree:
@@ -488,7 +488,7 @@ Description:
    The *compatible* property value consists of one or more strings that
    define the specific programming model for the device. This list of
    strings should be used by a client program for device driver selection.
-   The property value consists of a concatenated list of null terminated
+   The property value consists of a concatenated list of null-terminated
    strings, from most specific to most general. They allow a device to
    express its compatibility with a family of similar devices, potentially
    allowing a single device driver to match against several devices.
@@ -498,7 +498,7 @@ Description:
    (such as a stock ticker symbol), and ``model`` specifies the model
    number.
 
-   The compatible string should consist only of lowercase letters, digits and
+   The compatible string should consist only of lowercase letters, digits, and
    dashes, and should start with a letter. A single comma is typically only
    used following a vendor prefix. Underscores should not be used.
 
