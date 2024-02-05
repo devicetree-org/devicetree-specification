@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Devicetree Specification v0.4-1-gbbb6c79 documentation</title>
+    <title>Devicetree Specification v0.4-2-g2697c66 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
@@ -33,7 +33,7 @@
           <div class="body" role="main">
             
   <section id="spec-fullname-specversion">
-<h1>Devicetree Specification v0.4-1-gbbb6c79<a class="headerlink" href="#spec-fullname-specversion" title="Link to this heading">¶</a></h1>
+<h1>Devicetree Specification v0.4-2-g2697c66<a class="headerlink" href="#spec-fullname-specversion" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-license"></span><p><strong>Copyright</strong></p>
 <div class="line-block">
@@ -349,7 +349,7 @@ of its scan, for passing to the Operating System.</p>
 <p><a class="reference internal" href="#example-simple-devicetree"><span class="std std-numref">Fig. 2.1</span></a> shows an example representation of a
 simple devicetree that is nearly
 complete enough to boot a simple operating system, with the platform
-type, CPU, memory and a single UART described. Device nodes are shown
+type, CPU, memory, and a single UART described. Device nodes are shown
 with properties and values inside each node.</p>
 <figure class="align-default" id="id3">
 <span id="example-simple-devicetree"></span><div class="graphviz"><img src="_images/graphviz-35a890ffd6980138a1cc70fd4c59165758a11113.png" alt="digraph tree {
@@ -824,7 +824,7 @@ of specific devices and may also specify additional requirements.</p>
 <div><p>The <em>compatible</em> property value consists of one or more strings that
 define the specific programming model for the device. This list of
 strings should be used by a client program for device driver selection.
-The property value consists of a concatenated list of null terminated
+The property value consists of a concatenated list of null-terminated
 strings, from most specific to most general. They allow a device to
 express its compatibility with a family of similar devices, potentially
 allowing a single device driver to match against several devices.</p>
@@ -832,7 +832,7 @@ allowing a single device driver to match against several devices.</p>
 <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> is a string describing the name of the manufacturer
 (such as a stock ticker symbol), and <code class="docutils literal notranslate"><span class="pre">model</span></code> specifies the model
 number.</p>
-<p>The compatible string should consist only of lowercase letters, digits and
+<p>The compatible string should consist only of lowercase letters, digits, and
 dashes, and should start with a letter. A single comma is typically only
 used following a vendor prefix. Underscores should not be used.</p>
 </div></blockquote>
@@ -1911,7 +1911,7 @@ and have the node name <code class="docutils literal notranslate"><span class="p
 specifies the alias name. The property value specifies the full path to
 a node in the devicetree. For example, the property serial0 =
 <code class="docutils literal notranslate"><span class="pre">&quot;/simple-bus&#64;fe000000/serial&#64;llc500&quot;</span></code> defines the alias <code class="docutils literal notranslate"><span class="pre">serial0</span></code>.</p>
-<p>Alias names shall be a lowercase text strings of 1 to 31 characters from
+<p>Alias names shall be lowercase text strings of 1 to 31 characters from
 the following set of characters.</p>
 <table class="docutils align-default" id="id8">
 <caption><span class="caption-number">Table 3.2 </span><span class="caption-text">Valid characters for alias names</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
@@ -2507,7 +2507,7 @@ addressable by the interrupt controller.</p>
 <p>If a CPU/thread cannot be the target of an
 external interrupt, then <em>reg</em> must be unique
 and out of bounds of the range addressed by
-the interrupt controller</p>
+the interrupt controller.</p>
 <p>If a CPU/thread’s PIR (pending interrupt register)
 is modifiable, a client
 program should modify PIR to match the <em>reg</em>
@@ -2878,20 +2878,20 @@ cache. Required if the cache is unified
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p></td>
 <td><p>Specifies the number of associativity sets in
 a unified cache. Required if the cache is
-unified (combined instructions and data)</p></td>
+unified (combined instructions and data).</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cache-block-size</span></code></p></td>
 <td><p>SD</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p></td>
 <td><p>Specifies the block size in bytes of a unified
 cache. Required if the processor has a unified
-cache (combined instructions and data)</p></td>
+cache (combined instructions and data).</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cache-line-size</span></code></p></td>
 <td><p>SD</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p></td>
 <td><p>Specifies the line size in bytes of a unified
-cache, if different than the cache block size
+cache, if different than the cache block size.
 Required if the processor has a unified cache
 (combined instructions and data).</p></td>
 </tr>
@@ -3112,7 +3112,7 @@ each with their own on-chip L2 and a shared L3.</p>
 types and classes of devices are represented in the devicetree. The
 compatible property of a device node describes the specific binding (or
 bindings) to which the node complies.</p>
-<p>Bindings may be defined as extensions of other each. For example a new
+<p>Bindings may be defined as extensions of each other. For example, a new
 bus type could be defined as an extension of the simple-bus binding. In
 this case, the compatible property would contain several strings
 identifying each binding—from the most specific to the most general (see
@@ -3169,9 +3169,9 @@ here to facilitate standardization of names and usage.</p>
 <td><p>Specifies the frequency of a clock in Hz. The value is a
 <code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> in one of two forms:</p>
 <p>a 32-bit integer consisting of one <code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code> specifying the
-frequency</p>
+frequency.</p>
 <p>a 64-bit integer represented as a <code class="docutils literal notranslate"><span class="pre">&lt;u64&gt;</span></code> specifying the
-frequency</p>
+frequency.</p>
 </td>
 </tr>
 </tbody>
@@ -3221,7 +3221,7 @@ property would be used to specify register locations.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Description</p></td>
-<td><p>The label property defines a human readable string describing
+<td><p>The label property defines a human-readable string describing
 a device. The binding for a given device specifies the exact
 meaning of the property for that device.</p></td>
 </tr>
@@ -3234,10 +3234,10 @@ meaning of the property for that device.</p></td>
 <h3><span class="section-number">4.2. </span>Serial devices<a class="headerlink" href="#serial-devices" title="Link to this heading">¶</a></h3>
 <section id="serial-class-binding">
 <h4><span class="section-number">4.2.1. </span>Serial Class Binding<a class="headerlink" href="#serial-class-binding" title="Link to this heading">¶</a></h4>
-<p>The class of serial devices consists of various types of point to point
+<p>The class of serial devices consists of various types of point-to-point
 serial line devices. Examples of serial line devices include the 8250
-UART, 16550 UART, HDLC device, and BISYNC device. In most cases hardware
-compatible with the RS-232 standard fit into the serial device class.</p>
+UART, 16550 UART, HDLC device, and BISYNC device. In most cases, hardware
+compatible with the RS-232 standard fits into the serial device class.</p>
 <p>I<sup>2</sup>C and SPI (Serial Peripheral Interface) devices shall not
 be represented as serial port devices because they have their own
 specific representation.</p>
@@ -3313,13 +3313,13 @@ the devicetree using following properties.</p>
 <td><p>R</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p></td>
 <td><p>Specifies the frequency (in Hz) of the baud
-rate generator’s input clock</p></td>
+rate generator’s input clock.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">current-speed</span></code></p></td>
 <td><p>OR</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;u32&gt;</span></code></p></td>
 <td><p>Specifies current serial device speed in bits
-per second</p></td>
+per second.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reg</span></code></p></td>
 <td><p>R</p></td>
@@ -3327,7 +3327,7 @@ per second</p></td>
 <span class="pre">array&gt;</span></code></p></td>
 <td><p>Specifies the physical address of the
 registers device within the address space of
-the parent bus</p></td>
+the parent bus.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interrupts</span></code></p></td>
 <td><p>OR</p></td>
@@ -3416,7 +3416,7 @@ of bits in MAC address. If unspecified, the default value is 48.</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Value type</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an array of hex numbers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an array of hex numbers.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Description</p></td>
 <td><p>Specifies MAC address that was assigned to the network device
@@ -3439,7 +3439,7 @@ described by the node containing this property.</p></td>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Value type</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an array of hex numbers</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;prop-encoded-array&gt;</span></code> encoded as an array of hex numbers.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Description</p></td>
 <td><p>Specifies the MAC address that was last used by the boot
@@ -3610,8 +3610,8 @@ specific to the implementation.</p>
 <tr class="row-odd"><td><p>Description</p></td>
 <td><p>Specifies a reference to a node representing a physical layer
 (PHY) device connected to this Ethernet device. This property
-is required in case where the Ethernet device is connected a
-physical layer device.</p></td>
+is required in case where the Ethernet device is connected to
+a physical layer device.</p></td>
 </tr>
 <tr class="row-even"><td><p>Example</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">phy-handle</span> <span class="pre">=</span> <span class="pre">&lt;&amp;PHY0&gt;;</span></code></p></td>
@@ -3654,7 +3654,7 @@ specifiers:</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">compatible</span></code></p></td>
 <td><p>R</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p></td>
-<td><p>Value shall include <code class="docutils literal notranslate"><span class="pre">&quot;open-pic&quot;</span></code></p></td>
+<td><p>Value shall include <code class="docutils literal notranslate"><span class="pre">&quot;open-pic&quot;</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reg</span></code></p></td>
 <td><p>R</p></td>
@@ -3662,12 +3662,12 @@ specifiers:</p>
 <span class="pre">array&gt;</span></code></p></td>
 <td><p>Specifies the physical address of the
 registers device within the address space of
-the parent bus</p></td>
+the parent bus.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">interrupt-controller</span></code></p></td>
 <td><p>R</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;empty&gt;</span></code></p></td>
-<td><p>Specifies that this node is an interrupt controller</p></td>
+<td><p>Specifies that this node is an interrupt controller.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">#interrupt-cells</span></code></p></td>
 <td><p>R</p></td>
@@ -3735,7 +3735,7 @@ non-posted mapping mode) for MMIO ranges.</p></td>
 <span id="document-chapter5-flattened-format"></span><section id="flattened-devicetree-dtb-format">
 <span id="chapter-fdt-structure"></span><h2><span class="section-number">5. </span>Flattened Devicetree (DTB) Format<a class="headerlink" href="#flattened-devicetree-dtb-format" title="Link to this heading">¶</a></h2>
 <p>The Devicetree Blob (DTB) format is a flat binary encoding of devicetree data.
-It used to exchange devicetree data between software programs.
+It is used to exchange devicetree data between software programs.
 For example, when booting an operating system, firmware will pass a DTB to the OS kernel.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3784,10 +3784,10 @@ blocks (see <a class="reference internal" href="#sect-fdt-alignment"><span class
 the original definition of the format. Fields in the header give the version,
 so that the client program can determine if the devicetree is encoded in a
 compatible format.</p>
-<p>This document describes only version 17 of the format. DTSpec compliant boot
+<p>This document describes only version 17 of the format. DTSpec-compliant boot
 programs shall provide a devicetree of version 17 or later, and should provide
 a devicetree of a version that is backwards compatible with version 16.
-DTSpec compliant client programs shall accept devicetrees of any version
+DTSpec-compliant client programs shall accept devicetrees of any version
 backwards compatible with version 17 and may accept other versions as well.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -4085,7 +4085,7 @@ shall have aligned offsets from the beginning of the devicetree blob.
 To ensure the in-memory alignment of the blocks, it is sufficient to
 ensure that the devicetree as a whole is loaded at an address aligned
 to the largest alignment of any of the subblocks, that is, to an 8-byte
-boundary. A DTSpec compliant boot
+boundary. A DTSpec-compliant boot
 program shall load the devicetree blob at such an aligned address
 before passing it to the client program. If an DTSpec client program
 relocates the devicetree blob in memory, it should only do so to
