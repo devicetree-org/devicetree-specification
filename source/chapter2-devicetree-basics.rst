@@ -1251,29 +1251,31 @@ interrupt controller.
       #address-cells = <1>;
       #size-cells = <1>;
 
-      open-pic {
+      open_pic: interrupt-controller@13370000 {
+         reg = <0x13370000 0x100>;
          clock-frequency = <0>;
          interrupt-controller;
          #address-cells = <0>;
          #interrupt-cells = <2>;
       };
 
-      pci {
+      pci: pci@47110000 {
+         reg = <0x47110000 0x100>;
          #interrupt-cells = <1>;
          #size-cells = <2>;
          #address-cells = <3>;
          interrupt-map-mask = <0xf800 0 0 7>;
          interrupt-map = <
             /* IDSEL 0x11 - PCI slot 1 */
-            0x8800 0 0 1 &open-pic 2 1 /* INTA */
-            0x8800 0 0 2 &open-pic 3 1 /* INTB */
-            0x8800 0 0 3 &open-pic 4 1 /* INTC */
-            0x8800 0 0 4 &open-pic 1 1 /* INTD */
+            0x8800 0 0 1 &open_pic 2 1 /* INTA */
+            0x8800 0 0 2 &open_pic 3 1 /* INTB */
+            0x8800 0 0 3 &open_pic 4 1 /* INTC */
+            0x8800 0 0 4 &open_pic 1 1 /* INTD */
             /* IDSEL 0x12 - PCI slot 2 */
-            0x9000 0 0 1 &open-pic 3 1 /* INTA */
-            0x9000 0 0 2 &open-pic 4 1 /* INTB */
-            0x9000 0 0 3 &open-pic 1 1 /* INTC */
-            0x9000 0 0 4 &open-pic 2 1 /* INTD */
+            0x9000 0 0 1 &open_pic 3 1 /* INTA */
+            0x9000 0 0 2 &open_pic 4 1 /* INTB */
+            0x9000 0 0 3 &open_pic 1 1 /* INTC */
+            0x9000 0 0 4 &open_pic 2 1 /* INTD */
          >;
       };
    };
