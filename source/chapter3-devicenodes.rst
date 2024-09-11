@@ -63,6 +63,7 @@ are descendants. The full path to the root node is ``/``.
                                                * ``"handset"``
                                                * ``"watch"``
                                                * ``"embedded"``
+                                               * ``"television"``
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
