@@ -64,6 +64,7 @@ are descendants. The full path to the root node is ``/``.
                                                * ``"watch"``
                                                * ``"embedded"``
                                                * ``"television"``
+                                               * ``"spectacles"``
    Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition
    ===========================================================================================
 
