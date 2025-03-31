@@ -221,6 +221,7 @@ name should be one of the following choices:
    * crypto
    * disk
    * display
+   * display-controller
    * dma-controller
    * dsi
    * dsp
