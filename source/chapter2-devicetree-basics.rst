@@ -575,10 +575,10 @@ Example:
    if a ``phandle`` property is not present. The meaning and use of the two
    properties is identical.
 
-.. note:: Most devicetrees in :abbr:`DTS (Device Tree Syntax)` (see Appendix A) will not
-   contain explicit phandle properties. The DTC tool automatically inserts
-   the ``phandle`` properties when the DTS is compiled into the binary DTB
-   format.
+.. note:: Most devicetrees in :abbr:`DTS (Device Tree Syntax)` (see
+   :numref:`Chapter %s <chapter-devicetree-source-format>`) will not contain
+   explicit phandle properties. The DTC tool automatically inserts the
+   ``phandle`` properties when the DTS is compiled into the binary DTB format.
 
 status
 ~~~~~~
