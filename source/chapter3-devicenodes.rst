@@ -457,6 +457,23 @@ time. It shall be a child of the root node.
                                                        the client program. The value could
                                                        potentially be a null string if no boot
                                                        arguments are required.
+   ``bootsource``          O     ``<string>``          A string that specifies the full path to the
+                                                       node representing the device the BootROM used
+                                                       to load the initial boot program.
+                                                       If the initial boot program is split into
+                                                       multiple stages, this represents the storage
+                                                       medium or device (e.g. used by fastboot) from
+                                                       which the very first stage was loaded by the
+                                                       BootROM.
+                                                       It may differ from the device from which later
+                                                       stages of the boot program or client program
+                                                       are loaded from, as this property isn't meant
+                                                       to represent those devices.
+                                                       A later stage of the boot program, or the
+                                                       client program, may use this information to
+                                                       favor the device in this property over others
+                                                       for loading later stages, or know the storage
+                                                       medium to flash an update to.
    ``stdout-path``         O     ``<string>``          A string that specifies the full path to the
                                                        node representing the device to be used for
                                                        boot console output. If the character ":" is
