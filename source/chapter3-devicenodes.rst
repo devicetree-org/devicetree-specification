@@ -59,6 +59,7 @@ are descendants. The full path to the root node is ``/``.
                                                * ``"laptop"``
                                                * ``"convertible"``
                                                * ``"server"``
+                                               * ``"all-in-one"``
                                                * ``"tablet"``
                                                * ``"handset"``
                                                * ``"watch"``
