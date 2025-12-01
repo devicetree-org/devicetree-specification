@@ -5,14 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Devicetree Specification v0.4-9-gba20321 documentation</title>
+    <title>Devicetree Specification v0.4-10-g27db084 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
     <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-    <script src="_static/documentation_options.js?v=dd10f4f6"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/documentation_options.js?v=b6becc6a"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
     <link rel="icon" href="_static/devicetree-favicon.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -34,7 +34,7 @@
           <div class="body" role="main">
             
   <section id="spec-fullname-specversion">
-<h1>Devicetree Specification v0.4-9-gba20321<a class="headerlink" href="#spec-fullname-specversion" title="Link to this heading">¶</a></h1>
+<h1>Devicetree Specification v0.4-10-g27db084<a class="headerlink" href="#spec-fullname-specversion" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 <span id="document-license"></span><p><strong>Copyright</strong></p>
 <div class="line-block">
@@ -2365,7 +2365,28 @@ the client program. The value could
 potentially be a null string if no boot
 arguments are required.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stdout-path</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bootsource</span></code></p></td>
+<td><p>O</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p></td>
+<td><p>A string that specifies the full path to the
+node representing the device the BootROM used
+to load the initial boot program.
+If the initial boot program is split into
+multiple stages, this represents the storage
+medium or device (e.g. used by fastboot) from
+which the very first stage was loaded by the
+BootROM.
+It may differ from the device from which later
+stages of the boot program or client program
+are loaded from, as this property isn’t meant
+to represent those devices.
+A later stage of the boot program, or the
+client program, may use this information to
+favor the device in this property over others
+for loading later stages, or know the storage
+medium to flash an update to.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stdout-path</span></code></p></td>
 <td><p>O</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p></td>
 <td><p>A string that specifies the full path to the
@@ -2377,7 +2398,7 @@ If the stdin-path property is not specified,
 stdout-path should be assumed to define the
 input device.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stdin-path</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stdin-path</span></code></p></td>
 <td><p>O</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code></p></td>
 <td><p>A string that specifies the full path to the
@@ -2386,7 +2407,7 @@ boot console input. If the character “:” is
 present in the value it terminates the path.
 The value may be an alias.</p></td>
 </tr>
-<tr class="row-odd"><td colspan="4"><p>Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition</p></td>
+<tr class="row-even"><td colspan="4"><p>Usage legend: R=Required, O=Optional, OR=Optional but Recommended, SD=See Definition</p></td>
 </tr>
 </tbody>
 </table>
@@ -4427,7 +4448,7 @@ February 2020, <a class="reference external" href="http://www.uefi.org">UEFI For
       &#169;2016,2017, devicetree.org.
       
       |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.0.1</a>
       &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
     </div>
